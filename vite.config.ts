@@ -13,8 +13,8 @@ export default defineConfig({
         name: 'Ekin',
         short_name: 'Ekin',
         description: 'Bodyweight home workouts',
-        theme_color: '#0f172a',
-        background_color: '#0f172a',
+        theme_color: '#141019',
+        background_color: '#141019',
         display: 'standalone',
         orientation: 'portrait',
         start_url: '/ekin/',
@@ -23,7 +23,7 @@ export default defineConfig({
           { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icon-512.png', sizes: '512x512', type: 'image/png' },
           {
-            src: 'icon-512.png',
+            src: 'icon-512-maskable.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable',
@@ -31,7 +31,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,json}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,json,woff2}'],
         runtimeCaching: [
           {
             urlPattern: ({ url }) =>
