@@ -25,6 +25,12 @@
       : exOf(workout.items[state.itemIndex].exerciseId),
   )
 
+  let imgOk = $state(true)
+  $effect(() => {
+    void current?.id
+    imgOk = true
+  })
+
   function buzz() {
     if ('vibrate' in navigator) navigator.vibrate(60)
   }
@@ -52,8 +58,15 @@
     })
   }
 
+  function onVisibilityChange() {
+    if (document.visibilityState === 'visible' && state.phase !== 'done') {
+      requestWakeLock()
+    }
+  }
+
   onMount(() => {
     requestWakeLock()
+    document.addEventListener('visibilitychange', onVisibilityChange)
     interval = setInterval(() => {
       if (state.phase === 'rest') {
         const before = state.phase
@@ -64,6 +77,7 @@
   })
   onDestroy(() => {
     if (interval) clearInterval(interval)
+    document.removeEventListener('visibilitychange', onVisibilityChange)
     releaseWakeLock()
   })
 </script>
@@ -85,9 +99,10 @@
       </div>
     {:else}
       <h2>{current.name}</h2>
-      {#if current.images[0]}<img
+      {#if current.images[0] && imgOk}<img
           src={current.images[0]}
           alt={current.name}
+          onerror={() => (imgOk = false)}
         />{/if}
       <ol class="instructions">
         {#each current.instructions.slice(0, 3) as step, i (i)}<li>

@@ -34,7 +34,8 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,json}'],
         runtimeCaching: [
           {
-            urlPattern: ({ url }) => url.pathname.includes('/exercise-images/'),
+            urlPattern: ({ url }) =>
+              url.hostname === 'raw.githubusercontent.com',
             handler: 'CacheFirst',
             options: {
               cacheName: 'exercise-images',
