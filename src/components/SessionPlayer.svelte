@@ -5,6 +5,7 @@
   import { initSession, tick, advance } from '../lib/timer'
   import { requestWakeLock, releaseWakeLock } from '../lib/wakeLock'
   import { allExercises } from '../stores/catalog-store'
+  import Icon from './Icon.svelte'
 
   let {
     workout,
@@ -24,6 +25,16 @@
       ? undefined
       : exOf(workout.items[state.itemIndex].exerciseId),
   )
+
+  // Rest ring geometry (visual only).
+  const R = 86
+  const CIRC = 2 * Math.PI * R
+  let restTotal = $derived(
+    state.phase === 'rest'
+      ? Math.max(1, workout.items[state.itemIndex].restSeconds)
+      : 1,
+  )
+  let ringOffset = $derived(CIRC * (1 - state.remaining / restTotal))
 
   let imgOk = $state(true)
   $effect(() => {
@@ -83,87 +94,278 @@
 </script>
 
 {#if state.phase === 'done'}
-  <p>Session complete 💪</p>
+  <p class="done">Session complete</p>
 {:else if current}
-  <section class="player">
+  <section class="player fade-up">
     <header>
-      <span>Exercise {state.itemIndex + 1}/{workout.items.length}</span>
-      <span>Set {state.setIndex + 1}/{workout.items[state.itemIndex].sets}</span
-      >
+      <span class="pill">
+        Exercise {state.itemIndex + 1}/{workout.items.length}
+      </span>
+      <span class="pill">
+        Set {state.setIndex + 1}/{workout.items[state.itemIndex].sets}
+      </span>
     </header>
 
     {#if state.phase === 'rest'}
       <div class="rest">
-        <span class="count">{state.remaining}</span>
-        <p>Rest</p>
+        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+          <defs>
+            <linearGradient id="ring-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ff7a18" />
+              <stop offset="1" stop-color="#ff2d78" />
+            </linearGradient>
+          </defs>
+          <circle class="track" cx="100" cy="100" r={R} />
+          <circle
+            class="bar"
+            cx="100"
+            cy="100"
+            r={R}
+            stroke-dasharray={CIRC}
+            stroke-dashoffset={ringOffset}
+          />
+        </svg>
+        <div class="ring-center">
+          <span class="count grad-text">{state.remaining}</span>
+          <span class="rest-label">Rest</span>
+        </div>
       </div>
     {:else}
-      <h2>{current.name}</h2>
-      {#if current.images[0] && imgOk}<img
-          src={current.images[0]}
-          alt={current.name}
-          onerror={() => (imgOk = false)}
-        />{/if}
-      <ol class="instructions">
-        {#each current.instructions.slice(0, 3) as step, i (i)}<li>
-            {step}
-          </li>{/each}
-      </ol>
-      <label class="reps">
-        Reps done
-        <input
-          type="number"
-          min="0"
-          bind:value={logs[state.itemIndex][state.setIndex]}
-        />
-      </label>
+      <div class="work">
+        {#if current.images[0] && imgOk}
+          <img
+            src={current.images[0]}
+            alt={current.name}
+            onerror={() => (imgOk = false)}
+          />
+        {:else}
+          <div class="ph" aria-hidden="true">
+            <Icon name="dumbbell" size={64} />
+          </div>
+        {/if}
+        <h2>{current.name}</h2>
+
+        <div class="dots" aria-label="Set progress">
+          {#each Array(workout.items[state.itemIndex].sets) as _, d (d)}
+            <span class="dot" class:on={d <= state.setIndex}></span>
+          {/each}
+        </div>
+
+        <div class="reps">
+          <span class="reps-label">Reps done</span>
+          <div class="ctrl">
+            <button
+              aria-label="Decrease reps"
+              onclick={() =>
+                (logs[state.itemIndex][state.setIndex] = Math.max(
+                  0,
+                  logs[state.itemIndex][state.setIndex] - 1,
+                ))}
+            >
+              <Icon name="minus" size={20} />
+            </button>
+            <input
+              type="number"
+              min="0"
+              bind:value={logs[state.itemIndex][state.setIndex]}
+            />
+            <button
+              aria-label="Increase reps"
+              onclick={() => (logs[state.itemIndex][state.setIndex] += 1)}
+            >
+              <Icon name="plus" size={20} />
+            </button>
+          </div>
+        </div>
+      </div>
     {/if}
 
-    <button class="next" onclick={next}
-      >{state.phase === 'rest' ? 'Skip rest' : 'Done set'}</button
-    >
+    <button class="next btn-grad" onclick={next}>
+      {#if state.phase === 'rest'}
+        <Icon name="play" size={22} /> Skip rest
+      {:else}
+        <Icon name="check" size={22} /> Done set
+      {/if}
+    </button>
   </section>
 {/if}
 
 <style>
+  .done {
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    padding: 3rem 0;
+  }
   .player {
     display: grid;
-    gap: 0.75rem;
+    gap: 1.1rem;
     text-align: center;
+    padding-top: 0.5rem;
   }
   header {
     display: flex;
     justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .pill {
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    border: 1px solid var(--border);
     color: var(--muted);
+    font-weight: 600;
+    font-size: 0.85rem;
   }
-  img {
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
-    border-radius: 12px;
-  }
+
+  /* Rest ring */
   .rest {
+    position: relative;
     display: grid;
     place-items: center;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
+  }
+  .ring {
+    width: min(74vw, 300px);
+    height: min(74vw, 300px);
+    transform: rotate(-90deg);
+  }
+  .ring .track {
+    fill: none;
+    stroke: var(--surface-2);
+    stroke-width: 14;
+  }
+  .ring .bar {
+    fill: none;
+    stroke: url(#ring-grad);
+    stroke-width: 14;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 10px var(--accent-glow));
+  }
+  .ring-center {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    gap: 0.1rem;
   }
   .count {
-    font-size: 4rem;
+    font-family: var(--font-display);
     font-weight: 800;
+    font-size: 5rem;
+    line-height: 1;
   }
-  .instructions {
-    text-align: left;
+  .rest-label {
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.85rem;
   }
-  .reps input {
-    width: 5rem;
-    padding: 0.5rem;
-    min-height: 44px;
+
+  /* Work */
+  .work {
+    display: grid;
+    gap: 0.9rem;
+    justify-items: center;
   }
+  img,
+  .ph {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  .ph {
+    display: grid;
+    place-items: center;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 122, 24, 0.18),
+        rgba(255, 45, 120, 0.18)
+      ),
+      var(--surface-2);
+    color: var(--accent);
+  }
+  .work h2 {
+    margin: 0;
+    font-size: 1.6rem;
+  }
+  .dots {
+    display: flex;
+    gap: 0.4rem;
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+  }
+  .dot.on {
+    background: var(--grad);
+    border-color: transparent;
+    box-shadow: 0 0 8px var(--accent-glow);
+  }
+
+  .reps {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: center;
+  }
+  .reps-label {
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.78rem;
+  }
+  .reps .ctrl {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .reps .ctrl button {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 56px;
+    border: none;
+    background: transparent;
+    color: var(--text);
+  }
+  .reps .ctrl input {
+    width: 4.5rem;
+    text-align: center;
+    border: none;
+    background: transparent;
+    padding: 0;
+    height: 56px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.6rem;
+  }
+
   .next {
-    min-height: 56px;
-    border-radius: 14px;
-    background: var(--accent);
-    color: white;
-    font-size: 1.1rem;
+    min-height: 60px;
+    border-radius: var(--radius);
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ring .bar {
+      transition: stroke-dashoffset 1s linear;
+    }
   }
 </style>

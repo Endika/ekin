@@ -3,6 +3,7 @@
   import { allExercises } from '../stores/catalog-store'
   import BuilderItem from './BuilderItem.svelte'
   import CatalogList from './CatalogList.svelte'
+  import Icon from './Icon.svelte'
   import { saveWorkout } from '../data/workouts-repo'
   import type { Zone } from '../domain/types'
 
@@ -19,18 +20,22 @@
   }
 </script>
 
-<section class="builder">
+<section class="builder fade-up">
   <input
     class="title"
+    aria-label="Workout name"
     bind:value={$builder.name}
     oninput={(e) => builder.rename(e.currentTarget.value)}
   />
-  <select
-    value={$builder.zone}
-    onchange={(e) => builder.setZone(e.currentTarget.value as Zone)}
-  >
-    {#each zones as z (z)}<option value={z}>{z}</option>{/each}
-  </select>
+
+  <div class="zones" role="group" aria-label="Zone">
+    {#each zones as z (z)}
+      <button
+        class:active={$builder.zone === z}
+        onclick={() => builder.setZone(z)}>{z}</button
+      >
+    {/each}
+  </div>
 
   <div class="items">
     {#each $builder.items as item, i (item.exerciseId + i)}
@@ -44,55 +49,120 @@
           i < $builder.items.length - 1 && builder.move(i, i + 1)}
       />
     {/each}
-  </div>
-
-  <div class="actions">
-    <button onclick={() => (picking = !picking)}
-      >{picking ? 'Done adding' : '+ Add exercise'}</button
-    >
-    <button onclick={save} disabled={!$builder.items.length}>Save</button>
-    <button class="primary" onclick={onstart} disabled={!$builder.items.length}
-      >Start</button
-    >
+    {#if !$builder.items.length}
+      <p class="empty card">
+        No exercises yet. Tap <strong>Add exercise</strong> to build your session.
+      </p>
+    {/if}
   </div>
 
   {#if picking}
     <CatalogList onpick={(id) => builder.add(id)} />
   {/if}
+
+  <div class="actions">
+    <button class="ghost" onclick={() => (picking = !picking)}>
+      <Icon name={picking ? 'check' : 'plus'} size={18} />
+      {picking ? 'Done' : 'Add exercise'}
+    </button>
+    <button class="ghost" onclick={save} disabled={!$builder.items.length}>
+      Save
+    </button>
+    <button
+      class="start btn-grad"
+      onclick={onstart}
+      disabled={!$builder.items.length}
+    >
+      <Icon name="play" size={20} /> Start
+    </button>
+  </div>
 </section>
 
 <style>
   .builder {
     display: grid;
-    gap: 0.75rem;
+    gap: 0.85rem;
+    padding-bottom: 5.5rem;
   }
   .title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    padding: 0.4rem;
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    padding: 0.5rem 0.65rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: transparent;
   }
+  .title:focus-visible {
+    background: var(--surface);
+    border-color: var(--border);
+  }
+
+  .zones {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .zones button {
+    flex: 1;
+    min-width: 4rem;
+    min-height: 38px;
+    padding: 0 0.5rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  .zones button.active {
+    background: var(--grad);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: var(--shadow-glow);
+  }
+
   .items {
     display: grid;
-    gap: 0.5rem;
+    gap: 0.6rem;
   }
+  .empty {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    color: var(--muted);
+  }
+  .empty strong {
+    color: var(--text);
+  }
+
   .actions {
-    display: flex;
-    gap: 0.5rem;
     position: sticky;
     bottom: 0;
-    padding: 0.5rem 0 max(0.5rem, env(safe-area-inset-bottom));
-    background: var(--bg);
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.6rem 0 max(0.6rem, env(safe-area-inset-bottom));
+    background: linear-gradient(transparent, var(--bg) 35%);
   }
-  .actions button {
-    flex: 1;
-    min-height: 48px;
-    border-radius: 12px;
+  .actions .ghost {
+    min-height: 52px;
+    padding: 0 0.9rem;
+    border-radius: var(--radius-sm);
     border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
   }
-  .actions .primary {
-    background: var(--accent);
-    color: white;
+  .actions .start {
+    flex: 1;
+    min-height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    font-size: 1.1rem;
   }
 </style>
