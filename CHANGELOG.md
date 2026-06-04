@@ -1,0 +1,42 @@
+# Changelog
+
+## 1.0.0 (2026-06-04)
+
+
+### Features
+
+* **app:** wire builder, player and history views ([8653e64](https://github.com/Endika/ekin/commit/8653e64f5e9e73f256f0119e1c9268e14e8d1a46))
+* **builder:** add manual workout builder ui ([690d056](https://github.com/Endika/ekin/commit/690d056edf8975756295a66dbcf77a71fbe11d97))
+* **catalog:** add browse and search ui ([7a7848a](https://github.com/Endika/ekin/commit/7a7848a26bcf4609b02cee33f9aef89c1d622ad2))
+* **data:** add indexeddb workouts and sessions repos ([d1ea7bb](https://github.com/Endika/ekin/commit/d1ea7bb50c666f35bf612e2142e97dc03abbfd38))
+* **domain:** add core types and catalog ([741ff90](https://github.com/Endika/ekin/commit/741ff90195d9c5a57e7a4ff0d11bd56a73116e98))
+* **domain:** add workout reducers ([4e1f42d](https://github.com/Endika/ekin/commit/4e1f42d2a979f044dd62b34122917d182f48d512))
+* **history:** add session history list ([c3271c7](https://github.com/Endika/ekin/commit/c3271c79b7339bbf53ff8c911a7d6e692f2a757f))
+* **player:** add screen wake-lock helper ([00e9c26](https://github.com/Endika/ekin/commit/00e9c260dffcef30a7b3c56d280a3d190e5498c5))
+* **player:** add session player ui with timer and wake-lock ([17715bf](https://github.com/Endika/ekin/commit/17715bfb5071304f38919aac3566e8463b0eba86))
+* **player:** add session timer state machine ([018ad14](https://github.com/Endika/ekin/commit/018ad140ea9c2f1632ffe88b900c89e8899f98ae))
+* **pwa:** add icons and offline shell ([9a79404](https://github.com/Endika/ekin/commit/9a79404434aa2bb5b4d330f0ad961cd1a910c527))
+* **ui:** add brand mark, PWA icons and inline icon set ([5b1bd49](https://github.com/Endika/ekin/commit/5b1bd4952ab332b2e2b33e6853c1b9e4aeaee2ff))
+* **ui:** add energy design system and self-hosted fonts ([384b464](https://github.com/Endika/ekin/commit/384b4647e5177e5dbc2da20feadcf8e621114f65))
+* **ui:** redesign shell, builder, catalog, player and history ([3aa3b94](https://github.com/Endika/ekin/commit/3aa3b94a183e035ea88f1c4bca8c2eb9dbb77797))
+
+
+### Bug Fixes
+
+* **pwa:** cache exercise images and reacquire wake lock ([b6c8939](https://github.com/Endika/ekin/commit/b6c8939bfbcac524ba32d391af431a23b3f8a45d))
+
+
+### Documentation
+
+* rewrite readme with live link and badges ([88622a6](https://github.com/Endika/ekin/commit/88622a6b1818388761defb35356beda562095a43))
+
+
+### Chores
+
+* add bodyweight exercise catalog build ([7bb461f](https://github.com/Endika/ekin/commit/7bb461fff89a3637009b99df3c96565f0db00ccc))
+* add MIT license ([a88469a](https://github.com/Endika/ekin/commit/a88469a41a4378341dbfd2e1a6d949fae42671fe))
+* add readme and pages deploy ([75976b3](https://github.com/Endika/ekin/commit/75976b3ce0007c13ca524ca88d3abd32fd580fa4))
+* add release-please and ci workflows ([7c2cc71](https://github.com/Endika/ekin/commit/7c2cc71b0d4e3098f4e0dd69f9eb25e6f56bd0c7))
+* decouple exercise data fetch from build ([2ea637a](https://github.com/Endika/ekin/commit/2ea637adde7848d0bd267861b1f0636e832aaabf))
+* initial commit ([2e8c445](https://github.com/Endika/ekin/commit/2e8c445b12201b2463d03bdc9dd0f91e59c28b0a))
+* scaffold svelte+vite+pwa project ([9b436a7](https://github.com/Endika/ekin/commit/9b436a7ce86a529b4444e1da345d8eac4d141a59))
