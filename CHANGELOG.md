@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/Endika/ekin/compare/v1.0.0...v1.0.1) (2026-06-04)
+
+
+### Chores
+
+* ignore changelog in prettier ([edaa20e](https://github.com/Endika/ekin/commit/edaa20e16bd880832fd418a8f5de24cdea252d35))
+
 ## 1.0.0 (2026-06-04)
 
 
