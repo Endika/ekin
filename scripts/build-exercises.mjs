@@ -1,4 +1,6 @@
-import { writeFileSync, mkdirSync } from 'node:fs'
+import { writeFileSync, mkdirSync, existsSync } from 'node:fs'
+
+const OUT = 'src/data/exercises.json'
 
 const SRC =
   'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/dist/exercises.json'
@@ -25,9 +27,20 @@ const ZONE_BY_MUSCLE = {
   abductors: 'legs',
 }
 
-const res = await fetch(SRC)
-if (!res.ok) throw new Error(`fetch failed: ${res.status}`)
-const all = await res.json()
+let all
+try {
+  const res = await fetch(SRC)
+  if (!res.ok) throw new Error(`fetch failed: ${res.status}`)
+  all = await res.json()
+} catch (err) {
+  if (existsSync(OUT)) {
+    console.warn(
+      `warning: fetch failed (${err.message}); keeping existing ${OUT}`,
+    )
+    process.exit(0)
+  }
+  throw err
+}
 
 const bodyweight = all
   .filter((e) => e.equipment === 'body only' || e.equipment === null)
@@ -45,5 +58,5 @@ const bodyweight = all
   })
 
 mkdirSync('src/data', { recursive: true })
-writeFileSync('src/data/exercises.json', JSON.stringify(bodyweight, null, 2))
+writeFileSync(OUT, JSON.stringify(bodyweight, null, 2))
 console.log(`wrote ${bodyweight.length} bodyweight exercises`)
