@@ -1,0 +1,90 @@
+{
+  "nav": { "build": "Crear", "progress": "Progreso" },
+  "zone": {
+    "all": "Todo",
+    "upper": "Tren superior",
+    "core": "Core",
+    "legs": "Piernas",
+    "full": "Cuerpo completo"
+  },
+  "level": {
+    "beginner": "Principiante",
+    "intermediate": "Intermedio",
+    "expert": "Avanzado"
+  },
+  "builder": {
+    "defaultName": "Mi entreno",
+    "nameLabel": "Nombre del entreno",
+    "addExercise": "Añadir ejercicio",
+    "done": "Listo",
+    "save": "Guardar",
+    "start": "Empezar",
+    "empty": "Aún no hay ejercicios. Pulsa Añadir ejercicio para crear tu sesión."
+  },
+  "item": {
+    "sets": "Series",
+    "reps": "Reps",
+    "rest": "Descanso s",
+    "moveUp": "Subir",
+    "moveDown": "Bajar",
+    "remove": "Quitar"
+  },
+  "catalog": { "search": "Buscar ejercicios" },
+  "player": {
+    "exercise": "Ejercicio {n}/{total}",
+    "set": "Serie {n}/{total}",
+    "rest": "Descanso",
+    "repsDone": "Reps hechas",
+    "skipRest": "Saltar descanso",
+    "doneSet": "Serie hecha",
+    "complete": "Sesión completada 💪"
+  },
+  "history": {
+    "minutes": "min",
+    "emptyTitle": "Aún no hay sesiones",
+    "emptyHint": "Crea un entreno y empieza a entrenar."
+  },
+  "stats": {
+    "streak": "días seguidos",
+    "sessions": "sesiones",
+    "minutes": "minutos"
+  },
+  "progress": {
+    "exercise": "Ejercicio",
+    "noData": "Aún no hay datos — registra este ejercicio en una sesión.",
+    "max": "máx",
+    "min": "mín"
+  },
+  "saved": {
+    "title": "Entrenos guardados",
+    "exercises": "{count} ejercicios",
+    "load": "Cargar",
+    "deleteConfirm": "¿Eliminar \"{name}\"?",
+    "deleteLabel": "Eliminar {name}"
+  },
+  "autofill": {
+    "title": "Auto-relleno",
+    "zone": "Zona",
+    "time": "Tiempo",
+    "level": "Nivel",
+    "minutes": "{count} min",
+    "generate": "Generar",
+    "hint": "Puedes editarlo todo después."
+  },
+  "settings": {
+    "title": "Ajustes",
+    "language": "Idioma",
+    "aiKey": "Clave API de Gemini",
+    "aiKeyHint": "Se guarda solo en este dispositivo. Llama a Gemini directamente con tu propia cuota.",
+    "aiKeyPlaceholder": "Pega tu clave",
+    "clear": "Borrar"
+  },
+  "ai": {
+    "title": "Asistente IA",
+    "swap": "Cambiar este ejercicio",
+    "easier": "Más fácil",
+    "harder": "Más difícil",
+    "thinking": "Preguntando a Gemini…",
+    "failed": "No se pudo aplicar — el entreno no ha cambiado."
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "nav": { "build": "Crear", "progress": "Progrés" },
+  "zone": {
+    "all": "Tot",
+    "upper": "Tren superior",
+    "core": "Core",
+    "legs": "Cames",
+    "full": "Cos sencer"
+  },
+  "level": {
+    "beginner": "Principiant",
+    "intermediate": "Intermedi",
+    "expert": "Avançat"
+  },
+  "builder": {
+    "defaultName": "El meu entrenament",
+    "nameLabel": "Nom de l'entrenament",
+    "addExercise": "Afegir exercici",
+    "done": "Fet",
+    "save": "Desar",
+    "start": "Començar",
+    "empty": "Encara no hi ha exercicis. Toca Afegir exercici per crear la teva sessió."
+  },
+  "item": {
+    "sets": "Sèries",
+    "reps": "Reps",
+    "rest": "Descans s",
+    "moveUp": "Pujar",
+    "moveDown": "Baixar",
+    "remove": "Treure"
+  },
+  "catalog": { "search": "Cercar exercicis" },
+  "player": {
+    "exercise": "Exercici {n}/{total}",
+    "set": "Sèrie {n}/{total}",
+    "rest": "Descans",
+    "repsDone": "Reps fetes",
+    "skipRest": "Saltar descans",
+    "doneSet": "Sèrie feta",
+    "complete": "Sessió completada 💪"
+  },
+  "history": {
+    "minutes": "min",
+    "emptyTitle": "Encara no hi ha sessions",
+    "emptyHint": "Crea un entrenament i comença a entrenar."
+  },
+  "stats": {
+    "streak": "dies seguits",
+    "sessions": "sessions",
+    "minutes": "minuts"
+  },
+  "progress": {
+    "exercise": "Exercici",
+    "noData": "Encara no hi ha dades — registra aquest exercici en una sessió.",
+    "max": "màx",
+    "min": "mín"
+  },
+  "saved": {
+    "title": "Entrenaments desats",
+    "exercises": "{count} exercicis",
+    "load": "Carregar",
+    "deleteConfirm": "Eliminar \"{name}\"?",
+    "deleteLabel": "Eliminar {name}"
+  },
+  "autofill": {
+    "title": "Emplenat automàtic",
+    "zone": "Zona",
+    "time": "Temps",
+    "level": "Nivell",
+    "minutes": "{count} min",
+    "generate": "Generar",
+    "hint": "Pots editar-ho tot després."
+  },
+  "settings": {
+    "title": "Configuració",
+    "language": "Idioma",
+    "aiKey": "Clau API de Gemini",
+    "aiKeyHint": "Es desa només en aquest dispositiu. Crida Gemini directament amb la teva quota.",
+    "aiKeyPlaceholder": "Enganxa la teva clau",
+    "clear": "Esborrar"
+  },
+  "ai": {
+    "title": "Assistent IA",
+    "swap": "Canviar aquest exercici",
+    "easier": "Més fàcil",
+    "harder": "Més difícil",
+    "thinking": "Preguntant a Gemini…",
+    "failed": "No s'ha pogut aplicar — l'entrenament no ha canviat."
+  }
+}

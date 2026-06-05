@@ -2,6 +2,7 @@
   import Builder from '../components/Builder.svelte'
   import SessionPlayer from '../components/SessionPlayer.svelte'
   import ProgressView from '../components/ProgressView.svelte'
+  import Settings from '../components/Settings.svelte'
   import Icon from '../components/Icon.svelte'
   import { builder } from '../stores/builder'
   import { addSession } from '../data/sessions-repo'
@@ -9,6 +10,7 @@
 
   let view: 'builder' | 'session' | 'history' = $state('builder')
   let active: Workout | undefined = $state()
+  let settingsOpen = $state(false)
 
   function start() {
     active = $builder
@@ -25,7 +27,18 @@
     <Icon name="play" size={18} />
   </span>
   <span class="wordmark grad-text">ekin</span>
+  <button
+    class="gear"
+    onclick={() => (settingsOpen = true)}
+    aria-label="Settings"
+  >
+    <Icon name="settings" size={20} />
+  </button>
 </header>
+
+{#if settingsOpen}
+  <Settings onclose={() => (settingsOpen = false)} />
+{/if}
 
 {#if view !== 'session'}
   <nav class="tabs" style="--idx: {view === 'builder' ? 0 : 1}">
@@ -79,6 +92,17 @@
     font-weight: 800;
     font-size: 1.5rem;
     letter-spacing: -0.02em;
+  }
+  .gear {
+    margin-left: auto;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
   }
 
   .tabs {

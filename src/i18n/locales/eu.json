@@ -1,0 +1,90 @@
+{
+  "nav": { "build": "Sortu", "progress": "Aurrerapena" },
+  "zone": {
+    "all": "Dena",
+    "upper": "Goiko gorputza",
+    "core": "Core",
+    "legs": "Hankak",
+    "full": "Gorputz osoa"
+  },
+  "level": {
+    "beginner": "Hasiberria",
+    "intermediate": "Ertaina",
+    "expert": "Aurreratua"
+  },
+  "builder": {
+    "defaultName": "Nire entrenamendua",
+    "nameLabel": "Entrenamenduaren izena",
+    "addExercise": "Gehitu ariketa",
+    "done": "Eginda",
+    "save": "Gorde",
+    "start": "Hasi",
+    "empty": "Oraindik ariketarik ez. Sakatu Gehitu ariketa zure saioa sortzeko."
+  },
+  "item": {
+    "sets": "Serieak",
+    "reps": "Errep.",
+    "rest": "Atsedena s",
+    "moveUp": "Igo",
+    "moveDown": "Jaitsi",
+    "remove": "Kendu"
+  },
+  "catalog": { "search": "Bilatu ariketak" },
+  "player": {
+    "exercise": "Ariketa {n}/{total}",
+    "set": "Seriea {n}/{total}",
+    "rest": "Atsedena",
+    "repsDone": "Egindako errep.",
+    "skipRest": "Saltatu atsedena",
+    "doneSet": "Seriea eginda",
+    "complete": "Saioa amaituta 💪"
+  },
+  "history": {
+    "minutes": "min",
+    "emptyTitle": "Oraindik saiorik ez",
+    "emptyHint": "Sortu entrenamendu bat eta hasi."
+  },
+  "stats": {
+    "streak": "egun jarraian",
+    "sessions": "saio",
+    "minutes": "minutu"
+  },
+  "progress": {
+    "exercise": "Ariketa",
+    "noData": "Oraindik daturik ez — erregistratu ariketa hau saio batean.",
+    "max": "max",
+    "min": "min"
+  },
+  "saved": {
+    "title": "Gordetako entrenamenduak",
+    "exercises": "{count} ariketa",
+    "load": "Kargatu",
+    "deleteConfirm": "\"{name}\" ezabatu?",
+    "deleteLabel": "Ezabatu {name}"
+  },
+  "autofill": {
+    "title": "Auto-bete",
+    "zone": "Eremua",
+    "time": "Denbora",
+    "level": "Maila",
+    "minutes": "{count} min",
+    "generate": "Sortu",
+    "hint": "Gero dena edita dezakezu."
+  },
+  "settings": {
+    "title": "Ezarpenak",
+    "language": "Hizkuntza",
+    "aiKey": "Gemini API gakoa",
+    "aiKeyHint": "Gailu honetan bakarrik gordetzen da. Gemini zuzenean deitzen du zure kuotarekin.",
+    "aiKeyPlaceholder": "Itsatsi zure gakoa",
+    "clear": "Garbitu"
+  },
+  "ai": {
+    "title": "IA laguntzailea",
+    "swap": "Aldatu ariketa hau",
+    "easier": "Errazagoa",
+    "harder": "Zailagoa",
+    "thinking": "Geminiri galdetzen…",
+    "failed": "Ezin izan da aplikatu — entrenamendua ez da aldatu."
+  }
+}
