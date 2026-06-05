@@ -48,11 +48,15 @@
   .left {
     display: grid;
     gap: 0.15rem;
+    min-width: 0;
   }
   .left strong {
     font-family: var(--font-display);
     font-weight: 600;
     font-size: 1.05rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .date {
     color: var(--muted);
