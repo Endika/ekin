@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/Endika/ekin/compare/v1.2.0...v1.2.1) (2026-06-05)
+
+
+### Bug Fixes
+
+* **autofill:** treat full-body as all zones so generate is never empty ([ebb4f7e](https://github.com/Endika/ekin/commit/ebb4f7ec6b9692e80f287d20eb47b9da1cd1bc4c))
+
 ## [1.2.0](https://github.com/Endika/ekin/compare/v1.1.0...v1.2.0) (2026-06-05)
 
 
