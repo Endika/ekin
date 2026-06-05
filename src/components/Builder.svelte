@@ -4,6 +4,7 @@
   import BuilderItem from './BuilderItem.svelte'
   import CatalogList from './CatalogList.svelte'
   import SavedWorkouts from './SavedWorkouts.svelte'
+  import AutofillPanel from './AutofillPanel.svelte'
   import Icon from './Icon.svelte'
   import { saveWorkout } from '../data/workouts-repo'
   import { saved } from '../stores/saved-store'
@@ -25,6 +26,7 @@
 
 <section class="builder fade-up">
   <SavedWorkouts />
+  <AutofillPanel />
 
   <input
     class="title"
