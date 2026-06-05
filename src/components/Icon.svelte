@@ -21,6 +21,9 @@
     | 'sun'
     | 'moon'
     | 'monitor'
+    | 'upper'
+    | 'core'
+    | 'legs'
 
   let { name, size = 24 }: { name: IconName; size?: number } = $props()
 
@@ -51,6 +54,10 @@
     sun: 'M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0 M12 2v2 M12 20v2 M4 12h-2 M22 12h-2 M5 5l1.5 1.5 M17.5 17.5l1.5 1.5 M5 19l1.5 -1.5 M17.5 6.5l1.5 -1.5',
     moon: 'M18 16a8 8 0 0 1 -10 -10a8 8 0 1 0 10 10z',
     monitor: 'M3 5h18v11h-18z M9 20h6 M12 16v4',
+    // Body-zone glyphs (used as image fallbacks)
+    upper: 'M6 6h12 M8 6c0 4 1 6 4 6s4 -2 4 -6 M12 12v5 M9 20h6',
+    core: 'M12 12m-8 0a8 8 0 1 0 16 0a8 8 0 1 0 -16 0 M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0',
+    legs: 'M9 4v8l-2 8 M15 4v8l2 8 M9 12h6',
   }
 </script>
 
