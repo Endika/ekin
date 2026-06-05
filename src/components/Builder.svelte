@@ -3,8 +3,10 @@
   import { allExercises } from '../stores/catalog-store'
   import BuilderItem from './BuilderItem.svelte'
   import CatalogList from './CatalogList.svelte'
+  import SavedWorkouts from './SavedWorkouts.svelte'
   import Icon from './Icon.svelte'
   import { saveWorkout } from '../data/workouts-repo'
+  import { saved } from '../stores/saved-store'
   import type { Zone } from '../domain/types'
 
   let { onstart, onsaved }: { onstart: () => void; onsaved?: () => void } =
@@ -16,11 +18,14 @@
 
   async function save() {
     await saveWorkout($builder)
+    await saved.refresh()
     onsaved?.()
   }
 </script>
 
 <section class="builder fade-up">
+  <SavedWorkouts />
+
   <input
     class="title"
     aria-label="Workout name"
