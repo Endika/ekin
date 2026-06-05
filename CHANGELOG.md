@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.6](https://github.com/Endika/ekin/compare/v1.4.5...v1.4.6) (2026-06-05)
+
+
+### Bug Fixes
+
+* **ui:** align header on narrow screens by letting the title row shrink ([5b800a7](https://github.com/Endika/ekin/commit/5b800a738c7a1d34d02e4441d1dec473a0b32af9))
+* **ui:** truncate long workout names in history instead of overflowing ([eee126f](https://github.com/Endika/ekin/commit/eee126f5132b1546846c2c890f34519f03c91159))
+
 ## [1.4.5](https://github.com/Endika/ekin/compare/v1.4.4...v1.4.5) (2026-06-05)
 
 
