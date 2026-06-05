@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/Endika/ekin/compare/v1.1.0...v1.2.0) (2026-06-05)
+
+
+### Features
+
+* **ui:** add light/dark theme toggle and version footer ([56bef75](https://github.com/Endika/ekin/commit/56bef75c2e93cb4d0e0db5ab2581c84516001794))
+
+
+### Bug Fixes
+
+* **autofill:** adapt panel to narrow screens and open by default ([fe2e907](https://github.com/Endika/ekin/commit/fe2e907fa200b6770b0fd109beb49c661c2d017e))
+
 ## [1.1.0](https://github.com/Endika/ekin/compare/v1.0.1...v1.1.0) (2026-06-05)
 
 
