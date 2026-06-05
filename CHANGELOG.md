@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.3](https://github.com/Endika/ekin/compare/v1.4.2...v1.4.3) (2026-06-05)
+
+
+### Bug Fixes
+
+* **ui:** keep auto-fill in 3 columns on mobile without overflow ([75169c6](https://github.com/Endika/ekin/commit/75169c6fb2a0a706b84441370790b5aae8a0b702))
+
 ## [1.4.2](https://github.com/Endika/ekin/compare/v1.4.1...v1.4.2) (2026-06-05)
 
 
