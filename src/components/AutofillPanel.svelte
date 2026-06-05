@@ -92,15 +92,11 @@
   .panel {
     padding: 0.85rem;
     display: grid;
-    /* Mobile: stack so the native selects never force horizontal overflow */
-    grid-template-columns: 1fr;
+    /* Intrinsically responsive: each column is at least as wide as the longest
+       option ("Cuerpo Completo"), so native selects never truncate or force
+       overflow. Wraps 3 -> 2 -> 1 as width shrinks, with no magic breakpoint. */
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
     gap: 0.6rem;
-  }
-  @media (min-width: 420px) {
-    .panel {
-      /* minmax(0,1fr) — tracks may shrink below the select's intrinsic width */
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
   }
   label {
     display: grid;
