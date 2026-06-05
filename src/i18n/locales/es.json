@@ -19,6 +19,8 @@
     "done": "Listo",
     "save": "Guardar",
     "start": "Empezar",
+    "new": "Nuevo",
+    "newConfirm": "¿Empezar un entreno nuevo? Se perderán los cambios sin guardar.",
     "empty": "Aún no hay ejercicios. Pulsa Añadir ejercicio para crear tu sesión."
   },
   "item": {

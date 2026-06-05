@@ -19,6 +19,8 @@
     "done": "Fet",
     "save": "Desar",
     "start": "Començar",
+    "new": "Nou",
+    "newConfirm": "Començar un entrenament nou? Es perdran els canvis sense desar.",
     "empty": "Encara no hi ha exercicis. Toca Afegir exercici per crear la teva sessió."
   },
   "item": {
