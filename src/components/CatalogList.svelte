@@ -5,7 +5,9 @@
   import { _ } from 'svelte-i18n'
   import type { Zone } from '../domain/types'
   let { onpick }: { onpick?: (id: string) => void } = $props()
-  const zones: (Zone | 'all')[] = ['all', 'upper', 'core', 'legs', 'full']
+  // No exercise is tagged 'full' (that's a whole-body *workout* concept), so the
+  // browse filter only offers the real per-exercise zones.
+  const zones: (Zone | 'all')[] = ['all', 'upper', 'core', 'legs']
 </script>
 
 <div class="catalog">

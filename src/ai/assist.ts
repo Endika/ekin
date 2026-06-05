@@ -14,8 +14,9 @@ export function buildPrompt(
   workout: Workout,
   req: AssistRequest,
 ): string {
+  // A 'full' workout can use any zone; no exercise is itself tagged 'full'.
   const pool = catalog
-    .filter((e) => e.zone === workout.zone || e.zone === 'full')
+    .filter((e) => workout.zone === 'full' || e.zone === workout.zone)
     .map((e) => `${e.id}: ${e.name} [${e.zone}, ${e.level}]`)
     .join('\n')
 

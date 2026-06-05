@@ -19,6 +19,7 @@
 
   function generate() {
     builder.load(autofill(allExercises, { zone, minutes, level }))
+    open = false // collapse so the generated exercises are immediately visible
     onfill?.()
   }
 </script>
