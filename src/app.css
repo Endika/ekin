@@ -119,11 +119,6 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-/* Safety net against horizontal overflow; `clip` (unlike `hidden`) does not
-   create a scroll container, so it preserves position: sticky. */
-body {
-  overflow-x: clip;
-}
 
 /* Warm radial glow + faint grain for depth */
 body::before {

@@ -92,15 +92,10 @@
   .panel {
     padding: 0.85rem;
     display: grid;
-    /* Mobile: stack so the native selects never force horizontal overflow */
-    grid-template-columns: 1fr;
+    /* minmax(0,1fr) lets each track shrink below the native select's intrinsic
+       (longest-option) width; with select { min-width: 0 } this never overflows. */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.6rem;
-  }
-  @media (min-width: 420px) {
-    .panel {
-      /* minmax(0,1fr) — tracks may shrink below the select's intrinsic width */
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
   }
   label {
     display: grid;
