@@ -143,6 +143,9 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    /* Grid item of .builder: without this it keeps the native input's intrinsic
+       width (~20ch) as its min-size and overflows narrow viewports. */
+    min-width: 0;
   }
   .title {
     flex: 1;
