@@ -15,6 +15,7 @@
     | 'history'
     | 'rotate'
     | 'chart'
+    | 'wand'
 
   let { name, size = 24 }: { name: IconName; size?: number } = $props()
 
@@ -38,6 +39,7 @@
     history: 'M3.05 11a9 9 0 1 1 .5 4 M3 16v-5h5 M12 7v5l3 2',
     rotate: 'M20 11a8 8 0 1 0 -2.3 5.7 M20 11v-5 M20 11h-5',
     chart: 'M4 4v16h16 M8 14l3 -3l2 2l5 -6',
+    wand: 'M6 21l13 -13l-3 -3l-13 13z M15 6l3 3 M5 4l1 2l2 1l-2 1l-1 2l-1 -2l-2 -1l2 -1z',
   }
 </script>
 
