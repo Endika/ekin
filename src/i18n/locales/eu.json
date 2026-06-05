@@ -99,5 +99,10 @@
     "system": "Sistema",
     "light": "Argia",
     "dark": "Iluna"
+  },
+  "common": {
+    "cancel": "Utzi",
+    "delete": "Ezabatu",
+    "rename": "Izena aldatu"
   }
 }

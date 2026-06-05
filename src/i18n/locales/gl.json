@@ -99,5 +99,10 @@
     "system": "Sistema",
     "light": "Claro",
     "dark": "Escuro"
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "rename": "Renomear"
   }
 }

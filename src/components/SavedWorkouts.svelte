@@ -2,14 +2,17 @@
   import { saved } from '../stores/saved-store'
   import { builder } from '../stores/builder'
   import Icon from './Icon.svelte'
+  import ConfirmDialog from './ConfirmDialog.svelte'
   import { _ } from 'svelte-i18n'
-  import { get } from 'svelte/store'
   import { tick } from 'svelte'
   import type { Workout } from '../domain/types'
 
   let { onload }: { onload?: () => void } = $props()
   let open = $state(false)
   let section = $state<HTMLElement>()
+  let pendingDelete = $state<Workout>()
+  let editingId = $state<string>()
+  let editName = $state('')
 
   // Called by the builder after a save: open the list and scroll it into view
   // so the user sees where the saved workout landed.
@@ -25,9 +28,27 @@
     onload?.()
   }
 
-  function remove(w: Workout) {
-    if (confirm(get(_)('saved.deleteConfirm', { values: { name: w.name } })))
-      saved.remove(w.id)
+  function startEdit(w: Workout) {
+    editingId = w.id
+    editName = w.name
+  }
+  async function commitEdit(w: Workout) {
+    if (editingId !== w.id) return
+    await saved.rename(w, editName)
+    editingId = undefined
+  }
+  function cancelEdit() {
+    editingId = undefined
+  }
+
+  function confirmDelete() {
+    if (pendingDelete) saved.remove(pendingDelete.id)
+    pendingDelete = undefined
+  }
+
+  function autofocus(node: HTMLInputElement) {
+    node.focus()
+    node.select()
   }
 </script>
 
@@ -47,7 +68,21 @@
         {#each $saved as w (w.id)}
           <li class="card">
             <div class="meta">
-              <strong>{w.name}</strong>
+              {#if editingId === w.id}
+                <input
+                  class="rename"
+                  bind:value={editName}
+                  use:autofocus
+                  onblur={() => commitEdit(w)}
+                  onkeydown={(e) => {
+                    if (e.key === 'Enter') commitEdit(w)
+                    else if (e.key === 'Escape') cancelEdit()
+                  }}
+                  aria-label={$_('common.rename')}
+                />
+              {:else}
+                <strong>{w.name}</strong>
+              {/if}
               <span class="sub"
                 >{$_('zone.' + w.zone)} ·
                 {$_('saved.exercises', {
@@ -61,8 +96,15 @@
                 {$_('saved.load')}
               </button>
               <button
-                class="del"
-                onclick={() => remove(w)}
+                class="icon-btn"
+                onclick={() => startEdit(w)}
+                aria-label={$_('common.rename')}
+              >
+                <Icon name="edit" size={16} />
+              </button>
+              <button
+                class="icon-btn del"
+                onclick={() => (pendingDelete = w)}
                 aria-label={$_('saved.deleteLabel', {
                   values: { name: w.name },
                 })}
@@ -75,6 +117,18 @@
       </ul>
     {/if}
   </section>
+{/if}
+
+{#if pendingDelete}
+  <ConfirmDialog
+    message={$_('saved.deleteConfirm', {
+      values: { name: pendingDelete.name },
+    })}
+    confirmLabel={$_('common.delete')}
+    danger
+    onconfirm={confirmDelete}
+    oncancel={() => (pendingDelete = undefined)}
+  />
 {/if}
 
 <style>
@@ -132,6 +186,18 @@
     font-family: var(--font-display);
     font-weight: 600;
   }
+  .rename {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.2rem 0.4rem;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    color: var(--text);
+    min-width: 0;
+    width: 100%;
+  }
   .sub {
     color: var(--muted);
     font-size: 0.82rem;
@@ -154,7 +220,7 @@
     color: var(--text);
     font-weight: 600;
   }
-  .del {
+  .icon-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -163,6 +229,9 @@
     border-radius: var(--radius-pill);
     border: 1px solid var(--border);
     background: transparent;
+    color: var(--muted);
+  }
+  .icon-btn.del {
     color: var(--danger);
   }
 </style>
