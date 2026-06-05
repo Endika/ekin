@@ -13,8 +13,12 @@
 ## What you can do
 
 - Build your own workout by hand: pick a zone, add bodyweight exercises from a searchable library, set sets/reps/rest.
+- **Auto-fill** a routine in one tap from a zone, time budget and level — then edit anything.
+- **Reuse** saved workouts: load a past routine back into the builder and tweak it.
 - Train with a guided session player — timer, rest countdown, exercise demo, and on-screen wake-lock so the screen never sleeps mid-set.
-- Log the reps you actually did and review your session history.
+- Log the reps you actually did, then track **progress**: current streak, totals, and a per-exercise rep-evolution chart.
+- **Optional AI assistant** (Gemini): bring your own API key to swap an exercise or make a workout easier/harder. Hidden entirely without a key — nothing else needs the network.
+- Available in **6 languages**: English, Spanish, Basque, Galician, Catalan and Valencian (auto-detected, switchable in Settings).
 - Works **offline** after first load. Install it as a PWA on your phone.
 - Local-only data, stored on your device. No signup, no email, no backend.
 
@@ -33,6 +37,7 @@ Open the site in your browser and choose **Add to Home Screen** (iOS Safari) or 
 - Svelte 5 + Vite + TypeScript
 - PWA (service worker + manifest via `vite-plugin-pwa`), self-hosted fonts, offline-first
 - IndexedDB for local persistence
+- `svelte-i18n` for localization; optional direct-to-Gemini AI assist (browser-side, user's own key)
 
 ## Development
 
