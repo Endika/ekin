@@ -3,9 +3,16 @@
   import Icon from './Icon.svelte'
   import LocaleSelect from './LocaleSelect.svelte'
   import { geminiKey } from '../stores/settings'
+  import { theme, type Theme } from '../stores/theme'
 
   let { onclose }: { onclose: () => void } = $props()
   let keyInput = $state($geminiKey)
+
+  const themes: { value: Theme; icon: 'monitor' | 'sun' | 'moon' }[] = [
+    { value: 'system', icon: 'monitor' },
+    { value: 'light', icon: 'sun' },
+    { value: 'dark', icon: 'moon' },
+  ]
 </script>
 
 <div
@@ -32,6 +39,21 @@
       <span>{$_('settings.language')}</span>
       <LocaleSelect />
     </label>
+
+    <div class="field">
+      <span>{$_('settings.theme')}</span>
+      <div class="seg" role="group" aria-label={$_('settings.theme')}>
+        {#each themes as t (t.value)}
+          <button
+            class:active={$theme === t.value}
+            onclick={() => theme.set(t.value)}
+          >
+            <Icon name={t.icon} size={16} />
+            {$_('theme.' + t.value)}
+          </button>
+        {/each}
+      </div>
+    </div>
 
     <label class="field">
       <span>{$_('settings.aiKey')}</span>
@@ -112,6 +134,30 @@
     color: var(--muted);
     font-size: 0.75rem;
     line-height: 1.35;
+  }
+  .seg {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.4rem;
+  }
+  .seg button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-height: 44px;
+    padding: 0 0.4rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .seg button.active {
+    background: var(--grad);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: var(--shadow-glow);
   }
   .key-row {
     display: flex;

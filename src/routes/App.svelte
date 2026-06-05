@@ -12,6 +12,7 @@
   let view: 'builder' | 'session' | 'history' = $state('builder')
   let active: Workout | undefined = $state()
   let settingsOpen = $state(false)
+  const version = __APP_VERSION__
 
   function start() {
     active = $builder
@@ -68,6 +69,10 @@
     <SessionPlayer workout={active} {onfinish} />
   {:else if view === 'history'}
     <ProgressView />
+  {/if}
+
+  {#if view !== 'session'}
+    <footer class="ver">ekin v{version}</footer>
   {/if}
 </main>
 
@@ -165,5 +170,12 @@
     padding: 0.25rem 1.25rem max(1.25rem, env(safe-area-inset-bottom));
     max-width: 720px;
     margin: 0 auto;
+  }
+  .ver {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.72rem;
+    opacity: 0.6;
   }
 </style>

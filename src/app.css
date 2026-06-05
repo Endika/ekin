@@ -66,8 +66,10 @@
   color-scheme: dark;
 }
 
+/* Light tokens: applied when the OS prefers light AND the user hasn't forced a
+   theme (system mode), or when the user explicitly picks Light. */
 @media (prefers-color-scheme: light) {
-  :root {
+  :root:not([data-theme]) {
     --bg: #fbf7f4;
     --surface: #ffffff;
     --surface-2: #f3ece8;
@@ -83,6 +85,23 @@
 
     color-scheme: light;
   }
+}
+
+:root[data-theme='light'] {
+  --bg: #fbf7f4;
+  --surface: #ffffff;
+  --surface-2: #f3ece8;
+  --border: #ece2db;
+  --text: #1c1420;
+  --muted: #7a6f82;
+
+  --accent: #ec1e5c;
+  --accent-glow: rgba(236, 30, 92, 0.28);
+  --danger: #d63a32;
+  --shadow-card:
+    0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(20, 16, 25, 0.08);
+
+  color-scheme: light;
 }
 
 * {
