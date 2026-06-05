@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/Endika/ekin/compare/v1.4.1...v1.4.2) (2026-06-05)
+
+
+### Bug Fixes
+
+* **ui:** prevent horizontal overflow in the builder (stack auto-fill on mobile + clip guard) ([c1a7b22](https://github.com/Endika/ekin/commit/c1a7b22a69992a42f5c3e429db6b4ddc5fb9e486))
+
 ## [1.4.1](https://github.com/Endika/ekin/compare/v1.4.0...v1.4.1) (2026-06-05)
 
 
