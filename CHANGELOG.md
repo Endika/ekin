@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.7](https://github.com/Endika/ekin/compare/v1.4.6...v1.4.7) (2026-06-05)
+
+
+### Bug Fixes
+
+* **ui:** keep layout responsive at very narrow widths (autofill floor, actions wrap, tab shrink) ([6dff098](https://github.com/Endika/ekin/commit/6dff0988728dced8b3c9ea0c8ee66407c1592389))
+
 ## [1.4.6](https://github.com/Endika/ekin/compare/v1.4.5...v1.4.6) (2026-06-05)
 
 
