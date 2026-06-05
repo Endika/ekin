@@ -149,6 +149,7 @@
   .tabs button {
     position: relative;
     flex: 1;
+    min-width: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;

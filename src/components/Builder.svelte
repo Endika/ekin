@@ -218,6 +218,7 @@
     position: sticky;
     bottom: 0;
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
     padding: 0.6rem 0 max(0.6rem, env(safe-area-inset-bottom));
     background: linear-gradient(transparent, var(--bg) 35%);

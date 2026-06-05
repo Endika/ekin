@@ -95,7 +95,7 @@
     /* Intrinsically responsive: each column is at least as wide as the longest
        option ("Cuerpo Completo"), so native selects never truncate or force
        overflow. Wraps 3 -> 2 -> 1 as width shrinks, with no magic breakpoint. */
-    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr));
     gap: 0.6rem;
   }
   label {
