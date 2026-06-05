@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/Endika/ekin/compare/v1.2.2...v1.3.0) (2026-06-05)
+
+
+### Features
+
+* **builder:** show exercise image with zone-icon fallback and tap-to-zoom ([ecf5757](https://github.com/Endika/ekin/commit/ecf5757259d9f34789b015436a38ccbf117b7d8e))
+
 ## [1.2.2](https://github.com/Endika/ekin/compare/v1.2.1...v1.2.2) (2026-06-05)
 
 
