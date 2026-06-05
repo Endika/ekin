@@ -99,5 +99,10 @@
     "system": "System",
     "light": "Light",
     "dark": "Dark"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "rename": "Rename"
   }
 }

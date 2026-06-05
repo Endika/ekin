@@ -24,6 +24,7 @@
     | 'upper'
     | 'core'
     | 'legs'
+    | 'edit'
 
   let { name, size = 24 }: { name: IconName; size?: number } = $props()
 
@@ -58,6 +59,7 @@
     upper: 'M6 6h12 M8 6c0 4 1 6 4 6s4 -2 4 -6 M12 12v5 M9 20h6',
     core: 'M12 12m-8 0a8 8 0 1 0 16 0a8 8 0 1 0 -16 0 M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0',
     legs: 'M9 4v8l-2 8 M15 4v8l2 8 M9 12h6',
+    edit: 'M4 20h4l10 -10l-4 -4l-10 10v4 M13.5 6.5l4 4',
   }
 </script>
 
