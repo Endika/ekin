@@ -92,8 +92,15 @@
   .panel {
     padding: 0.85rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    /* Mobile: stack so the native selects never force horizontal overflow */
+    grid-template-columns: 1fr;
     gap: 0.6rem;
+  }
+  @media (min-width: 420px) {
+    .panel {
+      /* minmax(0,1fr) — tracks may shrink below the select's intrinsic width */
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
   label {
     display: grid;
