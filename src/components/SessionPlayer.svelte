@@ -6,6 +6,7 @@
   import { requestWakeLock, releaseWakeLock } from '../lib/wakeLock'
   import { allExercises } from '../stores/catalog-store'
   import Icon from './Icon.svelte'
+  import { _ } from 'svelte-i18n'
 
   let {
     workout,
@@ -94,15 +95,25 @@
 </script>
 
 {#if state.phase === 'done'}
-  <p class="done">Session complete</p>
+  <p class="done">{$_('player.complete')}</p>
 {:else if current}
   <section class="player fade-up">
     <header>
       <span class="pill">
-        Exercise {state.itemIndex + 1}/{workout.items.length}
+        {$_('player.exercise', {
+          values: {
+            n: state.itemIndex + 1,
+            total: workout.items.length,
+          },
+        })}
       </span>
       <span class="pill">
-        Set {state.setIndex + 1}/{workout.items[state.itemIndex].sets}
+        {$_('player.set', {
+          values: {
+            n: state.setIndex + 1,
+            total: workout.items[state.itemIndex].sets,
+          },
+        })}
       </span>
     </header>
 
@@ -127,7 +138,7 @@
         </svg>
         <div class="ring-center">
           <span class="count grad-text">{state.remaining}</span>
-          <span class="rest-label">Rest</span>
+          <span class="rest-label">{$_('player.rest')}</span>
         </div>
       </div>
     {:else}
@@ -145,17 +156,17 @@
         {/if}
         <h2>{current.name}</h2>
 
-        <div class="dots" aria-label="Set progress">
+        <div class="dots" aria-label={$_('a11y.setProgress')}>
           {#each Array(workout.items[state.itemIndex].sets) as _, d (d)}
             <span class="dot" class:on={d <= state.setIndex}></span>
           {/each}
         </div>
 
         <div class="reps">
-          <span class="reps-label">Reps done</span>
+          <span class="reps-label">{$_('player.repsDone')}</span>
           <div class="ctrl">
             <button
-              aria-label="Decrease reps"
+              aria-label={$_('a11y.decreaseReps')}
               onclick={() =>
                 (logs[state.itemIndex][state.setIndex] = Math.max(
                   0,
@@ -170,7 +181,7 @@
               bind:value={logs[state.itemIndex][state.setIndex]}
             />
             <button
-              aria-label="Increase reps"
+              aria-label={$_('a11y.increaseReps')}
               onclick={() => (logs[state.itemIndex][state.setIndex] += 1)}
             >
               <Icon name="plus" size={20} />
@@ -182,9 +193,9 @@
 
     <button class="next btn-grad" onclick={next}>
       {#if state.phase === 'rest'}
-        <Icon name="play" size={22} /> Skip rest
+        <Icon name="play" size={22} /> {$_('player.skipRest')}
       {:else}
-        <Icon name="check" size={22} /> Done set
+        <Icon name="check" size={22} /> {$_('player.doneSet')}
       {/if}
     </button>
   </section>

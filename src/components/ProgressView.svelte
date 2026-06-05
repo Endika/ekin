@@ -6,6 +6,7 @@
   import StatsBar from './StatsBar.svelte'
   import EvolutionChart from './EvolutionChart.svelte'
   import HistoryList from './HistoryList.svelte'
+  import { _ } from 'svelte-i18n'
 
   let sessions = $state<Session[]>([])
   let selected = $state('')
@@ -29,7 +30,7 @@
 
   <section class="progress fade-up">
     <label class="picker">
-      <span>Exercise</span>
+      <span>{$_('progress.exercise')}</span>
       <select bind:value={selected}>
         {#each ids as id (id)}
           <option value={id}>{nameOf(id)}</option>

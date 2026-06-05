@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { WorkoutItem } from '../domain/types'
   import Icon from './Icon.svelte'
+  import { _ } from 'svelte-i18n'
   let {
     item,
     name,
@@ -18,9 +19,9 @@
   } = $props()
 
   const fields = [
-    { key: 'sets' as const, label: 'Sets', min: 1, step: 1 },
-    { key: 'reps' as const, label: 'Reps', min: 1, step: 1 },
-    { key: 'restSeconds' as const, label: 'Rest s', min: 0, step: 5 },
+    { key: 'sets' as const, labelKey: 'item.sets', min: 1, step: 1 },
+    { key: 'reps' as const, labelKey: 'item.reps', min: 1, step: 1 },
+    { key: 'restSeconds' as const, labelKey: 'item.rest', min: 0, step: 5 },
   ]
   const bump = (key: keyof WorkoutItem, delta: number, min: number) =>
     onpatch({ [key]: Math.max(min, (item[key] as number) + delta) })
@@ -33,13 +34,13 @@
     >
     <strong class="name">{name}</strong>
     <div class="reorder">
-      <button onclick={onmoveup} aria-label="Move up">
+      <button onclick={onmoveup} aria-label={$_('item.moveUp')}>
         <Icon name="chevron-up" size={18} />
       </button>
-      <button onclick={onmovedown} aria-label="Move down">
+      <button onclick={onmovedown} aria-label={$_('item.moveDown')}>
         <Icon name="chevron-down" size={18} />
       </button>
-      <button class="del" onclick={onremove} aria-label="Remove">
+      <button class="del" onclick={onremove} aria-label={$_('item.remove')}>
         <Icon name="trash" size={18} />
       </button>
     </div>
@@ -47,10 +48,12 @@
   <div class="fields">
     {#each fields as f (f.key)}
       <div class="stepper">
-        <span class="lbl">{f.label}</span>
+        <span class="lbl">{$_(f.labelKey)}</span>
         <div class="ctrl">
           <button
-            aria-label={'Decrease ' + f.label}
+            aria-label={$_('a11y.decrease', {
+              values: { label: $_(f.labelKey) },
+            })}
             onclick={() => bump(f.key, -f.step, f.min)}
           >
             <Icon name="minus" size={16} />
@@ -62,7 +65,9 @@
             oninput={(e) => onpatch({ [f.key]: +e.currentTarget.value })}
           />
           <button
-            aria-label={'Increase ' + f.label}
+            aria-label={$_('a11y.increase', {
+              values: { label: $_(f.labelKey) },
+            })}
             onclick={() => bump(f.key, f.step, f.min)}
           >
             <Icon name="plus" size={16} />

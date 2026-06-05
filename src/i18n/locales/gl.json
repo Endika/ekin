@@ -86,5 +86,12 @@
     "harder": "Máis difícil",
     "thinking": "Preguntando a Gemini…",
     "failed": "Non se puido aplicar — o adestramento non cambiou."
+  },
+  "a11y": {
+    "decreaseReps": "Baixar reps",
+    "increaseReps": "Subir reps",
+    "setProgress": "Progreso das series",
+    "decrease": "Baixar {label}",
+    "increase": "Subir {label}"
   }
 }

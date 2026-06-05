@@ -86,5 +86,12 @@
     "harder": "Més difícil",
     "thinking": "Preguntant a Gemini…",
     "failed": "No s'ha pogut aplicar — l'entrenament no ha canviat."
+  },
+  "a11y": {
+    "decreaseReps": "Baixar reps",
+    "increaseReps": "Pujar reps",
+    "setProgress": "Progrés de sèries",
+    "decrease": "Baixar {label}",
+    "increase": "Pujar {label}"
   }
 }

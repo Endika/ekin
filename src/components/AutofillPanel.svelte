@@ -4,6 +4,7 @@
   import { autofill } from '../domain/autofill'
   import type { Level, Zone } from '../domain/types'
   import Icon from './Icon.svelte'
+  import { _ } from 'svelte-i18n'
 
   let { onfill }: { onfill?: () => void } = $props()
   let open = $state(false)
@@ -25,7 +26,8 @@
 <section class="autofill">
   <button class="head" onclick={() => (open = !open)} aria-expanded={open}>
     <span class="title">
-      <Icon name="wand" size={18} /> Auto-fill
+      <Icon name="wand" size={18} />
+      {$_('autofill.title')}
     </span>
     <Icon name={open ? 'chevron-up' : 'chevron-down'} size={18} />
   </button>
@@ -33,27 +35,32 @@
   {#if open}
     <div class="panel card">
       <label>
-        <span>Zone</span>
+        <span>{$_('autofill.zone')}</span>
         <select bind:value={zone}>
-          {#each zones as z (z)}<option value={z}>{z}</option>{/each}
+          {#each zones as z (z)}<option value={z}>{$_('zone.' + z)}</option
+            >{/each}
         </select>
       </label>
       <label>
-        <span>Time</span>
+        <span>{$_('autofill.time')}</span>
         <select bind:value={minutes}>
-          {#each times as t (t)}<option value={t}>{t} min</option>{/each}
+          {#each times as t (t)}<option value={t}
+              >{$_('autofill.minutes', { values: { count: t } })}</option
+            >{/each}
         </select>
       </label>
       <label>
-        <span>Level</span>
+        <span>{$_('autofill.level')}</span>
         <select bind:value={level}>
-          {#each levels as l (l)}<option value={l}>{l}</option>{/each}
+          {#each levels as l (l)}<option value={l}>{$_('level.' + l)}</option
+            >{/each}
         </select>
       </label>
       <button class="gen btn-grad" onclick={generate}>
-        <Icon name="wand" size={18} /> Generate
+        <Icon name="wand" size={18} />
+        {$_('autofill.generate')}
       </button>
-      <p class="hint">You can edit every part afterward.</p>
+      <p class="hint">{$_('autofill.hint')}</p>
     </div>
   {/if}
 </section>

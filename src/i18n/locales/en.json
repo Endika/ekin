@@ -86,5 +86,12 @@
     "harder": "Make harder",
     "thinking": "Asking Gemini…",
     "failed": "Couldn't apply that — workout left unchanged."
+  },
+  "a11y": {
+    "decreaseReps": "Decrease reps",
+    "increaseReps": "Increase reps",
+    "setProgress": "Set progress",
+    "decrease": "Decrease {label}",
+    "increase": "Increase {label}"
   }
 }
