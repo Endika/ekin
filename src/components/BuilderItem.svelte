@@ -1,22 +1,32 @@
 <script lang="ts">
-  import type { WorkoutItem } from '../domain/types'
+  import type { WorkoutItem, Zone } from '../domain/types'
   import Icon from './Icon.svelte'
+  import { zoneIcon } from '../lib/zoneIcon'
   import { _ } from 'svelte-i18n'
   let {
     item,
     name,
+    image,
+    zone,
     onpatch,
     onremove,
     onmoveup,
     onmovedown,
+    onpreview,
   }: {
     item: WorkoutItem
     name: string
+    image?: string
+    zone?: Zone
     onpatch: (p: Partial<WorkoutItem>) => void
     onremove: () => void
     onmoveup: () => void
     onmovedown: () => void
+    onpreview?: (image: string, name: string) => void
   } = $props()
+
+  let imgOk = $state(true)
+  let showImage = $derived(!!image && imgOk)
 
   const fields = [
     { key: 'sets' as const, labelKey: 'item.sets', min: 1, step: 1 },
@@ -29,9 +39,19 @@
 
 <div class="row card">
   <div class="head">
-    <span class="thumb" aria-hidden="true"
-      ><Icon name="dumbbell" size={20} /></span
-    >
+    {#if showImage}
+      <button
+        class="thumb"
+        onclick={() => image && onpreview?.(image, name)}
+        aria-label={name}
+      >
+        <img src={image} alt={name} onerror={() => (imgOk = false)} />
+      </button>
+    {:else}
+      <span class="thumb fallback" aria-hidden="true">
+        <Icon name={zone ? zoneIcon(zone) : 'dumbbell'} size={20} />
+      </span>
+    {/if}
     <strong class="name">{name}</strong>
     <div class="reorder">
       <button onclick={onmoveup} aria-label={$_('item.moveUp')}>
@@ -95,7 +115,14 @@
     place-items: center;
     width: 40px;
     height: 40px;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
     border-radius: 11px;
+    background: var(--surface-2);
+  }
+  .thumb.fallback {
+    border-color: transparent;
     background:
       linear-gradient(
         135deg,
@@ -104,6 +131,15 @@
       ),
       var(--surface-2);
     color: var(--accent);
+  }
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  button.thumb {
+    cursor: zoom-in;
   }
   .name {
     flex: 1;

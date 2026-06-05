@@ -6,6 +6,7 @@
   import { requestWakeLock, releaseWakeLock } from '../lib/wakeLock'
   import { allExercises } from '../stores/catalog-store'
   import Icon from './Icon.svelte'
+  import { zoneIcon } from '../lib/zoneIcon'
   import { _ } from 'svelte-i18n'
 
   let {
@@ -151,7 +152,10 @@
           />
         {:else}
           <div class="ph" aria-hidden="true">
-            <Icon name="dumbbell" size={64} />
+            <Icon
+              name={current ? zoneIcon(current.zone) : 'dumbbell'}
+              size={64}
+            />
           </div>
         {/if}
         <h2>{current.name}</h2>

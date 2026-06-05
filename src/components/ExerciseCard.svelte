@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Exercise } from '../domain/types'
   import Icon from './Icon.svelte'
+  import { zoneIcon } from '../lib/zoneIcon'
   import { _ } from 'svelte-i18n'
   let {
     exercise,
@@ -20,7 +21,7 @@
       />
     {:else}
       <div class="placeholder" aria-hidden="true">
-        <Icon name="dumbbell" size={32} />
+        <Icon name={zoneIcon(exercise.zone)} size={32} />
       </div>
     {/if}
     <span class="zone">{$_('zone.' + exercise.zone)}</span>

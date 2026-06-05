@@ -6,6 +6,7 @@
   import SavedWorkouts from './SavedWorkouts.svelte'
   import AutofillPanel from './AutofillPanel.svelte'
   import AiAssist from './AiAssist.svelte'
+  import ImageLightbox from './ImageLightbox.svelte'
   import Icon from './Icon.svelte'
   import { _ } from 'svelte-i18n'
   import { saveWorkout } from '../data/workouts-repo'
@@ -15,9 +16,10 @@
   let { onstart }: { onstart: () => void } = $props()
   let picking = $state(false)
   let savedList = $state<ReturnType<typeof SavedWorkouts>>()
+  let preview = $state<{ image: string; name: string }>()
   const zones: Zone[] = ['upper', 'core', 'legs', 'full']
-  const nameOf = (id: string) =>
-    allExercises.find((e) => e.id === id)?.name ?? id
+  const exerciseOf = (id: string) => allExercises.find((e) => e.id === id)
+  const nameOf = (id: string) => exerciseOf(id)?.name ?? id
 
   async function save() {
     await saveWorkout($builder)
@@ -52,11 +54,14 @@
       <BuilderItem
         {item}
         name={nameOf(item.exerciseId)}
+        image={exerciseOf(item.exerciseId)?.images[0]}
+        zone={exerciseOf(item.exerciseId)?.zone}
         onpatch={(p) => builder.patch(i, p)}
         onremove={() => builder.remove(i)}
         onmoveup={() => i > 0 && builder.move(i, i - 1)}
         onmovedown={() =>
           i < $builder.items.length - 1 && builder.move(i, i + 1)}
+        onpreview={(image, name) => (preview = { image, name })}
       />
     {/each}
     {#if !$builder.items.length}
@@ -90,6 +95,14 @@
     </button>
   </div>
 </section>
+
+{#if preview}
+  <ImageLightbox
+    image={preview.image}
+    name={preview.name}
+    onclose={() => (preview = undefined)}
+  />
+{/if}
 
 <style>
   .builder {
