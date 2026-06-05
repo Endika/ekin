@@ -2,8 +2,10 @@
   import { _ } from 'svelte-i18n'
   import Icon from './Icon.svelte'
   import LocaleSelect from './LocaleSelect.svelte'
+  import { geminiKey } from '../stores/settings'
 
   let { onclose }: { onclose: () => void } = $props()
+  let keyInput = $state($geminiKey)
 </script>
 
 <div
@@ -29,6 +31,31 @@
     <label class="field">
       <span>{$_('settings.language')}</span>
       <LocaleSelect />
+    </label>
+
+    <label class="field">
+      <span>{$_('settings.aiKey')}</span>
+      <div class="key-row">
+        <input
+          type="password"
+          autocomplete="off"
+          placeholder={$_('settings.aiKeyPlaceholder')}
+          bind:value={keyInput}
+          onchange={() => geminiKey.set(keyInput)}
+          onblur={() => geminiKey.set(keyInput)}
+        />
+        <button
+          class="clear"
+          onclick={() => {
+            geminiKey.clear()
+            keyInput = ''
+          }}
+          disabled={!keyInput}
+        >
+          {$_('settings.clear')}
+        </button>
+      </div>
+      <small>{$_('settings.aiKeyHint')}</small>
     </label>
   </section>
 </div>
@@ -80,5 +107,38 @@
   .field span {
     color: var(--muted);
     font-size: 0.85rem;
+  }
+  .field small {
+    color: var(--muted);
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+  .key-row {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .key-row input {
+    flex: 1;
+    min-width: 0;
+    min-height: 44px;
+    padding: 0 0.7rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    font: inherit;
+  }
+  .key-row .clear {
+    min-height: 44px;
+    padding: 0 0.9rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--danger);
+    font-weight: 600;
+  }
+  .key-row .clear:disabled {
+    color: var(--muted);
+    opacity: 0.6;
   }
 </style>

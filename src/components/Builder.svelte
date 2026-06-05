@@ -5,6 +5,7 @@
   import CatalogList from './CatalogList.svelte'
   import SavedWorkouts from './SavedWorkouts.svelte'
   import AutofillPanel from './AutofillPanel.svelte'
+  import AiAssist from './AiAssist.svelte'
   import Icon from './Icon.svelte'
   import { _ } from 'svelte-i18n'
   import { saveWorkout } from '../data/workouts-repo'
@@ -63,6 +64,8 @@
       </p>
     {/if}
   </div>
+
+  <AiAssist />
 
   {#if picking}
     <CatalogList onpick={(id) => builder.add(id)} />
