@@ -7,7 +7,7 @@
   import { _ } from 'svelte-i18n'
 
   let { onfill }: { onfill?: () => void } = $props()
-  let open = $state(false)
+  let open = $state(true)
 
   const zones: Zone[] = ['upper', 'core', 'legs', 'full']
   const levels: Level[] = ['beginner', 'intermediate', 'expert']
@@ -91,18 +91,21 @@
   .panel {
     padding: 0.85rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
     gap: 0.6rem;
   }
   label {
     display: grid;
     gap: 0.25rem;
+    min-width: 0;
   }
   label span {
     color: var(--muted);
     font-size: 0.78rem;
   }
   select {
+    width: 100%;
+    min-width: 0;
     min-height: 42px;
     padding: 0 0.5rem;
     border-radius: var(--radius-sm);
