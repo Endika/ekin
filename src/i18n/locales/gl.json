@@ -1,0 +1,90 @@
+{
+  "nav": { "build": "Crear", "progress": "Progreso" },
+  "zone": {
+    "all": "Todo",
+    "upper": "Tren superior",
+    "core": "Core",
+    "legs": "Pernas",
+    "full": "Corpo completo"
+  },
+  "level": {
+    "beginner": "Principiante",
+    "intermediate": "Intermedio",
+    "expert": "Avanzado"
+  },
+  "builder": {
+    "defaultName": "O meu adestramento",
+    "nameLabel": "Nome do adestramento",
+    "addExercise": "Engadir exercicio",
+    "done": "Feito",
+    "save": "Gardar",
+    "start": "Comezar",
+    "empty": "Aínda non hai exercicios. Toca Engadir exercicio para crear a túa sesión."
+  },
+  "item": {
+    "sets": "Series",
+    "reps": "Reps",
+    "rest": "Descanso s",
+    "moveUp": "Subir",
+    "moveDown": "Baixar",
+    "remove": "Quitar"
+  },
+  "catalog": { "search": "Buscar exercicios" },
+  "player": {
+    "exercise": "Exercicio {n}/{total}",
+    "set": "Serie {n}/{total}",
+    "rest": "Descanso",
+    "repsDone": "Reps feitas",
+    "skipRest": "Saltar descanso",
+    "doneSet": "Serie feita",
+    "complete": "Sesión completada 💪"
+  },
+  "history": {
+    "minutes": "min",
+    "emptyTitle": "Aínda non hai sesións",
+    "emptyHint": "Crea un adestramento e comeza a adestrar."
+  },
+  "stats": {
+    "streak": "días seguidos",
+    "sessions": "sesións",
+    "minutes": "minutos"
+  },
+  "progress": {
+    "exercise": "Exercicio",
+    "noData": "Aínda non hai datos — rexistra este exercicio nunha sesión.",
+    "max": "máx",
+    "min": "mín"
+  },
+  "saved": {
+    "title": "Adestramentos gardados",
+    "exercises": "{count} exercicios",
+    "load": "Cargar",
+    "deleteConfirm": "Eliminar \"{name}\"?",
+    "deleteLabel": "Eliminar {name}"
+  },
+  "autofill": {
+    "title": "Auto-enchido",
+    "zone": "Zona",
+    "time": "Tempo",
+    "level": "Nivel",
+    "minutes": "{count} min",
+    "generate": "Xerar",
+    "hint": "Podes editalo todo despois."
+  },
+  "settings": {
+    "title": "Axustes",
+    "language": "Idioma",
+    "aiKey": "Clave API de Gemini",
+    "aiKeyHint": "Gárdase só neste dispositivo. Chama a Gemini directamente coa túa propia cota.",
+    "aiKeyPlaceholder": "Pega a túa clave",
+    "clear": "Borrar"
+  },
+  "ai": {
+    "title": "Asistente IA",
+    "swap": "Cambiar este exercicio",
+    "easier": "Máis fácil",
+    "harder": "Máis difícil",
+    "thinking": "Preguntando a Gemini…",
+    "failed": "Non se puido aplicar — o adestramento non cambiou."
+  }
+}

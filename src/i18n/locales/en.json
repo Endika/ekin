@@ -1,0 +1,90 @@
+{
+  "nav": { "build": "Build", "progress": "Progress" },
+  "zone": {
+    "all": "All",
+    "upper": "Upper",
+    "core": "Core",
+    "legs": "Legs",
+    "full": "Full body"
+  },
+  "level": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "expert": "Expert"
+  },
+  "builder": {
+    "defaultName": "My workout",
+    "nameLabel": "Workout name",
+    "addExercise": "Add exercise",
+    "done": "Done",
+    "save": "Save",
+    "start": "Start",
+    "empty": "No exercises yet. Tap Add exercise to build your session."
+  },
+  "item": {
+    "sets": "Sets",
+    "reps": "Reps",
+    "rest": "Rest s",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "remove": "Remove"
+  },
+  "catalog": { "search": "Search exercises" },
+  "player": {
+    "exercise": "Exercise {n}/{total}",
+    "set": "Set {n}/{total}",
+    "rest": "Rest",
+    "repsDone": "Reps done",
+    "skipRest": "Skip rest",
+    "doneSet": "Done set",
+    "complete": "Session complete 💪"
+  },
+  "history": {
+    "minutes": "min",
+    "emptyTitle": "No sessions yet",
+    "emptyHint": "Build a workout and start training."
+  },
+  "stats": {
+    "streak": "day streak",
+    "sessions": "sessions",
+    "minutes": "minutes"
+  },
+  "progress": {
+    "exercise": "Exercise",
+    "noData": "Not enough data yet — log this exercise in a session.",
+    "max": "max",
+    "min": "min"
+  },
+  "saved": {
+    "title": "Saved workouts",
+    "exercises": "{count} exercises",
+    "load": "Load",
+    "deleteConfirm": "Delete \"{name}\"?",
+    "deleteLabel": "Delete {name}"
+  },
+  "autofill": {
+    "title": "Auto-fill",
+    "zone": "Zone",
+    "time": "Time",
+    "level": "Level",
+    "minutes": "{count} min",
+    "generate": "Generate",
+    "hint": "You can edit every part afterward."
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "aiKey": "Gemini API key",
+    "aiKeyHint": "Stored only on this device. Used to call Gemini directly with your own quota.",
+    "aiKeyPlaceholder": "Paste your key",
+    "clear": "Clear"
+  },
+  "ai": {
+    "title": "AI assist",
+    "swap": "Swap this exercise",
+    "easier": "Make easier",
+    "harder": "Make harder",
+    "thinking": "Asking Gemini…",
+    "failed": "Couldn't apply that — workout left unchanged."
+  }
+}
