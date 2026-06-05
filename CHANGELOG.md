@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/Endika/ekin/compare/v1.3.0...v1.4.0) (2026-06-05)
+
+
+### Features
+
+* **builder:** rename saved workouts inline and replace native delete confirm with a dialog ([0c1f7bd](https://github.com/Endika/ekin/commit/0c1f7bd65d57ee7cc9b38a4c9b499ab25e19d969))
+
 ## [1.3.0](https://github.com/Endika/ekin/compare/v1.2.2...v1.3.0) (2026-06-05)
 
 
