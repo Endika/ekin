@@ -19,6 +19,8 @@
     "done": "Done",
     "save": "Save",
     "start": "Start",
+    "new": "New",
+    "newConfirm": "Start a new workout? Unsaved changes will be lost.",
     "empty": "No exercises yet. Tap Add exercise to build your session."
   },
   "item": {

@@ -7,8 +7,10 @@
   import AutofillPanel from './AutofillPanel.svelte'
   import AiAssist from './AiAssist.svelte'
   import ImageLightbox from './ImageLightbox.svelte'
+  import ConfirmDialog from './ConfirmDialog.svelte'
   import Icon from './Icon.svelte'
   import { _ } from 'svelte-i18n'
+  import { get } from 'svelte/store'
   import { saveWorkout } from '../data/workouts-repo'
   import { saved } from '../stores/saved-store'
   import type { Zone } from '../domain/types'
@@ -17,6 +19,7 @@
   let picking = $state(false)
   let savedList = $state<ReturnType<typeof SavedWorkouts>>()
   let preview = $state<{ image: string; name: string }>()
+  let pendingNew = $state(false)
   const zones: Zone[] = ['upper', 'core', 'legs', 'full']
   const exerciseOf = (id: string) => allExercises.find((e) => e.id === id)
   const nameOf = (id: string) => exerciseOf(id)?.name ?? id
@@ -27,18 +30,35 @@
     // stay in Build and reveal the saved workout instead of jumping away
     savedList?.reveal()
   }
+
+  // Start a fresh workout (new id) so the next Save creates a new entry rather
+  // than overwriting the current one.
+  function doNew() {
+    builder.reset(get(_)('builder.defaultName'), 'full')
+    pendingNew = false
+  }
+  function onNew() {
+    if ($builder.items.length) pendingNew = true
+    else doNew()
+  }
 </script>
 
 <section class="builder fade-up">
   <SavedWorkouts bind:this={savedList} />
   <AutofillPanel />
 
-  <input
-    class="title"
-    aria-label={$_('builder.nameLabel')}
-    bind:value={$builder.name}
-    oninput={(e) => builder.rename(e.currentTarget.value)}
-  />
+  <div class="title-row">
+    <input
+      class="title"
+      aria-label={$_('builder.nameLabel')}
+      bind:value={$builder.name}
+      oninput={(e) => builder.rename(e.currentTarget.value)}
+    />
+    <button class="new-btn" onclick={onNew}>
+      <Icon name="plus" size={16} />
+      {$_('builder.new')}
+    </button>
+  </div>
 
   <div class="zones" role="group" aria-label={$_('autofill.zone')}>
     {#each zones as z (z)}
@@ -104,13 +124,29 @@
   />
 {/if}
 
+{#if pendingNew}
+  <ConfirmDialog
+    message={$_('builder.newConfirm')}
+    confirmLabel={$_('builder.new')}
+    onconfirm={doNew}
+    oncancel={() => (pendingNew = false)}
+  />
+{/if}
+
 <style>
   .builder {
     display: grid;
     gap: 0.85rem;
     padding-bottom: 5.5rem;
   }
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
   .title {
+    flex: 1;
+    min-width: 0;
     font-family: var(--font-display);
     font-size: 1.7rem;
     font-weight: 800;
@@ -123,6 +159,19 @@
   .title:focus-visible {
     background: var(--surface);
     border-color: var(--border);
+  }
+  .new-btn {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-height: 40px;
+    padding: 0 0.8rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    font-weight: 600;
   }
 
   .zones {

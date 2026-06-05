@@ -19,6 +19,8 @@
     "done": "Feito",
     "save": "Gardar",
     "start": "Comezar",
+    "new": "Novo",
+    "newConfirm": "Comezar un adestramento novo? Perderanse os cambios sen gardar.",
     "empty": "Aínda non hai exercicios. Toca Engadir exercicio para crear a túa sesión."
   },
   "item": {
