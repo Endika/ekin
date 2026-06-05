@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.1.0](https://github.com/Endika/ekin/compare/v1.0.1...v1.1.0) (2026-06-05)
+
+
+### Features
+
+* **ai:** add optional gemini workout assistant ([743ec84](https://github.com/Endika/ekin/commit/743ec84b94a9ce850717b9738917045ea0d16c70))
+* **autofill:** add workout auto-fill generator and panel ([bea9a40](https://github.com/Endika/ekin/commit/bea9a40460cbe9e0be7d484dd6c237a0168b8d86))
+* **builder:** reuse and delete saved workouts ([1dbca7b](https://github.com/Endika/ekin/commit/1dbca7b0124757fac7f1c159b89ca2dc26ee7672))
+* **i18n:** add 6-locale scaffolding and settings sheet ([dfa0070](https://github.com/Endika/ekin/commit/dfa007092574e0a7c09e627b9eda5770d8fe0117))
+* **i18n:** localize all UI strings across components ([556680d](https://github.com/Endika/ekin/commit/556680da2365137c6651b755bd9fbca90f53aa72))
+* **progress:** add per-exercise evolution chart and progress view ([919367b](https://github.com/Endika/ekin/commit/919367b3119af39e81a1586c709206586b8b3116))
+* **progress:** add streak and totals stats ([144c0df](https://github.com/Endika/ekin/commit/144c0df96755153efee90eb5945b25a1089a46e7))
+
+
+### Documentation
+
+* document auto-fill, progress, ai assist and i18n ([9b71b0e](https://github.com/Endika/ekin/commit/9b71b0efe74bda366460b27a8026b1fee5577c01))
+
 ## [1.0.1](https://github.com/Endika/ekin/compare/v1.0.0...v1.0.1) (2026-06-04)
 
 
