@@ -4,10 +4,20 @@
   import Icon from './Icon.svelte'
   import { _ } from 'svelte-i18n'
   import { get } from 'svelte/store'
+  import { tick } from 'svelte'
   import type { Workout } from '../domain/types'
 
   let { onload }: { onload?: () => void } = $props()
   let open = $state(false)
+  let section = $state<HTMLElement>()
+
+  // Called by the builder after a save: open the list and scroll it into view
+  // so the user sees where the saved workout landed.
+  export async function reveal() {
+    open = true
+    await tick()
+    section?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   function load(w: Workout) {
     // clone so editing the builder never mutates the stored copy
@@ -22,7 +32,7 @@
 </script>
 
 {#if $saved.length}
-  <section class="saved">
+  <section class="saved" bind:this={section}>
     <button class="head" onclick={() => (open = !open)} aria-expanded={open}>
       <span class="title">
         <Icon name="rotate" size={18} />

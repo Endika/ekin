@@ -64,7 +64,7 @@
 
 <main class="app">
   {#if view === 'builder'}
-    <Builder onstart={start} onsaved={() => (view = 'history')} />
+    <Builder onstart={start} />
   {:else if view === 'session' && active}
     <SessionPlayer workout={active} {onfinish} />
   {:else if view === 'history'}
