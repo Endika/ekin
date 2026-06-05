@@ -1,19 +1,10 @@
 <script lang="ts">
-  import { listSessions } from '../data/sessions-repo'
   import type { Session } from '../domain/types'
   import Icon from './Icon.svelte'
-  import StatsBar from './StatsBar.svelte'
-  let sessions = $state<Session[]>([])
-  $effect(() => {
-    listSessions().then((s) => (sessions = s))
-  })
+  let { sessions }: { sessions: Session[] } = $props()
   const fmt = (ms: number) => new Date(ms).toLocaleDateString()
   const mins = (s: number) => Math.round(s / 60)
 </script>
-
-{#if sessions.length}
-  <StatsBar {sessions} />
-{/if}
 
 <ul class="history fade-up">
   {#each sessions as s (s.id)}
