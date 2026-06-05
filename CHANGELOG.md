@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/Endika/ekin/compare/v1.2.1...v1.2.2) (2026-06-05)
+
+
+### Bug Fixes
+
+* **builder:** on save, reveal the saved workouts list instead of jumping to progress ([7b9e8c2](https://github.com/Endika/ekin/commit/7b9e8c21ac59c884267fcc1add81acec6a17a24b))
+
 ## [1.2.1](https://github.com/Endika/ekin/compare/v1.2.0...v1.2.1) (2026-06-05)
 
 
