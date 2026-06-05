@@ -1,7 +1,7 @@
 <script lang="ts">
   import Builder from '../components/Builder.svelte'
   import SessionPlayer from '../components/SessionPlayer.svelte'
-  import HistoryList from '../components/HistoryList.svelte'
+  import ProgressView from '../components/ProgressView.svelte'
   import Icon from '../components/Icon.svelte'
   import { builder } from '../stores/builder'
   import { addSession } from '../data/sessions-repo'
@@ -40,7 +40,7 @@
       class:active={view === 'history'}
       onclick={() => (view = 'history')}
     >
-      <Icon name="history" size={18} /> History
+      <Icon name="chart" size={18} /> Progress
     </button>
   </nav>
 {/if}
@@ -51,7 +51,7 @@
   {:else if view === 'session' && active}
     <SessionPlayer workout={active} {onfinish} />
   {:else if view === 'history'}
-    <HistoryList />
+    <ProgressView />
   {/if}
 </main>
 
