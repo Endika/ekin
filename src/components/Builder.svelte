@@ -12,9 +12,9 @@
   import { saved } from '../stores/saved-store'
   import type { Zone } from '../domain/types'
 
-  let { onstart, onsaved }: { onstart: () => void; onsaved?: () => void } =
-    $props()
+  let { onstart }: { onstart: () => void } = $props()
   let picking = $state(false)
+  let savedList = $state<ReturnType<typeof SavedWorkouts>>()
   const zones: Zone[] = ['upper', 'core', 'legs', 'full']
   const nameOf = (id: string) =>
     allExercises.find((e) => e.id === id)?.name ?? id
@@ -22,12 +22,13 @@
   async function save() {
     await saveWorkout($builder)
     await saved.refresh()
-    onsaved?.()
+    // stay in Build and reveal the saved workout instead of jumping away
+    savedList?.reveal()
   }
 </script>
 
 <section class="builder fade-up">
-  <SavedWorkouts />
+  <SavedWorkouts bind:this={savedList} />
   <AutofillPanel />
 
   <input
