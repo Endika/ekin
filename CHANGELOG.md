@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/Endika/ekin/compare/v1.4.0...v1.4.1) (2026-06-05)
+
+
+### Bug Fixes
+
+* **builder:** add New action so multiple workouts can be saved instead of overwriting one ([87bc325](https://github.com/Endika/ekin/commit/87bc3258c65e2d424d2b28cc358d58b07b9718db))
+
 ## [1.4.0](https://github.com/Endika/ekin/compare/v1.3.0...v1.4.0) (2026-06-05)
 
 
