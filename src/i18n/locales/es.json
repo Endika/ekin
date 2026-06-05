@@ -74,6 +74,7 @@
   "settings": {
     "title": "Ajustes",
     "language": "Idioma",
+    "theme": "Tema",
     "aiKey": "Clave API de Gemini",
     "aiKeyHint": "Se guarda solo en este dispositivo. Llama a Gemini directamente con tu propia cuota.",
     "aiKeyPlaceholder": "Pega tu clave",
@@ -93,5 +94,10 @@
     "setProgress": "Progreso de series",
     "decrease": "Bajar {label}",
     "increase": "Subir {label}"
+  },
+  "theme": {
+    "system": "Sistema",
+    "light": "Claro",
+    "dark": "Oscuro"
   }
 }

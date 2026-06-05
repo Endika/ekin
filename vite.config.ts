@@ -1,9 +1,15 @@
+import { readFileSync } from 'node:fs'
 import { defineConfig } from 'vitest/config'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import { VitePWA } from 'vite-plugin-pwa'
 
+const { version } = JSON.parse(
+  readFileSync(new URL('./package.json', import.meta.url), 'utf-8'),
+)
+
 export default defineConfig({
   base: '/ekin/',
+  define: { __APP_VERSION__: JSON.stringify(version) },
   plugins: [
     svelte(),
     VitePWA({

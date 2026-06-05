@@ -74,6 +74,7 @@
   "settings": {
     "title": "Configuració",
     "language": "Idioma",
+    "theme": "Tema",
     "aiKey": "Clau API de Gemini",
     "aiKeyHint": "Es guarda només en este dispositiu. Crida Gemini directament amb la teua quota.",
     "aiKeyPlaceholder": "Apega la teua clau",
@@ -93,5 +94,10 @@
     "setProgress": "Progrés de sèries",
     "decrease": "Baixar {label}",
     "increase": "Pujar {label}"
+  },
+  "theme": {
+    "system": "Sistema",
+    "light": "Clar",
+    "dark": "Fosc"
   }
 }
