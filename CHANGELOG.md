@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.4](https://github.com/Endika/ekin/compare/v1.4.3...v1.4.4) (2026-06-05)
+
+
+### Bug Fixes
+
+* **ui:** stack auto-fill on mobile and restore overflow guard ([cd9b3f6](https://github.com/Endika/ekin/commit/cd9b3f6f52dbb93b51df7364a6c3403efc707b15))
+
 ## [1.4.3](https://github.com/Endika/ekin/compare/v1.4.2...v1.4.3) (2026-06-05)
 
 
