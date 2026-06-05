@@ -79,6 +79,13 @@ describe('autofill', () => {
     expect(w.items).toEqual([])
   })
 
+  it('fills a full-body workout from every zone (no exercise is tagged "full")', () => {
+    const w = autofill(catalog, { zone: 'full', minutes: 60, level: 'expert' })
+    expect(w.items.length).toBeGreaterThan(0)
+    const zones = new Set(w.items.map((it) => zoneOf(it.exerciseId)))
+    expect(zones.size).toBeGreaterThan(1) // draws across multiple zones
+  })
+
   it('returns a valid editable workout', () => {
     const w = autofill(catalog, { zone: 'legs', minutes: 20, level: 'expert' })
     expect(w.id).toBeTruthy()

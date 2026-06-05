@@ -27,13 +27,43 @@ const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
  * exercise selection (candidates ordered by id; no Date.now/Math.random in the
  * pick). The returned workout is a normal editable Workout — the builder loads it.
  */
+const byId = (a: Exercise, b: Exercise) => a.id.localeCompare(b.id)
+
+/**
+ * Candidate exercises for a zone + level. A 'full' (full-body) workout draws
+ * from EVERY zone — round-robin across zones for variety — because no exercise
+ * is itself tagged 'full'; treating 'full' as an exact match would yield none.
+ */
+function candidatesFor(
+  catalog: Exercise[],
+  zone: Zone,
+  level: Level,
+): Exercise[] {
+  const eligible = catalog
+    .filter((e) => LEVEL_RANK[e.level] <= LEVEL_RANK[level])
+    .slice()
+    .sort(byId)
+
+  if (zone !== 'full') return eligible.filter((e) => e.zone === zone)
+
+  const groups = new Map<string, Exercise[]>()
+  for (const e of eligible) {
+    const g = groups.get(e.zone) ?? []
+    g.push(e)
+    groups.set(e.zone, g)
+  }
+  const lists = [...groups.values()]
+  const max = Math.max(0, ...lists.map((l) => l.length))
+  const out: Exercise[] = []
+  for (let i = 0; i < max; i++) {
+    for (const l of lists) if (l[i]) out.push(l[i])
+  }
+  return out
+}
+
 export function autofill(catalog: Exercise[], input: AutofillInput): Workout {
   const budget = input.minutes * 60
-  const candidates = catalog
-    .filter((e) => e.zone === input.zone || e.zone === 'full')
-    .filter((e) => LEVEL_RANK[e.level] <= LEVEL_RANK[input.level])
-    .slice()
-    .sort((a, b) => a.id.localeCompare(b.id))
+  const candidates = candidatesFor(catalog, input.zone, input.level)
 
   const items: WorkoutItem[] = []
   let used = 0
