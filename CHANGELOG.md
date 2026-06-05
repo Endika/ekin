@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.5](https://github.com/Endika/ekin/compare/v1.4.4...v1.4.5) (2026-06-05)
+
+
+### Bug Fixes
+
+* **ui:** wrap auto-fill columns responsively to avoid cramped selects ([1b78f5f](https://github.com/Endika/ekin/commit/1b78f5f27257536160049d91c9da786250dc5026))
+
 ## [1.4.4](https://github.com/Endika/ekin/compare/v1.4.3...v1.4.4) (2026-06-05)
 
 
