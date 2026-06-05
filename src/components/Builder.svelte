@@ -6,6 +6,7 @@
   import SavedWorkouts from './SavedWorkouts.svelte'
   import AutofillPanel from './AutofillPanel.svelte'
   import Icon from './Icon.svelte'
+  import { _ } from 'svelte-i18n'
   import { saveWorkout } from '../data/workouts-repo'
   import { saved } from '../stores/saved-store'
   import type { Zone } from '../domain/types'
@@ -30,16 +31,16 @@
 
   <input
     class="title"
-    aria-label="Workout name"
+    aria-label={$_('builder.nameLabel')}
     bind:value={$builder.name}
     oninput={(e) => builder.rename(e.currentTarget.value)}
   />
 
-  <div class="zones" role="group" aria-label="Zone">
+  <div class="zones" role="group" aria-label={$_('autofill.zone')}>
     {#each zones as z (z)}
       <button
         class:active={$builder.zone === z}
-        onclick={() => builder.setZone(z)}>{z}</button
+        onclick={() => builder.setZone(z)}>{$_('zone.' + z)}</button
       >
     {/each}
   </div>
@@ -58,7 +59,7 @@
     {/each}
     {#if !$builder.items.length}
       <p class="empty card">
-        No exercises yet. Tap <strong>Add exercise</strong> to build your session.
+        {$_('builder.empty')}
       </p>
     {/if}
   </div>
@@ -70,17 +71,18 @@
   <div class="actions">
     <button class="ghost" onclick={() => (picking = !picking)}>
       <Icon name={picking ? 'check' : 'plus'} size={18} />
-      {picking ? 'Done' : 'Add exercise'}
+      {picking ? $_('builder.done') : $_('builder.addExercise')}
     </button>
     <button class="ghost" onclick={save} disabled={!$builder.items.length}>
-      Save
+      {$_('builder.save')}
     </button>
     <button
       class="start btn-grad"
       onclick={onstart}
       disabled={!$builder.items.length}
     >
-      <Icon name="play" size={20} /> Start
+      <Icon name="play" size={20} />
+      {$_('builder.start')}
     </button>
   </div>
 </section>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { SeriesPoint } from '../domain/progression'
+  import { _ } from 'svelte-i18n'
 
   let { points }: { points: SeriesPoint[] } = $props()
 
@@ -36,7 +37,7 @@
 
 {#if !layout}
   <p class="empty card">
-    Not enough data yet — log this exercise in a session.
+    {$_('progress.noData')}
   </p>
 {:else}
   <div class="wrap card">
@@ -62,8 +63,8 @@
       {/each}
     </svg>
     <div class="axis">
-      <span>max {layout.max}</span>
-      <span>min {layout.min}</span>
+      <span>{$_('progress.max')} {layout.max}</span>
+      <span>{$_('progress.min')} {layout.min}</span>
     </div>
   </div>
 {/if}

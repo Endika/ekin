@@ -86,5 +86,12 @@
     "harder": "Zailagoa",
     "thinking": "Geminiri galdetzen…",
     "failed": "Ezin izan da aplikatu — entrenamendua ez da aldatu."
+  },
+  "a11y": {
+    "decreaseReps": "Errep. jaitsi",
+    "increaseReps": "Errep. igo",
+    "setProgress": "Serieen aurrerapena",
+    "decrease": "{label} jaitsi",
+    "increase": "{label} igo"
   }
 }

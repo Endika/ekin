@@ -2,6 +2,7 @@
   import { computeStats } from '../domain/stats'
   import type { Session } from '../domain/types'
   import Icon from './Icon.svelte'
+  import { _ } from 'svelte-i18n'
 
   let { sessions }: { sessions: Session[] } = $props()
   let stats = $derived(computeStats(sessions, Date.now()))
@@ -11,15 +12,15 @@
   <div class="pill streak">
     <span class="ico"><Icon name="flame" size={18} /></span>
     <span class="val">{stats.currentStreak}</span>
-    <span class="lbl">day streak</span>
+    <span class="lbl">{$_('stats.streak')}</span>
   </div>
   <div class="pill">
     <span class="val">{stats.totalSessions}</span>
-    <span class="lbl">sessions</span>
+    <span class="lbl">{$_('stats.sessions')}</span>
   </div>
   <div class="pill">
     <span class="val">{stats.totalMinutes}</span>
-    <span class="lbl">minutes</span>
+    <span class="lbl">{$_('stats.minutes')}</span>
   </div>
 </div>
 

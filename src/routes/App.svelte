@@ -4,6 +4,7 @@
   import ProgressView from '../components/ProgressView.svelte'
   import Settings from '../components/Settings.svelte'
   import Icon from '../components/Icon.svelte'
+  import { _ } from 'svelte-i18n'
   import { builder } from '../stores/builder'
   import { addSession } from '../data/sessions-repo'
   import type { Session, Workout } from '../domain/types'
@@ -30,7 +31,7 @@
   <button
     class="gear"
     onclick={() => (settingsOpen = true)}
-    aria-label="Settings"
+    aria-label={$_('settings.title')}
   >
     <Icon name="settings" size={20} />
   </button>
@@ -47,13 +48,15 @@
       class:active={view === 'builder'}
       onclick={() => (view = 'builder')}
     >
-      <Icon name="build" size={18} /> Build
+      <Icon name="build" size={18} />
+      {$_('nav.build')}
     </button>
     <button
       class:active={view === 'history'}
       onclick={() => (view = 'history')}
     >
-      <Icon name="chart" size={18} /> Progress
+      <Icon name="chart" size={18} />
+      {$_('nav.progress')}
     </button>
   </nav>
 {/if}

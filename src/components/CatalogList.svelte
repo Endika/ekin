@@ -2,6 +2,7 @@
   import { visibleExercises, zoneFilter, query } from '../stores/catalog-store'
   import ExerciseCard from './ExerciseCard.svelte'
   import Icon from './Icon.svelte'
+  import { _ } from 'svelte-i18n'
   import type { Zone } from '../domain/types'
   let { onpick }: { onpick?: (id: string) => void } = $props()
   const zones: (Zone | 'all')[] = ['all', 'upper', 'core', 'legs', 'full']
@@ -13,13 +14,13 @@
       <span class="ico" aria-hidden="true"
         ><Icon name="search" size={18} /></span
       >
-      <input placeholder="Search exercises" bind:value={$query} />
+      <input placeholder={$_('catalog.search')} bind:value={$query} />
     </div>
     <div class="zones">
       {#each zones as z (z)}
         <button
           class:active={$zoneFilter === z}
-          onclick={() => ($zoneFilter = z)}>{z}</button
+          onclick={() => ($zoneFilter = z)}>{$_('zone.' + z)}</button
         >
       {/each}
     </div>

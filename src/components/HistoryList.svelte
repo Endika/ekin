@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Session } from '../domain/types'
   import Icon from './Icon.svelte'
+  import { _ } from 'svelte-i18n'
   let { sessions }: { sessions: Session[] } = $props()
   const fmt = (ms: number) => new Date(ms).toLocaleDateString()
   const mins = (s: number) => Math.round(s / 60)
@@ -15,7 +16,8 @@
       </div>
       <span class="dur">
         <Icon name="clock" size={16} />
-        {mins(s.durationSeconds)} min
+        {mins(s.durationSeconds)}
+        {$_('history.minutes')}
       </span>
     </li>
   {:else}
@@ -23,8 +25,8 @@
       <span class="badge" aria-hidden="true"
         ><Icon name="flame" size={28} /></span
       >
-      <strong>No sessions yet</strong>
-      <span class="hint">Build a workout and start training.</span>
+      <strong>{$_('history.emptyTitle')}</strong>
+      <span class="hint">{$_('history.emptyHint')}</span>
     </li>
   {/each}
 </ul>

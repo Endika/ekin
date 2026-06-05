@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Exercise } from '../domain/types'
   import Icon from './Icon.svelte'
+  import { _ } from 'svelte-i18n'
   let {
     exercise,
     onpick,
@@ -22,7 +23,7 @@
         <Icon name="dumbbell" size={32} />
       </div>
     {/if}
-    <span class="zone">{exercise.zone}</span>
+    <span class="zone">{$_('zone.' + exercise.zone)}</span>
   </div>
   <span class="name">{exercise.name}</span>
 </button>
