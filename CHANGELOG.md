@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/Endika/ekin/compare/v1.5.1...v1.6.0) (2026-06-13)
+
+
+### Features
+
+* **builder:** per-exercise work/rest in timed circuits ([101e561](https://github.com/Endika/ekin/commit/101e561f8f3157257927275f6bc1d134a33c667a))
+
 ## [1.5.1](https://github.com/Endika/ekin/compare/v1.5.0...v1.5.1) (2026-06-13)
 
 
