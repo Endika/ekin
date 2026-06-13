@@ -8,6 +8,7 @@
     name,
     image,
     zone,
+    timed = false,
     onpatch,
     onremove,
     onmoveup,
@@ -18,6 +19,7 @@
     name: string
     image?: string
     zone?: Zone
+    timed?: boolean
     onpatch: (p: Partial<WorkoutItem>) => void
     onremove: () => void
     onmoveup: () => void
@@ -65,37 +67,39 @@
       </button>
     </div>
   </div>
-  <div class="fields">
-    {#each fields as f (f.key)}
-      <div class="stepper">
-        <span class="lbl">{$_(f.labelKey)}</span>
-        <div class="ctrl">
-          <button
-            aria-label={$_('a11y.decrease', {
-              values: { label: $_(f.labelKey) },
-            })}
-            onclick={() => bump(f.key, -f.step, f.min)}
-          >
-            <Icon name="minus" size={16} />
-          </button>
-          <input
-            type="number"
-            min={f.min}
-            value={item[f.key]}
-            oninput={(e) => onpatch({ [f.key]: +e.currentTarget.value })}
-          />
-          <button
-            aria-label={$_('a11y.increase', {
-              values: { label: $_(f.labelKey) },
-            })}
-            onclick={() => bump(f.key, f.step, f.min)}
-          >
-            <Icon name="plus" size={16} />
-          </button>
+  {#if !timed}
+    <div class="fields">
+      {#each fields as f (f.key)}
+        <div class="stepper">
+          <span class="lbl">{$_(f.labelKey)}</span>
+          <div class="ctrl">
+            <button
+              aria-label={$_('a11y.decrease', {
+                values: { label: $_(f.labelKey) },
+              })}
+              onclick={() => bump(f.key, -f.step, f.min)}
+            >
+              <Icon name="minus" size={16} />
+            </button>
+            <input
+              type="number"
+              min={f.min}
+              value={item[f.key]}
+              oninput={(e) => onpatch({ [f.key]: +e.currentTarget.value })}
+            />
+            <button
+              aria-label={$_('a11y.increase', {
+                values: { label: $_(f.labelKey) },
+              })}
+              onclick={() => bump(f.key, f.step, f.min)}
+            >
+              <Icon name="plus" size={16} />
+            </button>
+          </div>
         </div>
-      </div>
-    {/each}
-  </div>
+      {/each}
+    </div>
+  {/if}
 </div>
 
 <style>

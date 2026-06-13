@@ -26,6 +26,23 @@ describe('workout reducers', () => {
     })
   })
 
+  it('adds a timed item that inherits the circuit interval', () => {
+    const base = {
+      ...newWorkout('c', 'full'),
+      mode: 'timed' as const,
+      rounds: 3,
+      items: [
+        { exerciseId: 'a', sets: 0, reps: 0, workSeconds: 30, restSeconds: 15 },
+      ],
+    }
+    const w = addItem(base, 'b')
+    expect(w.items[1]).toMatchObject({
+      exerciseId: 'b',
+      workSeconds: 30,
+      restSeconds: 15,
+    })
+  })
+
   it('updates an item immutably', () => {
     const base = addItem(newWorkout('w', 'core'), 'ex1')
     const next = updateItem(base, 0, { reps: 15 })

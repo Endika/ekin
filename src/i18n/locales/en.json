@@ -24,7 +24,10 @@
     "start": "Start",
     "new": "New",
     "newConfirm": "Start a new workout? Unsaved changes will be lost.",
-    "empty": "No exercises yet. Tap Add exercise to build your session."
+    "empty": "No exercises yet. Tap Add exercise to build your session.",
+    "rounds": "Rounds",
+    "workSeconds": "Work (s)",
+    "restSeconds": "Rest (s)"
   },
   "item": {
     "sets": "Sets",

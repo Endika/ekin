@@ -23,6 +23,26 @@ function createBuilder() {
     move: (from: number, to: number) => update((w) => moveItem(w, from, to)),
     rename: (name: string) => update((w) => ({ ...w, name })),
     setZone: (zone: Zone) => update((w) => ({ ...w, zone })),
+    // Timed-circuit edits: rounds is workout-level; work/rest are global to
+    // every item in the light timed editor.
+    setRounds: (rounds: number) =>
+      update((w) => ({ ...w, rounds: Math.max(1, rounds) })),
+    setWorkSeconds: (workSeconds: number) =>
+      update((w) => ({
+        ...w,
+        items: w.items.map((it) => ({
+          ...it,
+          workSeconds: Math.max(5, workSeconds),
+        })),
+      })),
+    setRestSeconds: (restSeconds: number) =>
+      update((w) => ({
+        ...w,
+        items: w.items.map((it) => ({
+          ...it,
+          restSeconds: Math.max(0, restSeconds),
+        })),
+      })),
   }
 }
 
