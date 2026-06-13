@@ -4,6 +4,7 @@
     "name": "3/4 Sit-Up",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -24,6 +25,7 @@
     "name": "90/90 Hamstring",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -43,6 +45,7 @@
     "name": "Adductor/Groin",
     "zone": "legs",
     "level": "intermediate",
+    "category": "stretching",
     "primaryMuscles": [
       "adductors"
     ],
@@ -62,6 +65,7 @@
     "name": "Air Bike",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -83,6 +87,7 @@
     "name": "All Fours Quad Stretch",
     "zone": "legs",
     "level": "intermediate",
+    "category": "stretching",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -101,6 +106,7 @@
     "name": "Alternate Heel Touchers",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -121,6 +127,7 @@
     "name": "Alternate Leg Diagonal Bound",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -140,6 +147,7 @@
     "name": "Ankle Circles",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "calves"
     ],
@@ -158,6 +166,7 @@
     "name": "Ankle On The Knee",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "glutes"
     ],
@@ -176,6 +185,7 @@
     "name": "Arm Circles",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "shoulders"
     ],
@@ -194,6 +204,7 @@
     "name": "Bench Dips",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "triceps"
     ],
@@ -213,6 +224,7 @@
     "name": "Bench Jump",
     "zone": "legs",
     "level": "intermediate",
+    "category": "plyometrics",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -233,6 +245,7 @@
     "name": "Bent-Knee Hip Raise",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -253,6 +266,7 @@
     "name": "Body-Up",
     "zone": "upper",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "triceps"
     ],
@@ -272,6 +286,7 @@
     "name": "Body Tricep Press",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "triceps"
     ],
@@ -292,6 +307,7 @@
     "name": "Bodyweight Squat",
     "zone": "legs",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -310,6 +326,7 @@
     "name": "Bodyweight Walking Lunge",
     "zone": "legs",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -329,6 +346,7 @@
     "name": "Bottoms Up",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -347,6 +365,7 @@
     "name": "Butt-Ups",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -367,6 +386,7 @@
     "name": "Butt Lift (Bridge)",
     "zone": "legs",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "glutes"
     ],
@@ -385,6 +405,7 @@
     "name": "Calf Stretch Elbows Against Wall",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "calves"
     ],
@@ -403,6 +424,7 @@
     "name": "Calf Stretch Hands Against Wall",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "calves"
     ],
@@ -421,6 +443,7 @@
     "name": "Carioca Quick Step",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "adductors"
     ],
@@ -439,6 +462,7 @@
     "name": "Cat Stretch",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "lower back"
     ],
@@ -457,6 +481,7 @@
     "name": "Chair Lower Back Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "lats"
     ],
@@ -475,6 +500,7 @@
     "name": "Child's Pose",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "lower back"
     ],
@@ -493,6 +519,7 @@
     "name": "Chin-Up",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "lats"
     ],
@@ -513,6 +540,7 @@
     "name": "Chin To Chest Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "neck"
     ],
@@ -530,6 +558,7 @@
     "name": "Clock Push-Up",
     "zone": "upper",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -551,6 +580,7 @@
     "name": "Close-Grip Push-Up off of a Dumbbell",
     "zone": "upper",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "triceps"
     ],
@@ -570,6 +600,7 @@
     "name": "Cocoons",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -588,6 +619,7 @@
     "name": "Cross-Body Crunch",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -608,6 +640,7 @@
     "name": "Crossover Reverse Lunge",
     "zone": "core",
     "level": "intermediate",
+    "category": "stretching",
     "primaryMuscles": [
       "lower back"
     ],
@@ -626,6 +659,7 @@
     "name": "Crunch - Hands Overhead",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -646,6 +680,7 @@
     "name": "Crunch - Legs On Exercise Ball",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -668,6 +703,7 @@
     "name": "Crunches",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -689,6 +725,7 @@
     "name": "Dancer's Stretch",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "lower back"
     ],
@@ -708,6 +745,7 @@
     "name": "Dead Bug",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -730,6 +768,7 @@
     "name": "Decline Crunch",
     "zone": "core",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -751,6 +790,7 @@
     "name": "Decline Oblique Crunch",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -772,6 +812,7 @@
     "name": "Decline Push-Up",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -791,6 +832,7 @@
     "name": "Decline Reverse Crunch",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -811,6 +853,7 @@
     "name": "Dips - Triceps Version",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "triceps"
     ],
@@ -830,6 +873,7 @@
     "name": "Double Leg Butt Kick",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -849,6 +893,7 @@
     "name": "Dynamic Back Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "lats"
     ],
@@ -866,6 +911,7 @@
     "name": "Dynamic Chest Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "chest"
     ],
@@ -883,6 +929,7 @@
     "name": "Elbow Circles",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "shoulders"
     ],
@@ -901,6 +948,7 @@
     "name": "Elbow to Knee",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -919,6 +967,7 @@
     "name": "Elbows Back",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "chest"
     ],
@@ -937,6 +986,7 @@
     "name": "Fast Skipping",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -955,6 +1005,7 @@
     "name": "Flat Bench Leg Pull-In",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -975,6 +1026,7 @@
     "name": "Flat Bench Lying Leg Raise",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -994,6 +1046,7 @@
     "name": "Floor Glute-Ham Raise",
     "zone": "legs",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -1013,6 +1066,7 @@
     "name": "Flutter Kicks",
     "zone": "legs",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "glutes"
     ],
@@ -1033,6 +1087,7 @@
     "name": "Freehand Jump Squat",
     "zone": "legs",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -1054,6 +1109,7 @@
     "name": "Frog Hops",
     "zone": "legs",
     "level": "intermediate",
+    "category": "stretching",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -1071,6 +1127,7 @@
     "name": "Frog Sit-Ups",
     "zone": "core",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -1093,6 +1150,7 @@
     "name": "Front Leg Raises",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -1110,6 +1168,7 @@
     "name": "Glute Kickback",
     "zone": "legs",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "glutes"
     ],
@@ -1129,6 +1188,7 @@
     "name": "Gorilla Chin/Crunch",
     "zone": "core",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -1149,6 +1209,7 @@
     "name": "Groin and Back Stretch",
     "zone": "legs",
     "level": "intermediate",
+    "category": "stretching",
     "primaryMuscles": [
       "adductors"
     ],
@@ -1167,6 +1228,7 @@
     "name": "Groiners",
     "zone": "legs",
     "level": "intermediate",
+    "category": "stretching",
     "primaryMuscles": [
       "adductors"
     ],
@@ -1185,6 +1247,7 @@
     "name": "Hamstring Stretch",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -1203,6 +1266,7 @@
     "name": "Handstand Push-Ups",
     "zone": "upper",
     "level": "expert",
+    "category": "strength",
     "primaryMuscles": [
       "shoulders"
     ],
@@ -1223,6 +1287,7 @@
     "name": "Hanging Leg Raise",
     "zone": "core",
     "level": "expert",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -1242,6 +1307,7 @@
     "name": "Hanging Pike",
     "zone": "core",
     "level": "expert",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -1262,6 +1328,7 @@
     "name": "Hip Circles (prone)",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "abductors"
     ],
@@ -1280,6 +1347,7 @@
     "name": "Hug Knees To Chest",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "lower back"
     ],
@@ -1298,6 +1366,7 @@
     "name": "Hyperextensions With No Hyperextension Bench",
     "zone": "core",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "lower back"
     ],
@@ -1318,6 +1387,7 @@
     "name": "Inchworm",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -1338,6 +1408,7 @@
     "name": "Incline Push-Up",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -1356,6 +1427,7 @@
     "name": "Incline Push-Up Close-Grip",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "triceps"
     ],
@@ -1376,6 +1448,7 @@
     "name": "Incline Push-Up Medium",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -1396,6 +1469,7 @@
     "name": "Incline Push-Up Reverse Grip",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -1416,6 +1490,7 @@
     "name": "Incline Push-Up Wide",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -1436,6 +1511,7 @@
     "name": "Inverted Row",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "middle back"
     ],
@@ -1456,6 +1532,7 @@
     "name": "Iron Crosses (stretch)",
     "zone": "legs",
     "level": "intermediate",
+    "category": "stretching",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -1474,6 +1551,7 @@
     "name": "Isometric Chest Squeezes",
     "zone": "upper",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "chest"
     ],
@@ -1494,6 +1572,7 @@
     "name": "Isometric Neck Exercise - Front And Back",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "neck"
     ],
@@ -1514,6 +1593,7 @@
     "name": "Isometric Neck Exercise - Sides",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "neck"
     ],
@@ -1534,6 +1614,7 @@
     "name": "Isometric Wipers",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -1553,6 +1634,7 @@
     "name": "Jackknife Sit-Up",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -1572,6 +1654,7 @@
     "name": "Janda Sit-Up",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -1591,6 +1674,7 @@
     "name": "Knee Across The Body",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "glutes"
     ],
@@ -1608,6 +1692,7 @@
     "name": "Knee Circles",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "calves"
     ],
@@ -1626,6 +1711,7 @@
     "name": "Knee Tuck Jump",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -1644,6 +1730,7 @@
     "name": "Kneeling Arm Drill",
     "zone": "upper",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "shoulders"
     ],
@@ -1663,6 +1750,7 @@
     "name": "Kneeling Forearm Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "forearms"
     ],
@@ -1680,6 +1768,7 @@
     "name": "Kneeling Hip Flexor",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -1697,6 +1786,7 @@
     "name": "Lateral Bound",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "adductors"
     ],
@@ -1717,6 +1807,7 @@
     "name": "Leg-Up Hamstring Stretch",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -1735,6 +1826,7 @@
     "name": "Leg Lift",
     "zone": "legs",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "glutes"
     ],
@@ -1755,6 +1847,7 @@
     "name": "Leg Pull-In",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -1774,6 +1867,7 @@
     "name": "Linear 3-Part Start Technique",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -1793,6 +1887,7 @@
     "name": "Linear Acceleration Wall Drill",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -1812,6 +1907,7 @@
     "name": "Looking At Ceiling",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -1829,6 +1925,7 @@
     "name": "Lower Back Curl",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -1846,6 +1943,7 @@
     "name": "Lying Crossover",
     "zone": "legs",
     "level": "expert",
+    "category": "stretching",
     "primaryMuscles": [
       "abductors"
     ],
@@ -1865,6 +1963,7 @@
     "name": "Lying Glute",
     "zone": "legs",
     "level": "expert",
+    "category": "stretching",
     "primaryMuscles": [
       "glutes"
     ],
@@ -1884,6 +1983,7 @@
     "name": "Lying Prone Quadriceps",
     "zone": "legs",
     "level": "expert",
+    "category": "stretching",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -1903,6 +2003,7 @@
     "name": "Middle Back Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "middle back"
     ],
@@ -1920,6 +2021,7 @@
     "name": "Mountain Climbers",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -1937,6 +2039,7 @@
     "name": "Moving Claw Series",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -1955,6 +2058,7 @@
     "name": "Natural Glute Ham Raise",
     "zone": "legs",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -1974,6 +2078,7 @@
     "name": "Oblique Crunches",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -1996,6 +2101,7 @@
     "name": "Oblique Crunches - On The Floor",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2016,6 +2122,7 @@
     "name": "On Your Side Quad Stretch",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -2033,6 +2140,7 @@
     "name": "One Arm Against Wall",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "lats"
     ],
@@ -2050,6 +2158,7 @@
     "name": "One Half Locust",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -2069,6 +2178,7 @@
     "name": "One Knee To Chest",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "glutes"
     ],
@@ -2088,6 +2198,7 @@
     "name": "Overhead Stretch",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2105,6 +2216,7 @@
     "name": "Overhead Triceps",
     "zone": "upper",
     "level": "expert",
+    "category": "stretching",
     "primaryMuscles": [
       "triceps"
     ],
@@ -2123,6 +2235,7 @@
     "name": "Pelvic Tilt Into Bridge",
     "zone": "core",
     "level": "intermediate",
+    "category": "stretching",
     "primaryMuscles": [
       "lower back"
     ],
@@ -2141,6 +2254,7 @@
     "name": "Plank",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2158,6 +2272,7 @@
     "name": "Plyo Push-up",
     "zone": "upper",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "chest"
     ],
@@ -2179,6 +2294,7 @@
     "name": "Prone Manual Hamstring",
     "zone": "legs",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -2197,6 +2313,7 @@
     "name": "Pullups",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "lats"
     ],
@@ -2217,6 +2334,7 @@
     "name": "Push-Up Wide",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -2236,6 +2354,7 @@
     "name": "Push-Ups - Close Triceps Position",
     "zone": "upper",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "triceps"
     ],
@@ -2255,6 +2374,7 @@
     "name": "Push-Ups With Feet Elevated",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -2275,6 +2395,7 @@
     "name": "Push Up to Side Plank",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -2295,6 +2416,7 @@
     "name": "Pushups",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -2314,6 +2436,7 @@
     "name": "Pushups (Close and Wide Hand Positions)",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -2333,6 +2456,7 @@
     "name": "Rear Leg Raises",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -2350,6 +2474,7 @@
     "name": "Reverse Crunch",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2370,6 +2495,7 @@
     "name": "Rocket Jump",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -2388,6 +2514,7 @@
     "name": "Runner's Stretch",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -2406,6 +2533,7 @@
     "name": "Russian Twist",
     "zone": "core",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2426,6 +2554,7 @@
     "name": "Scapular Pull-Up",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "traps"
     ],
@@ -2444,6 +2573,7 @@
     "name": "Scissor Kick",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2464,6 +2594,7 @@
     "name": "Scissors Jump",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -2483,6 +2614,7 @@
     "name": "Seated Biceps",
     "zone": "upper",
     "level": "expert",
+    "category": "stretching",
     "primaryMuscles": [
       "biceps"
     ],
@@ -2501,6 +2633,7 @@
     "name": "Seated Calf Stretch",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "calves"
     ],
@@ -2520,6 +2653,7 @@
     "name": "Seated Flat Bench Leg Pull-In",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2539,6 +2673,7 @@
     "name": "Seated Floor Hamstring Stretch",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -2556,6 +2691,7 @@
     "name": "Seated Front Deltoid",
     "zone": "upper",
     "level": "expert",
+    "category": "stretching",
     "primaryMuscles": [
       "shoulders"
     ],
@@ -2574,6 +2710,7 @@
     "name": "Seated Glute",
     "zone": "legs",
     "level": "expert",
+    "category": "stretching",
     "primaryMuscles": [
       "glutes"
     ],
@@ -2592,6 +2729,7 @@
     "name": "Seated Hamstring",
     "zone": "legs",
     "level": "expert",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -2610,6 +2748,7 @@
     "name": "Seated Leg Tucks",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2629,6 +2768,7 @@
     "name": "Seated Overhead Stretch",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2648,6 +2788,7 @@
     "name": "Shoulder Circles",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "shoulders"
     ],
@@ -2665,6 +2806,7 @@
     "name": "Shoulder Raise",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "shoulders"
     ],
@@ -2681,6 +2823,7 @@
     "name": "Shoulder Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "shoulders"
     ],
@@ -2697,6 +2840,7 @@
     "name": "Side-Lying Floor Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "lats"
     ],
@@ -2714,6 +2858,7 @@
     "name": "Side Bridge",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2728,6 +2873,7 @@
     "name": "Side Jackknife",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2742,6 +2888,7 @@
     "name": "Side Leg Raises",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "adductors"
     ],
@@ -2760,6 +2907,7 @@
     "name": "Side Lying Groin Stretch",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "adductors"
     ],
@@ -2778,6 +2926,7 @@
     "name": "Side Neck Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "neck"
     ],
@@ -2795,6 +2944,7 @@
     "name": "Side Standing Long Jump",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -2813,6 +2963,7 @@
     "name": "Side Wrist Pull",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "shoulders"
     ],
@@ -2830,6 +2981,7 @@
     "name": "Single-Arm Push-Up",
     "zone": "upper",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "chest"
     ],
@@ -2849,6 +3001,7 @@
     "name": "Single Leg Butt Kick",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -2868,6 +3021,7 @@
     "name": "Single Leg Glute Bridge",
     "zone": "legs",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "glutes"
     ],
@@ -2887,6 +3041,7 @@
     "name": "Sit-Up",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2907,6 +3062,7 @@
     "name": "Sit Squats",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -2925,6 +3081,7 @@
     "name": "Spider Crawl",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2943,6 +3100,7 @@
     "name": "Spinal Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "middle back"
     ],
@@ -2962,6 +3120,7 @@
     "name": "Split Jump",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -2982,6 +3141,7 @@
     "name": "Split Squats",
     "zone": "legs",
     "level": "intermediate",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -2999,6 +3159,7 @@
     "name": "Standing Gastrocnemius Calf Stretch",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "calves"
     ],
@@ -3017,6 +3178,7 @@
     "name": "Standing Hip Circles",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "abductors"
     ],
@@ -3036,6 +3198,7 @@
     "name": "Standing Hip Flexors",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -3053,6 +3216,7 @@
     "name": "Standing Lateral Stretch",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -3072,6 +3236,7 @@
     "name": "Standing Long Jump",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -3091,6 +3256,7 @@
     "name": "Standing Pelvic Tilt",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "lower back"
     ],
@@ -3109,6 +3275,7 @@
     "name": "Standing Soleus And Achilles Stretch",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "calves"
     ],
@@ -3126,6 +3293,7 @@
     "name": "Standing Toe Touches",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -3143,6 +3311,7 @@
     "name": "Standing Towel Triceps Extension",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "triceps"
     ],
@@ -3162,6 +3331,7 @@
     "name": "Star Jump",
     "zone": "legs",
     "level": "beginner",
+    "category": "plyometrics",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -3180,6 +3350,7 @@
     "name": "Step-up with Knee Raise",
     "zone": "legs",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "glutes"
     ],
@@ -3198,6 +3369,7 @@
     "name": "Stomach Vacuum",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -3218,6 +3390,7 @@
     "name": "Superman",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "lower back"
     ],
@@ -3237,6 +3410,7 @@
     "name": "The Straddle",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -3254,6 +3428,7 @@
     "name": "Toe Touchers",
     "zone": "core",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -3275,6 +3450,7 @@
     "name": "Trail Running/Walking",
     "zone": "legs",
     "level": "beginner",
+    "category": "cardio",
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -3292,6 +3468,7 @@
     "name": "Tricep Side Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "triceps"
     ],
@@ -3308,6 +3485,7 @@
     "name": "Triceps Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "triceps"
     ],
@@ -3324,6 +3502,7 @@
     "name": "Tuck Crunch",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -3345,6 +3524,7 @@
     "name": "Upper Back-Leg Grab",
     "zone": "legs",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -3362,6 +3542,7 @@
     "name": "Upper Back Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "middle back"
     ],
@@ -3378,6 +3559,7 @@
     "name": "Upward Stretch",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "shoulders"
     ],
@@ -3395,6 +3577,7 @@
     "name": "V-Bar Pullup",
     "zone": "upper",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "lats"
     ],
@@ -3415,6 +3598,7 @@
     "name": "Wide-Grip Rear Pull-Up",
     "zone": "upper",
     "level": "intermediate",
+    "category": "strength",
     "primaryMuscles": [
       "lats"
     ],
@@ -3435,6 +3619,7 @@
     "name": "Wind Sprints",
     "zone": "core",
     "level": "beginner",
+    "category": "strength",
     "primaryMuscles": [
       "abdominals"
     ],
@@ -3454,6 +3639,7 @@
     "name": "Windmills",
     "zone": "legs",
     "level": "intermediate",
+    "category": "stretching",
     "primaryMuscles": [
       "abductors"
     ],
@@ -3472,6 +3658,7 @@
     "name": "World's Greatest Stretch",
     "zone": "legs",
     "level": "intermediate",
+    "category": "stretching",
     "primaryMuscles": [
       "hamstrings"
     ],
@@ -3490,6 +3677,7 @@
     "name": "Wrist Circles",
     "zone": "upper",
     "level": "beginner",
+    "category": "stretching",
     "primaryMuscles": [
       "forearms"
     ],

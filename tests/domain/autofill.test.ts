@@ -2,11 +2,17 @@ import { describe, it, expect } from 'vitest'
 import { autofill } from '../../src/domain/autofill'
 import type { Exercise, Level, Zone } from '../../src/domain/types'
 
-const ex = (id: string, zone: Zone, level: Level): Exercise => ({
+const ex = (
+  id: string,
+  zone: Zone,
+  level: Level,
+  category = 'strength',
+): Exercise => ({
   id,
   name: id.toUpperCase(),
   zone,
   level,
+  category,
   primaryMuscles: [],
   instructions: [],
   images: [],
