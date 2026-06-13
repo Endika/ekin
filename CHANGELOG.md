@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/Endika/ekin/compare/v1.7.0...v1.8.0) (2026-06-13)
+
+
+### Features
+
+* **history:** delete a session from history with confirmation ([a637043](https://github.com/Endika/ekin/commit/a6370439e9cc809b65f96c9edc5dfb49f6d25de5))
+
 ## [1.7.0](https://github.com/Endika/ekin/compare/v1.6.3...v1.7.0) (2026-06-13)
 
 
