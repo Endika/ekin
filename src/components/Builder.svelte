@@ -61,6 +61,15 @@
     </button>
   </div>
 
+  <div class="type" role="group" aria-label={$_('autofill.goal')}>
+    <button class:active={!isTimed} onclick={() => builder.setMode('reps')}>
+      {$_('autofill.goal_strength')}
+    </button>
+    <button class:active={isTimed} onclick={() => builder.setMode('timed')}>
+      {$_('autofill.goal_circuit')}
+    </button>
+  </div>
+
   <div class="zones" role="group" aria-label={$_('autofill.zone')}>
     {#each zones as z (z)}
       <button
@@ -191,6 +200,27 @@
     background: var(--surface-2);
     color: var(--text);
     font-weight: 600;
+  }
+
+  .type {
+    display: flex;
+    gap: 0.4rem;
+  }
+  .type button {
+    flex: 1;
+    min-height: 40px;
+    padding: 0 0.6rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .type button.active {
+    background: var(--grad);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: var(--shadow-glow);
   }
 
   .zones {

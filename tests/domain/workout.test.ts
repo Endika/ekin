@@ -5,6 +5,7 @@ import {
   updateItem,
   removeItem,
   moveItem,
+  setWorkoutMode,
 } from '../../src/domain/workout'
 
 describe('workout reducers', () => {
@@ -56,5 +57,49 @@ describe('workout reducers', () => {
     expect(w.items.map((i) => i.exerciseId)).toEqual(['b', 'a'])
     w = removeItem(w, 0)
     expect(w.items.map((i) => i.exerciseId)).toEqual(['a'])
+  })
+})
+
+describe('setWorkoutMode', () => {
+  it('converts a hand-built rep workout into a timed circuit', () => {
+    const reps = addItem(newWorkout('w', 'full'), 'a') // sets 3, reps 10, rest 30
+    const timed = setWorkoutMode(reps, 'timed')
+    expect(timed.mode).toBe('timed')
+    expect(timed.rounds).toBe(3)
+    // work gets a default; the existing rest is preserved (round-trip safe)
+    expect(timed.items[0]).toMatchObject({ workSeconds: 40, restSeconds: 30 })
+  })
+
+  it('uses the circuit rest default when the source had no rest', () => {
+    const w = {
+      ...newWorkout('w', 'full'),
+      items: [{ exerciseId: 'a', sets: 1, reps: 10, restSeconds: 0 }],
+    }
+    const timed = setWorkoutMode(w, 'timed')
+    expect(timed.items[0].restSeconds).toBe(20)
+  })
+
+  it('converts a timed circuit back to reps with sane defaults', () => {
+    const timed = {
+      ...newWorkout('w', 'full'),
+      mode: 'timed' as const,
+      rounds: 4,
+      items: [
+        { exerciseId: 'a', sets: 0, reps: 0, workSeconds: 45, restSeconds: 15 },
+      ],
+    }
+    const reps = setWorkoutMode(timed, 'reps')
+    expect(reps.mode).toBe('reps')
+    expect(reps.items[0]).toMatchObject({ sets: 3, reps: 10 })
+  })
+
+  it('preserves existing valid values instead of overwriting them', () => {
+    const w = {
+      ...newWorkout('w', 'full'),
+      items: [{ exerciseId: 'a', sets: 5, reps: 8, restSeconds: 25 }],
+    }
+    const timed = setWorkoutMode(w, 'timed')
+    const back = setWorkoutMode(timed, 'reps')
+    expect(back.items[0]).toMatchObject({ sets: 5, reps: 8, restSeconds: 25 })
   })
 })

@@ -1,11 +1,12 @@
 import { writable } from 'svelte/store'
-import type { Workout, WorkoutItem, Zone } from '../domain/types'
+import type { Workout, WorkoutItem, WorkoutMode, Zone } from '../domain/types'
 import {
   newWorkout,
   addItem,
   updateItem,
   removeItem,
   moveItem,
+  setWorkoutMode,
 } from '../domain/workout'
 
 function createBuilder() {
@@ -27,6 +28,7 @@ function createBuilder() {
     // are edited per exercise on each item (via patch).
     setRounds: (rounds: number) =>
       update((w) => ({ ...w, rounds: Math.max(1, rounds) })),
+    setMode: (mode: WorkoutMode) => update((w) => setWorkoutMode(w, mode)),
   }
 }
 
