@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.2](https://github.com/Endika/ekin/compare/v1.6.1...v1.6.2) (2026-06-13)
+
+
+### Refactor
+
+* **i18n:** rename Strength type to Sets & reps ([8f923e0](https://github.com/Endika/ekin/commit/8f923e0e3925a37af6d58f43dc54707cc3b1f826))
+
 ## [1.6.1](https://github.com/Endika/ekin/compare/v1.6.0...v1.6.1) (2026-06-13)
 
 
