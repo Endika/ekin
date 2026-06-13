@@ -9,6 +9,12 @@ export interface AutofillInput {
   level: Level
   /** Absent ⇒ 'strength' (the rep-based default). 'circuit' ⇒ a timed HIIT circuit. */
   goal?: Goal
+  /**
+   * Rotates the circuit exercise selection so repeated "generate" taps yield
+   * different routines. Absent/0 ⇒ the first window (kept deterministic for
+   * tests); each increment shifts to a fresh set of exercises.
+   */
+  variant?: number
 }
 
 const LEVEL_RANK: Record<Level, number> = {
@@ -116,10 +122,20 @@ function circuitOrder(candidates: Exercise[]): Exercise[] {
   return [...energetic, ...strength]
 }
 
+/** Rotate an array left by `by` positions (wrapping); identity for empty/0. */
+function rotate<T>(arr: T[], by: number): T[] {
+  if (arr.length === 0) return arr
+  const k = ((by % arr.length) + arr.length) % arr.length
+  return [...arr.slice(k), ...arr.slice(0, k)]
+}
+
 function autofillCircuit(catalog: Exercise[], input: AutofillInput): Workout {
   const budget = input.minutes * 60
   const ordered = circuitOrder(candidatesFor(catalog, input.zone, input.level))
-  const chosen = ordered.slice(0, MAX_CIRCUIT_ITEMS)
+  // Shift the window by whole circuits per variant so consecutive "generate"
+  // taps surface a fresh set of exercises instead of the same one every time.
+  const rotated = rotate(ordered, (input.variant ?? 0) * MAX_CIRCUIT_ITEMS)
+  const chosen = rotated.slice(0, MAX_CIRCUIT_ITEMS)
 
   const items: WorkoutItem[] = chosen.map((ex) => ({
     exerciseId: ex.id,

@@ -143,16 +143,41 @@ describe('autofill — circuit goal', () => {
     expect(cats[0]).toMatch(/plyometrics|cardio/)
   })
 
-  it('is deterministic', () => {
+  it('is deterministic for the same variant', () => {
     const inp = {
       zone: 'full' as const,
       minutes: 20,
       level: 'beginner' as const,
       goal: 'circuit' as const,
+      variant: 2,
     }
     expect(autofill(circuitCatalog, inp).items).toEqual(
       autofill(circuitCatalog, inp).items,
     )
+  })
+
+  it('different variants surface a different set of exercises', () => {
+    // 9 candidates, window of 6 → variant 0 and variant 1 pick different sets.
+    const big: Exercise[] = Array.from({ length: 9 }, (_, i) =>
+      ex(`p${i}`, 'full', 'beginner', 'plyometrics'),
+    )
+    const v0 = autofill(big, {
+      zone: 'full',
+      minutes: 20,
+      level: 'beginner',
+      goal: 'circuit',
+      variant: 0,
+    })
+    const v1 = autofill(big, {
+      zone: 'full',
+      minutes: 20,
+      level: 'beginner',
+      goal: 'circuit',
+      variant: 1,
+    })
+    const ids0 = v0.items.map((i) => i.exerciseId)
+    const ids1 = v1.items.map((i) => i.exerciseId)
+    expect(ids0).not.toEqual(ids1)
   })
 
   it("goal 'strength' matches the default rep-based output", () => {

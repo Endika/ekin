@@ -19,9 +19,14 @@
   let minutes = $state(20)
   let level = $state<Level>('beginner')
   let goal = $state<Goal>('strength')
+  // Bumped each generate so a repeated HIIT "generate" rotates to a fresh circuit.
+  let variant = $state(0)
 
   function generate() {
-    builder.load(autofill(allExercises, { zone, minutes, level, goal }))
+    builder.load(
+      autofill(allExercises, { zone, minutes, level, goal, variant }),
+    )
+    variant += 1
     open = false // collapse so the generated exercises are immediately visible
     onfill?.()
   }
