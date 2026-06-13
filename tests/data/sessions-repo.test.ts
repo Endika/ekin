@@ -1,6 +1,10 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { IDBFactory } from 'fake-indexeddb'
-import { addSession, listSessions } from '../../src/data/sessions-repo'
+import {
+  addSession,
+  listSessions,
+  deleteSession,
+} from '../../src/data/sessions-repo'
 import type { Session } from '../../src/domain/types'
 
 const mk = (id: string, startedAt: number): Session => ({
@@ -24,5 +28,18 @@ describe('sessions-repo', () => {
     await addSession(mk('s1', 1000))
     await addSession(mk('s2', 3000))
     expect((await listSessions()).map((s) => s.id)).toEqual(['s2', 's1'])
+  })
+
+  it('deletes a session by id, leaving the rest', async () => {
+    await addSession(mk('s1', 1000))
+    await addSession(mk('s2', 3000))
+    await deleteSession('s1')
+    expect((await listSessions()).map((s) => s.id)).toEqual(['s2'])
+  })
+
+  it('deleting a missing id is a no-op', async () => {
+    await addSession(mk('s1', 1000))
+    await deleteSession('nope')
+    expect((await listSessions()).map((s) => s.id)).toEqual(['s1'])
   })
 })

@@ -54,7 +54,9 @@
   "history": {
     "minutes": "min",
     "emptyTitle": "No sessions yet",
-    "emptyHint": "Build a workout and start training."
+    "emptyHint": "Build a workout and start training.",
+    "delete": "Delete session",
+    "deleteConfirm": "Delete \"{name}\" from your history? Your stats and streak will be recalculated."
   },
   "stats": {
     "streak": "day streak",
