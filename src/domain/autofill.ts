@@ -1,10 +1,14 @@
 import { uuidv7 } from 'uuidv7'
 import type { Exercise, Level, Workout, WorkoutItem, Zone } from './types'
 
+export type Goal = 'strength' | 'circuit'
+
 export interface AutofillInput {
   zone: Zone
   minutes: number
   level: Level
+  /** Absent ⇒ 'strength' (the rep-based default). 'circuit' ⇒ a timed HIIT circuit. */
+  goal?: Goal
 }
 
 const LEVEL_RANK: Record<Level, number> = {
@@ -62,6 +66,8 @@ function candidatesFor(
 }
 
 export function autofill(catalog: Exercise[], input: AutofillInput): Workout {
+  if (input.goal === 'circuit') return autofillCircuit(catalog, input)
+
   const budget = input.minutes * 60
   const candidates = candidatesFor(catalog, input.zone, input.level)
 
@@ -84,3 +90,58 @@ export function autofill(catalog: Exercise[], input: AutofillInput): Workout {
     createdAt: 0,
   }
 }
+
+// Timed-circuit defaults (seconds). 40s on / 20s off is a common HIIT interval.
+const CIRCUIT = { workSeconds: 40, restSeconds: 20 }
+const MAX_CIRCUIT_ITEMS = 6
+const MIN_ROUNDS = 2
+const MAX_ROUNDS = 6
+
+/**
+ * Order candidates for a fat-burn circuit: prefer dynamic, higher-energy
+ * movements (plyometrics, cardio) first, then strength as filler. Stretching
+ * exercises are dropped entirely — they belong in a warm-up, not a circuit.
+ * Ordering within each tier stays by id, so selection is deterministic.
+ */
+function circuitOrder(candidates: Exercise[]): Exercise[] {
+  const energetic = candidates.filter(
+    (e) => e.category === 'plyometrics' || e.category === 'cardio',
+  )
+  const strength = candidates.filter(
+    (e) =>
+      e.category !== 'plyometrics' &&
+      e.category !== 'cardio' &&
+      e.category !== 'stretching',
+  )
+  return [...energetic, ...strength]
+}
+
+function autofillCircuit(catalog: Exercise[], input: AutofillInput): Workout {
+  const budget = input.minutes * 60
+  const ordered = circuitOrder(candidatesFor(catalog, input.zone, input.level))
+  const chosen = ordered.slice(0, MAX_CIRCUIT_ITEMS)
+
+  const items: WorkoutItem[] = chosen.map((ex) => ({
+    exerciseId: ex.id,
+    sets: 0,
+    reps: 0,
+    ...CIRCUIT,
+  }))
+
+  const perRound = items.length * (CIRCUIT.workSeconds + CIRCUIT.restSeconds)
+  const rounds = perRound
+    ? Math.min(MAX_ROUNDS, Math.max(MIN_ROUNDS, Math.round(budget / perRound)))
+    : MIN_ROUNDS
+
+  return {
+    id: uuidv7(),
+    name: `${capitalize(input.zone)} · ${circuitLabel(input.minutes)}`,
+    zone: input.zone,
+    mode: 'timed',
+    rounds,
+    items,
+    createdAt: 0,
+  }
+}
+
+const circuitLabel = (min: number) => `HIIT ${min} min`

@@ -79,7 +79,11 @@
     "level": "Nivell",
     "minutes": "{count} min",
     "generate": "Generar",
-    "hint": "Pots editar-ho tot després."
+    "hint": "Pots editar-ho tot després.",
+    "goal": "Objectiu",
+    "goal_strength": "Força",
+    "goal_circuit": "Crema · Circuit",
+    "circuit_note": "Circuit HIIT per temps. El resultat depèn sobretot de la teva alimentació, no de l’entrenament."
   },
   "settings": {
     "title": "Configuració",

@@ -79,7 +79,11 @@
     "level": "Nivel",
     "minutes": "{count} min",
     "generate": "Generar",
-    "hint": "Puedes editarlo todo después."
+    "hint": "Puedes editarlo todo después.",
+    "goal": "Objetivo",
+    "goal_strength": "Fuerza",
+    "goal_circuit": "Quema · Circuito",
+    "circuit_note": "Circuito HIIT por tiempo. El resultado depende sobre todo de tu alimentación, no del entreno."
   },
   "settings": {
     "title": "Ajustes",

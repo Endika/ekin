@@ -2,6 +2,7 @@
   import { builder } from '../stores/builder'
   import { allExercises } from '../stores/catalog-store'
   import { autofill } from '../domain/autofill'
+  import type { Goal } from '../domain/autofill'
   import type { Level, Zone } from '../domain/types'
   import Icon from './Icon.svelte'
   import { _ } from 'svelte-i18n'
@@ -11,14 +12,16 @@
 
   const zones: Zone[] = ['upper', 'core', 'legs', 'full']
   const levels: Level[] = ['beginner', 'intermediate', 'expert']
+  const goals: Goal[] = ['strength', 'circuit']
   const times = [10, 20, 30, 45]
 
   let zone = $state<Zone>('full')
   let minutes = $state(20)
   let level = $state<Level>('beginner')
+  let goal = $state<Goal>('strength')
 
   function generate() {
-    builder.load(autofill(allExercises, { zone, minutes, level }))
+    builder.load(autofill(allExercises, { zone, minutes, level, goal }))
     open = false // collapse so the generated exercises are immediately visible
     onfill?.()
   }
@@ -35,6 +38,14 @@
 
   {#if open}
     <div class="panel card">
+      <label>
+        <span>{$_('autofill.goal')}</span>
+        <select bind:value={goal}>
+          {#each goals as g (g)}<option value={g}
+              >{$_('autofill.goal_' + g)}</option
+            >{/each}
+        </select>
+      </label>
       <label>
         <span>{$_('autofill.zone')}</span>
         <select bind:value={zone}>
@@ -61,7 +72,11 @@
         <Icon name="wand" size={18} />
         {$_('autofill.generate')}
       </button>
-      <p class="hint">{$_('autofill.hint')}</p>
+      {#if goal === 'circuit'}
+        <p class="hint">{$_('autofill.circuit_note')}</p>
+      {:else}
+        <p class="hint">{$_('autofill.hint')}</p>
+      {/if}
     </div>
   {/if}
 </section>
