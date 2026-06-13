@@ -19,7 +19,11 @@
   let picking = $state(false)
   let isTimed = $derived($builder.mode === 'timed')
   let savedList = $state<ReturnType<typeof SavedWorkouts>>()
-  let preview = $state<{ image: string; name: string }>()
+  let preview = $state<{
+    image: string
+    name: string
+    instructions: string[]
+  }>()
   let pendingNew = $state(false)
   const zones: Zone[] = ['upper', 'core', 'legs', 'full']
   const exerciseOf = (id: string) => allExercises.find((e) => e.id === id)
@@ -106,7 +110,12 @@
         onmoveup={() => i > 0 && builder.move(i, i - 1)}
         onmovedown={() =>
           i < $builder.items.length - 1 && builder.move(i, i + 1)}
-        onpreview={(image, name) => (preview = { image, name })}
+        onpreview={(image, name) =>
+          (preview = {
+            image,
+            name,
+            instructions: exerciseOf(item.exerciseId)?.instructions ?? [],
+          })}
       />
     {/each}
     {#if !$builder.items.length}
@@ -145,6 +154,7 @@
   <ImageLightbox
     image={preview.image}
     name={preview.name}
+    instructions={preview.instructions}
     onclose={() => (preview = undefined)}
   />
 {/if}

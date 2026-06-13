@@ -240,6 +240,20 @@
       </div>
     {/if}
 
+    {#if current.instructions.length}
+      <details class="howto">
+        <summary>
+          <Icon name="info" size={16} />
+          {$_('player.howto')}
+        </summary>
+        <ol>
+          {#each current.instructions as step (step)}
+            <li>{step}</li>
+          {/each}
+        </ol>
+      </details>
+    {/if}
+
     <button class="next btn-grad" onclick={next}>
       {#if state.phase === 'rest'}
         <Icon name="play" size={22} /> {$_('player.skipRest')}
@@ -444,6 +458,36 @@
     font-family: var(--font-display);
     font-weight: 800;
     font-size: 1.6rem;
+  }
+
+  .howto {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    text-align: left;
+    padding: 0 0.9rem;
+  }
+  .howto summary {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.7rem 0;
+    cursor: pointer;
+    color: var(--muted);
+    font-weight: 600;
+    list-style: none;
+  }
+  .howto summary::-webkit-details-marker {
+    display: none;
+  }
+  .howto ol {
+    margin: 0 0 0.8rem;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.45rem;
+    color: var(--text);
+    font-size: 0.9rem;
+    line-height: 1.45;
   }
 
   .next {
