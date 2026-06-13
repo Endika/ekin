@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/Endika/ekin/compare/v1.8.0...v1.8.1) (2026-06-13)
+
+
+### Bug Fixes
+
+* **player:** show the exercise image during HIIT work intervals ([3734317](https://github.com/Endika/ekin/commit/37343178619d37fdd242a78ec940fbb8683fec07))
+
 ## [1.8.0](https://github.com/Endika/ekin/compare/v1.7.0...v1.8.0) (2026-06-13)
 
 
