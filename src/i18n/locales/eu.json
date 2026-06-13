@@ -79,7 +79,11 @@
     "level": "Maila",
     "minutes": "{count} min",
     "generate": "Sortu",
-    "hint": "Gero dena edita dezakezu."
+    "hint": "Gero dena edita dezakezu.",
+    "goal": "Helburua",
+    "goal_strength": "Indarra",
+    "goal_circuit": "Erre · Zirkuitua",
+    "circuit_note": "Denboraren araberako HIIT zirkuitua. Emaitza zure elikaduraren araberakoa da batez ere, ez entrenamenduarena."
   },
   "settings": {
     "title": "Ezarpenak",

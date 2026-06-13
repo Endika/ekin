@@ -103,3 +103,67 @@ describe('autofill', () => {
     }
   })
 })
+
+const circuitCatalog: Exercise[] = [
+  ex('s1', 'legs', 'beginner', 'strength'),
+  ex('s2', 'core', 'beginner', 'strength'),
+  ex('p1', 'legs', 'beginner', 'plyometrics'),
+  ex('c1', 'full', 'beginner', 'cardio'),
+  ex('st1', 'core', 'beginner', 'stretching'),
+]
+const catOf = (id: string) => circuitCatalog.find((x) => x.id === id)!.category
+
+describe('autofill — circuit goal', () => {
+  it('returns a timed workout with rounds and work/rest per item', () => {
+    const w = autofill(circuitCatalog, {
+      zone: 'full',
+      minutes: 20,
+      level: 'beginner',
+      goal: 'circuit',
+    })
+    expect(w.mode).toBe('timed')
+    expect(w.rounds).toBeGreaterThanOrEqual(2)
+    expect(w.items.length).toBeGreaterThan(0)
+    for (const it of w.items) {
+      expect(it.workSeconds).toBeGreaterThan(0)
+      expect(it.restSeconds).toBeGreaterThan(0)
+    }
+  })
+
+  it('prefers plyometrics/cardio and drops stretching', () => {
+    const w = autofill(circuitCatalog, {
+      zone: 'full',
+      minutes: 20,
+      level: 'beginner',
+      goal: 'circuit',
+    })
+    const cats = w.items.map((it) => catOf(it.exerciseId))
+    expect(cats).not.toContain('stretching') // stretching excluded
+    // the energetic ones come first
+    expect(cats[0]).toMatch(/plyometrics|cardio/)
+  })
+
+  it('is deterministic', () => {
+    const inp = {
+      zone: 'full' as const,
+      minutes: 20,
+      level: 'beginner' as const,
+      goal: 'circuit' as const,
+    }
+    expect(autofill(circuitCatalog, inp).items).toEqual(
+      autofill(circuitCatalog, inp).items,
+    )
+  })
+
+  it("goal 'strength' matches the default rep-based output", () => {
+    const base = {
+      zone: 'legs' as const,
+      minutes: 20,
+      level: 'expert' as const,
+    }
+    const a = autofill(catalog, base)
+    const b = autofill(catalog, { ...base, goal: 'strength' })
+    expect(b.mode).toBeUndefined()
+    expect(b.items).toEqual(a.items)
+  })
+})
