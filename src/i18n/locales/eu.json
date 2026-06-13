@@ -83,8 +83,8 @@
     "generate": "Sortu",
     "hint": "Gero dena edita dezakezu.",
     "goal": "Mota",
-    "goal_strength": "Serieak eta errep.",
-    "goal_circuit": "Zirkuitua (denbora)",
+    "goal_strength": "Indarra",
+    "goal_circuit": "HIIT",
     "circuit_note": "Denboraren araberako HIIT zirkuitua. Emaitza zure elikaduraren araberakoa da batez ere, ez entrenamenduarena."
   },
   "settings": {

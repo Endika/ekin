@@ -83,8 +83,8 @@
     "generate": "Generate",
     "hint": "You can edit every part afterward.",
     "goal": "Type",
-    "goal_strength": "Sets & reps",
-    "goal_circuit": "Circuit (timed)",
+    "goal_strength": "Strength",
+    "goal_circuit": "HIIT",
     "circuit_note": "A timed HIIT circuit. Results depend mostly on your diet, not the workout."
   },
   "settings": {
