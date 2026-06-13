@@ -17,6 +17,9 @@
 
   let { onstart }: { onstart: () => void } = $props()
   let picking = $state(false)
+  let isTimed = $derived($builder.mode === 'timed')
+  let workSeconds = $derived($builder.items[0]?.workSeconds ?? 40)
+  let restSeconds = $derived($builder.items[0]?.restSeconds ?? 20)
   let savedList = $state<ReturnType<typeof SavedWorkouts>>()
   let preview = $state<{ image: string; name: string }>()
   let pendingNew = $state(false)
@@ -69,6 +72,40 @@
     {/each}
   </div>
 
+  {#if isTimed}
+    <div class="circuit card">
+      <label>
+        <span>{$_('builder.rounds')}</span>
+        <input
+          type="number"
+          min="1"
+          value={$builder.rounds ?? 1}
+          oninput={(e) => builder.setRounds(+e.currentTarget.value)}
+        />
+      </label>
+      <label>
+        <span>{$_('builder.workSeconds')}</span>
+        <input
+          type="number"
+          min="5"
+          step="5"
+          value={workSeconds}
+          oninput={(e) => builder.setWorkSeconds(+e.currentTarget.value)}
+        />
+      </label>
+      <label>
+        <span>{$_('builder.restSeconds')}</span>
+        <input
+          type="number"
+          min="0"
+          step="5"
+          value={restSeconds}
+          oninput={(e) => builder.setRestSeconds(+e.currentTarget.value)}
+        />
+      </label>
+    </div>
+  {/if}
+
   <div class="items">
     {#each $builder.items as item, i (item.exerciseId + i)}
       <BuilderItem
@@ -76,6 +113,7 @@
         name={nameOf(item.exerciseId)}
         image={exerciseOf(item.exerciseId)?.images[0]}
         zone={exerciseOf(item.exerciseId)?.zone}
+        timed={isTimed}
         onpatch={(p) => builder.patch(i, p)}
         onremove={() => builder.remove(i)}
         onmoveup={() => i > 0 && builder.move(i, i - 1)}
@@ -199,6 +237,38 @@
     border-color: transparent;
     color: #fff;
     box-shadow: var(--shadow-glow);
+  }
+
+  .circuit {
+    padding: 0.85rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(7rem, 100%), 1fr));
+    gap: 0.6rem;
+  }
+  .circuit label {
+    display: grid;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+  .circuit label span {
+    color: var(--muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .circuit input {
+    width: 100%;
+    min-width: 0;
+    min-height: 42px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    color: var(--text);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
   }
 
   .items {

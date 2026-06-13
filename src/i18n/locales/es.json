@@ -24,7 +24,10 @@
     "start": "Empezar",
     "new": "Nuevo",
     "newConfirm": "¿Empezar un entreno nuevo? Se perderán los cambios sin guardar.",
-    "empty": "Aún no hay ejercicios. Pulsa Añadir ejercicio para crear tu sesión."
+    "empty": "Aún no hay ejercicios. Pulsa Añadir ejercicio para crear tu sesión.",
+    "rounds": "Rondas",
+    "workSeconds": "Trabajo (s)",
+    "restSeconds": "Descanso (s)"
   },
   "item": {
     "sets": "Series",

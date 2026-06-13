@@ -24,7 +24,10 @@
     "start": "Comezar",
     "new": "Novo",
     "newConfirm": "Comezar un adestramento novo? Perderanse os cambios sen gardar.",
-    "empty": "Aínda non hai exercicios. Toca Engadir exercicio para crear a túa sesión."
+    "empty": "Aínda non hai exercicios. Toca Engadir exercicio para crear a túa sesión.",
+    "rounds": "Roldas",
+    "workSeconds": "Traballo (s)",
+    "restSeconds": "Descanso (s)"
   },
   "item": {
     "sets": "Series",

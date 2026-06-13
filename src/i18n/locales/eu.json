@@ -24,7 +24,10 @@
     "start": "Hasi",
     "new": "Berria",
     "newConfirm": "Entrenamendu berri bat hasi? Gorde gabeko aldaketak galduko dira.",
-    "empty": "Oraindik ariketarik ez. Sakatu Gehitu ariketa zure saioa sortzeko."
+    "empty": "Oraindik ariketarik ez. Sakatu Gehitu ariketa zure saioa sortzeko.",
+    "rounds": "Errondak",
+    "workSeconds": "Lana (s)",
+    "restSeconds": "Atsedena (s)"
   },
   "item": {
     "sets": "Serieak",

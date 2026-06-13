@@ -6,6 +6,19 @@ export function newWorkout(name: string, zone: Zone): Workout {
 }
 
 export function addItem(w: Workout, exerciseId: string): Workout {
+  // In a timed circuit a new exercise inherits the circuit's work/rest interval
+  // (from the existing items, or a sensible default) instead of sets/reps.
+  if (w.mode === 'timed') {
+    const ref = w.items[0]
+    const item: WorkoutItem = {
+      exerciseId,
+      sets: 0,
+      reps: 0,
+      workSeconds: ref?.workSeconds ?? 40,
+      restSeconds: ref?.restSeconds ?? 20,
+    }
+    return { ...w, items: [...w.items, item] }
+  }
   const item: WorkoutItem = { exerciseId, sets: 3, reps: 10, restSeconds: 30 }
   return { ...w, items: [...w.items, item] }
 }
