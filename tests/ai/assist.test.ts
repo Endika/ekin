@@ -113,3 +113,62 @@ describe('requestAssist', () => {
     expect(res).toEqual({ ok: false, error: 'request_failed' })
   })
 })
+
+const timedWorkout: Workout = {
+  id: 't',
+  name: 'T',
+  zone: 'legs',
+  mode: 'timed',
+  rounds: 3,
+  createdAt: 1,
+  items: [
+    { exerciseId: 'a', sets: 0, reps: 0, workSeconds: 40, restSeconds: 20 },
+  ],
+}
+
+describe('requestAssist — timed circuits', () => {
+  it('applies a timed swap keeping the seconds format', async () => {
+    const client = fake(
+      '{"rounds":3,"items":[{"exerciseId":"b","workSeconds":40,"restSeconds":20}]}',
+    )
+    const res = await requestAssist(client, catalog, timedWorkout, {
+      kind: 'swap',
+      itemIndex: 0,
+    })
+    expect(res.ok).toBe(true)
+    if (res.ok) {
+      expect(res.workout.mode).toBe('timed')
+      expect(res.workout.items[0]).toMatchObject({
+        exerciseId: 'b',
+        workSeconds: 40,
+        restSeconds: 20,
+      })
+    }
+  })
+
+  it('applies a timed difficulty adjustment (rounds + intervals)', async () => {
+    const client = fake(
+      '{"rounds":5,"items":[{"exerciseId":"a","workSeconds":50,"restSeconds":10}]}',
+    )
+    const res = await requestAssist(client, catalog, timedWorkout, {
+      kind: 'adjust',
+      direction: 'harder',
+    })
+    expect(res.ok).toBe(true)
+    if (res.ok) {
+      expect(res.workout.rounds).toBe(5)
+      expect(res.workout.items[0].workSeconds).toBe(50)
+    }
+  })
+
+  it('rejects a timed reply with a too-short work interval', async () => {
+    const client = fake(
+      '{"rounds":3,"items":[{"exerciseId":"a","workSeconds":0,"restSeconds":20}]}',
+    )
+    const res = await requestAssist(client, catalog, timedWorkout, {
+      kind: 'adjust',
+      direction: 'easier',
+    })
+    expect(res.ok).toBe(false)
+  })
+})
