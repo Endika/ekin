@@ -148,6 +148,18 @@
       <div class="rest">
         {#if isTimed && state.phase === 'work' && current}
           <h2 class="work-name">{current.name}</h2>
+          {#if current.images[0] && imgOk}
+            <img
+              class="work-img"
+              src={current.images[0]}
+              alt={current.name}
+              onerror={() => (imgOk = false)}
+            />
+          {:else}
+            <div class="work-img ph" aria-hidden="true">
+              <Icon name={zoneIcon(current.zone)} size={48} />
+            </div>
+          {/if}
         {/if}
         <div class="ring-wrap">
           <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
@@ -280,6 +292,27 @@
     margin: 0 0 0.6rem;
     font-size: 1.5rem;
     text-align: center;
+  }
+  .work-img {
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin-bottom: 0.9rem;
+  }
+  .work-img.ph {
+    display: grid;
+    place-items: center;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 122, 24, 0.18),
+        rgba(255, 45, 120, 0.18)
+      ),
+      var(--surface-2);
+    color: var(--accent);
   }
   .ring-wrap {
     position: relative;
