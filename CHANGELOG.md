@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/Endika/ekin/compare/v1.5.0...v1.5.1) (2026-06-13)
+
+
+### Refactor
+
+* **i18n:** name auto-fill modes by format, not goal ([8d80d49](https://github.com/Endika/ekin/commit/8d80d49f1f0e95d051438a88d67912982325557b))
+
 ## [1.5.0](https://github.com/Endika/ekin/compare/v1.4.7...v1.5.0) (2026-06-13)
 
 
