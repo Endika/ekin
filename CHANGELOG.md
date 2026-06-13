@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://github.com/Endika/ekin/compare/v1.8.1...v1.9.0) (2026-06-13)
+
+
+### Features
+
+* **exercise:** show step-by-step instructions in player and preview ([2381f82](https://github.com/Endika/ekin/commit/2381f82b8d06be6c324fa854f2fb71a4a9ec0ecd))
+
 ## [1.8.1](https://github.com/Endika/ekin/compare/v1.8.0...v1.8.1) (2026-06-13)
 
 
