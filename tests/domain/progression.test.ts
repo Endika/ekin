@@ -35,6 +35,14 @@ describe('exerciseSeries', () => {
     const sessions = [session(1000, [log('push', [10])])]
     expect(exerciseSeries(sessions, 'squat')).toEqual([])
   })
+
+  it('ignores timed-circuit logs (no logged reps)', () => {
+    // A timed session records the exercise with no sets.
+    const timedLog: SessionItemLog = { exerciseId: 'burpee', sets: [] }
+    const sessions = [session(1000, [timedLog])]
+    expect(exerciseSeries(sessions, 'burpee')).toEqual([])
+    expect(exercisedIds(sessions)).toEqual([])
+  })
 })
 
 describe('exercisedIds', () => {
