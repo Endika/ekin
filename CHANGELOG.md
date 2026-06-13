@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/Endika/ekin/compare/v1.6.0...v1.6.1) (2026-06-13)
+
+
+### Refactor
+
+* **i18n:** name workout types Strength / HIIT ([02cabe2](https://github.com/Endika/ekin/commit/02cabe21c0a40def7e22a985722908e7d627e4f7))
+
 ## [1.6.0](https://github.com/Endika/ekin/compare/v1.5.1...v1.6.0) (2026-06-13)
 
 
