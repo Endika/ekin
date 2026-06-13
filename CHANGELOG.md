@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.5.0](https://github.com/Endika/ekin/compare/v1.4.7...v1.5.0) (2026-06-13)
+
+
+### Features
+
+* **autofill:** timed circuit goal with category bias ([c21750d](https://github.com/Endika/ekin/commit/c21750d64a209fae260157cf75b3917ee0f827a1))
+* **builder:** light timed-circuit editor ([353ab0d](https://github.com/Endika/ekin/commit/353ab0dfd5a6b7afa58af687fc0e212cdf752dd4))
+* **domain:** add timed workout mode and exercise category ([47d4426](https://github.com/Endika/ekin/commit/47d44260e6197771b4eacdf18a9eb851aaef8b73))
+* **player:** timed work countdown and round counter ([25c98f3](https://github.com/Endika/ekin/commit/25c98f3ead7e5a6aab51142f937a639029d173a1))
+* **timer:** timed circuit state machine with rounds ([8ff4f5e](https://github.com/Endika/ekin/commit/8ff4f5e085a788b3d02337f61c9cc5d5c99f95b3))
+
+
+### Bug Fixes
+
+* **progression:** exclude timed-circuit logs from rep evolution ([fc4293e](https://github.com/Endika/ekin/commit/fc4293ed2bb29698cb1fe30f91b74d921631c58f))
+* **timer:** fall back to a default work interval for malformed timed items ([e22f390](https://github.com/Endika/ekin/commit/e22f390a79010255d71864986d0a76800b8957aa))
+
 ## [1.4.7](https://github.com/Endika/ekin/compare/v1.4.6...v1.4.7) (2026-06-05)
 
 
