@@ -49,7 +49,8 @@
     "complete": "Sesión completada 💪",
     "round": "Rolda {n}/{total}",
     "go": "Vamos!",
-    "skip": "Saltar"
+    "skip": "Saltar",
+    "howto": "Como se fai"
   },
   "history": {
     "minutes": "min",

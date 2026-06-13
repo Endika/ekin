@@ -49,7 +49,8 @@
     "complete": "Saioa amaituta 💪",
     "round": "Erronda {n}/{total}",
     "go": "Aurrera!",
-    "skip": "Saltatu"
+    "skip": "Saltatu",
+    "howto": "Nola egin"
   },
   "history": {
     "minutes": "min",
