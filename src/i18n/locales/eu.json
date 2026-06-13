@@ -1,5 +1,8 @@
 {
-  "nav": { "build": "Sortu", "progress": "Aurrerapena" },
+  "nav": {
+    "build": "Sortu",
+    "progress": "Aurrerapena"
+  },
   "zone": {
     "all": "Dena",
     "upper": "Goiko gorputza",
@@ -31,7 +34,9 @@
     "moveDown": "Jaitsi",
     "remove": "Kendu"
   },
-  "catalog": { "search": "Bilatu ariketak" },
+  "catalog": {
+    "search": "Bilatu ariketak"
+  },
   "player": {
     "exercise": "Ariketa {n}/{total}",
     "set": "Seriea {n}/{total}",
@@ -39,7 +44,10 @@
     "repsDone": "Egindako errep.",
     "skipRest": "Saltatu atsedena",
     "doneSet": "Seriea eginda",
-    "complete": "Saioa amaituta 💪"
+    "complete": "Saioa amaituta 💪",
+    "round": "Erronda {n}/{total}",
+    "go": "Aurrera!",
+    "skip": "Saltatu"
   },
   "history": {
     "minutes": "min",
