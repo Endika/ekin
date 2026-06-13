@@ -1,8 +1,42 @@
 import { uuidv7 } from 'uuidv7'
-import type { Workout, WorkoutItem, Zone } from './types'
+import type { Workout, WorkoutItem, WorkoutMode, Zone } from './types'
 
 export function newWorkout(name: string, zone: Zone): Workout {
   return { id: uuidv7(), name, zone, items: [], createdAt: 0 }
+}
+
+const CIRCUIT_DEFAULTS = { workSeconds: 40, restSeconds: 20, rounds: 3 }
+const REP_DEFAULTS = { sets: 3, reps: 10, restSeconds: 30 }
+
+/**
+ * Convert a workout between rep-based and timed-circuit form, filling the target
+ * format's missing fields with sane defaults so a hand-built rep workout can
+ * become a HIIT (and back) without losing exercises.
+ */
+export function setWorkoutMode(w: Workout, mode: WorkoutMode): Workout {
+  if (mode === 'timed') {
+    return {
+      ...w,
+      mode: 'timed',
+      rounds: w.rounds ?? CIRCUIT_DEFAULTS.rounds,
+      items: w.items.map((it) => ({
+        ...it,
+        workSeconds: it.workSeconds ?? CIRCUIT_DEFAULTS.workSeconds,
+        restSeconds: it.restSeconds || CIRCUIT_DEFAULTS.restSeconds,
+      })),
+    }
+  }
+  return {
+    ...w,
+    mode: 'reps',
+    items: w.items.map((it) => ({
+      ...it,
+      sets: it.sets >= 1 ? it.sets : REP_DEFAULTS.sets,
+      reps: it.reps >= 1 ? it.reps : REP_DEFAULTS.reps,
+      restSeconds:
+        it.restSeconds >= 1 ? it.restSeconds : REP_DEFAULTS.restSeconds,
+    })),
+  }
 }
 
 export function addItem(w: Workout, exerciseId: string): Workout {
