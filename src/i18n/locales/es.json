@@ -83,7 +83,7 @@
     "generate": "Generar",
     "hint": "Puedes editarlo todo después.",
     "goal": "Tipo",
-    "goal_strength": "Fuerza",
+    "goal_strength": "Series y reps",
     "goal_circuit": "HIIT",
     "circuit_note": "Circuito HIIT por tiempo. El resultado depende sobre todo de tu alimentación, no del entreno."
   },
