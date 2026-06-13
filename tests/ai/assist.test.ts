@@ -8,6 +8,7 @@ const ex = (id: string, zone: Zone): Exercise => ({
   name: id.toUpperCase(),
   zone,
   level: 'beginner',
+  category: 'strength',
   primaryMuscles: [],
   instructions: [],
   images: [],

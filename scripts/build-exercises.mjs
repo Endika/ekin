@@ -51,6 +51,7 @@ const bodyweight = all
       name: e.name,
       zone: ZONE_BY_MUSCLE[primary] ?? 'full',
       level: e.level,
+      category: e.category ?? 'strength',
       primaryMuscles: e.primaryMuscles ?? [],
       instructions: e.instructions ?? [],
       images: (e.images ?? []).map((p) => IMG_BASE + p),
