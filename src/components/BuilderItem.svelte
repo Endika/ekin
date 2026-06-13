@@ -30,13 +30,20 @@
   let imgOk = $state(true)
   let showImage = $derived(!!image && imgOk)
 
-  const fields = [
+  // Rep mode edits sets/reps/rest per exercise; a timed circuit edits the
+  // work/rest interval per exercise (rounds is a circuit-level control above).
+  const repFields = [
     { key: 'sets' as const, labelKey: 'item.sets', min: 1, step: 1 },
     { key: 'reps' as const, labelKey: 'item.reps', min: 1, step: 1 },
     { key: 'restSeconds' as const, labelKey: 'item.rest', min: 0, step: 5 },
   ]
+  const timedFields = [
+    { key: 'workSeconds' as const, labelKey: 'item.work', min: 5, step: 5 },
+    { key: 'restSeconds' as const, labelKey: 'item.rest', min: 0, step: 5 },
+  ]
+  let fields = $derived(timed ? timedFields : repFields)
   const bump = (key: keyof WorkoutItem, delta: number, min: number) =>
-    onpatch({ [key]: Math.max(min, (item[key] as number) + delta) })
+    onpatch({ [key]: Math.max(min, ((item[key] as number) ?? 0) + delta) })
 </script>
 
 <div class="row card">
@@ -67,39 +74,37 @@
       </button>
     </div>
   </div>
-  {#if !timed}
-    <div class="fields">
-      {#each fields as f (f.key)}
-        <div class="stepper">
-          <span class="lbl">{$_(f.labelKey)}</span>
-          <div class="ctrl">
-            <button
-              aria-label={$_('a11y.decrease', {
-                values: { label: $_(f.labelKey) },
-              })}
-              onclick={() => bump(f.key, -f.step, f.min)}
-            >
-              <Icon name="minus" size={16} />
-            </button>
-            <input
-              type="number"
-              min={f.min}
-              value={item[f.key]}
-              oninput={(e) => onpatch({ [f.key]: +e.currentTarget.value })}
-            />
-            <button
-              aria-label={$_('a11y.increase', {
-                values: { label: $_(f.labelKey) },
-              })}
-              onclick={() => bump(f.key, f.step, f.min)}
-            >
-              <Icon name="plus" size={16} />
-            </button>
-          </div>
+  <div class="fields">
+    {#each fields as f (f.key)}
+      <div class="stepper">
+        <span class="lbl">{$_(f.labelKey)}</span>
+        <div class="ctrl">
+          <button
+            aria-label={$_('a11y.decrease', {
+              values: { label: $_(f.labelKey) },
+            })}
+            onclick={() => bump(f.key, -f.step, f.min)}
+          >
+            <Icon name="minus" size={16} />
+          </button>
+          <input
+            type="number"
+            min={f.min}
+            value={item[f.key]}
+            oninput={(e) => onpatch({ [f.key]: +e.currentTarget.value })}
+          />
+          <button
+            aria-label={$_('a11y.increase', {
+              values: { label: $_(f.labelKey) },
+            })}
+            onclick={() => bump(f.key, f.step, f.min)}
+          >
+            <Icon name="plus" size={16} />
+          </button>
         </div>
-      {/each}
-    </div>
-  {/if}
+      </div>
+    {/each}
+  </div>
 </div>
 
 <style>

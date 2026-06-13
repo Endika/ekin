@@ -25,9 +25,7 @@
     "new": "Nou",
     "newConfirm": "Començar un entrenament nou? Es perdran els canvis sense guardar.",
     "empty": "Encara no hi ha exercicis. Toca Afegir exercici per a crear la teua sessió.",
-    "rounds": "Rondes",
-    "workSeconds": "Treball (s)",
-    "restSeconds": "Descans (s)"
+    "rounds": "Rondes"
   },
   "item": {
     "sets": "Sèries",
@@ -35,7 +33,8 @@
     "rest": "Descans s",
     "moveUp": "Pujar",
     "moveDown": "Baixar",
-    "remove": "Llevar"
+    "remove": "Llevar",
+    "work": "Treball"
   },
   "catalog": {
     "search": "Buscar exercicis"

@@ -18,8 +18,6 @@
   let { onstart }: { onstart: () => void } = $props()
   let picking = $state(false)
   let isTimed = $derived($builder.mode === 'timed')
-  let workSeconds = $derived($builder.items[0]?.workSeconds ?? 40)
-  let restSeconds = $derived($builder.items[0]?.restSeconds ?? 20)
   let savedList = $state<ReturnType<typeof SavedWorkouts>>()
   let preview = $state<{ image: string; name: string }>()
   let pendingNew = $state(false)
@@ -81,26 +79,6 @@
           min="1"
           value={$builder.rounds ?? 1}
           oninput={(e) => builder.setRounds(+e.currentTarget.value)}
-        />
-      </label>
-      <label>
-        <span>{$_('builder.workSeconds')}</span>
-        <input
-          type="number"
-          min="5"
-          step="5"
-          value={workSeconds}
-          oninput={(e) => builder.setWorkSeconds(+e.currentTarget.value)}
-        />
-      </label>
-      <label>
-        <span>{$_('builder.restSeconds')}</span>
-        <input
-          type="number"
-          min="0"
-          step="5"
-          value={restSeconds}
-          oninput={(e) => builder.setRestSeconds(+e.currentTarget.value)}
         />
       </label>
     </div>
