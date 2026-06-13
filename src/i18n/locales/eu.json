@@ -54,7 +54,9 @@
   "history": {
     "minutes": "min",
     "emptyTitle": "Oraindik saiorik ez",
-    "emptyHint": "Sortu entrenamendu bat eta hasi."
+    "emptyHint": "Sortu entrenamendu bat eta hasi.",
+    "delete": "Ezabatu saioa",
+    "deleteConfirm": "\"{name}\" historiatik ezabatu? Zure estatistikak eta bolada birkalkulatuko dira."
   },
   "stats": {
     "streak": "egun jarraian",

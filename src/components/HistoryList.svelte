@@ -1,10 +1,16 @@
 <script lang="ts">
   import type { Session } from '../domain/types'
   import Icon from './Icon.svelte'
+  import ConfirmDialog from './ConfirmDialog.svelte'
   import { _ } from 'svelte-i18n'
-  let { sessions }: { sessions: Session[] } = $props()
+  let {
+    sessions,
+    ondelete,
+  }: { sessions: Session[]; ondelete?: (id: string) => void } = $props()
   const fmt = (ms: number) => new Date(ms).toLocaleDateString()
   const mins = (s: number) => Math.round(s / 60)
+
+  let pending = $state<Session>()
 </script>
 
 <ul class="history fade-up">
@@ -19,6 +25,15 @@
         {mins(s.durationSeconds)}
         {$_('history.minutes')}
       </span>
+      {#if ondelete}
+        <button
+          class="del"
+          aria-label={$_('history.delete')}
+          onclick={() => (pending = s)}
+        >
+          <Icon name="trash" size={18} />
+        </button>
+      {/if}
     </li>
   {:else}
     <li class="empty card">
@@ -30,6 +45,20 @@
     </li>
   {/each}
 </ul>
+
+{#if pending}
+  <ConfirmDialog
+    message={$_('history.deleteConfirm', {
+      values: { name: pending.workoutName },
+    })}
+    confirmLabel={$_('common.delete')}
+    onconfirm={() => {
+      ondelete?.(pending!.id)
+      pending = undefined
+    }}
+    oncancel={() => (pending = undefined)}
+  />
+{/if}
 
 <style>
   .history {
@@ -73,6 +102,21 @@
     font-weight: 600;
     font-size: 0.85rem;
     white-space: nowrap;
+  }
+  .del {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    margin-left: 0.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--muted);
+  }
+  .del:active {
+    color: var(--danger);
   }
 
   .empty {

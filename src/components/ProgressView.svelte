@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { listSessions } from '../data/sessions-repo'
+  import { listSessions, deleteSession } from '../data/sessions-repo'
   import { exerciseSeries, exercisedIds } from '../domain/progression'
   import { allExercises } from '../stores/catalog-store'
   import type { Session } from '../domain/types'
@@ -11,13 +11,22 @@
   let sessions = $state<Session[]>([])
   let selected = $state('')
 
+  async function refresh() {
+    const s = await listSessions()
+    sessions = s
+    const ids = exercisedIds(s)
+    // Keep the current pick only if it still has data; otherwise fall back.
+    if (!ids.includes(selected)) selected = ids[0] ?? ''
+  }
+
   $effect(() => {
-    listSessions().then((s) => {
-      sessions = s
-      const ids = exercisedIds(s)
-      if (!selected && ids.length) selected = ids[0]
-    })
+    refresh()
   })
+
+  async function remove(id: string) {
+    await deleteSession(id)
+    await refresh() // stats, streak and the chart all re-derive from sessions
+  }
 
   const nameOf = (id: string) =>
     allExercises.find((e) => e.id === id)?.name ?? id
@@ -41,7 +50,7 @@
   </section>
 {/if}
 
-<HistoryList {sessions} />
+<HistoryList {sessions} ondelete={remove} />
 
 <style>
   .progress {

@@ -54,7 +54,9 @@
   "history": {
     "minutes": "min",
     "emptyTitle": "Aínda non hai sesións",
-    "emptyHint": "Crea un adestramento e comeza a adestrar."
+    "emptyHint": "Crea un adestramento e comeza a adestrar.",
+    "delete": "Borrar sesión",
+    "deleteConfirm": "Borrar \"{name}\" do historial? Recalcularanse as túas estatísticas e racha."
   },
   "stats": {
     "streak": "días seguidos",

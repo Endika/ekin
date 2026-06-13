@@ -54,7 +54,9 @@
   "history": {
     "minutes": "min",
     "emptyTitle": "Aún no hay sesiones",
-    "emptyHint": "Crea un entreno y empieza a entrenar."
+    "emptyHint": "Crea un entreno y empieza a entrenar.",
+    "delete": "Borrar sesión",
+    "deleteConfirm": "¿Borrar \"{name}\" del historial? Se recalcularán tus estadísticas y racha."
   },
   "stats": {
     "streak": "días seguidos",

@@ -54,7 +54,9 @@
   "history": {
     "minutes": "min",
     "emptyTitle": "Encara no hi ha sessions",
-    "emptyHint": "Crea un entrenament i comença a entrenar."
+    "emptyHint": "Crea un entrenament i comença a entrenar.",
+    "delete": "Esborrar sessió",
+    "deleteConfirm": "Esborrar \"{name}\" de l’historial? Es recalcularan les teves estadístiques i la ratxa."
   },
   "stats": {
     "streak": "dies seguits",
