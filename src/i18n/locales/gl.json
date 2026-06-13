@@ -83,9 +83,9 @@
     "minutes": "{count} min",
     "generate": "Xerar",
     "hint": "Podes editalo todo despois.",
-    "goal": "Obxectivo",
-    "goal_strength": "Forza",
-    "goal_circuit": "Queima · Circuito",
+    "goal": "Tipo",
+    "goal_strength": "Series e reps",
+    "goal_circuit": "Circuíto (por tempo)",
     "circuit_note": "Circuíto HIIT por tempo. O resultado depende sobre todo da túa alimentación, non do adestramento."
   },
   "settings": {
