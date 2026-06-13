@@ -13,7 +13,12 @@ export interface PlayerState {
 }
 
 const isTimed = (w: Workout) => w.mode === 'timed'
-const workSecondsOf = (w: Workout, i: number) => w.items[i].workSeconds ?? 0
+
+// Fallback so a malformed timed item (mode 'timed' but no workSeconds) still
+// gets a real work interval instead of silently flashing past at 0 seconds.
+const DEFAULT_WORK_SECONDS = 30
+const workSecondsOf = (w: Workout, i: number) =>
+  w.items[i].workSeconds ?? DEFAULT_WORK_SECONDS
 
 export function initSession(workout: Workout): PlayerState {
   const base = {

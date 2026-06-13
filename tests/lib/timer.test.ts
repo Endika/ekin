@@ -112,6 +112,16 @@ describe('timed circuit timer', () => {
     expect(s).toMatchObject({ phase: 'work', itemIndex: 1, remaining: 4 })
   })
 
+  it('falls back to a real work interval when workSeconds is missing', () => {
+    const malformed: Workout = {
+      ...timed,
+      rounds: 1,
+      items: [{ exerciseId: 'a', sets: 0, reps: 0, restSeconds: 0 }],
+    }
+    const s = initSession(malformed)
+    expect(s.remaining).toBeGreaterThan(1) // not an instant 0-second skip
+  })
+
   it('skips the rest phase for an item with zero rest', () => {
     const noRest: Workout = {
       ...timed,
