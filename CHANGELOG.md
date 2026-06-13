@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/Endika/ekin/compare/v1.6.3...v1.7.0) (2026-06-13)
+
+
+### Features
+
+* **builder:** toggle a workout between Sets & reps and HIIT ([4089f53](https://github.com/Endika/ekin/commit/4089f537bfcdba00ff5f57cf9e81985b52bd35c3))
+
 ## [1.6.3](https://github.com/Endika/ekin/compare/v1.6.2...v1.6.3) (2026-06-13)
 
 
