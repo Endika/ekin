@@ -25,9 +25,7 @@
     "new": "Novo",
     "newConfirm": "Comezar un adestramento novo? Perderanse os cambios sen gardar.",
     "empty": "Aínda non hai exercicios. Toca Engadir exercicio para crear a túa sesión.",
-    "rounds": "Roldas",
-    "workSeconds": "Traballo (s)",
-    "restSeconds": "Descanso (s)"
+    "rounds": "Roldas"
   },
   "item": {
     "sets": "Series",
@@ -35,7 +33,8 @@
     "rest": "Descanso s",
     "moveUp": "Subir",
     "moveDown": "Baixar",
-    "remove": "Quitar"
+    "remove": "Quitar",
+    "work": "Traballo"
   },
   "catalog": {
     "search": "Buscar exercicios"

@@ -25,9 +25,7 @@
     "new": "New",
     "newConfirm": "Start a new workout? Unsaved changes will be lost.",
     "empty": "No exercises yet. Tap Add exercise to build your session.",
-    "rounds": "Rounds",
-    "workSeconds": "Work (s)",
-    "restSeconds": "Rest (s)"
+    "rounds": "Rounds"
   },
   "item": {
     "sets": "Sets",
@@ -35,7 +33,8 @@
     "rest": "Rest s",
     "moveUp": "Move up",
     "moveDown": "Move down",
-    "remove": "Remove"
+    "remove": "Remove",
+    "work": "Work"
   },
   "catalog": {
     "search": "Search exercises"
