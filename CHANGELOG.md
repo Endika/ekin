@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.3](https://github.com/Endika/ekin/compare/v1.6.2...v1.6.3) (2026-06-13)
+
+
+### Bug Fixes
+
+* **autofill,ai:** vary HIIT generation and support timed circuits in AI assist ([17cd82d](https://github.com/Endika/ekin/commit/17cd82d645a2f5673f3cc5d126418242c15523ec))
+
 ## [1.6.2](https://github.com/Endika/ekin/compare/v1.6.1...v1.6.2) (2026-06-13)
 
 
