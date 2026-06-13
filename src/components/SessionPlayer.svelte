@@ -14,6 +14,9 @@
     onfinish,
   }: { workout: Workout; onfinish: (s: Session) => void } = $props()
 
+  const isTimed = workout.mode === 'timed'
+  const rounds = workout.rounds ?? 1
+
   let state = $state(initSession(workout))
   let startedAt = Date.now()
   let interval: ReturnType<typeof setInterval> | undefined
@@ -28,15 +31,26 @@
       : exOf(workout.items[state.itemIndex].exerciseId),
   )
 
-  // Rest ring geometry (visual only).
+  // The countdown ring is shown for rest (both modes) and for the work phase in
+  // timed mode (it auto-counts the work interval). Rep-mode work is manual.
+  let ringActive = $derived(
+    state.phase === 'rest' || (isTimed && state.phase === 'work'),
+  )
+
+  // Rest/work ring geometry (visual only).
   const R = 86
   const CIRC = 2 * Math.PI * R
-  let restTotal = $derived(
-    state.phase === 'rest'
-      ? Math.max(1, workout.items[state.itemIndex].restSeconds)
+  let ringTotal = $derived(
+    ringActive
+      ? Math.max(
+          1,
+          state.phase === 'rest'
+            ? workout.items[state.itemIndex].restSeconds
+            : (workout.items[state.itemIndex].workSeconds ?? 1),
+        )
       : 1,
   )
-  let ringOffset = $derived(CIRC * (1 - state.remaining / restTotal))
+  let ringOffset = $derived(CIRC * (1 - state.remaining / ringTotal))
 
   let imgOk = $state(true)
   $effect(() => {
@@ -81,10 +95,14 @@
     requestWakeLock()
     document.addEventListener('visibilitychange', onVisibilityChange)
     interval = setInterval(() => {
-      if (state.phase === 'rest') {
+      // Timed mode auto-counts work and rest; rep mode only counts rest.
+      const counts =
+        state.phase === 'rest' || (isTimed && state.phase === 'work')
+      if (counts) {
         const before = state.phase
         state = tick(state)
         if (state.phase !== before) buzz()
+        if (state.phase === 'done') finish()
       }
     }, 1000)
   })
@@ -108,38 +126,53 @@
           },
         })}
       </span>
-      <span class="pill">
-        {$_('player.set', {
-          values: {
-            n: state.setIndex + 1,
-            total: workout.items[state.itemIndex].sets,
-          },
-        })}
-      </span>
+      {#if isTimed}
+        <span class="pill">
+          {$_('player.round', {
+            values: { n: state.roundIndex + 1, total: rounds },
+          })}
+        </span>
+      {:else}
+        <span class="pill">
+          {$_('player.set', {
+            values: {
+              n: state.setIndex + 1,
+              total: workout.items[state.itemIndex].sets,
+            },
+          })}
+        </span>
+      {/if}
     </header>
 
-    {#if state.phase === 'rest'}
+    {#if ringActive}
       <div class="rest">
-        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
-          <defs>
-            <linearGradient id="ring-grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#ff7a18" />
-              <stop offset="1" stop-color="#ff2d78" />
-            </linearGradient>
-          </defs>
-          <circle class="track" cx="100" cy="100" r={R} />
-          <circle
-            class="bar"
-            cx="100"
-            cy="100"
-            r={R}
-            stroke-dasharray={CIRC}
-            stroke-dashoffset={ringOffset}
-          />
-        </svg>
-        <div class="ring-center">
-          <span class="count grad-text">{state.remaining}</span>
-          <span class="rest-label">{$_('player.rest')}</span>
+        {#if isTimed && state.phase === 'work' && current}
+          <h2 class="work-name">{current.name}</h2>
+        {/if}
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+            <defs>
+              <linearGradient id="ring-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ff7a18" />
+                <stop offset="1" stop-color="#ff2d78" />
+              </linearGradient>
+            </defs>
+            <circle class="track" cx="100" cy="100" r={R} />
+            <circle
+              class="bar"
+              cx="100"
+              cy="100"
+              r={R}
+              stroke-dasharray={CIRC}
+              stroke-dashoffset={ringOffset}
+            />
+          </svg>
+          <div class="ring-center">
+            <span class="count grad-text">{state.remaining}</span>
+            <span class="rest-label">
+              {state.phase === 'rest' ? $_('player.rest') : $_('player.go')}
+            </span>
+          </div>
         </div>
       </div>
     {:else}
@@ -198,6 +231,8 @@
     <button class="next btn-grad" onclick={next}>
       {#if state.phase === 'rest'}
         <Icon name="play" size={22} /> {$_('player.skipRest')}
+      {:else if isTimed}
+        <Icon name="play" size={22} /> {$_('player.skip')}
       {:else}
         <Icon name="check" size={22} /> {$_('player.doneSet')}
       {/if}
@@ -240,6 +275,16 @@
     display: grid;
     place-items: center;
     padding: 1.5rem 0;
+  }
+  .work-name {
+    margin: 0 0 0.6rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .ring-wrap {
+    position: relative;
+    display: grid;
+    place-items: center;
   }
   .ring {
     width: min(74vw, 300px);

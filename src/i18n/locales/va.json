@@ -1,5 +1,8 @@
 {
-  "nav": { "build": "Crear", "progress": "Progrés" },
+  "nav": {
+    "build": "Crear",
+    "progress": "Progrés"
+  },
   "zone": {
     "all": "Tot",
     "upper": "Tren superior",
@@ -31,7 +34,9 @@
     "moveDown": "Baixar",
     "remove": "Llevar"
   },
-  "catalog": { "search": "Buscar exercicis" },
+  "catalog": {
+    "search": "Buscar exercicis"
+  },
   "player": {
     "exercise": "Exercici {n}/{total}",
     "set": "Sèrie {n}/{total}",
@@ -39,7 +44,10 @@
     "repsDone": "Reps fetes",
     "skipRest": "Saltar descans",
     "doneSet": "Sèrie feta",
-    "complete": "Sessió completada 💪"
+    "complete": "Sessió completada 💪",
+    "round": "Ronda {n}/{total}",
+    "go": "Avant!",
+    "skip": "Salta"
   },
   "history": {
     "minutes": "min",

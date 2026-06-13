@@ -1,5 +1,8 @@
 {
-  "nav": { "build": "Build", "progress": "Progress" },
+  "nav": {
+    "build": "Build",
+    "progress": "Progress"
+  },
   "zone": {
     "all": "All",
     "upper": "Upper",
@@ -31,7 +34,9 @@
     "moveDown": "Move down",
     "remove": "Remove"
   },
-  "catalog": { "search": "Search exercises" },
+  "catalog": {
+    "search": "Search exercises"
+  },
   "player": {
     "exercise": "Exercise {n}/{total}",
     "set": "Set {n}/{total}",
@@ -39,7 +44,10 @@
     "repsDone": "Reps done",
     "skipRest": "Skip rest",
     "doneSet": "Done set",
-    "complete": "Session complete 💪"
+    "complete": "Session complete 💪",
+    "round": "Round {n}/{total}",
+    "go": "Go!",
+    "skip": "Skip"
   },
   "history": {
     "minutes": "min",
