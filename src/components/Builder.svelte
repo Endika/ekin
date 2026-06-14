@@ -9,10 +9,11 @@
   import ImageLightbox from './ImageLightbox.svelte'
   import ConfirmDialog from './ConfirmDialog.svelte'
   import Icon from './Icon.svelte'
-  import { _ } from 'svelte-i18n'
+  import { _, locale } from 'svelte-i18n'
   import { get } from 'svelte/store'
   import { saveWorkout } from '../data/workouts-repo'
   import { saved } from '../stores/saved-store'
+  import { localizedInstructions } from '../domain/catalog'
   import type { Zone } from '../domain/types'
 
   let { onstart }: { onstart: () => void } = $props()
@@ -110,12 +111,14 @@
         onmoveup={() => i > 0 && builder.move(i, i - 1)}
         onmovedown={() =>
           i < $builder.items.length - 1 && builder.move(i, i + 1)}
-        onpreview={(image, name) =>
-          (preview = {
+        onpreview={(image, name) => {
+          const ex = exerciseOf(item.exerciseId)
+          preview = {
             image,
             name,
-            instructions: exerciseOf(item.exerciseId)?.instructions ?? [],
-          })}
+            instructions: ex ? localizedInstructions(ex, $locale ?? 'en') : [],
+          }
+        }}
       />
     {/each}
     {#if !$builder.items.length}

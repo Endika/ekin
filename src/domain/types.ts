@@ -16,7 +16,15 @@ export interface Exercise {
   level: Level
   category: Category
   primaryMuscles: string[]
+  /** English step-by-step instructions (the dataset's source language). */
   instructions: string[]
+  /**
+   * Translated instructions keyed by locale (es/eu/gl/ca/va). English uses
+   * `instructions` directly. Absent until the build-time translation script
+   * (`npm run translate-instructions`) populates it; the UI falls back to
+   * English per locale when missing.
+   */
+  instructionsI18n?: Record<string, string[]>
   images: string[]
 }
 
