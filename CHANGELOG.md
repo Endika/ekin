@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/Endika/ekin/compare/v1.9.0...v1.10.0) (2026-06-14)
+
+
+### Features
+
+* **i18n:** localize exercise instructions with build-time translation ([0315f97](https://github.com/Endika/ekin/commit/0315f978ca8c29392fa4ab143397b46a0748d4c3))
+
 ## [1.9.0](https://github.com/Endika/ekin/compare/v1.8.1...v1.9.0) (2026-06-13)
 
 
