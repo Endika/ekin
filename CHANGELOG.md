@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.0](https://github.com/Endika/ekin/compare/v1.10.0...v1.11.0) (2026-06-14)
+
+
+### Features
+
+* **i18n:** translate all exercise instructions into 6 locales ([46efc43](https://github.com/Endika/ekin/commit/46efc43a290aed6979381f92cc438d5f526833f4))
+
 ## [1.10.0](https://github.com/Endika/ekin/compare/v1.9.0...v1.10.0) (2026-06-14)
 
 
