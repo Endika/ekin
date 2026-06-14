@@ -5,9 +5,10 @@
   import { initSession, tick, advance } from '../lib/timer'
   import { requestWakeLock, releaseWakeLock } from '../lib/wakeLock'
   import { allExercises } from '../stores/catalog-store'
+  import { localizedInstructions } from '../domain/catalog'
   import Icon from './Icon.svelte'
   import { zoneIcon } from '../lib/zoneIcon'
-  import { _ } from 'svelte-i18n'
+  import { _, locale } from 'svelte-i18n'
 
   let {
     workout,
@@ -29,6 +30,9 @@
     state.phase === 'done'
       ? undefined
       : exOf(workout.items[state.itemIndex].exerciseId),
+  )
+  let steps = $derived(
+    current ? localizedInstructions(current, $locale ?? 'en') : [],
   )
 
   // The countdown ring is shown for rest (both modes) and for the work phase in
@@ -240,14 +244,14 @@
       </div>
     {/if}
 
-    {#if current.instructions.length}
+    {#if steps.length}
       <details class="howto">
         <summary>
           <Icon name="info" size={16} />
           {$_('player.howto')}
         </summary>
         <ol>
-          {#each current.instructions as step (step)}
+          {#each steps as step (step)}
             <li>{step}</li>
           {/each}
         </ol>

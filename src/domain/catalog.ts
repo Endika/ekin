@@ -14,3 +14,12 @@ export function search(list: Exercise[], term: string): Exercise[] {
   if (!q) return list
   return list.filter((e) => e.name.toLowerCase().includes(q))
 }
+
+/**
+ * Instructions for an exercise in the given locale, falling back to the English
+ * source when that locale has no (complete) translation yet.
+ */
+export function localizedInstructions(ex: Exercise, locale: string): string[] {
+  const t = ex.instructionsI18n?.[locale]
+  return t && t.length ? t : ex.instructions
+}
