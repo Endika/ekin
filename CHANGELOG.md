@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.1](https://github.com/Endika/ekin/compare/v1.11.0...v1.11.1) (2026-07-13)
+
+
+### Bug Fixes
+
+* prevent accidental pinch and double-tap zoom on mobile ([24a1256](https://github.com/Endika/ekin/commit/24a12562db5069248ed9b310d6e7bb80bf29479f))
+
 ## [1.11.0](https://github.com/Endika/ekin/compare/v1.10.0...v1.11.0) (2026-06-14)
 
 
