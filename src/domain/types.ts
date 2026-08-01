@@ -31,13 +31,24 @@ export interface Exercise {
 /** A workout is either rep-based (sets×reps×rest) or a timed circuit. */
 export type WorkoutMode = 'reps' | 'timed'
 
+/**
+ * Which part of the session an item belongs to. Absent ⇒ 'main', so workouts saved before
+ * warm-ups existed still play as a single main block.
+ */
+export type WorkoutBlock = 'warmup' | 'main' | 'cooldown'
+
 export interface WorkoutItem {
   exerciseId: string
   sets: number
   reps: number
   restSeconds: number
-  /** Timed mode only: seconds of work per round. Ignored in rep mode. */
+  /**
+   * Seconds of work. Used by timed circuits, and by warm-up / cool-down items, which are
+   * held for a duration rather than counted in reps.
+   */
   workSeconds?: number
+  /** Absent ⇒ 'main' (back-compat with workouts saved before M5). */
+  block?: WorkoutBlock
 }
 
 export interface Workout {

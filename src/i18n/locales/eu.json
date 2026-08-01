@@ -50,7 +50,11 @@
     "round": "Erronda {n}/{total}",
     "go": "Aurrera!",
     "skip": "Saltatu",
-    "howto": "Nola egin"
+    "howto": "Nola egin",
+    "block": {
+      "warmup": "Berotzea",
+      "cooldown": "Lasaitzea"
+    }
   },
   "history": {
     "minutes": "min",

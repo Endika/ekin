@@ -50,7 +50,11 @@
     "round": "Rolda {n}/{total}",
     "go": "Vamos!",
     "skip": "Saltar",
-    "howto": "Como se fai"
+    "howto": "Como se fai",
+    "block": {
+      "warmup": "Quecemento",
+      "cooldown": "Volta á calma"
+    }
   },
   "history": {
     "minutes": "min",

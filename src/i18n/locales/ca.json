@@ -50,7 +50,11 @@
     "round": "Ronda {n}/{total}",
     "go": "Som-hi!",
     "skip": "Salta",
-    "howto": "Com es fa"
+    "howto": "Com es fa",
+    "block": {
+      "warmup": "Escalfament",
+      "cooldown": "Tornada a la calma"
+    }
   },
   "history": {
     "minutes": "min",
