@@ -101,7 +101,12 @@
     "aiKey": "Clave API de Gemini",
     "aiKeyHint": "Se guarda solo en este dispositivo. Llama a Gemini directamente con tu propia cuota.",
     "aiKeyPlaceholder": "Pega tu clave",
-    "clear": "Borrar"
+    "clear": "Borrar",
+    "credits": "Créditos",
+    "creditsFree": "Ejercicios de",
+    "publicDomain": "dominio público",
+    "creditsWger": "{count} ejercicios de",
+    "creditsAuthors": "aportados por {count} autores."
   },
   "ai": {
     "title": "Asistente IA",
@@ -127,5 +132,10 @@
     "cancel": "Cancelar",
     "delete": "Eliminar",
     "rename": "Renombrar"
+  },
+  "exercise": {
+    "easier": "Más fácil:",
+    "nextLevel": "Siguiente nivel:",
+    "credit": "Por {author} vía {source}"
   }
 }

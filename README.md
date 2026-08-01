@@ -48,8 +48,17 @@ npm run check    # lint + typecheck + tests
 npm run build    # production build to dist/
 ```
 
-`npm run sync-exercises` refreshes the bundled exercise catalog; `npm run icons` regenerates the PWA icons from `public/favicon.svg`.
+`npm run sync-exercises` refreshes the free-exercise-db catalog and `npm run import-wger` the wger one; `npm run icons` regenerates the PWA icons from `public/favicon.svg`.
 
 ## Credits
 
-Exercise data from [free-exercise-db](https://github.com/yuhonas/free-exercise-db) (MIT).
+The **code** is MIT. The **exercise data** is not all under the same terms:
+
+- [free-exercise-db](https://github.com/yuhonas/free-exercise-db) — the Unlicense (public
+  domain).
+- [wger](https://wger.de) — CC-BY-SA, kept in its own file and credited per exercise, both
+  in the app's credits screen and on each exercise. Adaptations we publish, such as our
+  Basque, Galician, Catalan and Valencian translations of that text, carry the same
+  licence.
+
+See [NOTICE.md](./NOTICE.md) for the details.

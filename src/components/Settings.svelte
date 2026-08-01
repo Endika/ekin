@@ -4,9 +4,16 @@
   import LocaleSelect from './LocaleSelect.svelte'
   import { geminiKey } from '../stores/settings'
   import { theme, type Theme } from '../stores/theme'
+  import { allExercises } from '../stores/catalog-store'
 
   let { onclose }: { onclose: () => void } = $props()
   let keyInput = $state($geminiKey)
+
+  // CC-BY-SA requires attribution in the medium the work is distributed in — for an app,
+  // a visible credits screen. Counted from the data so it cannot drift.
+  const attributed = allExercises.filter((e) => e.source)
+  const wgerCount = attributed.length
+  const wgerAuthors = new Set(attributed.map((e) => e.source!.author)).size
 
   const themes: { value: Theme; icon: 'monitor' | 'sun' | 'moon' }[] = [
     { value: 'system', icon: 'monitor' },
@@ -79,6 +86,31 @@
       </div>
       <small>{$_('settings.aiKeyHint')}</small>
     </label>
+
+    <div class="field credits">
+      <span>{$_('settings.credits')}</span>
+      <small>
+        {$_('settings.creditsFree')}
+        <a
+          href="https://github.com/yuhonas/free-exercise-db"
+          target="_blank"
+          rel="noreferrer">free-exercise-db</a
+        >
+        ({$_('settings.publicDomain')}).
+      </small>
+      <small>
+        {$_('settings.creditsWger', { values: { count: wgerCount } })}
+        <a href="https://wger.de" target="_blank" rel="noreferrer">wger</a>
+        —
+        <a
+          href="https://creativecommons.org/licenses/by-sa/4.0/"
+          target="_blank"
+          rel="noreferrer">CC-BY-SA</a
+        >, {$_('settings.creditsAuthors', {
+          values: { count: wgerAuthors },
+        })}
+      </small>
+    </div>
   </section>
 </div>
 

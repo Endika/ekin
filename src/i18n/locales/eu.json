@@ -101,7 +101,12 @@
     "aiKey": "Gemini API gakoa",
     "aiKeyHint": "Gailu honetan bakarrik gordetzen da. Gemini zuzenean deitzen du zure kuotarekin.",
     "aiKeyPlaceholder": "Itsatsi zure gakoa",
-    "clear": "Garbitu"
+    "clear": "Garbitu",
+    "credits": "Kredituak",
+    "creditsFree": "Ariketak hemendik:",
+    "publicDomain": "domeinu publikoa",
+    "creditsWger": "{count} ariketa hemendik:",
+    "creditsAuthors": "{count} egilek ekarriak."
   },
   "ai": {
     "title": "IA laguntzailea",
@@ -127,5 +132,10 @@
     "cancel": "Utzi",
     "delete": "Ezabatu",
     "rename": "Izena aldatu"
+  },
+  "exercise": {
+    "easier": "Errazagoa:",
+    "nextLevel": "Hurrengo maila:",
+    "credit": "{author} egilearena, {source} bidez"
   }
 }

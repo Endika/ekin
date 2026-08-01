@@ -1,15 +1,27 @@
 <script lang="ts">
+  import { _ } from 'svelte-i18n'
+  import type { Exercise } from '../domain/types'
+  import { chainNeighbours } from '../domain/catalog'
+  import { allExercises } from '../stores/catalog-store'
+
   let {
     image,
     name,
     instructions = [],
+    exercise,
     onclose,
   }: {
     image: string
     name: string
     instructions?: string[]
+    /** Enables the progression rungs and the attribution line. */
+    exercise?: Exercise
     onclose: () => void
   } = $props()
+
+  let rungs = $derived(
+    exercise ? chainNeighbours(allExercises, exercise) : undefined,
+  )
 </script>
 
 <div
@@ -27,6 +39,38 @@
           <li>{step}</li>
         {/each}
       </ol>
+    {/if}
+
+    {#if rungs?.previous || rungs?.next}
+      <div class="rungs">
+        {#if rungs.previous}
+          <p>
+            <span class="label">{$_('exercise.easier')}</span>
+            {rungs.previous.name}
+          </p>
+        {/if}
+        {#if rungs.next}
+          <p>
+            <span class="label">{$_('exercise.nextLevel')}</span>
+            {rungs.next.name}
+          </p>
+        {/if}
+      </div>
+    {/if}
+
+    {#if exercise?.source}
+      <p class="credit">
+        {$_('exercise.credit', {
+          values: {
+            author: exercise.source.author,
+            source: exercise.source.name,
+          },
+        })}
+        ·
+        <a href={exercise.source.licenseUrl} target="_blank" rel="noreferrer">
+          {exercise.source.license}
+        </a>
+      </p>
     {/if}
   </figure>
 </div>
@@ -75,5 +119,32 @@
   }
   .steps li {
     opacity: 0.92;
+  }
+  .rungs {
+    justify-self: stretch;
+    display: grid;
+    gap: 0.35rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .rungs p {
+    margin: 0;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  .rungs .label {
+    opacity: 0.65;
+    margin-right: 0.35rem;
+  }
+  .credit {
+    justify-self: stretch;
+    margin: 0;
+    color: #fff;
+    opacity: 0.6;
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+  .credit a {
+    color: inherit;
   }
 </style>
