@@ -1362,7 +1362,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 4
+      "step": 5
     },
     "instructionsI18n": {
       "es": [
@@ -1974,7 +1974,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 2
+      "step": 3
     },
     "instructionsI18n": {
       "es": [
@@ -3107,6 +3107,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Handstand_Push-Ups/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Handstand_Push-Ups/1.jpg"
     ],
+    "chain": {
+      "id": "pike",
+      "step": 3
+    },
     "instructionsI18n": {
       "es": [
         "De espaldas a la pared, flexiónate por la cintura y coloca ambas manos en el suelo a la anchura de los hombros.",
@@ -3373,7 +3377,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 0
+      "step": 1
     },
     "instructionsI18n": {
       "es": [
@@ -3425,7 +3429,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 0
+      "step": 1
     },
     "instructionsI18n": {
       "es": [
@@ -3487,7 +3491,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 0
+      "step": 1
     },
     "instructionsI18n": {
       "es": [
@@ -3549,7 +3553,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 0
+      "step": 1
     },
     "instructionsI18n": {
       "es": [
@@ -3611,7 +3615,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 0
+      "step": 1
     },
     "instructionsI18n": {
       "es": [
@@ -5558,7 +5562,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 3
+      "step": 4
     },
     "instructionsI18n": {
       "es": [
@@ -5674,7 +5678,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 1
+      "step": 2
     },
     "instructionsI18n": {
       "es": [
@@ -5730,7 +5734,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 3
+      "step": 4
     },
     "instructionsI18n": {
       "es": [
@@ -5787,7 +5791,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 2
+      "step": 3
     },
     "instructionsI18n": {
       "es": [
@@ -5849,7 +5853,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 2
+      "step": 3
     },
     "instructionsI18n": {
       "es": [
@@ -5910,7 +5914,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 1
+      "step": 2
     },
     "instructionsI18n": {
       "es": [
@@ -5966,7 +5970,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 1
+      "step": 2
     },
     "instructionsI18n": {
       "es": [
@@ -7314,7 +7318,7 @@
     ],
     "chain": {
       "id": "push",
-      "step": 5
+      "step": 6
     },
     "instructionsI18n": {
       "es": [
@@ -7585,7 +7589,7 @@
     ],
     "chain": {
       "id": "plank",
-      "step": 2
+      "step": 3
     },
     "instructionsI18n": {
       "es": [
@@ -7689,7 +7693,7 @@
     ],
     "chain": {
       "id": "lunge",
-      "step": 1
+      "step": 2
     },
     "instructionsI18n": {
       "es": [
