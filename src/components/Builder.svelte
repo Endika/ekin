@@ -14,7 +14,7 @@
   import { saveWorkout } from '../data/workouts-repo'
   import { saved } from '../stores/saved-store'
   import { localizedInstructions } from '../domain/catalog'
-  import type { Exercise, Zone } from '../domain/types'
+  import type { Exercise, WorkoutItem, Zone } from '../domain/types'
 
   let { onstart }: { onstart: () => void } = $props()
   let picking = $state(false)
@@ -28,6 +28,8 @@
   }>()
   let pendingNew = $state(false)
   const zones: Zone[] = ['upper', 'core', 'legs', 'full']
+  /** Undefined for the item before the first one, which is what starts the first run. */
+  const blockOf = (item?: WorkoutItem) => item && (item.block ?? 'main')
   const exerciseOf = (id: string) => allExercises.find((e) => e.id === id)
   const nameOf = (id: string) => exerciseOf(id)?.name ?? id
 
@@ -101,6 +103,11 @@
 
   <div class="items">
     {#each $builder.items as item, i (item.exerciseId + i)}
+      <!-- A generated session runs warm-up → main → cool-down. Head each run, or the
+           stretches look like ordinary exercises that someone set to zero reps. -->
+      {#if blockOf(item) !== blockOf($builder.items[i - 1])}
+        <p class="block-head">{$_('block.' + blockOf(item))}</p>
+      {/if}
       <BuilderItem
         {item}
         name={nameOf(item.exerciseId)}
@@ -298,6 +305,18 @@
   .items {
     display: grid;
     gap: 0.6rem;
+  }
+  .block-head {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .block-head:first-child {
+    margin-top: 0;
   }
   .empty {
     padding: 1.5rem 1rem;
