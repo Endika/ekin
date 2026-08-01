@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.1](https://github.com/Endika/ekin/compare/v1.14.0...v1.14.1) (2026-08-01)
+
+
+### Bug Fixes
+
+* **ci:** grant release-please the actions:write it needs to dispatch deploy ([95a8fdf](https://github.com/Endika/ekin/commit/95a8fdfd7b49825b5499779499e3a01161d0f3d2))
+
 ## [1.14.0](https://github.com/Endika/ekin/compare/v1.13.0...v1.14.0) (2026-08-01)
 
 
