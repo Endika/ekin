@@ -10,9 +10,10 @@ const { version } = JSON.parse(
 export default defineConfig(({ mode }) => ({
   base: '/ekin/',
   define: { __APP_VERSION__: JSON.stringify(version) },
-  // Under test, Svelte resolves its server build unless the browser condition is set,
-  // and `mount()` then throws. Component tests need the client build.
-  resolve: { conditions: mode === 'test' ? ['browser'] : [] },
+  // Component tests mount Svelte in jsdom, and Svelte serves its server build unless the
+  // browser condition is set. Only add it under test: setting `conditions` at all in dev
+  // or build replaces Vite's own defaults and the app fails to mount.
+  ...(mode === 'test' ? { resolve: { conditions: ['browser'] } } : {}),
   plugins: [
     svelte(),
     VitePWA({
