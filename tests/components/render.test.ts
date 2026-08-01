@@ -113,6 +113,25 @@ describe('ImageLightbox', () => {
   })
 })
 
+describe('ImageLightbox without an image', () => {
+  it('still shows the instructions', async () => {
+    // 140 of 355 exercises have no image; their instructions must stay reachable.
+    const exercise = loadCatalog().find(
+      (e) => !e.images.length && e.instructions.length,
+    )!
+    const view = await render(ImageLightbox, {
+      image: '',
+      name: exercise.name,
+      instructions: exercise.instructions,
+      exercise,
+      onclose: () => {},
+    })
+    expect(view.text()).toContain(exercise.instructions[0].slice(0, 40))
+    expect(view.html()).not.toContain('<img') // placeholder, not a broken image
+    view.destroy()
+  })
+})
+
 describe('Settings', () => {
   it('shows the credits screen naming wger and CC-BY-SA', async () => {
     const view = await render(Settings, { onclose: () => {} })

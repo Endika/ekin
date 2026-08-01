@@ -48,19 +48,20 @@
 
 <div class="row card">
   <div class="head">
-    {#if showImage}
-      <button
-        class="thumb"
-        onclick={() => image && onpreview?.(image, name)}
-        aria-label={name}
-      >
+    <!-- Always a button, image or not: 140 of the 355 exercises have no image, and a
+         plain span left their instructions unreachable. -->
+    <button
+      class="thumb"
+      class:fallback={!showImage}
+      onclick={() => onpreview?.(showImage ? image! : '', name)}
+      aria-label={name}
+    >
+      {#if showImage}
         <img src={image} alt={name} onerror={() => (imgOk = false)} />
-      </button>
-    {:else}
-      <span class="thumb fallback" aria-hidden="true">
+      {:else}
         <Icon name={zone ? zoneIcon(zone) : 'dumbbell'} size={20} />
-      </span>
-    {/if}
+      {/if}
+    </button>
     <strong class="name">{name}</strong>
     <div class="reorder">
       <button onclick={onmoveup} aria-label={$_('item.moveUp')}>
