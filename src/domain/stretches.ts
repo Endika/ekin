@@ -40,10 +40,17 @@ const DYNAMIC_STRETCHES = new Set([
 
 export const isStretch = (e: Exercise): boolean => e.category === 'stretching'
 
+/**
+ * Imported exercises classify themselves via `stretchKind`; free-exercise-db ones fall
+ * back to the curated list above. Unclassified means static, the safe default.
+ */
+const kindOf = (e: Exercise): 'dynamic' | 'static' =>
+  e.stretchKind ?? (DYNAMIC_STRETCHES.has(e.id) ? 'dynamic' : 'static')
+
 /** Active-movement stretch, suitable for warming up. */
 export const isDynamicStretch = (e: Exercise): boolean =>
-  isStretch(e) && DYNAMIC_STRETCHES.has(e.id)
+  isStretch(e) && kindOf(e) === 'dynamic'
 
 /** Held stretch, suitable for cooling down. Any unclassified stretch lands here. */
 export const isStaticStretch = (e: Exercise): boolean =>
-  isStretch(e) && !DYNAMIC_STRETCHES.has(e.id)
+  isStretch(e) && kindOf(e) === 'static'
