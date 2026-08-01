@@ -6960,7 +6960,13 @@
     "primaryMuscles": [
       "abdominals"
     ],
-    "instructions": [],
+    "instructions": [
+      "Lie on your side with your legs straight, stacking one foot on top of the other.",
+      "Prop yourself up on the forearm of the lower arm, elbow directly under the shoulder.",
+      "Raise your hips until your body forms a straight line from head to feet. This is the starting position.",
+      "Hold the position, keeping the hips lifted and the shoulder away from the ear. Breathe steadily.",
+      "Lower under control and repeat on the other side."
+    ],
     "images": [
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Bridge/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Bridge/1.jpg"
@@ -6968,6 +6974,43 @@
     "chain": {
       "id": "plank",
       "step": 1
+    },
+    "instructionsI18n": {
+      "es": [
+        "Túmbate de lado con las piernas rectas, apilando un pie sobre el otro.",
+        "Apóyate sobre el antebrazo del brazo de abajo, con el codo justo debajo del hombro.",
+        "Eleva las caderas hasta que tu cuerpo forme una línea recta de la cabeza a los pies. Esta es la posición inicial.",
+        "Mantén la posición, con las caderas altas y el hombro alejado de la oreja. Respira de forma constante.",
+        "Baja de forma controlada y repite del otro lado."
+      ],
+      "eu": [
+        "Etzan alboz hankak zuzen dituzula, oin bat bestearen gainean pilatuta.",
+        "Bermatu beheko besoaren besaurrean, ukondoa sorbaldaren azpian justu.",
+        "Altxatu aldakak zure gorputzak burutik oinetarainoko lerro zuzena osatu arte. Hau da hasierako jarrera.",
+        "Eutsi jarrerari, aldakak altu eta sorbalda belarritik urrun mantenduz. Arnastu etengabe.",
+        "Jaitsi modu kontrolatuan eta errepikatu beste aldetik."
+      ],
+      "gl": [
+        "Deítate de lado coas pernas rectas, apilando un pé sobre o outro.",
+        "Apóiate sobre o antebrazo do brazo de abaixo, co cóbado xusto debaixo do ombreiro.",
+        "Eleva as cadeiras ata que o teu corpo forme unha liña recta da cabeza aos pés. Esta é a posición inicial.",
+        "Mantén a posición, coas cadeiras altas e o ombreiro afastado da orella. Respira de forma constante.",
+        "Baixa de forma controlada e repite do outro lado."
+      ],
+      "ca": [
+        "Estira't de costat amb les cames rectes, apilant un peu sobre l'altre.",
+        "Recolza't sobre l'avantbraç del braç de baix, amb el colze just sota l'espatlla.",
+        "Eleva els malucs fins que el teu cos formi una línia recta del cap als peus. Aquesta és la posició inicial.",
+        "Mantén la posició, amb els malucs alts i l'espatlla allunyada de l'orella. Respira de manera constant.",
+        "Baixa de manera controlada i repeteix de l'altre costat."
+      ],
+      "va": [
+        "Estira't de costat amb les cames rectes, apilant un peu sobre l'altre.",
+        "Recolza't sobre l'avantbraç del braç de baix, amb el colze just davall del muscle.",
+        "Alça els malucs fins que el teu cos forme una línia recta del cap als peus. Esta és la posició inicial.",
+        "Mantín la posició, amb els malucs alts i el muscle allunyat de l'orella. Respira de manera constant.",
+        "Baixa de manera controlada i repetix de l'altre costat."
+      ]
     }
   },
   {
@@ -6979,7 +7022,13 @@
     "primaryMuscles": [
       "abdominals"
     ],
-    "instructions": [],
+    "instructions": [
+      "Lie on your side with your legs straight and stacked, and rest the lower arm across your chest.",
+      "Place the hand of the upper arm behind your head, elbow pointing up.",
+      "Contract your obliques to raise your legs and your torso towards each other, folding at the waist.",
+      "Pause briefly at the top, where the elbow and the hip come closest together.",
+      "Lower slowly to the starting position without letting your legs rest, and repeat for the recommended repetitions before switching sides."
+    ],
     "images": [
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Jackknife/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Jackknife/1.jpg"
@@ -6987,6 +7036,43 @@
     "chain": {
       "id": "oblique",
       "step": 1
+    },
+    "instructionsI18n": {
+      "es": [
+        "Túmbate de lado con las piernas rectas y apiladas, y apoya el brazo de abajo cruzado sobre el pecho.",
+        "Coloca la mano del brazo de arriba detrás de la cabeza, con el codo apuntando hacia arriba.",
+        "Contrae los oblicuos para acercar las piernas y el torso entre sí, doblándote por la cintura.",
+        "Haz una breve pausa arriba, donde el codo y la cadera quedan más cerca.",
+        "Baja lentamente a la posición inicial sin dejar que las piernas descansen, y repite las repeticiones recomendadas antes de cambiar de lado."
+      ],
+      "eu": [
+        "Etzan alboz hankak zuzen eta pilatuta dituzula, eta bermatu beheko besoa bularraren gainean gurutzatuta.",
+        "Jarri goiko besoaren eskua buruaren atzean, ukondoa gorantz begira.",
+        "Uzkurtu oblikuoak hankak eta enborra elkarrengana hurbiltzeko, gerritik tolestuz.",
+        "Egin etenaldi labur bat goian, ukondoa eta aldaka gertuen gelditzen diren tokian.",
+        "Jaitsi poliki hasierako jarrerara hankak atseden hartzen utzi gabe, eta errepikatu gomendatutako errepikapenak aldez aldatu aurretik."
+      ],
+      "gl": [
+        "Deítate de lado coas pernas rectas e apiladas, e apoia o brazo de abaixo cruzado sobre o peito.",
+        "Coloca a man do brazo de arriba detrás da cabeza, co cóbado apuntando cara arriba.",
+        "Contrae os oblicuos para achegar as pernas e o torso entre si, dobrándote pola cintura.",
+        "Fai unha breve pausa arriba, onde o cóbado e a cadeira quedan máis preto.",
+        "Baixa lentamente á posición inicial sen deixar que as pernas descansen, e repite as repeticións recomendadas antes de cambiar de lado."
+      ],
+      "ca": [
+        "Estira't de costat amb les cames rectes i apilades, i recolza el braç de baix creuat sobre el pit.",
+        "Col·loca la mà del braç de dalt darrere del cap, amb el colze apuntant cap amunt.",
+        "Contreu els oblics per acostar les cames i el tors entre si, doblegant-te per la cintura.",
+        "Fes una breu pausa a dalt, on el colze i el maluc queden més a prop.",
+        "Baixa lentament a la posició inicial sense deixar que les cames descansin, i repeteix les repeticions recomanades abans de canviar de costat."
+      ],
+      "va": [
+        "Estira't de costat amb les cames rectes i apilades, i recolza el braç de baix creuat sobre el pit.",
+        "Col·loca la mà del braç de dalt darrere del cap, amb el colze apuntant cap amunt.",
+        "Contrau els oblics per a acostar les cames i el tors entre si, doblegant-te per la cintura.",
+        "Fes una breu pausa dalt, on el colze i el maluc queden més a prop.",
+        "Baixa lentament a la posició inicial sense deixar que les cames descansen, i repetix les repeticions recomanades abans de canviar de costat."
+      ]
     }
   },
   {
