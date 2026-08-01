@@ -92,6 +92,74 @@ describe('autofill', () => {
     expect(zones.size).toBeGreaterThan(1) // draws across multiple zones
   })
 
+  it('different variants surface a different set of exercises', () => {
+    const wide = [
+      ex('a1', 'legs', 'beginner'),
+      ex('a2', 'legs', 'beginner'),
+      ex('a3', 'legs', 'beginner'),
+      ex('a4', 'legs', 'beginner'),
+      ex('a5', 'legs', 'beginner'),
+      ex('a6', 'legs', 'beginner'),
+    ]
+    const first = autofill(wide, { zone: 'legs', minutes: 6, level: 'expert' })
+    const second = autofill(wide, {
+      zone: 'legs',
+      minutes: 6,
+      level: 'expert',
+      variant: 1,
+    })
+    const ids = (w: { items: { exerciseId: string }[] }) =>
+      w.items.map((i) => i.exerciseId)
+    expect(ids(first)).not.toEqual(ids(second))
+  })
+
+  it('is deterministic for the same variant', () => {
+    const input = {
+      zone: 'legs' as Zone,
+      minutes: 30,
+      level: 'expert' as Level,
+      variant: 2,
+    }
+    expect(autofill(catalog, input).items).toEqual(
+      autofill(catalog, input).items,
+    )
+  })
+
+  it('drops stretching from the main block', () => {
+    const withStretch = [
+      ex('s', 'legs', 'beginner', 'strength'),
+      ex('st', 'legs', 'beginner', 'stretching'),
+    ]
+    const w = autofill(withStretch, {
+      zone: 'legs',
+      minutes: 60,
+      level: 'expert',
+    })
+    expect(w.items.map((i) => i.exerciseId)).toEqual(['s'])
+  })
+
+  it('alternates muscles instead of stacking variations of one move', () => {
+    // Four chest variations that sort together by id, plus two other muscles.
+    const m = (id: string, muscle: string): Exercise => ({
+      ...ex(id, 'upper', 'beginner'),
+      primaryMuscles: [muscle],
+    })
+    const wide = [
+      m('push-a', 'chest'),
+      m('push-b', 'chest'),
+      m('push-c', 'chest'),
+      m('push-d', 'chest'),
+      m('tri-a', 'triceps'),
+      m('sho-a', 'shoulders'),
+    ]
+    const w = autofill(wide, { zone: 'upper', minutes: 9, level: 'expert' })
+    const muscles = w.items.map(
+      (i) => wide.find((e) => e.id === i.exerciseId)!.primaryMuscles[0],
+    )
+    // The first three picks must not all be chest.
+    expect(new Set(muscles.slice(0, 3)).size).toBeGreaterThan(1)
+  })
+
   it('returns a valid editable workout', () => {
     const w = autofill(catalog, { zone: 'legs', minutes: 20, level: 'expert' })
     expect(w.id).toBeTruthy()
