@@ -10,6 +10,7 @@
 //   npm run import-wger
 //
 import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs'
+import { CHAINS } from './chains.mjs'
 
 const OUT = 'src/data/exercises.wger.json'
 const API =
@@ -82,8 +83,13 @@ const MUSCLE_BY_CATEGORY = {
   15: 'quadriceps',
 }
 
-/** Needs kit we do not assume, or is not an exercise at all. */
-/** Kit we do not assume. Checked against the name AND the description. */
+/**
+ * Kit we do not assume. Checked against the name AND the description.
+ *
+ * Note the care around "weight": plural or held means kit, but "shift your body weight
+ * onto your fingers" is a Finger Pushup. Matching a bare \bweight\b threw out Finger
+ * Pushup, Isometric Wipers, Full Sit Outs and Slow Squat, all of them equipment-free.
+ */
 const REJECT = new RegExp(
   [
     /\b(trx|suspension|bands?|ball|foam roller|roller|kettlebell|dumbbell|barbell|machine|cable|rope|sled|bike|treadmill|pull-?ups?|chin-?ups?|rings?|weights|weight plate|plate|gym80|vibration|wheel|bars?)\b/
@@ -114,10 +120,15 @@ const EXCLUDE_IDS = new Set([
   1579, // "Bronco" — a rugby fitness test of 20/40/60 m shuttle runs
   962, // "Elliptical" — a gym cardio machine; its English text never says "machine"
   804, // "Sloper hanging" — climbing, needs a fingerboard
+
+  // Same movement as a free-exercise-db entry under a different name, which the
+  // name-based dedup below cannot catch. free-exercise-db wins: it ships images.
+  1933, // "Abdominal Crunch" == Crunches
+  1412, // "bicycle crunches" == Air Bike
+  1312, // "Bodyweight Squat HD" == Bodyweight Squat
+  1324, // "Bodyweight lunge HD" == Bodyweight Walking Lunge
+  1307, // "Front Plank" == Plank
 ])
-// Note the care around "weight": plural or held means kit, but "shift your body weight
-// onto your fingers" is a Finger Pushup. Matching a bare \bweight\b threw out Finger
-// Pushup, Isometric Wipers, Full Sit Outs and Slow Squat, all of them equipment-free.
 
 /**
  * Descriptions that say nothing. wger lets a contributor save an exercise with a
@@ -197,7 +208,40 @@ try {
 }
 
 // Names already covered by free-exercise-db — do not import a second copy.
-const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '')
+//
+// Comparing the raw string is not enough: wger and free-exercise-db name the same movement
+// differently. Sort the words and strip plurals so "Handstand Push-Ups" matches "Handstand
+// Pushup", and "Push-Up Wide" matches "Wide Push-Up".
+const STOPWORDS = new Set([
+  'the',
+  'a',
+  'an',
+  'with',
+  'and',
+  'to',
+  'for',
+  'of',
+  'on',
+  'in',
+  'your',
+  'position',
+  'positions',
+])
+const norm = (s) =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, ' ')
+    .split(/\s+/)
+    .filter((w) => w && !STOPWORDS.has(w))
+    .map((w) =>
+      w.endsWith('es') && w.length > 4
+        ? w.slice(0, -2)
+        : w.endsWith('s') && w.length > 2
+          ? w.slice(0, -1)
+          : w,
+    )
+    .sort()
+    .join('')
 const existing = new Set(
   existsSync('src/data/exercises.json')
     ? JSON.parse(readFileSync('src/data/exercises.json', 'utf8')).map((e) =>
@@ -284,6 +328,9 @@ for (const e of raw.sort((a, b) => a.id - b.id)) {
         : 'intermediate',
     category: isStretch ? 'stretching' : 'strength',
     ...(isStretch ? { stretchKind: dynamic ? 'dynamic' : 'static' } : {}),
+    // Chains cover both catalogs, or the generator would happily stack a wger push-up on
+    // top of a free-exercise-db one — they would be in no chain and look unrelated.
+    ...(CHAINS[`wger-${e.id}`] ? { chain: CHAINS[`wger-${e.id}`] } : {}),
     primaryMuscles: muscles,
     instructions,
     ...(es?.description
