@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.0](https://github.com/Endika/ekin/compare/v1.13.0...v1.14.0) (2026-08-01)
+
+
+### Features
+
+* **builder:** label the warm-up, main and cool-down blocks ([a131015](https://github.com/Endika/ekin/commit/a1310152d6b245d1baf6baf6de417fa133af3d2d))
+
 ## [1.13.0](https://github.com/Endika/ekin/compare/v1.12.0...v1.13.0) (2026-08-01)
 
 
