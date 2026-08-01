@@ -31,8 +31,11 @@
   onkeydown={(e) => e.key === 'Escape' && onclose()}
 >
   <figure>
-    <img src={image} alt={name} />
+    <!-- `figcaption` has to be the first or last child of a `figure`, but it should read
+         under the image. It stays first in the DOM and the grid `order` below puts it
+         back in place visually. -->
     <figcaption>{name}</figcaption>
+    <img src={image} alt={name} />
     {#if instructions.length}
       <ol class="steps">
         {#each instructions as step (step)}
@@ -100,6 +103,7 @@
     height: auto;
     border-radius: var(--radius);
     border: 1px solid var(--border);
+    order: -1; /* the image renders above the caption; see the comment in the markup */
   }
   figcaption {
     font-family: var(--font-display);
