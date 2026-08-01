@@ -26,6 +26,13 @@ export interface Exercise {
    */
   instructionsI18n?: Record<string, string[]>
   images: string[]
+  /**
+   * Position in a progression chain — the same movement at different difficulties, e.g.
+   * incline push-up → push-up → diamond → one-arm. Exercises sharing a `step` are equally
+   * hard alternatives, not a progression. A routine takes at most one exercise per chain.
+   * Absent ⇒ the exercise stands alone.
+   */
+  chain?: { id: string; step: number }
 }
 
 /** A workout is either rep-based (sets×reps×rest) or a timed circuit. */

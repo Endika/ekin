@@ -4,6 +4,8 @@ import {
   filterByZone,
   search,
   localizedInstructions,
+  chainOf,
+  chainNeighbours,
 } from '../../src/domain/catalog'
 import type { Exercise } from '../../src/domain/types'
 import { NEEDS_EQUIPMENT } from '../../scripts/needs-equipment.mjs'
@@ -37,6 +39,60 @@ describe('catalog', () => {
     const ids = new Set(loadCatalog().map((e) => e.id))
     const leaked = [...NEEDS_EQUIPMENT].filter((id) => ids.has(id))
     expect(leaked).toEqual([])
+  })
+})
+
+describe('progression chains', () => {
+  const chained = (id: string, chainId: string, step: number): Exercise => ({
+    id,
+    name: id,
+    zone: 'upper',
+    level: 'beginner',
+    category: 'strength',
+    primaryMuscles: [],
+    instructions: [],
+    images: [],
+    chain: { id: chainId, step },
+  })
+
+  const list = [
+    chained('easy', 'push', 0),
+    chained('mid-a', 'push', 1),
+    chained('mid-b', 'push', 1),
+    chained('hard', 'push', 2),
+    chained('other', 'squat', 0),
+  ]
+
+  it('orders a chain easiest first', () => {
+    expect(chainOf(list, 'push').map((e) => e.id)).toEqual([
+      'easy',
+      'mid-a',
+      'mid-b',
+      'hard',
+    ])
+  })
+
+  it('finds the rungs below and above', () => {
+    const { previous, next } = chainNeighbours(list, list[1])
+    expect(previous?.id).toBe('easy')
+    expect(next?.id).toBe('hard') // skips the equally hard alternative
+  })
+
+  it('has no rung below the first nor above the last', () => {
+    expect(chainNeighbours(list, list[0]).previous).toBeUndefined()
+    expect(chainNeighbours(list, list[3]).next).toBeUndefined()
+  })
+
+  it('reports nothing for an exercise that stands alone', () => {
+    const alone = { ...list[0], chain: undefined }
+    expect(chainNeighbours(list, alone)).toEqual({})
+  })
+
+  it('every chain in the real catalog has at least two rungs', () => {
+    const all = loadCatalog()
+    const ids = new Set(all.flatMap((e) => (e.chain ? [e.chain.id] : [])))
+    expect(ids.size).toBeGreaterThan(0)
+    for (const id of ids) expect(chainOf(all, id).length).toBeGreaterThan(1)
   })
 })
 

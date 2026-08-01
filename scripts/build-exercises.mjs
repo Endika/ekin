@@ -1,5 +1,6 @@
 import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs'
 import { NEEDS_EQUIPMENT } from './needs-equipment.mjs'
+import { CHAINS } from './chains.mjs'
 
 const OUT = 'src/data/exercises.json'
 
@@ -60,6 +61,7 @@ const bodyweight = all
       primaryMuscles: e.primaryMuscles ?? [],
       instructions: e.instructions ?? [],
       images: (e.images ?? []).map((p) => IMG_BASE + p),
+      ...(CHAINS[e.id] ? { chain: CHAINS[e.id] } : {}),
     }
   })
 
