@@ -10,9 +10,9 @@ export interface AutofillInput {
   /** Absent ⇒ 'strength' (the rep-based default). 'circuit' ⇒ a timed HIIT circuit. */
   goal?: Goal
   /**
-   * Rotates the circuit exercise selection so repeated "generate" taps yield
-   * different routines. Absent/0 ⇒ the first window (kept deterministic for
-   * tests); each increment shifts to a fresh set of exercises.
+   * Rotates the exercise selection so repeated "generate" taps yield different
+   * routines, in both goals. Absent/0 ⇒ the first window (kept deterministic
+   * for tests); each increment shifts to a fresh set of exercises.
    */
   variant?: number
 }
@@ -39,6 +39,28 @@ const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
  */
 const byId = (a: Exercise, b: Exercise) => a.id.localeCompare(b.id)
 
+/** Group items by a key, preserving insertion order within each group. */
+function groupBy<T>(items: T[], key: (item: T) => string): T[][] {
+  const groups = new Map<string, T[]>()
+  for (const item of items) {
+    const k = key(item)
+    const g = groups.get(k) ?? []
+    g.push(item)
+    groups.set(k, g)
+  }
+  return [...groups.values()]
+}
+
+/** Round-robin the lists, so consecutive picks come from different groups. */
+function interleave<T>(lists: T[][]): T[] {
+  const max = Math.max(0, ...lists.map((l) => l.length))
+  const out: T[] = []
+  for (let i = 0; i < max; i++) {
+    for (const l of lists) if (l[i]) out.push(l[i])
+  }
+  return out
+}
+
 /**
  * Candidate exercises for a zone + level. A 'full' (full-body) workout draws
  * from EVERY zone — round-robin across zones for variety — because no exercise
@@ -56,26 +78,39 @@ function candidatesFor(
 
   if (zone !== 'full') return eligible.filter((e) => e.zone === zone)
 
-  const groups = new Map<string, Exercise[]>()
-  for (const e of eligible) {
-    const g = groups.get(e.zone) ?? []
-    g.push(e)
-    groups.set(e.zone, g)
-  }
-  const lists = [...groups.values()]
-  const max = Math.max(0, ...lists.map((l) => l.length))
-  const out: Exercise[] = []
-  for (let i = 0; i < max; i++) {
-    for (const l of lists) if (l[i]) out.push(l[i])
-  }
-  return out
+  return interleave(groupBy(eligible, (e) => e.zone))
+}
+
+/**
+ * Order candidates for a rep-based strength workout.
+ *
+ * Stretching is dropped: it belongs in the warm-up and cool-down, not in the main block.
+ * The rest is round-robined by primary muscle so consecutive picks train different things
+ * — sorting by id alone made a routine open with four variations of the same push-up,
+ * because the catalog names them alike and they sort together.
+ *
+ * The variant rotates WITHIN each muscle group rather than across the flattened list:
+ * muscle groups are very uneven (upper-body is mostly chest), so rotating the flat list
+ * would just walk the window into the long chest tail and serve a monotonous routine.
+ * Rotating per group keeps every variant balanced, and covers the pool in as many
+ * variants as the largest group has exercises.
+ */
+function strengthOrder(candidates: Exercise[], variant: number): Exercise[] {
+  const main = candidates.filter((e) => e.category !== 'stretching')
+  const groups = groupBy(main, (e) => e.primaryMuscles[0] ?? e.zone)
+  return interleave(groups.map((g) => rotate(g, variant)))
 }
 
 export function autofill(catalog: Exercise[], input: AutofillInput): Workout {
   if (input.goal === 'circuit') return autofillCircuit(catalog, input)
 
   const budget = input.minutes * 60
-  const candidates = candidatesFor(catalog, input.zone, input.level)
+  // Each "generate" tap bumps the variant, so a fresh set of exercises comes up instead
+  // of the same routine every time.
+  const candidates = strengthOrder(
+    candidatesFor(catalog, input.zone, input.level),
+    input.variant ?? 0,
+  )
 
   const items: WorkoutItem[] = []
   let used = 0
