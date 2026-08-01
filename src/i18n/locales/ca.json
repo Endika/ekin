@@ -50,11 +50,7 @@
     "round": "Ronda {n}/{total}",
     "go": "Som-hi!",
     "skip": "Salta",
-    "howto": "Com es fa",
-    "block": {
-      "warmup": "Escalfament",
-      "cooldown": "Tornada a la calma"
-    }
+    "howto": "Com es fa"
   },
   "history": {
     "minutes": "min",
@@ -137,5 +133,10 @@
     "easier": "Més fàcil:",
     "nextLevel": "Nivell següent:",
     "credit": "Per {author} via {source}"
+  },
+  "block": {
+    "warmup": "Escalfament",
+    "main": "Principal",
+    "cooldown": "Tornada a la calma"
   }
 }

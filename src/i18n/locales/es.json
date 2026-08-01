@@ -50,11 +50,7 @@
     "round": "Ronda {n}/{total}",
     "go": "¡Vamos!",
     "skip": "Saltar",
-    "howto": "Cómo se hace",
-    "block": {
-      "warmup": "Calentamiento",
-      "cooldown": "Vuelta a la calma"
-    }
+    "howto": "Cómo se hace"
   },
   "history": {
     "minutes": "min",
@@ -137,5 +133,10 @@
     "easier": "Más fácil:",
     "nextLevel": "Siguiente nivel:",
     "credit": "Por {author} vía {source}"
+  },
+  "block": {
+    "warmup": "Calentamiento",
+    "main": "Principal",
+    "cooldown": "Vuelta a la calma"
   }
 }

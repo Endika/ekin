@@ -41,7 +41,13 @@
     { key: 'workSeconds' as const, labelKey: 'item.work', min: 5, step: 5 },
     { key: 'restSeconds' as const, labelKey: 'item.rest', min: 0, step: 5 },
   ]
-  let fields = $derived(timed ? timedFields : repFields)
+  // Warm-up and cool-down items are held for a duration, so they only get a seconds
+  // control. Showing them as "1 set / 0 reps" told the user nothing about what to do.
+  const prepFields = [
+    { key: 'workSeconds' as const, labelKey: 'item.work', min: 5, step: 5 },
+  ]
+  let isPrep = $derived((item.block ?? 'main') !== 'main')
+  let fields = $derived(isPrep ? prepFields : timed ? timedFields : repFields)
   const bump = (key: keyof WorkoutItem, delta: number, min: number) =>
     onpatch({ [key]: Math.max(min, ((item[key] as number) ?? 0) + delta) })
 </script>

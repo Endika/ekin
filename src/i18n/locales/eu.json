@@ -50,11 +50,7 @@
     "round": "Erronda {n}/{total}",
     "go": "Aurrera!",
     "skip": "Saltatu",
-    "howto": "Nola egin",
-    "block": {
-      "warmup": "Berotzea",
-      "cooldown": "Lasaitzea"
-    }
+    "howto": "Nola egin"
   },
   "history": {
     "minutes": "min",
@@ -137,5 +133,10 @@
     "easier": "Errazagoa:",
     "nextLevel": "Hurrengo maila:",
     "credit": "{author} egilearena, {source} bidez"
+  },
+  "block": {
+    "warmup": "Berotzea",
+    "main": "Nagusia",
+    "cooldown": "Lasaitzea"
   }
 }

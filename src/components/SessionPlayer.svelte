@@ -150,7 +150,7 @@
           })}
         </span>
       {:else if currentBlock !== 'main'}
-        <span class="pill block">{$_('player.block.' + currentBlock)}</span>
+        <span class="pill block">{$_('block.' + currentBlock)}</span>
       {:else}
         <span class="pill">
           {$_('player.set', {
