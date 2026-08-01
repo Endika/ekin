@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.12.0](https://github.com/Endika/ekin/compare/v1.11.1...v1.12.0) (2026-08-01)
+
+
+### Features
+
+* **autofill:** build sessions as warm-up, main and cool-down ([41d6ba0](https://github.com/Endika/ekin/commit/41d6ba0d9f42a378fff5ab049bdafa7b4af4e1d1))
+* **catalog:** group exercises into progression chains ([d427885](https://github.com/Endika/ekin/commit/d427885c95fd23c3bff7471ee2a0ffc7014c404e))
+* **catalog:** import 204 bodyweight exercises from wger ([7f70934](https://github.com/Endika/ekin/commit/7f7093402241ee2bc44f84eef2926096cef3947d))
+* **i18n:** translate the wger catalog too, keeping its official Spanish ([4f24743](https://github.com/Endika/ekin/commit/4f2474352a9b3386bc0339093b873f558cb182a8))
+* **i18n:** translate the whole catalog into all six languages ([78942cb](https://github.com/Endika/ekin/commit/78942cb7570e7d10695805d1b481486c3ab83a06))
+* **ui:** show the next rung of a progression, and credit the sources ([10ac2d4](https://github.com/Endika/ekin/commit/10ac2d404d002adada36e51fa3ad4ac510ebffe5))
+
+
+### Bug Fixes
+
+* **autofill:** vary strength routines instead of repeating one ([bf22c1f](https://github.com/Endika/ekin/commit/bf22c1f71685b94d9a42bd15638b7880c2181dc1))
+* **catalog:** exclude exercises that need equipment ([67575c9](https://github.com/Endika/ekin/commit/67575c99a76d2b6b56bbe840092e3c54b4bc8db8))
+
 ## [1.11.1](https://github.com/Endika/ekin/compare/v1.11.0...v1.11.1) (2026-07-13)
 
 
