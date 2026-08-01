@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.13.0](https://github.com/Endika/ekin/compare/v1.12.0...v1.13.0) (2026-08-01)
+
+
+### Features
+
+* **catalog:** extend progression chains to the wger exercises ([a1427fb](https://github.com/Endika/ekin/commit/a1427fbd59594c6f053ca692c355968deb392927))
+
+
+### Bug Fixes
+
+* **build:** only set browser resolve conditions under test ([4ff04e1](https://github.com/Endika/ekin/commit/4ff04e194b4b0dc8310b56fdf9d720a2af085177))
+* **catalog:** drop exercises duplicated across both sources ([9ac5d8e](https://github.com/Endika/ekin/commit/9ac5d8ee86d27b878f59721586904a31a9e59266))
+* **ui:** keep figcaption a direct first child of figure ([63d242c](https://github.com/Endika/ekin/commit/63d242c224b6f4e473faff03ca60fcc0a57c0240))
+* **ui:** open the preview for exercises that have no image ([e7f057b](https://github.com/Endika/ekin/commit/e7f057b577f2974c06dba5add675c409fa87aaf6))
+
 ## [1.12.0](https://github.com/Endika/ekin/compare/v1.11.1...v1.12.0) (2026-08-01)
 
 
