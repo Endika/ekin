@@ -1,16 +1,18 @@
 // Build-time translation of exercise instructions into the 6-locale set.
 //
 // One-off / occasional: run it once with your own Gemini key, then commit the
-// updated src/data/exercises.json. It is idempotent and resumable — it skips
-// exercises already translated for a locale and saves after each exercise, so a
-// crash or rate-limit loses no completed work. English (`instructions`) is the
-// source and is never overwritten.
+// updated catalogs. It is idempotent and resumable — it skips exercises already
+// translated for a locale and saves after each exercise, so a crash or
+// rate-limit loses no completed work. English (`instructions`) is the source and
+// is never overwritten, and neither is wger's own human-written Spanish.
 //
 //   GEMINI_API_KEY=... npm run translate-instructions
 //
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 
-const FILE = 'src/data/exercises.json'
+// Both catalogs. Translations of wger text are adaptations of CC-BY-SA content and are
+// published under that same licence — see NOTICE.md.
+const FILES = ['src/data/exercises.json', 'src/data/exercises.wger.json']
 const ENDPOINT =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
 
@@ -61,33 +63,40 @@ async function translate(steps, localeName, attempt = 0) {
   return arr.map(String)
 }
 
-const data = JSON.parse(readFileSync(FILE, 'utf8'))
 let translated = 0
 let skipped = 0
 let failed = 0
 
-for (const ex of data) {
-  if (!ex.instructions?.length) continue
-  ex.instructionsI18n ??= {}
-  let changed = false
+for (const file of FILES) {
+  if (!existsSync(file)) continue
+  const data = JSON.parse(readFileSync(file, 'utf8'))
+  console.log(`\n${file} — ${data.length} exercises`)
 
-  for (const [loc, name] of Object.entries(LOCALES)) {
-    if (ex.instructionsI18n[loc]?.length === ex.instructions.length) {
-      skipped++
-      continue
+  for (const ex of data) {
+    if (!ex.instructions?.length) continue
+    ex.instructionsI18n ??= {}
+    let changed = false
+
+    for (const [loc, name] of Object.entries(LOCALES)) {
+      // Anything already there is kept — including wger's own Spanish, which is
+      // human-written and better than a machine pass over it.
+      if (ex.instructionsI18n[loc]?.length) {
+        skipped++
+        continue
+      }
+      try {
+        ex.instructionsI18n[loc] = await translate(ex.instructions, name)
+        translated++
+        changed = true
+        await sleep(150) // gentle pacing
+      } catch (err) {
+        failed++
+        console.warn(`skip ${ex.id}/${loc}: ${err.message}`)
+      }
     }
-    try {
-      ex.instructionsI18n[loc] = await translate(ex.instructions, name)
-      translated++
-      changed = true
-      await sleep(150) // gentle pacing
-    } catch (err) {
-      failed++
-      console.warn(`skip ${ex.id}/${loc}: ${err.message}`)
-    }
+
+    if (changed) writeFileSync(file, JSON.stringify(data, null, 2) + '\n') // resumable
   }
-
-  if (changed) writeFileSync(FILE, JSON.stringify(data, null, 2)) // resumable
 }
 
-console.log(`translated ${translated}, skipped ${skipped}, failed ${failed}`)
+console.log(`\ntranslated ${translated}, skipped ${skipped}, failed ${failed}`)
