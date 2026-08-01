@@ -7,9 +7,12 @@ const { version } = JSON.parse(
   readFileSync(new URL('./package.json', import.meta.url), 'utf-8'),
 )
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   base: '/ekin/',
   define: { __APP_VERSION__: JSON.stringify(version) },
+  // Under test, Svelte resolves its server build unless the browser condition is set,
+  // and `mount()` then throws. Component tests need the client build.
+  resolve: { conditions: mode === 'test' ? ['browser'] : [] },
   plugins: [
     svelte(),
     VitePWA({
@@ -53,4 +56,4 @@ export default defineConfig({
     }),
   ],
   test: { environment: 'jsdom', setupFiles: ['tests/setup.ts'] },
-})
+}))
