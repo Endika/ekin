@@ -3,6 +3,8 @@
   import type { Exercise } from '../domain/types'
   import { chainNeighbours } from '../domain/catalog'
   import { allExercises } from '../stores/catalog-store'
+  import Icon from './Icon.svelte'
+  import { zoneIcon } from '../lib/zoneIcon'
 
   let {
     image,
@@ -35,7 +37,16 @@
          under the image. It stays first in the DOM and the grid `order` below puts it
          back in place visually. -->
     <figcaption>{name}</figcaption>
-    <img src={image} alt={name} />
+    {#if image}
+      <img src={image} alt={name} />
+    {:else}
+      <div class="ph" aria-hidden="true">
+        <Icon
+          name={exercise ? zoneIcon(exercise.zone) : 'dumbbell'}
+          size={56}
+        />
+      </div>
+    {/if}
     {#if instructions.length}
       <ol class="steps">
         {#each instructions as step (step)}
@@ -104,6 +115,18 @@
     border-radius: var(--radius);
     border: 1px solid var(--border);
     order: -1; /* the image renders above the caption; see the comment in the markup */
+  }
+  .ph {
+    order: -1;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    opacity: 0.7;
   }
   figcaption {
     font-family: var(--font-display);
