@@ -19,6 +19,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/3_4_Sit-Up/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/3_4_Sit-Up/1.jpg"
     ],
+    "chain": {
+      "id": "crunch",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate en el suelo y sujeta los pies. Las piernas deben estar dobladas por las rodillas.",
@@ -291,6 +295,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Alternate_Heel_Touchers/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Alternate_Heel_Touchers/1.jpg"
     ],
+    "chain": {
+      "id": "oblique",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate en el suelo con las rodillas dobladas y los pies en el suelo separados unos 45-60 cm. Los brazos deben estar extendidos a los lados. Esta será la posición inicial.",
@@ -538,6 +546,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bench_Dips/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bench_Dips/1.jpg"
     ],
+    "chain": {
+      "id": "dip",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Para este ejercicio necesitarás colocar un banco detrás de tu espalda. Con el banco perpendicular a tu cuerpo y mirando hacia el lado contrario, agárrate al borde del banco con las manos completamente extendidas, separadas a la anchura de los hombros. Las piernas estarán extendidas hacia delante, flexionadas a la altura de la cadera y perpendiculares a tu torso. Esta será tu posición inicial.",
@@ -649,6 +661,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bent-Knee_Hip_Raise/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bent-Knee_Hip_Raise/1.jpg"
     ],
+    "chain": {
+      "id": "leg-raise",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate boca arriba en el suelo con los brazos a los lados.",
@@ -706,6 +722,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Body-Up/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Body-Up/1.jpg"
     ],
+    "chain": {
+      "id": "dip",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Adopta una posición de plancha en el suelo. Debes sostener el peso del cuerpo sobre las puntas de los pies y los antebrazos, manteniendo el torso recto. Los antebrazos deben estar separados a la anchura de los hombros. Esta será tu posición inicial.",
@@ -757,6 +777,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bodyweight_Squat/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bodyweight_Squat/1.jpg"
     ],
+    "chain": {
+      "id": "squat",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Ponte de pie con los pies separados a la anchura de los hombros. Puedes colocar las manos detrás de la cabeza. Esta será tu posición inicial.",
@@ -804,6 +828,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bodyweight_Walking_Lunge/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bodyweight_Walking_Lunge/1.jpg"
     ],
+    "chain": {
+      "id": "lunge",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Comienza de pie con los pies separados a la anchura de los hombros y las manos en las caderas.",
@@ -903,6 +931,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Butt-Ups/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Butt-Ups/1.jpg"
     ],
+    "chain": {
+      "id": "plank",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Comienza en una posición de flexión pero con los codos en el suelo, apoyándote sobre los antebrazos. Los brazos deben estar flexionados en un ángulo de 90 grados.",
@@ -959,6 +991,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Butt_Lift_Bridge/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Butt_Lift_Bridge/1.jpg"
     ],
+    "chain": {
+      "id": "hip-bridge",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate boca arriba en el suelo con las manos a los lados y las rodillas flexionadas. Los pies deben colocarse a una anchura aproximada de los hombros. Esta será tu posición inicial.",
@@ -1324,6 +1360,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Clock_Push-Up/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Clock_Push-Up/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 4
+    },
     "instructionsI18n": {
       "es": [
         "Adopta una posición de tendido prono en el suelo, sosteniendo tu peso sobre las manos y las puntas de los pies.",
@@ -1385,6 +1425,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cocoons/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cocoons/1.jpg"
     ],
+    "chain": {
+      "id": "leg-raise",
+      "step": 2
+    },
     "instructionsI18n": {
       "es": [
         "Empieza tumbado boca arriba en el suelo. Las piernas deben estar estiradas y los brazos extendidos por detrás de la cabeza. Esta será tu posición inicial.",
@@ -1433,6 +1477,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cross-Body_Crunch/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cross-Body_Crunch/1.jpg"
     ],
+    "chain": {
+      "id": "oblique",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate boca arriba y flexiona las rodillas unos 60 grados.",
@@ -1537,6 +1585,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Crunch_-_Hands_Overhead/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Crunch_-_Hands_Overhead/1.jpg"
     ],
+    "chain": {
+      "id": "crunch",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate en el suelo con la espalda plana y las rodillas flexionadas formando un ángulo de unos 60 grados entre los isquiotibiales y las pantorrillas.",
@@ -1596,6 +1648,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Crunches/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Crunches/1.jpg"
     ],
+    "chain": {
+      "id": "crunch",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate boca arriba con los pies apoyados en el suelo, o apoyados sobre un banco con las rodillas flexionadas en un ángulo de 90 grados. Si apoyas los pies sobre un banco, sepáralos entre siete y diez centímetros y apunta las puntas de los pies hacia dentro para que se toquen.",
@@ -1782,6 +1838,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Decline_Crunch/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Decline_Crunch/1.jpg"
     ],
+    "chain": {
+      "id": "crunch",
+      "step": 2
+    },
     "instructionsI18n": {
       "es": [
         "Asegura las piernas en el extremo del banco declinado y túmbate.",
@@ -1846,6 +1906,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Decline_Oblique_Crunch/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Decline_Oblique_Crunch/1.jpg"
     ],
+    "chain": {
+      "id": "oblique",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Asegura las piernas en el extremo del banco declinado y túmbate lentamente sobre el banco.",
@@ -1908,6 +1972,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Decline_Push-Up/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Decline_Push-Up/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 2
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate boca abajo en el suelo y coloca las manos separadas unos 90 cm mientras mantienes el torso elevado con los brazos extendidos. Sube los pies a un cajón o banco. Esta será tu posición inicial.",
@@ -1961,6 +2029,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Decline_Reverse_Crunch/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Decline_Reverse_Crunch/1.jpg"
     ],
+    "chain": {
+      "id": "leg-raise",
+      "step": 2
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate boca arriba en un banco declinado y agárrate al extremo superior del banco con ambas manos. No dejes que el cuerpo se deslice hacia abajo desde esta posición.",
@@ -2018,6 +2090,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dips_-_Triceps_Version/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dips_-_Triceps_Version/1.jpg"
     ],
+    "chain": {
+      "id": "dip",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Para colocarte en la posición inicial, sostén el cuerpo con los brazos extendidos y casi bloqueados por encima de las barras.",
@@ -2247,6 +2323,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Elbow_to_Knee/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Elbow_to_Knee/1.jpg"
     ],
+    "chain": {
+      "id": "oblique",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate en el suelo y cruza la pierna derecha sobre la rodilla izquierda flexionada. Entrelaza las manos detrás de la cabeza, empezando con los omóplatos en el suelo. Esta será tu posición inicial.",
@@ -2444,6 +2524,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Flat_Bench_Lying_Leg_Raise/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Flat_Bench_Lying_Leg_Raise/1.jpg"
     ],
+    "chain": {
+      "id": "leg-raise",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate de espaldas sobre un banco con las piernas extendidas fuera del extremo.",
@@ -2496,6 +2580,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Floor_Glute-Ham_Raise/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Floor_Glute-Ham_Raise/1.jpg"
     ],
+    "chain": {
+      "id": "ham-curl",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Puedes usar un compañero para este ejercicio o fijar los pies bajo algo estable.",
@@ -2608,6 +2696,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Freehand_Jump_Squat/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Freehand_Jump_Squat/1.jpg"
     ],
+    "chain": {
+      "id": "squat",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Cruza los brazos sobre el pecho.",
@@ -2713,6 +2805,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Frog_Sit-Ups/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Frog_Sit-Ups/1.jpg"
     ],
+    "chain": {
+      "id": "crunch",
+      "step": 2
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate de espaldas en el suelo (o esterilla) con las piernas extendidas frente a ti.",
@@ -3275,6 +3371,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Push-Up/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Push-Up/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Colócate de pie frente a un banco o una plataforma elevada y firme. Apoya las manos en el borde del banco o plataforma, un poco más abiertas que la anchura de los hombros.",
@@ -3323,6 +3423,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Push-Up_Close-Grip/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Push-Up_Close-Grip/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Colócate de pie frente a la barra de una máquina Smith o una plataforma elevada y firme a una altura adecuada.",
@@ -3381,6 +3485,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Push-Up_Medium/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Push-Up_Medium/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Colócate de pie frente a la barra de una máquina Smith o una plataforma elevada y firme a una altura adecuada.",
@@ -3439,6 +3547,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Push-Up_Reverse_Grip/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Push-Up_Reverse_Grip/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Colócate de pie frente a la barra de una máquina Smith o una plataforma elevada y firme a una altura adecuada.",
@@ -3497,6 +3609,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Push-Up_Wide/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Push-Up_Wide/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Colócate de pie frente a la barra de una máquina Smith o una plataforma elevada y firme a una altura adecuada.",
@@ -3826,6 +3942,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Jackknife_Sit-Up/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Jackknife_Sit-Up/1.jpg"
     ],
+    "chain": {
+      "id": "crunch",
+      "step": 2
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate boca arriba en el suelo (o esterilla) con los brazos extendidos hacia atrás por detrás de la cabeza y las piernas también extendidas. Esta es tu posición inicial.",
@@ -3878,6 +3998,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Janda_Sit-Up/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Janda_Sit-Up/1.jpg"
     ],
+    "chain": {
+      "id": "crunch",
+      "step": 2
+    },
     "instructionsI18n": {
       "es": [
         "Colócate en el suelo en la posición básica de abdominal: rodillas en ángulo de noventa grados con los pies apoyados planos en el suelo y los brazos cruzados sobre el pecho o a los lados. Esta es tu posición inicial.",
@@ -4356,6 +4480,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Pull-In/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Pull-In/1.jpg"
     ],
+    "chain": {
+      "id": "leg-raise",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate sobre una esterilla con las piernas estiradas y las manos con las palmas hacia abajo a los lados o bajo los glúteos. Consejo: yo prefiero con las manos a los lados. Esta será tu posición inicial.",
@@ -4874,6 +5002,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Natural_Glute_Ham_Raise/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Natural_Glute_Ham_Raise/1.jpg"
     ],
+    "chain": {
+      "id": "ham-curl",
+      "step": 2
+    },
     "instructionsI18n": {
       "es": [
         "Usando el soporte de piernas de una máquina de jalones o un banco scott, colócate de modo que los tobillos queden bajo las almohadillas, las rodillas en el asiento y de espaldas a la máquina. Debes estar erguido y manteniendo una buena postura.",
@@ -4929,6 +5061,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Oblique_Crunches/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Oblique_Crunches/1.jpg"
     ],
+    "chain": {
+      "id": "oblique",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate boca arriba en el suelo con la zona lumbar pegada al suelo. Para este ejercicio, coloca una mano al lado de la cabeza y la otra al lado, apoyada en el suelo.",
@@ -4997,6 +5133,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Oblique_Crunches_-_On_The_Floor/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Oblique_Crunches_-_On_The_Floor/1.jpg"
     ],
+    "chain": {
+      "id": "oblique",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Empieza tumbándote sobre el costado derecho con las piernas una encima de la otra. Asegúrate de tener las rodillas ligeramente flexionadas.",
@@ -5368,6 +5508,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Plank/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Plank/1.jpg"
     ],
+    "chain": {
+      "id": "plank",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Colócate boca abajo en el suelo, apoyando el peso sobre las puntas de los pies y los antebrazos. Los brazos están flexionados y justo debajo de los hombros.",
@@ -5412,6 +5556,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Plyo_Push-up/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Plyo_Push-up/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 3
+    },
     "instructionsI18n": {
       "es": [
         "Colócate boca abajo en el suelo, apoyando el peso sobre las manos y las puntas de los pies.",
@@ -5473,6 +5621,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Prone_Manual_Hamstring/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Prone_Manual_Hamstring/1.jpg"
     ],
+    "chain": {
+      "id": "ham-curl",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Necesitarás un compañero para este ejercicio. Túmbate boca abajo con las piernas rectas. Tu ayudante colocará la mano sobre tu talón.",
@@ -5520,6 +5672,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Push-Up_Wide/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Push-Up_Wide/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Con las manos bien separadas, sostén el cuerpo sobre las puntas de los pies y las manos en posición de plancha. Los codos deben estar extendidos y el cuerpo recto. No dejes que las caderas se hundan. Esta será tu posición inicial.",
@@ -5572,6 +5728,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Push-Ups_-_Close_Triceps_Position/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Push-Ups_-_Close_Triceps_Position/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 3
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate en el suelo boca abajo y coloca las manos más juntas que la anchura de los hombros para una posición de manos cerrada. Asegúrate de sostener el torso a la altura de los brazos extendidos.",
@@ -5625,6 +5785,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Push-Ups_With_Feet_Elevated/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Push-Ups_With_Feet_Elevated/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 2
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate en el suelo boca abajo y coloca las manos a unos 90 cm de distancia entre sí, sosteniendo el torso a la altura de los brazos extendidos.",
@@ -5683,6 +5847,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Push_Up_to_Side_Plank/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Push_Up_to_Side_Plank/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 2
+    },
     "instructionsI18n": {
       "es": [
         "Colócate en posición de flexión sobre las puntas de los pies con las manos justo por fuera del ancho de los hombros.",
@@ -5740,6 +5908,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pushups/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pushups/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate en el suelo boca abajo y coloca las manos a unos 90 cm de distancia mientras sostienes el torso a la altura de los brazos extendidos.",
@@ -5792,6 +5964,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pushups_Close_and_Wide_Hand_Positions/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pushups_Close_and_Wide_Hand_Positions/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate en el suelo boca abajo con el cuerpo recto, las puntas de los pies en el suelo y las manos más anchas que los hombros para una posición ancha y más juntas que los hombros para una posición cerrada. Asegúrate de sostener el torso a la altura de los brazos extendidos.",
@@ -5885,6 +6061,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Crunch/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Crunch/1.jpg"
     ],
+    "chain": {
+      "id": "leg-raise",
+      "step": 0
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate en el suelo con las piernas totalmente extendidas y los brazos a los lados del torso con las palmas en el suelo. Los brazos deben permanecer inmóviles durante todo el ejercicio.",
@@ -6035,6 +6215,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Russian_Twist/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Russian_Twist/1.jpg"
     ],
+    "chain": {
+      "id": "oblique",
+      "step": 2
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate en el suelo colocando los pies bajo algo que no se mueva o pidiendo a un compañero que te los sujete. Las piernas deben estar flexionadas por las rodillas.",
@@ -6530,6 +6714,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated_Leg_Tucks/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Seated_Leg_Tucks/1.jpg"
     ],
+    "chain": {
+      "id": "leg-raise",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Siéntate en un banco con las piernas estiradas frente a ti ligeramente por debajo de la horizontal y los brazos sujetando los lados del banco. El torso debe quedar inclinado hacia atrás unos 45 grados respecto al banco. Esta será tu posición inicial.",
@@ -6776,7 +6964,11 @@
     "images": [
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Bridge/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Bridge/1.jpg"
-    ]
+    ],
+    "chain": {
+      "id": "plank",
+      "step": 1
+    }
   },
   {
     "id": "Side_Jackknife",
@@ -6791,7 +6983,11 @@
     "images": [
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Jackknife/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Side_Jackknife/1.jpg"
-    ]
+    ],
+    "chain": {
+      "id": "oblique",
+      "step": 1
+    }
   },
   {
     "id": "Side_Leg_Raises",
@@ -7030,6 +7226,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Single-Arm_Push-Up/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Single-Arm_Push-Up/1.jpg"
     ],
+    "chain": {
+      "id": "push",
+      "step": 5
+    },
     "instructionsI18n": {
       "es": [
         "Empieza tumbado boca abajo en el suelo. Colócate apoyando el peso sobre las puntas de los pies y un brazo. El brazo de trabajo debe quedar justo bajo el hombro, totalmente extendido. Las piernas deben estar extendidas y, para este movimiento, puede que necesites una base más amplia, separando los pies más que en una flexión normal.",
@@ -7134,6 +7334,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Single_Leg_Glute_Bridge/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Single_Leg_Glute_Bridge/1.jpg"
     ],
+    "chain": {
+      "id": "hip-bridge",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate en el suelo con los pies apoyados en plano y las rodillas flexionadas.",
@@ -7187,6 +7391,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Sit-Up/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Sit-Up/1.jpg"
     ],
+    "chain": {
+      "id": "crunch",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Túmbate en el suelo colocando los pies bajo algo que no se mueva o haciendo que un compañero te los sujete. Las piernas deben estar flexionadas por las rodillas.",
@@ -7289,6 +7497,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Spider_Crawl/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Spider_Crawl/1.jpg"
     ],
+    "chain": {
+      "id": "plank",
+      "step": 2
+    },
     "instructionsI18n": {
       "es": [
         "Empieza en posición prona sobre el suelo. Sostén tu peso sobre las manos y los dedos de los pies, con los pies juntos y el cuerpo recto. Los brazos deben estar flexionados a 90 grados. Esta será tu posición inicial.",
@@ -7389,6 +7601,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Split_Jump/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Split_Jump/1.jpg"
     ],
+    "chain": {
+      "id": "lunge",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Adopta una posición de zancada con un pie adelantado y la rodilla flexionada, y la rodilla trasera casi tocando el suelo.",
@@ -8322,6 +8538,10 @@
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Tuck_Crunch/0.jpg",
       "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Tuck_Crunch/1.jpg"
     ],
+    "chain": {
+      "id": "crunch",
+      "step": 1
+    },
     "instructionsI18n": {
       "es": [
         "Para empezar, túmbate en el suelo o sobre una esterilla con la espalda apoyada contra el suelo. Los brazos deben quedar a los lados con las palmas hacia abajo.",

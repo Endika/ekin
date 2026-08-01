@@ -16,6 +16,36 @@ export function search(list: Exercise[], term: string): Exercise[] {
 }
 
 /**
+ * The exercises of a progression chain, easiest first. Exercises sharing a step are
+ * equally hard alternatives, and keep a stable order by id.
+ */
+export function chainOf(list: Exercise[], chainId: string): Exercise[] {
+  return list
+    .filter((e) => e.chain?.id === chainId)
+    .sort(
+      (a, b) => a.chain!.step - b.chain!.step || a.name.localeCompare(b.name),
+    )
+}
+
+/**
+ * The rungs immediately below and above an exercise in its chain — what to regress to
+ * when it is too hard, and what to work toward next. Both are undefined for an exercise
+ * that stands alone, or at either end of its chain.
+ */
+export function chainNeighbours(
+  list: Exercise[],
+  exercise: Exercise,
+): { previous?: Exercise; next?: Exercise } {
+  const step = exercise.chain?.step
+  if (step === undefined) return {}
+  const siblings = chainOf(list, exercise.chain!.id)
+  return {
+    previous: siblings.filter((e) => e.chain!.step < step).at(-1),
+    next: siblings.find((e) => e.chain!.step > step),
+  }
+}
+
+/**
  * Instructions for an exercise in the given locale, falling back to the English
  * source when that locale has no (complete) translation yet.
  */

@@ -98,8 +98,27 @@ function candidatesFor(
  */
 function strengthOrder(candidates: Exercise[], variant: number): Exercise[] {
   const main = candidates.filter((e) => e.category !== 'stretching')
-  const groups = groupBy(main, (e) => e.primaryMuscles[0] ?? e.zone)
+  const groups = groupBy(
+    oneStepPerChain(main, variant),
+    (e) => e.primaryMuscles[0] ?? e.zone,
+  )
   return interleave(groups.map((g) => rotate(g, variant)))
+}
+
+/**
+ * Keep one exercise per progression chain, so a routine cannot serve four variations of
+ * the same push-up. The variant decides which step of the chain comes up, so successive
+ * routines walk the progression instead of always offering its easiest rung.
+ */
+function oneStepPerChain(list: Exercise[], variant: number): Exercise[] {
+  const groups = groupBy(list, (e) => e.chain?.id ?? e.id)
+  return groups.map(
+    (g) =>
+      rotate(
+        g.slice().sort((a, b) => (a.chain?.step ?? 0) - (b.chain?.step ?? 0)),
+        variant,
+      )[0],
+  )
 }
 
 /** Seconds a warm-up or cool-down item is held for. */

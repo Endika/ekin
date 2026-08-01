@@ -167,6 +167,44 @@ describe('autofill', () => {
     expect(new Set(muscles.slice(0, 3)).size).toBeGreaterThan(1)
   })
 
+  it('never puts two rungs of the same chain in one routine', () => {
+    const cat = loadCatalog()
+    const byId = new Map(cat.map((e) => [e.id, e]))
+    for (const zone of ['upper', 'core', 'legs'] as const) {
+      for (let variant = 0; variant < 6; variant++) {
+        const w = autofill(cat, {
+          zone,
+          minutes: 60,
+          level: 'expert',
+          variant,
+        })
+        const chains = w.items
+          .filter((i) => (i.block ?? 'main') === 'main')
+          .map((i) => byId.get(i.exerciseId)!.chain?.id)
+          .filter(Boolean)
+        expect(new Set(chains).size).toBe(chains.length)
+      }
+    }
+  })
+
+  it('walks the chain across variants instead of always offering the easiest rung', () => {
+    const cat = loadCatalog()
+    const byId = new Map(cat.map((e) => [e.id, e]))
+    const steps = new Set<number>()
+    for (let variant = 0; variant < 6; variant++) {
+      for (const it of autofill(cat, {
+        zone: 'upper',
+        minutes: 60,
+        level: 'expert',
+        variant,
+      }).items) {
+        const c = byId.get(it.exerciseId)?.chain
+        if (c?.id === 'push') steps.add(c.step)
+      }
+    }
+    expect(steps.size).toBeGreaterThan(1)
+  })
+
   it('builds the session as warm-up, main, cool-down in that order', () => {
     const w = autofill(loadCatalog(), {
       zone: 'legs',
