@@ -6,6 +6,7 @@ import {
   localizedInstructions,
 } from '../../src/domain/catalog'
 import type { Exercise } from '../../src/domain/types'
+import { NEEDS_EQUIPMENT } from '../../scripts/needs-equipment.mjs'
 
 describe('catalog', () => {
   it('loads only bodyweight exercises with required fields', () => {
@@ -28,6 +29,14 @@ describe('catalog', () => {
     const all = loadCatalog()
     const hit = search(all, all[0].name.slice(0, 4).toUpperCase())
     expect(hit.some((e) => e.id === all[0].id)).toBe(true)
+  })
+
+  // Ekin assumes nothing but the floor, a wall and household furniture. Upstream's
+  // `equipment` field is not enough on its own — it calls Pullups and Chin-Up "body only".
+  it('excludes every exercise that needs equipment', () => {
+    const ids = new Set(loadCatalog().map((e) => e.id))
+    const leaked = [...NEEDS_EQUIPMENT].filter((id) => ids.has(id))
+    expect(leaked).toEqual([])
   })
 })
 
