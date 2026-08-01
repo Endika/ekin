@@ -188,21 +188,34 @@ describe('autofill', () => {
   })
 
   it('walks the chain across variants instead of always offering the easiest rung', () => {
-    const cat = loadCatalog()
-    const byId = new Map(cat.map((e) => [e.id, e]))
-    const steps = new Set<number>()
-    for (let variant = 0; variant < 6; variant++) {
-      for (const it of autofill(cat, {
+    // A chain whose first step holds several equally hard alternatives: rotating by
+    // position would walk sideways through those three and never climb.
+    const rung = (id: string, step: number): Exercise => ({
+      ...ex(id, 'upper', 'beginner'),
+      primaryMuscles: ['chest'],
+      chain: { id: 'push', step },
+    })
+    const cat = [
+      rung('easy-a', 0),
+      rung('easy-b', 0),
+      rung('easy-c', 0),
+      rung('mid', 1),
+      rung('hard', 2),
+    ]
+    const stepOf = (id: string) => cat.find((e) => e.id === id)!.chain!.step
+    const seen = new Set<number>()
+    for (let variant = 0; variant < 3; variant++) {
+      const w = autofill(cat, {
         zone: 'upper',
         minutes: 60,
         level: 'expert',
         variant,
-      }).items) {
-        const c = byId.get(it.exerciseId)?.chain
-        if (c?.id === 'push') steps.add(c.step)
-      }
+      })
+      const main = w.items.filter((i) => (i.block ?? 'main') === 'main')
+      expect(main).toHaveLength(1) // one rung per chain, always
+      seen.add(stepOf(main[0].exerciseId))
     }
-    expect(steps.size).toBeGreaterThan(1)
+    expect([...seen].sort()).toEqual([0, 1, 2])
   })
 
   it('builds the session as warm-up, main, cool-down in that order', () => {

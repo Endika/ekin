@@ -111,14 +111,17 @@ function strengthOrder(candidates: Exercise[], variant: number): Exercise[] {
  * routines walk the progression instead of always offering its easiest rung.
  */
 function oneStepPerChain(list: Exercise[], variant: number): Exercise[] {
-  const groups = groupBy(list, (e) => e.chain?.id ?? e.id)
-  return groups.map(
-    (g) =>
-      rotate(
-        g.slice().sort((a, b) => (a.chain?.step ?? 0) - (b.chain?.step ?? 0)),
-        variant,
-      )[0],
-  )
+  return groupBy(list, (e) => e.chain?.id ?? e.id).map((chain) => {
+    if (chain.length === 1) return chain[0]
+    // Rotate over the STEPS, not the exercises: a step can hold several equally hard
+    // alternatives (the push chain has five at step 0), and rotating by position would
+    // just walk sideways through those instead of climbing the progression.
+    const steps = groupBy(
+      chain.slice().sort((a, b) => (a.chain?.step ?? 0) - (b.chain?.step ?? 0)),
+      (e) => String(e.chain?.step ?? 0),
+    )
+    return rotate(rotate(steps, variant)[0], variant)[0]
+  })
 }
 
 /** Seconds a warm-up or cool-down item is held for. */

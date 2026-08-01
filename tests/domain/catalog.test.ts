@@ -42,6 +42,29 @@ describe('catalog', () => {
   })
 })
 
+describe('imported exercises', () => {
+  const imported = loadCatalog().filter((e) => e.source)
+
+  it('carries attribution for every one of them', () => {
+    expect(imported.length).toBeGreaterThan(100)
+    for (const e of imported) {
+      expect(e.source!.author).toBeTruthy()
+      expect(e.source!.license).toMatch(/^(CC-BY|CC0|ODbL)/)
+      expect(e.source!.url).toMatch(/^https:\/\//)
+    }
+  })
+
+  // The whole catalog must stay usable with nothing but the floor, a wall and furniture.
+  it('needs no equipment you would have to buy', () => {
+    const banned =
+      /\b(pull-?up bar|chin-?up bar|barbell|dumbbell|kettlebell|resistance band|trx|suspension trainer|gymnastic rings)\b/i
+    const offenders = loadCatalog()
+      .filter((e) => banned.test(`${e.name} ${e.instructions.join(' ')}`))
+      .map((e) => e.name)
+    expect(offenders).toEqual([])
+  })
+})
+
 describe('progression chains', () => {
   const chained = (id: string, chainId: string, step: number): Exercise => ({
     id,

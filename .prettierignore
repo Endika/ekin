@@ -3,4 +3,5 @@ dev-dist
 node_modules
 package-lock.json
 src/data/exercises.json
+src/data/exercises.wger.json
 CHANGELOG.md

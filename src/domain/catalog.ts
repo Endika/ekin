@@ -1,8 +1,14 @@
 import type { Exercise, Zone } from './types'
 import data from '../data/exercises.json'
+import wger from '../data/exercises.wger.json'
 
+/**
+ * The catalog is two separately-licensed datasets kept in separate files: free-exercise-db
+ * (public domain) and wger (CC-BY-SA, each exercise carrying its own attribution in
+ * `source`). They are concatenated at read time, never merged on disk. See NOTICE.md.
+ */
 export function loadCatalog(): Exercise[] {
-  return data as unknown as Exercise[]
+  return [...data, ...wger] as unknown as Exercise[]
 }
 
 export function filterByZone(list: Exercise[], zone: Zone): Exercise[] {

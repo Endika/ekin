@@ -33,6 +33,25 @@ export interface Exercise {
    * Absent ⇒ the exercise stands alone.
    */
   chain?: { id: string; step: number }
+  /**
+   * For a stretching exercise, whether it is active movement (warm-up) or a held position
+   * (cool-down). Set by the wger importer; free-exercise-db entries are classified by the
+   * curated list in `domain/stretches.ts` instead.
+   */
+  stretchKind?: 'dynamic' | 'static'
+  /**
+   * Where the exercise came from, when it is not public-domain free-exercise-db. Present
+   * on wger imports, whose CC-BY-SA licence requires the author and licence to travel
+   * with the content and be shown to the user. See NOTICE.md.
+   */
+  source?: {
+    name: string
+    url: string
+    license: string
+    licenseUrl: string
+    author: string
+    authorUrl?: string
+  }
 }
 
 /** A workout is either rep-based (sets×reps×rest) or a timed circuit. */
