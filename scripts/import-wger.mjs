@@ -83,8 +83,49 @@ const MUSCLE_BY_CATEGORY = {
 }
 
 /** Needs kit we do not assume, or is not an exercise at all. */
-const REJECT =
-  /\b(trx|suspension|band|bands|ball|foam roller|roller|kettlebell|dumbbell|barbell|machine|cable|rope|sled|bike|cycling|treadmill|breathing|meditat|massage|pull-?up bar|rings?)\b/i
+/** Kit we do not assume. Checked against the name AND the description. */
+const REJECT = new RegExp(
+  [
+    /\b(trx|suspension|bands?|ball|foam roller|roller|kettlebell|dumbbell|barbell|machine|cable|rope|sled|bike|treadmill|pull-?ups?|chin-?ups?|rings?|weights|weight plate|plate|gym80|vibration|wheel|bars?)\b/
+      .source,
+    // held weight, but not "shift your body weight onto your fingers"
+    /\b(hold|holding|grab|grasp|lift)\s+(a\s+|the\s+)?weight\b/.source,
+  ].join('|'),
+  'i',
+)
+
+/**
+ * Not physical training at all. Checked against the NAME ONLY — plenty of perfectly good
+ * exercises mention breathing as a form cue ("keep your breathing steady", "exhale as you
+ * lift"), and matching the description threw out Dynamic Planche, Bretzel stretch, Back
+ * bridge, Heel Touches, Abdominal Draw-In and Back neck stretch.
+ *
+ * The prefixes must NOT be \b-terminated: \bmeditat\b would fail to match "meditation".
+ */
+const NOT_TRAINING = /\b(meditat|mindful|breath|cycl)\w*/i
+
+/**
+ * Rejected by hand: no pattern catches these without also catching good exercises.
+ * Reviewed one by one against the English text.
+ */
+const EXCLUDE_IDS = new Set([
+  1198, // "Inverted Rows" — "pull your chest to the bar", needs a bar
+  1092, // "Bag training" — a punching bag
+  1579, // "Bronco" — a rugby fitness test of 20/40/60 m shuttle runs
+  962, // "Elliptical" — a gym cardio machine; its English text never says "machine"
+  804, // "Sloper hanging" — climbing, needs a fingerboard
+])
+// Note the care around "weight": plural or held means kit, but "shift your body weight
+// onto your fingers" is a Finger Pushup. Matching a bare \bweight\b threw out Finger
+// Pushup, Isometric Wipers, Full Sit Outs and Slow Squat, all of them equipment-free.
+
+/**
+ * Descriptions that say nothing. wger lets a contributor save an exercise with a
+ * placeholder, and a handful are literally "View the video to undestand the exercise" or a
+ * bare YouTube link — nothing a user could follow, and nothing worth translating.
+ */
+const NO_INSTRUCTIONS =
+  /^(see|view|watch)\b.*\b(video|clip)\b|^https?:\/\/|^\s*$/i
 
 /** Reads as English but is not — wger has a few mislabelled translations. */
 const NOT_ENGLISH = /^(talons fesses|hollow hold zurdo)/i
@@ -173,6 +214,7 @@ const dropped = {
   rejected: 0,
   duplicate: 0,
   sideMerged: 0,
+  noInstructions: 0,
 }
 
 for (const e of raw.sort((a, b) => a.id - b.id)) {
@@ -187,7 +229,11 @@ for (const e of raw.sort((a, b) => a.id - b.id)) {
     dropped.notEnglish++
     continue
   }
-  if (REJECT.test(haystack)) {
+  if (
+    EXCLUDE_IDS.has(e.id) ||
+    REJECT.test(haystack) ||
+    NOT_TRAINING.test(en.name)
+  ) {
     dropped.rejected++
     continue
   }
@@ -203,6 +249,10 @@ for (const e of raw.sort((a, b) => a.id - b.id)) {
 
   const instructions = steps(en.description)
   if (!instructions.length) continue
+  if (instructions.every((s) => NO_INSTRUCTIONS.test(s))) {
+    dropped.noInstructions++
+    continue
+  }
 
   // exerciseinfo nests muscles as objects; the plain exercise endpoint sends bare ids.
   const categoryId = e.category?.id ?? e.category
@@ -251,12 +301,31 @@ for (const e of raw.sort((a, b) => a.id - b.id)) {
   })
 }
 
+// Carry over translations from the previous run, keyed by id and only while the English
+// source is unchanged — otherwise they would describe a different text. Without this, a
+// re-import would silently discard every hand-written translation.
+let kept = 0
+if (existsSync(OUT)) {
+  const previous = new Map(
+    JSON.parse(readFileSync(OUT, 'utf8')).map((e) => [e.id, e]),
+  )
+  for (const ex of out) {
+    const prev = previous.get(ex.id)
+    if (!prev?.instructionsI18n) continue
+    if (JSON.stringify(prev.instructions) !== JSON.stringify(ex.instructions))
+      continue
+    ex.instructionsI18n = { ...prev.instructionsI18n, ...ex.instructionsI18n }
+    kept++
+  }
+}
+
 mkdirSync('src/data', { recursive: true })
 writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n')
 
 const withImg = out.filter((e) => e.images.length).length
 const withEs = out.filter((e) => e.instructionsI18n?.es).length
 console.log(`wrote ${out.length} exercises from wger`)
+console.log(`  kept translations for: ${kept}`)
 console.log(`  with an image: ${withImg}`)
 console.log(`  with official Spanish: ${withEs}`)
 console.log(`  dropped: ${JSON.stringify(dropped)}`)

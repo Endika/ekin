@@ -1,6 +1,7 @@
 import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs'
 import { NEEDS_EQUIPMENT } from './needs-equipment.mjs'
 import { CHAINS } from './chains.mjs'
+import { INSTRUCTIONS_FALLBACK } from './instructions-fallback.mjs'
 
 const OUT = 'src/data/exercises.json'
 
@@ -59,7 +60,10 @@ const bodyweight = all
       level: e.level,
       category: e.category ?? 'strength',
       primaryMuscles: e.primaryMuscles ?? [],
-      instructions: e.instructions ?? [],
+      // Upstream wins; the fallback only fills entries it leaves empty.
+      instructions: e.instructions?.length
+        ? e.instructions
+        : (INSTRUCTIONS_FALLBACK[e.id] ?? []),
       images: (e.images ?? []).map((p) => IMG_BASE + p),
       ...(CHAINS[e.id] ? { chain: CHAINS[e.id] } : {}),
     }
