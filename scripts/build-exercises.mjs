@@ -1,4 +1,5 @@
 import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs'
+import { NEEDS_EQUIPMENT } from './needs-equipment.mjs'
 
 const OUT = 'src/data/exercises.json'
 
@@ -43,7 +44,11 @@ try {
 }
 
 const bodyweight = all
-  .filter((e) => e.equipment === 'body only' || e.equipment === null)
+  .filter(
+    (e) =>
+      (e.equipment === 'body only' || e.equipment === null) &&
+      !NEEDS_EQUIPMENT.has(e.id),
+  )
   .map((e) => {
     const primary = e.primaryMuscles?.[0]
     return {
