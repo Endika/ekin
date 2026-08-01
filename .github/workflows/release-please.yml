@@ -8,6 +8,9 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  # The last step dispatches deploy.yml; without this it fails with
+  # "403 Resource not accessible by integration".
+  actions: write
 
 concurrency:
   group: release-${{ github.ref }}
