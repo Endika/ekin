@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from 'svelte'
   import { uuidv7 } from 'uuidv7'
   import type { Workout, Session, SessionItemLog } from '../domain/types'
-  import { initSession, tick, advance } from '../lib/timer'
+  import { initSession, tick, advance, isTimedItem } from '../lib/timer'
   import { requestWakeLock, releaseWakeLock } from '../lib/wakeLock'
   import { allExercises } from '../stores/catalog-store'
   import { localizedInstructions } from '../domain/catalog'
@@ -35,10 +35,17 @@
     current ? localizedInstructions(current, $locale ?? 'en') : [],
   )
 
-  // The countdown ring is shown for rest (both modes) and for the work phase in
-  // timed mode (it auto-counts the work interval). Rep-mode work is manual.
+  let currentBlock = $derived(
+    state.phase === 'done'
+      ? 'main'
+      : (workout.items[state.itemIndex].block ?? 'main'),
+  )
+
+  // The countdown ring is shown for rest (both modes) and for any work phase that counts
+  // itself down — a circuit interval, or a warm-up / cool-down stretch. Rep work is manual.
   let ringActive = $derived(
-    state.phase === 'rest' || (isTimed && state.phase === 'work'),
+    state.phase === 'rest' ||
+      (state.phase === 'work' && isTimedItem(workout, state.itemIndex)),
   )
 
   // Rest/work ring geometry (visual only).
@@ -73,10 +80,16 @@
   }
 
   function finish() {
-    const sessionLogs: SessionItemLog[] = workout.items.map((it, i) => ({
-      exerciseId: it.exerciseId,
-      sets: logs[i].map((reps, setIndex) => ({ setIndex, reps })),
-    }))
+    // Only the main block is logged. Warm-up and cool-down stretches are held for time,
+    // not counted in reps, so logging them would plot a flat zero series on the progress
+    // charts for every stretch ever done.
+    const sessionLogs: SessionItemLog[] = workout.items
+      .map((it, i) => ({ it, i }))
+      .filter(({ it }) => (it.block ?? 'main') === 'main')
+      .map(({ it, i }) => ({
+        exerciseId: it.exerciseId,
+        sets: logs[i].map((reps, setIndex) => ({ setIndex, reps })),
+      }))
     const ended = Date.now()
     onfinish({
       id: uuidv7(),
@@ -136,6 +149,8 @@
             values: { n: state.roundIndex + 1, total: rounds },
           })}
         </span>
+      {:else if currentBlock !== 'main'}
+        <span class="pill block">{$_('player.block.' + currentBlock)}</span>
       {:else}
         <span class="pill">
           {$_('player.set', {

@@ -20,6 +20,16 @@ const DEFAULT_WORK_SECONDS = 30
 const workSecondsOf = (w: Workout, i: number) =>
   w.items[i].workSeconds ?? DEFAULT_WORK_SECONDS
 
+/**
+ * Whether this item's work phase counts itself down. True for every item of a timed
+ * circuit, and for warm-up / cool-down items in any mode: a stretch is held for a
+ * duration, so counting reps for it would make no sense.
+ */
+export const isTimedItem = (w: Workout, i: number): boolean => {
+  const block = w.items[i]?.block
+  return isTimed(w) || block === 'warmup' || block === 'cooldown'
+}
+
 export function initSession(workout: Workout): PlayerState {
   const base = {
     workout,
@@ -28,8 +38,8 @@ export function initSession(workout: Workout): PlayerState {
     roundIndex: 0,
     phase: (workout.items.length ? 'work' : 'done') as Phase,
   }
-  // Timed circuits count the first work interval down; rep mode works manually.
-  if (isTimed(workout) && workout.items.length)
+  // Timed intervals count themselves down; rep-mode work is manual.
+  if (workout.items.length && isTimedItem(workout, 0))
     return { ...base, remaining: workSecondsOf(workout, 0) }
   return { ...base, remaining: 0 }
 }
@@ -53,7 +63,15 @@ function startNextItemReps(s: PlayerState): PlayerState {
   const nextItem = s.itemIndex + 1
   if (nextItem >= s.workout.items.length)
     return { ...s, phase: 'done', remaining: 0 }
-  return { ...s, itemIndex: nextItem, setIndex: 0, phase: 'work', remaining: 0 }
+  return {
+    ...s,
+    itemIndex: nextItem,
+    setIndex: 0,
+    phase: 'work',
+    remaining: isTimedItem(s.workout, nextItem)
+      ? workSecondsOf(s.workout, nextItem)
+      : 0,
+  }
 }
 
 function advanceTimed(s: PlayerState): PlayerState {
@@ -91,10 +109,11 @@ function startNextItemTimed(s: PlayerState): PlayerState {
 }
 
 export function tick(s: PlayerState): PlayerState {
-  // Rep mode only ticks the rest countdown; timed mode ticks work and rest.
-  const counting = isTimed(s.workout)
-    ? s.phase === 'work' || s.phase === 'rest'
-    : s.phase === 'rest'
+  // Rest always counts down; work only when the item is a timed one (a circuit
+  // interval, or a warm-up / cool-down stretch held for a duration).
+  const counting =
+    s.phase === 'rest' ||
+    (s.phase === 'work' && isTimedItem(s.workout, s.itemIndex))
   if (!counting) return s
   if (s.remaining <= 1) return advance(s)
   return { ...s, remaining: s.remaining - 1 }

@@ -1,5 +1,6 @@
 import { uuidv7 } from 'uuidv7'
 import type { Exercise, Level, Workout, WorkoutItem, Zone } from './types'
+import { isDynamicStretch, isStaticStretch } from './stretches'
 
 export type Goal = 'strength' | 'circuit'
 
@@ -101,33 +102,92 @@ function strengthOrder(candidates: Exercise[], variant: number): Exercise[] {
   return interleave(groups.map((g) => rotate(g, variant)))
 }
 
+/** Seconds a warm-up or cool-down item is held for. */
+const STRETCH_SECONDS = 30
+/** Share of the time budget spent warming up, and again cooling down. */
+const PREP_SHARE = 0.1
+
+/**
+ * Pick stretches that match the muscles the session actually trained.
+ *
+ * Preference order: stretches covering a worked muscle first, then anything else in the
+ * same zone as a fallback — some muscles have no dynamic stretch at all (there is no
+ * dynamic triceps stretch in the catalog), and warming the shoulder before triceps work
+ * is better than warming nothing.
+ */
+function prepBlock(
+  catalog: Exercise[],
+  main: WorkoutItem[],
+  block: 'warmup' | 'cooldown',
+  zone: Zone,
+  budget: number,
+  variant: number,
+): WorkoutItem[] {
+  const pick = block === 'warmup' ? isDynamicStretch : isStaticStretch
+  const exerciseById = new Map(catalog.map((e) => [e.id, e]))
+  const worked = new Set(
+    main.flatMap((it) => exerciseById.get(it.exerciseId)?.primaryMuscles ?? []),
+  )
+
+  const candidates = catalog.filter(pick).slice().sort(byId)
+  const matching = candidates.filter((e) =>
+    e.primaryMuscles.some((m) => worked.has(m)),
+  )
+  const sameZone = candidates.filter(
+    (e) => !matching.includes(e) && (zone === 'full' || e.zone === zone),
+  )
+  const ordered = [...rotate(matching, variant), ...rotate(sameZone, variant)]
+
+  const slots = Math.floor(budget / STRETCH_SECONDS)
+  return ordered.slice(0, Math.max(0, slots)).map((e) => ({
+    exerciseId: e.id,
+    sets: 1,
+    reps: 0,
+    restSeconds: 0,
+    workSeconds: STRETCH_SECONDS,
+    block,
+  }))
+}
+
 export function autofill(catalog: Exercise[], input: AutofillInput): Workout {
   if (input.goal === 'circuit') return autofillCircuit(catalog, input)
 
-  const budget = input.minutes * 60
+  const total = input.minutes * 60
+  const variant = input.variant ?? 0
+  // The minutes asked for are the minutes of the whole session, warm-up and cool-down
+  // included — so the main block gets what is left after reserving both.
+  const prepBudget = Math.round(total * PREP_SHARE)
+  const budget = total - 2 * prepBudget
+
   // Each "generate" tap bumps the variant, so a fresh set of exercises comes up instead
   // of the same routine every time.
   const candidates = strengthOrder(
     candidatesFor(catalog, input.zone, input.level),
-    input.variant ?? 0,
+    variant,
   )
 
-  const items: WorkoutItem[] = []
+  const main: WorkoutItem[] = []
   let used = 0
   for (const ex of candidates) {
-    const item: WorkoutItem = { exerciseId: ex.id, ...DEFAULTS }
+    const item: WorkoutItem = { exerciseId: ex.id, ...DEFAULTS, block: 'main' }
     const cost = estimateSeconds(item)
-    if (used + cost > budget && items.length > 0) break
-    items.push(item)
+    if (used + cost > budget && main.length > 0) break
+    main.push(item)
     used += cost
     if (used >= budget) break
   }
+
+  // Warm up and cool down the muscles this session actually trained.
+  const prep = (block: 'warmup' | 'cooldown') =>
+    main.length
+      ? prepBlock(catalog, main, block, input.zone, prepBudget, variant)
+      : []
 
   return {
     id: uuidv7(),
     name: `${capitalize(input.zone)} · ${input.minutes} min`,
     zone: input.zone,
-    items,
+    items: [...prep('warmup'), ...main, ...prep('cooldown')],
     createdAt: 0,
   }
 }

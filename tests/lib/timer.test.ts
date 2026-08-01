@@ -122,6 +122,51 @@ describe('timed circuit timer', () => {
     expect(s.remaining).toBeGreaterThan(1) // not an instant 0-second skip
   })
 
+  it('counts down warm-up and cool-down items even in rep mode', () => {
+    const session: Workout = {
+      id: 'w',
+      name: 'w',
+      zone: 'legs',
+      createdAt: 0,
+      items: [
+        {
+          exerciseId: 'warm',
+          sets: 1,
+          reps: 0,
+          restSeconds: 0,
+          workSeconds: 30,
+          block: 'warmup',
+        },
+        {
+          exerciseId: 'main',
+          sets: 1,
+          reps: 10,
+          restSeconds: 0,
+          block: 'main',
+        },
+        {
+          exerciseId: 'cool',
+          sets: 1,
+          reps: 0,
+          restSeconds: 0,
+          workSeconds: 30,
+          block: 'cooldown',
+        },
+      ],
+    }
+    let s = initSession(session)
+    expect(s.remaining).toBe(30) // the warm-up counts itself down
+    expect(tick(s).remaining).toBe(29)
+
+    s = advance(s) // -> main block
+    expect(s).toMatchObject({ itemIndex: 1, phase: 'work', remaining: 0 })
+    expect(tick(s).remaining).toBe(0) // rep work is manual, it does not tick
+
+    s = advance(s) // -> cool-down
+    expect(s).toMatchObject({ itemIndex: 2, phase: 'work', remaining: 30 })
+    expect(tick(s).remaining).toBe(29)
+  })
+
   it('skips the rest phase for an item with zero rest', () => {
     const noRest: Workout = {
       ...timed,

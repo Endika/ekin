@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { autofill } from '../../src/domain/autofill'
+import { loadCatalog } from '../../src/domain/catalog'
+import { isDynamicStretch, isStaticStretch } from '../../src/domain/stretches'
 import type { Exercise, Level, Zone } from '../../src/domain/types'
 
 const ex = (
@@ -125,7 +127,7 @@ describe('autofill', () => {
     )
   })
 
-  it('drops stretching from the main block', () => {
+  it('keeps stretching out of the main block', () => {
     const withStretch = [
       ex('s', 'legs', 'beginner', 'strength'),
       ex('st', 'legs', 'beginner', 'stretching'),
@@ -135,7 +137,12 @@ describe('autofill', () => {
       minutes: 60,
       level: 'expert',
     })
-    expect(w.items.map((i) => i.exerciseId)).toEqual(['s'])
+    const mainIds = w.items
+      .filter((i) => (i.block ?? 'main') === 'main')
+      .map((i) => i.exerciseId)
+    expect(mainIds).toEqual(['s'])
+    // …but it is still used, as a cool-down
+    expect(w.items.some((i) => i.block === 'cooldown')).toBe(true)
   })
 
   it('alternates muscles instead of stacking variations of one move', () => {
@@ -158,6 +165,74 @@ describe('autofill', () => {
     )
     // The first three picks must not all be chest.
     expect(new Set(muscles.slice(0, 3)).size).toBeGreaterThan(1)
+  })
+
+  it('builds the session as warm-up, main, cool-down in that order', () => {
+    const w = autofill(loadCatalog(), {
+      zone: 'legs',
+      minutes: 45,
+      level: 'intermediate',
+    })
+    const blocks = w.items.map((i) => i.block ?? 'main')
+    expect(blocks).toContain('warmup')
+    expect(blocks).toContain('main')
+    expect(blocks).toContain('cooldown')
+    // no interleaving: each block is one contiguous run, in order
+    const order = ['warmup', 'main', 'cooldown']
+    const runs = blocks.filter((b, i) => b !== blocks[i - 1])
+    expect(runs).toEqual(order)
+  })
+
+  it('warms up with movement and cools down with held stretches', () => {
+    const cat = loadCatalog()
+    const byId = new Map(cat.map((e) => [e.id, e]))
+    const w = autofill(cat, {
+      zone: 'legs',
+      minutes: 45,
+      level: 'intermediate',
+    })
+    for (const it of w.items) {
+      const e = byId.get(it.exerciseId)!
+      if (it.block === 'warmup') expect(isDynamicStretch(e)).toBe(true)
+      if (it.block === 'cooldown') expect(isStaticStretch(e)).toBe(true)
+    }
+  })
+
+  it('stretches the muscles the session actually worked', () => {
+    const cat = loadCatalog()
+    const byId = new Map(cat.map((e) => [e.id, e]))
+    const w = autofill(cat, { zone: 'upper', minutes: 45, level: 'expert' })
+    const worked = new Set(
+      w.items
+        .filter((i) => (i.block ?? 'main') === 'main')
+        .flatMap((i) => byId.get(i.exerciseId)!.primaryMuscles),
+    )
+    const cooldown = w.items.filter((i) => i.block === 'cooldown')
+    expect(cooldown.length).toBeGreaterThan(0)
+    // an upper-body session must not send you off stretching hamstrings
+    expect(
+      cooldown.some((i) =>
+        byId.get(i.exerciseId)!.primaryMuscles.some((m) => worked.has(m)),
+      ),
+    ).toBe(true)
+  })
+
+  it('fits warm-up and cool-down inside the requested minutes', () => {
+    const minutes = 30
+    const w = autofill(loadCatalog(), {
+      zone: 'legs',
+      minutes,
+      level: 'intermediate',
+    })
+    const seconds = w.items.reduce(
+      (sum, i) =>
+        sum +
+        (i.block === 'main'
+          ? i.sets * (i.reps * 3 + i.restSeconds)
+          : (i.workSeconds ?? 0)),
+      0,
+    )
+    expect(seconds).toBeLessThanOrEqual(minutes * 60 + ITEM_SECONDS)
   })
 
   it('returns a valid editable workout', () => {
