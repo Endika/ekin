@@ -60,57 +60,15 @@
     }
   },
   {
-    "id": "wger-112",
-    "name": "Body-Ups",
-    "zone": "upper",
-    "level": "intermediate",
-    "category": "strength",
-    "primaryMuscles": [
-      "triceps"
-    ],
-    "instructions": [
-      "Assume a plank position on the ground. You should be supporting your bodyweight on your toes and forearms, keeping your torso straight. Your forearms should be shoulder-width apart. This will be your starting position.",
-      "Pressing your palms firmly into the ground, extend through the elbows to raise your body from the ground. Keep your torso rigid as you perform the movement.",
-      "Slowly lower your forearms back to the ground by allowing the elbows to flex.",
-      "Repeat as needed."
-    ],
-    "instructionsI18n": {
-      "es": [
-        "Comienza en una posición de plancha baja, apoyado sobre tus antebrazos y con el cuerpo formando una línea recta. Desde ahí, apoya una mano en el suelo y luego la otra para subir hasta una plancha alta (la posición de una flexión).",
-        "Invierte el movimiento, bajando un antebrazo y luego el otro para regresar de forma controlada a la posición inicial. La clave del ejercicio es mantener la cadera lo más estable posible, evitando que se balancee de lado a lado durante las transiciones."
-      ],
-      "eu": [
-        "Hasi plantxa baxuko jarreran, besaurreen gainean eta gorputzak lerro zuzen bat osatuz. Handik, jarri esku bat lurrean eta gero bestea, plantxa altura igotzeko (flexio baten jarrera).",
-        "Alderantzikatu mugimendua, besaurre bat jaitsiz eta gero bestea, hasierako jarrerara kontrolatuta itzultzeko. Ariketaren gakoa aldaka ahalik eta egonkorren mantentzea da, alde batetik bestera kulunkatu gabe."
-      ],
-      "gl": [
-        "Comeza nunha posición de prancha baixa, apoiado sobre os antebrazos e co corpo formando unha liña recta. Desde aí, apoia unha man no chan e logo a outra para subir ata unha prancha alta (a posición dunha flexión).",
-        "Inverte o movemento, baixando un antebrazo e logo o outro para regresar de forma controlada á posición inicial. A clave do exercicio é manter a cadeira o máis estable posible, evitando que se balancee dun lado a outro durante as transicións."
-      ],
-      "ca": [
-        "Comença en una posició de planxa baixa, recolzat sobre els avantbraços i amb el cos formant una línia recta. Des d'aquí, recolza una mà a terra i després l'altra per pujar fins a una planxa alta (la posició d'una flexió).",
-        "Inverteix el moviment, baixant un avantbraç i després l'altre per tornar de manera controlada a la posició inicial. La clau de l'exercici és mantenir el maluc tan estable com sigui possible, evitant que es balancegi d'un costat a l'altre durant les transicions."
-      ],
-      "va": [
-        "Comença en una posició de planxa baixa, recolzat sobre els avantbraços i amb el cos formant una línia recta. Des d'ací, recolza una mà en terra i després l'altra per a pujar fins a una planxa alta (la posició d'una flexió).",
-        "Invertix el moviment, baixant un avantbraç i després l'altre per a tornar de manera controlada a la posició inicial. La clau de l'exercici és mantindre el maluc tan estable com siga possible, evitant que es balancege d'un costat a l'altre durant les transicions."
-      ]
-    },
-    "images": [],
-    "source": {
-      "name": "wger",
-      "url": "https://wger.de/en/exercise/112/view/",
-      "license": "CC-BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "author": "cal.zabel"
-    }
-  },
-  {
     "id": "wger-194",
     "name": "Dips",
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "dip",
+      "step": 1
+    },
     "primaryMuscles": [
       "chest",
       "triceps"
@@ -234,65 +192,6 @@
     }
   },
   {
-    "id": "wger-282",
-    "name": "Handstand Pushup",
-    "zone": "upper",
-    "level": "expert",
-    "category": "strength",
-    "primaryMuscles": [
-      "shoulders",
-      "triceps"
-    ],
-    "instructions": [
-      "The handstand push-up (press-up) - also called the vertical push-up (press-up) or the inverted push-up (press-up) also called commandos- is a type of push-up exercise where the body is positioned in a handstand.",
-      "For a true handstand, the exercise is performed free-standing, held in the air.",
-      "To prepare the strength until one has built adequate balance, the feet are often placed against a wall, held by a partner, or secured in some other way from falling.",
-      "Handstand pushups require significant strength, as well as balance and control if performed free-standing."
-    ],
-    "instructionsI18n": {
-      "es": [
-        "La flexión en pino, también llamada flexión vertical o flexión invertida, es un tipo de flexión en el que el cuerpo se coloca en posición de pino.",
-        "Para un pino real, el ejercicio se realiza de forma libre, manteniéndose en el aire.",
-        "Para desarrollar la fuerza hasta lograr el equilibrio adecuado, los pies a menudo se apoyan contra una pared, los sujeta un compañero o se aseguran de alguna otra forma para evitar la caída.",
-        "Las flexiones en pino requieren una fuerza considerable, así como equilibrio y control si se realizan de forma libre."
-      ],
-      "eu": [
-        "Pinoko flexioa, flexio bertikala edo alderantzizko flexioa ere deitua, gorputza pinoko jarreran jartzen den flexio mota bat da.",
-        "Benetako pino batean, ariketa modu librean egiten da, airean eutsiz.",
-        "Oreka egokia lortu arte indarra garatzeko, oinak sarritan hormaren kontra jartzen dira, lagun batek eusten ditu edo beste modu batera finkatzen dira, erortzea saihesteko.",
-        "Pinoko flexioek indar handia eskatzen dute, baita oreka eta kontrola ere modu librean egiten badira."
-      ],
-      "gl": [
-        "A flexión en pino, tamén chamada flexión vertical ou flexión invertida, é un tipo de flexión no que o corpo se coloca en posición de pino.",
-        "Para un pino real, o exercicio realízase de forma libre, manténdose no aire.",
-        "Para desenvolver a forza ata lograr o equilibrio adecuado, os pés apóianse a miúdo contra unha parede, suxéitaos un compañeiro ou asegúranse dalgunha outra forma para evitar a caída.",
-        "As flexións en pino requiren unha forza considerable, así como equilibrio e control se se realizan de forma libre."
-      ],
-      "ca": [
-        "La flexió en pi, també anomenada flexió vertical o flexió invertida, és un tipus de flexió en què el cos es col·loca en posició de pi.",
-        "Per a un pi real, l'exercici es fa de manera lliure, mantenint-se en l'aire.",
-        "Per desenvolupar la força fins a aconseguir l'equilibri adequat, els peus sovint es recolzen contra una paret, els subjecta un company o s'asseguren d'alguna altra manera per evitar la caiguda.",
-        "Les flexions en pi requereixen una força considerable, així com equilibri i control si es fan de manera lliure."
-      ],
-      "va": [
-        "La flexió en pi, també anomenada flexió vertical o flexió invertida, és un tipus de flexió en què el cos es col·loca en posició de pi.",
-        "Per a un pi real, l'exercici es fa de manera lliure, mantenint-se en l'aire.",
-        "Per a desenvolupar la força fins a aconseguir l'equilibri adequat, els peus sovint es recolzen contra una paret, els subjecta un company o s'asseguren d'alguna altra manera per a evitar la caiguda.",
-        "Les flexions en pi requerixen una força considerable, així com equilibri i control si es fan de manera lliure."
-      ]
-    },
-    "images": [
-      "https://wger.de/media/exercise-images/282/f6121ac9-330e-4ed7-8219-91ce246bf871.png"
-    ],
-    "source": {
-      "name": "wger",
-      "url": "https://wger.de/en/exercise/282/view/",
-      "license": "CC0 1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "author": "BFad07"
-    }
-  },
-  {
     "id": "wger-292",
     "name": "Hip Raise, Lying",
     "zone": "upper",
@@ -395,6 +294,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "leg-raise",
+      "step": 1
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -454,6 +357,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "l-sit",
+      "step": 1
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -492,6 +399,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "push",
+      "step": 4
+    },
     "primaryMuscles": [
       "chest"
     ],
@@ -548,6 +459,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "pike",
+      "step": 0
+    },
     "primaryMuscles": [
       "chest"
     ],
@@ -780,6 +695,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "plank",
+      "step": 1
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -834,6 +753,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "burpee",
+      "step": 0
+    },
     "primaryMuscles": [
       "glutes",
       "quadriceps",
@@ -883,6 +806,10 @@
     "zone": "upper",
     "level": "expert",
     "category": "strength",
+    "chain": {
+      "id": "pike",
+      "step": 2
+    },
     "primaryMuscles": [
       "shoulders"
     ],
@@ -931,6 +858,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "push",
+      "step": 0
+    },
     "primaryMuscles": [
       "shoulders",
       "chest",
@@ -1116,6 +1047,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "lunge",
+      "step": 0
+    },
     "primaryMuscles": [
       "glutes",
       "quadriceps"
@@ -1189,6 +1124,10 @@
     "level": "beginner",
     "category": "stretching",
     "stretchKind": "dynamic",
+    "chain": {
+      "id": "push",
+      "step": 3
+    },
     "primaryMuscles": [
       "chest",
       "triceps"
@@ -1243,6 +1182,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "lunge",
+      "step": 1
+    },
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -1295,6 +1238,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "lunge",
+      "step": 2
+    },
     "primaryMuscles": [
       "glutes",
       "quadriceps"
@@ -1506,6 +1453,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "burpee",
+      "step": 0
+    },
     "primaryMuscles": [
       "chest"
     ],
@@ -1569,6 +1520,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "burpee",
+      "step": 1
+    },
     "primaryMuscles": [
       "chest"
     ],
@@ -1618,6 +1573,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "lunge",
+      "step": 0
+    },
     "primaryMuscles": [
       "glutes",
       "quadriceps"
@@ -1690,6 +1649,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "dip",
+      "step": 0
+    },
     "primaryMuscles": [
       "triceps"
     ],
@@ -1772,6 +1735,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "plank",
+      "step": 0
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -2587,6 +2554,10 @@
     "zone": "legs",
     "level": "expert",
     "category": "strength",
+    "chain": {
+      "id": "squat",
+      "step": 3
+    },
     "primaryMuscles": [
       "glutes",
       "quadriceps"
@@ -2759,6 +2730,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "push",
+      "step": 3
+    },
     "primaryMuscles": [
       "biceps",
       "lats",
@@ -2820,6 +2795,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "pike",
+      "step": 1
+    },
     "primaryMuscles": [
       "chest",
       "quadriceps",
@@ -2861,6 +2840,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "plank",
+      "step": 2
+    },
     "primaryMuscles": [
       "shoulders",
       "glutes",
@@ -2970,6 +2953,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "lunge",
+      "step": 0
+    },
     "primaryMuscles": [
       "glutes",
       "quadriceps"
@@ -3096,6 +3083,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "leg-raise",
+      "step": 0
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -3350,6 +3341,10 @@
     "zone": "legs",
     "level": "expert",
     "category": "strength",
+    "chain": {
+      "id": "squat",
+      "step": 3
+    },
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -3536,6 +3531,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "squat",
+      "step": 0
+    },
     "primaryMuscles": [
       "glutes",
       "quadriceps"
@@ -3606,6 +3605,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "push",
+      "step": 3
+    },
     "primaryMuscles": [
       "chest"
     ],
@@ -3804,6 +3807,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "push",
+      "step": 4
+    },
     "primaryMuscles": [
       "chest"
     ],
@@ -3928,6 +3935,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "push",
+      "step": 1
+    },
     "primaryMuscles": [
       "shoulders",
       "chest"
@@ -4422,6 +4433,10 @@
     "level": "beginner",
     "category": "stretching",
     "stretchKind": "static",
+    "chain": {
+      "id": "hip-bridge",
+      "step": 2
+    },
     "primaryMuscles": [
       "lats"
     ],
@@ -4609,6 +4624,10 @@
     "zone": "upper",
     "level": "expert",
     "category": "strength",
+    "chain": {
+      "id": "push",
+      "step": 5
+    },
     "primaryMuscles": [
       "shoulders"
     ],
@@ -4648,6 +4667,10 @@
     "level": "expert",
     "category": "stretching",
     "stretchKind": "dynamic",
+    "chain": {
+      "id": "planche",
+      "step": 1
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -4797,6 +4820,10 @@
     "level": "beginner",
     "category": "stretching",
     "stretchKind": "dynamic",
+    "chain": {
+      "id": "plank",
+      "step": 2
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -4835,6 +4862,10 @@
     "zone": "core",
     "level": "expert",
     "category": "strength",
+    "chain": {
+      "id": "push",
+      "step": 6
+    },
     "primaryMuscles": [
       "chest",
       "triceps"
@@ -4904,107 +4935,6 @@
       "va": [
         "En concret, els músculs implicats són: bíceps femoral, semimembranós i semitendinós."
       ]
-    }
-  },
-  {
-    "id": "wger-1307",
-    "name": "Front Plank",
-    "zone": "core",
-    "level": "beginner",
-    "category": "stretching",
-    "stretchKind": "static",
-    "primaryMuscles": [
-      "abdominals"
-    ],
-    "instructions": [
-      "The plank is a bodyweight exercise. As a multi-functional movement, the plank not only targets your abdominal muscles but also the spine and hip. Plank strengthens and tightens your entire body, improves your posture and balance, reduces body fat, and can help boost your metabolism.",
-      "Exercises such as the “plank pose” help strengthen the stamina of stabilizing abdominal muscles. It can also help relieve back pain associated with a weakening of the function of the stabilizing muscles of the body.",
-      "Planks are a versatile exercise that targets many of the most important muscle groups in the body, so they can be applied by anyone to improve endurance and overall body strength."
-    ],
-    "instructionsI18n": {
-      "es": [
-        "La plancha es un ejercicio con el peso corporal. Como movimiento multifuncional, la plancha no solo trabaja tus abdominales, sino también la columna y la cadera. La plancha fortalece y tonifica todo tu cuerpo, mejora tu postura y tu equilibrio, reduce la grasa corporal y puede ayudar a acelerar tu metabolismo.",
-        "Ejercicios como la «posición de plancha» ayudan a fortalecer la resistencia de los músculos abdominales estabilizadores. También puede ayudar a aliviar el dolor de espalda asociado a un debilitamiento de la función de los músculos estabilizadores del cuerpo.",
-        "Las planchas son un ejercicio versátil que trabaja muchos de los grupos musculares más importantes del cuerpo, por lo que cualquier persona puede aplicarlas para mejorar la resistencia y la fuerza corporal general."
-      ],
-      "eu": [
-        "Plantxa gorputz-pisuko ariketa bat da. Mugimendu multifuntzionala denez, plantxak ez ditu abdominalak bakarrik lantzen, baita bizkarrezurra eta aldaka ere. Plantxak gorputz osoa indartu eta tonifikatzen du, jarrera eta oreka hobetzen ditu, gorputzeko gantza murrizten du eta metabolismoa bizkortzen lagun dezake.",
-        "«Plantxa jarrera» bezalako ariketek abdominaleko muskulu egonkortzaileen erresistentzia indartzen laguntzen dute. Gorputzaren muskulu egonkortzaileen funtzioa ahultzearekin lotutako bizkarreko mina arintzen ere lagun dezake.",
-        "Plantxak ariketa moldakorrak dira, gorputzeko muskulu-talde garrantzitsuenetako asko lantzen dituztenak; hortaz, edonork erabil ditzake erresistentzia eta gorputzaren indar orokorra hobetzeko."
-      ],
-      "gl": [
-        "A prancha é un exercicio co peso corporal. Como movemento multifuncional, a prancha non só traballa os teus abdominais, senón tamén a columna e a cadeira. A prancha fortalece e tonifica todo o teu corpo, mellora a túa postura e o teu equilibrio, reduce a graxa corporal e pode axudar a acelerar o teu metabolismo.",
-        "Exercicios como a «posición de prancha» axudan a fortalecer a resistencia dos músculos abdominais estabilizadores. Tamén pode axudar a aliviar a dor de costas asociada a un debilitamento da función dos músculos estabilizadores do corpo.",
-        "As pranchas son un exercicio versátil que traballa moitos dos grupos musculares máis importantes do corpo, polo que calquera persoa pode aplicalas para mellorar a resistencia e a forza corporal xeral."
-      ],
-      "ca": [
-        "La planxa és un exercici amb el pes corporal. Com a moviment multifuncional, la planxa no només treballa els teus abdominals, sinó també la columna i el maluc. La planxa enforteix i tonifica tot el teu cos, millora la teva postura i el teu equilibri, redueix el greix corporal i pot ajudar a accelerar el teu metabolisme.",
-        "Exercicis com la «posició de planxa» ajuden a enfortir la resistència dels músculs abdominals estabilitzadors. També pot ajudar a alleujar el dolor d'esquena associat a un debilitament de la funció dels músculs estabilitzadors del cos.",
-        "Les planxes són un exercici versàtil que treballa molts dels grups musculars més importants del cos, per la qual cosa qualsevol persona pot aplicar-les per millorar la resistència i la força corporal general."
-      ],
-      "va": [
-        "La planxa és un exercici amb el pes corporal. Com a moviment multifuncional, la planxa no només treballa els teus abdominals, sinó també la columna i el maluc. La planxa enfortix i tonifica tot el teu cos, millora la teua postura i el teu equilibri, reduïx el greix corporal i pot ajudar a accelerar el teu metabolisme.",
-        "Exercicis com la «posició de planxa» ajuden a enfortir la resistència dels músculs abdominals estabilitzadors. També pot ajudar a alleujar el dolor d'esquena associat a un debilitament de la funció dels músculs estabilitzadors del cos.",
-        "Les planxes són un exercici versàtil que treballa molts dels grups musculars més importants del cos, per la qual cosa qualsevol persona pot aplicar-les per a millorar la resistència i la força corporal general."
-      ]
-    },
-    "images": [],
-    "source": {
-      "name": "wger",
-      "url": "https://wger.de/en/exercise/1307/view/",
-      "license": "CC-BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "author": "hektkaso"
-    }
-  },
-  {
-    "id": "wger-1312",
-    "name": "Bodyweight Squat HD",
-    "zone": "legs",
-    "level": "intermediate",
-    "category": "strength",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "instructions": [
-      "Squat is a type of bodyweight exercise. It is one of the most popular exercises for strength and muscle growth. Squat is particularly effective for focusing on the muscles of the leg and hips.",
-      "Squat are an easy exercise for beginners to do. It can help strengthen leg muscles, tighten hip muscles and burn calories to lose weight.",
-      "It tightens the butt and legs. Squats are very effective for firming and strengthening your legs by acting on the gluteus,hip flexors, quadriceps, hamstrings and inner thigh muscles. Also, bodyweight squats can help shape your glutes and butt."
-    ],
-    "instructionsI18n": {
-      "es": [
-        "La sentadilla es un tipo de ejercicio de peso corporal. Es uno de los ejercicios más populares para la fuerza y el crecimiento muscular. La sentadilla es particularmente efectiva para enfocarse en los músculos de la pierna y las caderas.",
-        "Las sentadillas son un ejercicio fácil de hacer para los principiantes. Puede ayudar a fortalecer los músculos de las piernas, tensar los músculos de la cadera y quemar calorías para perder peso.",
-        "Aprieta los glúteos y las piernas. Las sentadillas son muy efectivas para reafirmar y fortalecer las piernas al actuar sobre los glúteos, los flexores de la cadera, los cuádriceps, los isquiotibiales y los músculos internos del muslo. Además, las sentadillas con peso corporal pueden ayudar a dar forma a los glúteos."
-      ],
-      "eu": [
-        "Kukubilkoa gorputz-pisuko ariketa mota bat da. Indarrerako eta muskulu-hazkunderako ariketa ezagunenetakoa da. Kukubilkoa bereziki eraginkorra da hankako eta aldaketako muskuluetan zentratzeko.",
-        "Kukubilkoak hasiberrientzat egiteko errazak diren ariketak dira. Hanketako muskuluak indartzen, aldakako muskuluak tinkotzen eta kaloriak erretzen lagun dezake.",
-        "Estutu ipurmasailak eta hankak. Kukubilkoak oso eraginkorrak dira hankak tinkotzeko eta indartzeko, ipurmasailen, aldaka-flexoreen, kuadrizepsen, iskiotibialen eta izterraren barneko muskuluen gainean eragiten baitute. Gainera, gorputz-pisuko kukubilkoek ipurmasailei forma ematen lagun dezakete."
-      ],
-      "gl": [
-        "A sentadilla é un tipo de exercicio de peso corporal. É un dos exercicios máis populares para a forza e o crecemento muscular. A sentadilla é particularmente efectiva para enfocarse nos músculos da perna e as cadeiras.",
-        "As sentadillas son un exercicio doado de facer para os principiantes. Pode axudar a fortalecer os músculos das pernas, tensar os músculos da cadeira e queimar calorías.",
-        "Aperta os glúteos e as pernas. As sentadillas son moi efectivas para reafirmar e fortalecer as pernas ao actuar sobre os glúteos, os flexores da cadeira, os cuádriceps, os isquiotibiais e os músculos internos da coxa. Ademais, as sentadillas con peso corporal poden axudar a dar forma aos glúteos."
-      ],
-      "ca": [
-        "L'esquat és un tipus d'exercici de pes corporal. És un dels exercicis més populars per a la força i el creixement muscular. L'esquat és particularment efectiu per centrar-se en els músculs de la cama i els malucs.",
-        "Els esquats són un exercici fàcil de fer per als principiants. Pot ajudar a enfortir els músculs de les cames, tensar els músculs del maluc i cremar calories.",
-        "Estreny els glutis i les cames. Els esquats són molt efectius per reafirmar i enfortir les cames en actuar sobre els glutis, els flexors del maluc, els quàdriceps, els isquiotibials i els músculs interns de la cuixa. A més, els esquats amb pes corporal poden ajudar a donar forma als glutis."
-      ],
-      "va": [
-        "L'esquat és un tipus d'exercici de pes corporal. És un dels exercicis més populars per a la força i el creixement muscular. L'esquat és particularment efectiu per a centrar-se en els músculs de la cama i els malucs.",
-        "Els esquats són un exercici fàcil de fer per als principiants. Pot ajudar a enfortir els músculs de les cames, tensar els músculs del maluc i cremar calories.",
-        "Estreny els glutis i les cames. Els esquats són molt efectius per a reafirmar i enfortir les cames en actuar sobre els glutis, els flexors del maluc, els quàdriceps, els isquiotibials i els músculs interns de la cuixa. A més, els esquats amb pes corporal poden ajudar a donar forma als glutis."
-      ]
-    },
-    "images": [],
-    "source": {
-      "name": "wger",
-      "url": "https://wger.de/en/exercise/1312/view/",
-      "license": "CC-BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "author": "hektkaso"
     }
   },
   {
@@ -5125,6 +5055,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "dip",
+      "step": 0
+    },
     "primaryMuscles": [
       "biceps",
       "triceps"
@@ -5165,56 +5099,6 @@
     "source": {
       "name": "wger",
       "url": "https://wger.de/en/exercise/1320/view/",
-      "license": "CC-BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "author": "hektkaso"
-    }
-  },
-  {
-    "id": "wger-1324",
-    "name": "Bodyweight lunge HD",
-    "zone": "legs",
-    "level": "intermediate",
-    "category": "strength",
-    "primaryMuscles": [
-      "quadriceps"
-    ],
-    "instructions": [
-      "Bodyweight lunges are an effective calisthenic exercise for",
-      "strengthening the lower body, improving balance and stability, and",
-      "developing functional strength. They are a popular choice for bodyweight workouts, home workouts, and can also be included as part of a larger strength training routine."
-    ],
-    "instructionsI18n": {
-      "es": [
-        "Las zancadas con el peso corporal son un ejercicio de calistenia eficaz para",
-        "fortalecer el tren inferior, mejorar el equilibrio y la estabilidad, y",
-        "desarrollar fuerza funcional. Son una opción popular para los entrenamientos con el peso corporal, los entrenamientos en casa, y también pueden incluirse como parte de una rutina de entrenamiento de fuerza más amplia."
-      ],
-      "eu": [
-        "Gorputz-pisuko zangadak kalistenia-ariketa eraginkorrak dira",
-        "tren beherekoa indartzeko, oreka eta egonkortasuna hobetzeko, eta",
-        "indar funtzionala garatzeko. Aukera ezaguna dira gorputz-pisuko entrenamenduetarako, etxeko entrenamenduetarako, eta indar-entrenamendu zabalago baten parte gisa ere sar daitezke."
-      ],
-      "gl": [
-        "As zancadas co peso corporal son un exercicio de calistenia eficaz para",
-        "fortalecer o tren inferior, mellorar o equilibrio e a estabilidade, e",
-        "desenvolver forza funcional. Son unha opción popular para os adestramentos co peso corporal, os adestramentos na casa, e tamén poden incluírse como parte dunha rutina de adestramento de forza máis ampla."
-      ],
-      "ca": [
-        "Les gambades amb el pes corporal són un exercici de calistènia eficaç per",
-        "enfortir el tren inferior, millorar l'equilibri i l'estabilitat, i",
-        "desenvolupar força funcional. Són una opció popular per als entrenaments amb el pes corporal, els entrenaments a casa, i també poden incloure's com a part d'una rutina d'entrenament de força més àmplia."
-      ],
-      "va": [
-        "Les gambades amb el pes corporal són un exercici de calistènia eficaç per a",
-        "enfortir el tren inferior, millorar l'equilibri i l'estabilitat, i",
-        "desenvolupar força funcional. Són una opció popular per als entrenaments amb el pes corporal, els entrenaments a casa, i també poden incloure's com a part d'una rutina d'entrenament de força més àmplia."
-      ]
-    },
-    "images": [],
-    "source": {
-      "name": "wger",
-      "url": "https://wger.de/en/exercise/1324/view/",
       "license": "CC-BY-SA 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "author": "hektkaso"
@@ -5943,6 +5827,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "plank",
+      "step": 2
+    },
     "primaryMuscles": [
       "shoulders",
       "abdominals",
@@ -5983,6 +5871,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "plank",
+      "step": 2
+    },
     "primaryMuscles": [
       "glutes"
     ],
@@ -6021,6 +5913,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "oblique",
+      "step": 0
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -6120,62 +6016,6 @@
     "source": {
       "name": "wger",
       "url": "https://wger.de/en/exercise/1411/view/",
-      "license": "CC-BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "author": "hpmbala@gmail.com"
-    }
-  },
-  {
-    "id": "wger-1412",
-    "name": "bicycle crunches",
-    "zone": "core",
-    "level": "intermediate",
-    "category": "strength",
-    "primaryMuscles": [
-      "abdominals"
-    ],
-    "instructions": [
-      "Bicycle crunches are a core exercise performed on the floor.",
-      "Lie on your back with your hands behind your head and legs extended.",
-      "Lift your shoulders off the ground, bring one knee toward your chest, and twist your torso so your opposite elbow meets the knee.",
-      "Alternate sides in a pedaling motion, ensuring controlled movements and engaging your core throughout the exercise."
-    ],
-    "instructionsI18n": {
-      "es": [
-        "Los abdominales en bicicleta son un ejercicio para el core que se realiza en el suelo.",
-        "Acuéstate de espaldas con las manos detrás de la cabeza y las piernas extendidas.",
-        "Eleva los hombros del suelo, lleva una rodilla hacia el pecho y gira el torso para que el codo opuesto toque la rodilla.",
-        "Alterna los lados en un movimiento de pedaleo, asegurándote de mantener el core comprometido durante todo el ejercicio."
-      ],
-      "eu": [
-        "Bizikleta-abdominalak lurrean egiten den core-ariketa bat dira.",
-        "Etzan bizkarrez eskuak buruaren atzean eta hankak luzatuta.",
-        "Altxatu sorbaldak lurretik, eraman belaun bat bularrerantz eta biratu enborra kontrako ukondoak belauna uki dezan.",
-        "Txandakatu aldeak pedalkada-mugimendu batean, core-a ariketa osoan aktibatuta mantentzen ziurtatuz."
-      ],
-      "gl": [
-        "Os abdominais en bicicleta son un exercicio para o core que se realiza no chan.",
-        "Deítate de costas coas mans detrás da cabeza e as pernas estendidas.",
-        "Eleva os ombreiros do chan, leva un xeonllo cara ao peito e xira o torso para que o cóbado oposto toque o xeonllo.",
-        "Alterna os lados nun movemento de pedaleo, asegurándote de manter o core comprometido durante todo o exercicio."
-      ],
-      "ca": [
-        "Els abdominals en bicicleta són un exercici per al core que es fa a terra.",
-        "Estira't d'esquena amb les mans darrere del cap i les cames esteses.",
-        "Eleva les espatlles de terra, porta un genoll cap al pit i gira el tors perquè el colze oposat toqui el genoll.",
-        "Alterna els costats en un moviment de pedaleig, assegurant-te de mantenir el core compromès durant tot l'exercici."
-      ],
-      "va": [
-        "Els abdominals en bicicleta són un exercici per al core que es fa en terra.",
-        "Estira't d'esquena amb les mans darrere del cap i les cames esteses.",
-        "Alça els muscles del sòl, porta un genoll cap al pit i gira el tors perquè el colze oposat toque el genoll.",
-        "Alterna els costats en un moviment de pedaleig, assegurant-te de mantindre el core compromés durant tot l'exercici."
-      ]
-    },
-    "images": [],
-    "source": {
-      "name": "wger",
-      "url": "https://wger.de/en/exercise/1412/view/",
       "license": "CC-BY-SA 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "author": "hpmbala@gmail.com"
@@ -6479,6 +6319,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "oblique",
+      "step": 2
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -6523,6 +6367,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "crunch",
+      "step": 2
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -6686,6 +6534,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "crunch",
+      "step": 1
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -6760,6 +6612,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "crunch",
+      "step": 2
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -6829,6 +6685,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "plank",
+      "step": 3
+    },
     "primaryMuscles": [
       "glutes",
       "abdominals"
@@ -6902,75 +6762,15 @@
     }
   },
   {
-    "id": "wger-1551",
-    "name": "Push-Up",
-    "zone": "upper",
-    "level": "intermediate",
-    "category": "strength",
-    "primaryMuscles": [
-      "chest"
-    ],
-    "instructions": [
-      "The push-up is a fundamental bodyweight exercise that targets the chest, arms, and shoulders while engaging the core for stability. It requires no equipment and is excellent for building upper body strength.",
-      "Start in a plank position with hands placed slightly wider than shoulder-width, feet together, and body in a straight line from head to heels.",
-      "Engage your core and lower your body by bending your elbows, keeping them close to your body or flared slightly outward.",
-      "Lower until your chest nearly touches the ground while maintaining a neutral spine.",
-      "Push through your palms to return to the starting position, fully extending your arms."
-    ],
-    "instructionsI18n": {
-      "es": [
-        "La flexión es un ejercicio fundamental con peso corporal que trabaja el pecho, los brazos y los hombros, a la vez que trabaja el core para lograr estabilidad. No requiere equipo y es excelente para fortalecer la parte superior del cuerpo.",
-        "Comience en posición de plancha con las manos colocadas ligeramente más anchas que el ancho de los hombros, los pies juntos y el cuerpo en línea recta desde la cabeza hasta los talones.",
-        "Contraiga el torso y baje el cuerpo flexionando los codos, manteniéndolos cerca del cuerpo o ligeramente separados.",
-        "Baje hasta que el pecho casi toque el suelo, manteniendo la columna neutra.",
-        "Empuje con las palmas de las manos para volver a la posición inicial, extendiendo completamente los brazos."
-      ],
-      "eu": [
-        "Flexioa gorputz-pisuko oinarrizko ariketa bat da, bularra, besoak eta sorbaldak lantzen dituena, eta aldi berean core-a lantzen du egonkortasuna lortzeko. Ez du materialik behar eta bikaina da gorputzaren goiko aldea indartzeko.",
-        "Hasi plantxa jarreran eskuak sorbalden zabalera baino apur bat zabalago jarrita, oinak elkarturik eta gorputza lerro zuzenean burutik orpoetaraino.",
-        "Uzkurtu enborra eta jaitsi gorputza ukondoak tolestuz, gorputzetik gertu edo apur bat bereizita mantenduz.",
-        "Jaitsi bularrak ia lurra ukitu arte, bizkarrezurra neutro mantenduz.",
-        "Bultzatu esku-ahurrekin hasierako jarrerara itzultzeko, besoak guztiz luzatuz."
-      ],
-      "gl": [
-        "A flexión é un exercicio fundamental con peso corporal que traballa o peito, os brazos e os ombreiros, á vez que traballa o core para lograr estabilidade. Non require equipo e é excelente para fortalecer a parte superior do corpo.",
-        "Comeza en posición de prancha coas mans colocadas lixeiramente máis anchas que o ancho dos ombreiros, os pés xuntos e o corpo en liña recta desde a cabeza ata os talóns.",
-        "Contrae o torso e baixa o corpo flexionando os cóbados, manténdoos preto do corpo ou lixeiramente separados.",
-        "Baixa ata que o peito case toque o chan, mantendo a columna neutra.",
-        "Empuxa coas palmas das mans para volver á posición inicial, estendendo completamente os brazos."
-      ],
-      "ca": [
-        "La flexió és un exercici fonamental amb pes corporal que treballa el pit, els braços i les espatlles, alhora que treballa el core per aconseguir estabilitat. No requereix equip i és excel·lent per enfortir la part superior del cos.",
-        "Comença en posició de planxa amb les mans col·locades lleugerament més amples que l'amplada de les espatlles, els peus junts i el cos en línia recta des del cap fins als talons.",
-        "Contreu el tors i baixa el cos flexionant els colzes, mantenint-los a prop del cos o lleugerament separats.",
-        "Baixa fins que el pit gairebé toqui a terra, mantenint la columna neutra.",
-        "Empeny amb els palmells de les mans per tornar a la posició inicial, estenent completament els braços."
-      ],
-      "va": [
-        "La flexió és un exercici fonamental amb pes corporal que treballa el pit, els braços i els muscles, alhora que treballa el core per a aconseguir estabilitat. No requerix equip i és excel·lent per a enfortir la part superior del cos.",
-        "Comença en posició de planxa amb les mans col·locades lleugerament més amples que l'amplària dels muscles, els peus junts i el cos en línia recta des del cap fins als talons.",
-        "Contrau el tors i baixa el cos flexionant els colzes, mantenint-los a prop del cos o lleugerament separats.",
-        "Baixa fins que el pit quasi toque el sòl, mantenint la columna neutra.",
-        "Espenta amb els palmells de les mans per a tornar a la posició inicial, estenent completament els braços."
-      ]
-    },
-    "images": [
-      "https://wger.de/media/exercise-images/1551/a6a9e561-3965-45c6-9f2b-ee671e1a3a45.png"
-    ],
-    "source": {
-      "name": "wger",
-      "url": "https://wger.de/en/exercise/1551/view/",
-      "license": "CC-BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "author": "Settebello"
-    }
-  },
-  {
     "id": "wger-1554",
     "name": "Clap Push-UP",
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "push",
+      "step": 4
+    },
     "primaryMuscles": [
       "chest"
     ],
@@ -7578,6 +7378,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "squat",
+      "step": 1
+    },
     "primaryMuscles": [
       "glutes",
       "quadriceps"
@@ -7765,6 +7569,10 @@
     "zone": "core",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "plank",
+      "step": 2
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -7821,6 +7629,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "dip",
+      "step": 0
+    },
     "primaryMuscles": [
       "triceps"
     ],
@@ -7883,6 +7695,10 @@
     "zone": "upper",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "push",
+      "step": 4
+    },
     "primaryMuscles": [
       "chest"
     ],
@@ -8650,6 +8466,10 @@
     "zone": "core",
     "level": "expert",
     "category": "strength",
+    "chain": {
+      "id": "l-sit",
+      "step": 2
+    },
     "primaryMuscles": [
       "abdominals"
     ],
@@ -8694,6 +8514,10 @@
     "zone": "core",
     "level": "expert",
     "category": "strength",
+    "chain": {
+      "id": "l-sit",
+      "step": 1
+    },
     "primaryMuscles": [
       "lats",
       "chest",
@@ -8740,6 +8564,10 @@
     "zone": "core",
     "level": "expert",
     "category": "strength",
+    "chain": {
+      "id": "l-sit",
+      "step": 0
+    },
     "primaryMuscles": [
       "lats",
       "chest",
@@ -8886,6 +8714,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "hip-bridge",
+      "step": 0
+    },
     "primaryMuscles": [
       "glutes",
       "abdominals"
@@ -8931,6 +8763,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "lunge",
+      "step": 1
+    },
     "primaryMuscles": [
       "glutes",
       "quadriceps"
@@ -9059,6 +8895,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "plank",
+      "step": 2
+    },
     "primaryMuscles": [
       "quadriceps",
       "abdominals"
@@ -9105,6 +8945,10 @@
     "level": "beginner",
     "category": "stretching",
     "stretchKind": "dynamic",
+    "chain": {
+      "id": "oblique",
+      "step": 1
+    },
     "primaryMuscles": [
       "quadriceps",
       "abdominals"
@@ -9144,6 +8988,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "hip-bridge",
+      "step": 1
+    },
     "primaryMuscles": [
       "glutes"
     ],
@@ -9182,6 +9030,10 @@
     "zone": "upper",
     "level": "expert",
     "category": "strength",
+    "chain": {
+      "id": "planche",
+      "step": 0
+    },
     "primaryMuscles": [
       "shoulders",
       "abdominals",
@@ -9336,55 +9188,15 @@
     }
   },
   {
-    "id": "wger-1933",
-    "name": "Abdominal Crunch",
-    "zone": "core",
-    "level": "intermediate",
-    "category": "strength",
-    "primaryMuscles": [
-      "abdominals"
-    ],
-    "instructions": [
-      "The Abdominal Crunch is a classic core isolation exercise performed on the floor or a mat.",
-      "Unlike a full sit-up, it involves a smaller range of motion where you only lift your shoulders and upper back off the ground, keeping your lower back pressed firmly against the floor."
-    ],
-    "instructionsI18n": {
-      "es": [
-        "El crunch abdominal es un ejercicio de aislamiento clásico para el core que se realiza en el suelo o sobre una colchoneta.",
-        "A diferencia de un sit-up completo, implica un rango de movimiento menor en el que solo elevas los hombros y la parte alta de la espalda del suelo, manteniendo la zona lumbar firmemente apoyada contra el suelo."
-      ],
-      "eu": [
-        "Abdominal-uzkurdura core-arentzako isolamendu-ariketa klasiko bat da, lurrean edo koltxoneta baten gainean egiten dena.",
-        "Sit-up oso batekin alderatuta, mugimendu-tarte txikiagoa dakar: sorbaldak eta bizkarraren goiko aldea besterik ez dituzu lurretik altxatzen, gerrialdea lurraren kontra tinko mantenduz."
-      ],
-      "gl": [
-        "O crunch abdominal é un exercicio de illamento clásico para o core que se realiza no chan ou sobre unha colchoneta.",
-        "A diferenza dun sit-up completo, implica un rango de movemento menor no que só elevas os ombreiros e a parte alta das costas do chan, mantendo a zona lumbar firmemente apoiada contra o chan."
-      ],
-      "ca": [
-        "El crunch abdominal és un exercici d'aïllament clàssic per al core que es fa a terra o sobre una màrfega.",
-        "A diferència d'un sit-up complet, implica un rang de moviment menor en què només eleves les espatlles i la part alta de l'esquena de terra, mantenint la zona lumbar fermament recolzada contra el terra."
-      ],
-      "va": [
-        "El crunch abdominal és un exercici d'aïllament clàssic per al core que es fa en terra o sobre una màrfega.",
-        "A diferència d'un sit-up complet, implica un rang de moviment menor en què només alces els muscles i la part alta de l'esquena del sòl, mantenint la zona lumbar fermament recolzada contra el sòl."
-      ]
-    },
-    "images": [],
-    "source": {
-      "name": "wger",
-      "url": "https://wger.de/en/exercise/1933/view/",
-      "license": "CC-BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "author": "amaesc"
-    }
-  },
-  {
     "id": "wger-1948",
     "name": "1 Leg Box Squat",
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "squat",
+      "step": 2
+    },
     "primaryMuscles": [
       "hamstrings",
       "quadriceps"
@@ -9656,6 +9468,10 @@
     "zone": "legs",
     "level": "intermediate",
     "category": "strength",
+    "chain": {
+      "id": "squat",
+      "step": 0
+    },
     "primaryMuscles": [
       "quadriceps"
     ],
@@ -9709,68 +9525,6 @@
     "source": {
       "name": "wger",
       "url": "https://wger.de/en/exercise/1963/view/",
-      "license": "CC-BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "author": "Anon#2"
-    }
-  },
-  {
-    "id": "wger-1964",
-    "name": "Wide Push-Up",
-    "zone": "upper",
-    "level": "intermediate",
-    "category": "strength",
-    "primaryMuscles": [
-      "chest"
-    ],
-    "instructions": [
-      "​A push-up variation with a wider hand placement to increase the emphasis on the outer chest muscles and shoulders.",
-      "​Setup: Place hands wider than shoulder-width apart on the floor.",
-      "Lower: Descend until your chest nearly touches the floor, keeping your core tight.",
-      "​Push: Drive through your palms to return to the start position.",
-      "​Form: Don't let your lower back sag; keep a straight line from head to heels."
-    ],
-    "instructionsI18n": {
-      "es": [
-        "Una variante de la flexión con una colocación de manos más amplia para aumentar el énfasis en los músculos externos del pecho y los hombros.",
-        "Preparación: Coloca las manos en el suelo más separadas que el ancho de los hombros.",
-        "Bajada: Desciende hasta que el pecho casi toque el suelo, manteniendo el core firme.",
-        "Empuje: Empuja con las palmas para volver a la posición inicial.",
-        "Técnica: No dejes que la zona lumbar se hunda; mantén una línea recta desde la cabeza hasta los talones."
-      ],
-      "eu": [
-        "Flexioaren aldaera bat, esku-kokapen zabalagoarekin, bularreko eta sorbaldetako kanpoko muskuluetan enfasia handitzeko.",
-        "Prestaketa: jarri eskuak lurrean sorbalden zabalera baino gehiago bereizita.",
-        "Jaitsiera: jaitsi bularrak ia lurra ukitu arte, core-a tinko mantenduz.",
-        "Bultzada: bultzatu esku-ahurrekin hasierako jarrerara itzultzeko.",
-        "Teknika: ez utzi gerrialdea hondoratzen; mantendu lerro zuzena burutik orpoetaraino."
-      ],
-      "gl": [
-        "Unha variante da flexión cunha colocación de mans máis ampla para aumentar a énfase nos músculos externos do peito e os ombreiros.",
-        "Preparación: coloca as mans no chan máis separadas que o ancho dos ombreiros.",
-        "Baixada: descende ata que o peito case toque o chan, mantendo o core firme.",
-        "Empuxe: empuxa coas palmas para volver á posición inicial.",
-        "Técnica: non deixes que a zona lumbar se afunda; mantén unha liña recta desde a cabeza ata os talóns."
-      ],
-      "ca": [
-        "Una variant de la flexió amb una col·locació de mans més ampla per augmentar l'èmfasi en els músculs externs del pit i les espatlles.",
-        "Preparació: col·loca les mans a terra més separades que l'amplada de les espatlles.",
-        "Baixada: descendeix fins que el pit gairebé toqui a terra, mantenint el core ferm.",
-        "Empenta: empeny amb els palmells per tornar a la posició inicial.",
-        "Tècnica: no deixis que la zona lumbar s'enfonsi; mantén una línia recta des del cap fins als talons."
-      ],
-      "va": [
-        "Una variant de la flexió amb una col·locació de mans més ampla per a augmentar l'èmfasi en els músculs externs del pit i els muscles.",
-        "Preparació: col·loca les mans en terra més separades que l'amplària dels muscles.",
-        "Baixada: descendix fins que el pit quasi toque el sòl, mantenint el core ferm.",
-        "Espenta: espenta amb els palmells per a tornar a la posició inicial.",
-        "Tècnica: no deixes que la zona lumbar s'enfonse; mantín una línia recta des del cap fins als talons."
-      ]
-    },
-    "images": [],
-    "source": {
-      "name": "wger",
-      "url": "https://wger.de/en/exercise/1964/view/",
       "license": "CC-BY-SA 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "author": "Anon#2"
