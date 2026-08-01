@@ -101,7 +101,12 @@
     "aiKey": "Clau API de Gemini",
     "aiKeyHint": "Es guarda només en este dispositiu. Crida Gemini directament amb la teua quota.",
     "aiKeyPlaceholder": "Apega la teua clau",
-    "clear": "Esborrar"
+    "clear": "Esborrar",
+    "credits": "Crèdits",
+    "creditsFree": "Exercicis de",
+    "publicDomain": "domini públic",
+    "creditsWger": "{count} exercicis de",
+    "creditsAuthors": "aportats per {count} autors."
   },
   "ai": {
     "title": "Assistent IA",
@@ -127,5 +132,10 @@
     "cancel": "Cancel·la",
     "delete": "Elimina",
     "rename": "Reanomena"
+  },
+  "exercise": {
+    "easier": "Més fàcil:",
+    "nextLevel": "Nivell següent:",
+    "credit": "Per {author} via {source}"
   }
 }

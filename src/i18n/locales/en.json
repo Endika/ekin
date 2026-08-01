@@ -101,7 +101,12 @@
     "aiKey": "Gemini API key",
     "aiKeyHint": "Stored only on this device. Used to call Gemini directly with your own quota.",
     "aiKeyPlaceholder": "Paste your key",
-    "clear": "Clear"
+    "clear": "Clear",
+    "credits": "Credits",
+    "creditsFree": "Exercises from",
+    "publicDomain": "public domain",
+    "creditsWger": "{count} exercises from",
+    "creditsAuthors": "contributed by {count} authors."
   },
   "ai": {
     "title": "AI assist",
@@ -127,5 +132,10 @@
     "cancel": "Cancel",
     "delete": "Delete",
     "rename": "Rename"
+  },
+  "exercise": {
+    "easier": "Easier:",
+    "nextLevel": "Next level:",
+    "credit": "By {author} via {source}"
   }
 }

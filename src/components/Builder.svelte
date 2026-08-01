@@ -14,7 +14,7 @@
   import { saveWorkout } from '../data/workouts-repo'
   import { saved } from '../stores/saved-store'
   import { localizedInstructions } from '../domain/catalog'
-  import type { Zone } from '../domain/types'
+  import type { Exercise, Zone } from '../domain/types'
 
   let { onstart }: { onstart: () => void } = $props()
   let picking = $state(false)
@@ -24,6 +24,7 @@
     image: string
     name: string
     instructions: string[]
+    exercise?: Exercise
   }>()
   let pendingNew = $state(false)
   const zones: Zone[] = ['upper', 'core', 'legs', 'full']
@@ -117,6 +118,7 @@
             image,
             name,
             instructions: ex ? localizedInstructions(ex, $locale ?? 'en') : [],
+            exercise: ex,
           }
         }}
       />
@@ -158,6 +160,7 @@
     image={preview.image}
     name={preview.name}
     instructions={preview.instructions}
+    exercise={preview.exercise}
     onclose={() => (preview = undefined)}
   />
 {/if}
