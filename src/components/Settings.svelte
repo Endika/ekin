@@ -5,6 +5,7 @@
   import { geminiKey } from '../stores/settings'
   import { theme, type Theme } from '../stores/theme'
   import { allExercises } from '../stores/catalog-store'
+  import { playCue, primeSound, soundEnabled } from '../lib/sound'
 
   let { onclose }: { onclose: () => void } = $props()
   let keyInput = $state($geminiKey)
@@ -20,6 +21,14 @@
     { value: 'light', icon: 'sun' },
     { value: 'dark', icon: 'moon' },
   ]
+
+  function setSound(on: boolean) {
+    // Toggling here is a guaranteed user gesture, so it is our best chance to unlock
+    // the AudioContext on iOS before the session player needs it.
+    if (on) primeSound()
+    soundEnabled.set(on)
+    if (on) playCue('work') // after set(), or playCue bails out as still-muted
+  }
 </script>
 
 <div
@@ -60,6 +69,23 @@
           </button>
         {/each}
       </div>
+    </div>
+
+    <div class="field">
+      <label class="switch-row">
+        <span class="glyph" class:on={$soundEnabled}>
+          <Icon name={$soundEnabled ? 'volume' : 'volume-off'} size={18} />
+        </span>
+        <span class="name">{$_('settings.sound')}</span>
+        <input
+          class="switch"
+          type="checkbox"
+          role="switch"
+          checked={$soundEnabled}
+          onchange={(e) => setSound(e.currentTarget.checked)}
+        />
+      </label>
+      <small>{$_('settings.soundHint')}</small>
     </div>
 
     <label class="field">
@@ -190,6 +216,59 @@
     border-color: transparent;
     color: #fff;
     box-shadow: var(--shadow-glow);
+  }
+  .switch-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 44px;
+    cursor: pointer;
+  }
+  .switch-row .glyph {
+    display: grid;
+    place-items: center;
+  }
+  .switch-row .glyph.on {
+    color: var(--accent);
+  }
+  .switch-row .name {
+    flex: 1;
+  }
+  .switch {
+    flex: none;
+    appearance: none;
+    width: 52px;
+    height: 30px;
+    margin: 0;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+  }
+  .switch::after {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 22px;
+    margin: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--muted);
+  }
+  .switch:checked {
+    background: var(--grad);
+    border-color: transparent;
+    box-shadow: var(--shadow-glow);
+  }
+  .switch:checked::after {
+    background: #fff;
+    transform: translateX(22px);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .switch,
+    .switch::after {
+      transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+    }
   }
   .key-row {
     display: flex;

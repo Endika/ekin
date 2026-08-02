@@ -94,6 +94,8 @@
     "title": "Configuració",
     "language": "Idioma",
     "theme": "Tema",
+    "sound": "So",
+    "soundHint": "Avisa en cada canvi de fase i en els últims 3 segons, per a entrenar sense mirar la pantalla.",
     "aiKey": "Clau API de Gemini",
     "aiKeyHint": "Es guarda només en este dispositiu. Crida Gemini directament amb la teua quota.",
     "aiKeyPlaceholder": "Apega la teua clau",

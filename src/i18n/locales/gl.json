@@ -94,6 +94,8 @@
     "title": "Axustes",
     "language": "Idioma",
     "theme": "Tema",
+    "sound": "Son",
+    "soundHint": "Avisa en cada cambio de fase e nos últimos 3 segundos, para adestrar sen mirar a pantalla.",
     "aiKey": "Clave API de Gemini",
     "aiKeyHint": "Gárdase só neste dispositivo. Chama a Gemini directamente coa túa propia cota.",
     "aiKeyPlaceholder": "Pega a túa clave",

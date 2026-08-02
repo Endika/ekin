@@ -94,6 +94,8 @@
     "title": "Ajustes",
     "language": "Idioma",
     "theme": "Tema",
+    "sound": "Sonido",
+    "soundHint": "Avisa en cada cambio de fase y en los últimos 3 segundos, para entrenar sin mirar la pantalla.",
     "aiKey": "Clave API de Gemini",
     "aiKeyHint": "Se guarda solo en este dispositivo. Llama a Gemini directamente con tu propia cuota.",
     "aiKeyPlaceholder": "Pega tu clave",

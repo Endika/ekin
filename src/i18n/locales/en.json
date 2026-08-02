@@ -94,6 +94,8 @@
     "title": "Settings",
     "language": "Language",
     "theme": "Theme",
+    "sound": "Sound",
+    "soundHint": "Beeps on every phase change and on the last 3 seconds, so you can train without watching the screen.",
     "aiKey": "Gemini API key",
     "aiKeyHint": "Stored only on this device. Used to call Gemini directly with your own quota.",
     "aiKeyPlaceholder": "Paste your key",

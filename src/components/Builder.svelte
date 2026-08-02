@@ -14,6 +14,7 @@
   import { saveWorkout } from '../data/workouts-repo'
   import { saved } from '../stores/saved-store'
   import { localizedInstructions } from '../domain/catalog'
+  import { primeSound, soundEnabled } from '../lib/sound'
   import type { Exercise, WorkoutItem, Zone } from '../domain/types'
 
   let { onstart }: { onstart: () => void } = $props()
@@ -49,6 +50,14 @@
   function onNew() {
     if ($builder.items.length) pendingNew = true
     else doNew()
+  }
+
+  // iOS only unblocks audio from inside the gesture itself, so priming has to happen
+  // here rather than once the player has mounted. Nothing to unlock while muted — the
+  // Settings toggle primes on its own when sound is switched back on.
+  function start() {
+    if ($soundEnabled) primeSound()
+    onstart()
   }
 </script>
 
@@ -153,7 +162,7 @@
     </button>
     <button
       class="start btn-grad"
-      onclick={onstart}
+      onclick={start}
       disabled={!$builder.items.length}
     >
       <Icon name="play" size={20} />
