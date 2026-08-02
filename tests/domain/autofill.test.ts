@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { autofill } from '../../src/domain/autofill'
 import { loadCatalog } from '../../src/domain/catalog'
 import { isDynamicStretch, isStaticStretch } from '../../src/domain/stretches'
-import type { Exercise, Level, Zone } from '../../src/domain/types'
+import type { Exercise, Level, Workout, Zone } from '../../src/domain/types'
 
 const ex = (
   id: string,
@@ -242,6 +242,10 @@ describe('autofill', () => {
       minutes: 45,
       level: 'intermediate',
     })
+    const blocksSeen = new Set(w.items.map((i) => i.block))
+    expect([...blocksSeen]).toEqual(
+      expect.arrayContaining(['warmup', 'cooldown']),
+    )
     for (const it of w.items) {
       const e = byId.get(it.exerciseId)!
       if (it.block === 'warmup') expect(isDynamicStretch(e)).toBe(true)
@@ -298,14 +302,40 @@ describe('autofill', () => {
   })
 })
 
+const withMuscles = (e: Exercise, muscles: string[]): Exercise => ({
+  ...e,
+  primaryMuscles: muscles,
+})
+
+// 'Arm_Circles' and 'Sit_Squats' are on the curated dynamic list of stretches.ts; the
+// 'st*' ids are unknown to it, so they classify as static and belong in the cool-down.
 const circuitCatalog: Exercise[] = [
-  ex('s1', 'legs', 'beginner', 'strength'),
-  ex('s2', 'core', 'beginner', 'strength'),
-  ex('p1', 'legs', 'beginner', 'plyometrics'),
-  ex('c1', 'full', 'beginner', 'cardio'),
-  ex('st1', 'core', 'beginner', 'stretching'),
+  withMuscles(ex('s1', 'legs', 'beginner', 'strength'), ['quadriceps']),
+  withMuscles(ex('s2', 'core', 'beginner', 'strength'), ['abdominals']),
+  withMuscles(ex('p1', 'legs', 'beginner', 'plyometrics'), ['quadriceps']),
+  withMuscles(ex('c1', 'full', 'beginner', 'cardio'), ['hamstrings']),
+  withMuscles(ex('Arm_Circles', 'upper', 'beginner', 'stretching'), [
+    'shoulders',
+  ]),
+  withMuscles(ex('Front_Leg_Raises', 'legs', 'beginner', 'stretching'), [
+    'quadriceps',
+  ]),
+  withMuscles(ex('Groiners', 'legs', 'beginner', 'stretching'), ['hamstrings']),
+  withMuscles(ex('Sit_Squats', 'legs', 'beginner', 'stretching'), [
+    'quadriceps',
+  ]),
+  withMuscles(ex('st1', 'core', 'beginner', 'stretching'), ['abdominals']),
+  withMuscles(ex('st2', 'legs', 'beginner', 'stretching'), ['hamstrings']),
 ]
 const catOf = (id: string) => circuitCatalog.find((x) => x.id === id)!.category
+const circuitEx = (id: string) => circuitCatalog.find((x) => x.id === id)!
+const blocks = (w: Workout, block: string) =>
+  w.items.filter((i) => (i.block ?? 'main') === block)
+const idsOf = (items: { exerciseId: string }[]) =>
+  items.map((i) => i.exerciseId)
+
+const CIRCUIT_INTERVAL = 60 // 40s work + 20s rest
+const STRETCH_SECONDS = 30
 
 describe('autofill — circuit goal', () => {
   it('returns a timed workout with rounds and work/rest per item', () => {
@@ -318,7 +348,7 @@ describe('autofill — circuit goal', () => {
     expect(w.mode).toBe('timed')
     expect(w.rounds).toBeGreaterThanOrEqual(2)
     expect(w.items.length).toBeGreaterThan(0)
-    for (const it of w.items) {
+    for (const it of blocks(w, 'main')) {
       expect(it.workSeconds).toBeGreaterThan(0)
       expect(it.restSeconds).toBeGreaterThan(0)
     }
@@ -331,8 +361,8 @@ describe('autofill — circuit goal', () => {
       level: 'beginner',
       goal: 'circuit',
     })
-    const cats = w.items.map((it) => catOf(it.exerciseId))
-    expect(cats).not.toContain('stretching') // stretching excluded
+    const cats = blocks(w, 'main').map((it) => catOf(it.exerciseId))
+    expect(cats).not.toContain('stretching') // stretching excluded from the circuit
     // the energetic ones come first
     expect(cats[0]).toMatch(/plyometrics|cardio/)
   })
@@ -384,5 +414,143 @@ describe('autofill — circuit goal', () => {
     const b = autofill(catalog, { ...base, goal: 'strength' })
     expect(b.mode).toBeUndefined()
     expect(b.items).toEqual(a.items)
+  })
+
+  const circuit = (minutes: number, variant = 0) =>
+    autofill(circuitCatalog, {
+      zone: 'full',
+      minutes,
+      level: 'beginner',
+      goal: 'circuit',
+      variant,
+    })
+
+  it('builds the circuit as warm-up, main, cool-down in that order', () => {
+    const w = circuit(20)
+    expect(blocks(w, 'warmup').length).toBeGreaterThan(0)
+    expect(blocks(w, 'cooldown').length).toBeGreaterThan(0)
+    // every item declares its block, and each block is one contiguous run
+    const seen = w.items.map((i) => i.block)
+    expect(seen).not.toContain(undefined)
+    const runs = seen.filter((b, i) => b !== seen[i - 1])
+    expect(runs).toEqual(['warmup', 'main', 'cooldown'])
+  })
+
+  it('warms up with movement and cools down with held stretches', () => {
+    const w = circuit(20)
+    // without prep both loops below would be vacuous and pass on an empty session
+    expect(blocks(w, 'warmup').length).toBeGreaterThan(0)
+    expect(blocks(w, 'cooldown').length).toBeGreaterThan(0)
+    for (const it of blocks(w, 'warmup')) {
+      expect(isDynamicStretch(circuitEx(it.exerciseId))).toBe(true)
+      expect(it).toMatchObject({ workSeconds: STRETCH_SECONDS, restSeconds: 0 })
+    }
+    for (const it of blocks(w, 'cooldown')) {
+      expect(isStaticStretch(circuitEx(it.exerciseId))).toBe(true)
+    }
+  })
+
+  it('keeps the whole session near the requested minutes, prep included', () => {
+    const minutes = 20
+    const w = circuit(minutes)
+    const perRound = blocks(w, 'main').length * CIRCUIT_INTERVAL
+    const prepSeconds = w.items
+      .filter((i) => i.block !== 'main')
+      .reduce((sum, i) => sum + (i.workSeconds ?? 0), 0)
+    const total = w.rounds! * perRound + prepSeconds
+    // rounds are whole, so the budget can only be met to within one round
+    expect(Math.abs(total - minutes * 60)).toBeLessThanOrEqual(perRound)
+  })
+
+  it('clamps the rounds between the minimum and the maximum', () => {
+    expect(circuit(3).rounds).toBe(2)
+    expect(circuit(120).rounds).toBe(6)
+  })
+
+  it('names the session after the minutes asked for, not the circuit time', () => {
+    expect(circuit(20).name).toBe('Full · HIIT 20 min')
+  })
+
+  it('rotates the prep with the variant too', () => {
+    expect(idsOf(blocks(circuit(20, 1), 'warmup'))).not.toEqual(
+      idsOf(blocks(circuit(20), 'warmup')),
+    )
+    expect(idsOf(blocks(circuit(20, 1), 'cooldown'))).not.toEqual(
+      idsOf(blocks(circuit(20), 'cooldown')),
+    )
+    // …and stays stable for a given one
+    expect(idsOf(circuit(20, 1).items)).toEqual(idsOf(circuit(20, 1).items))
+  })
+
+  it('adds no prep when there is nothing to warm up for', () => {
+    const onlyStretches = circuitCatalog.filter(
+      (e) => e.category === 'stretching',
+    )
+    const w = autofill(onlyStretches, {
+      zone: 'full',
+      minutes: 20,
+      level: 'beginner',
+      goal: 'circuit',
+    })
+    expect(w.items).toEqual([])
+  })
+})
+
+/**
+ * Prep is paid for in whole 30s stretches, so reserving a share of the budget for it is not
+ * the same as spending that share. The session has to get back whatever the stretches did
+ * not actually cost.
+ */
+describe('autofill — prep costs only what it spends', () => {
+  // A one-exercise circuit costs 60s a round, small enough that the tenth of a short
+  // session that used to be set aside for stretches shows up as a whole missing round.
+  const tinyCircuit: Exercise[] = [
+    withMuscles(ex('p1', 'legs', 'beginner', 'plyometrics'), ['quadriceps']),
+    withMuscles(ex('Sit_Squats', 'legs', 'beginner', 'stretching'), [
+      'quadriceps',
+    ]),
+    withMuscles(ex('st1', 'legs', 'beginner', 'stretching'), ['quadriceps']),
+  ]
+
+  it('spends a short HIIT entirely on rounds when no stretch fits in it', () => {
+    // 3 min set 18s aside at each end, and the cheapest stretch costs 30
+    const w = autofill(tinyCircuit, {
+      zone: 'legs',
+      minutes: 3,
+      level: 'beginner',
+      goal: 'circuit',
+    })
+    expect(w.items.map((i) => i.block)).toEqual(['main'])
+    expect(w.rounds).toBe(3)
+    expect(w.rounds! * CIRCUIT_INTERVAL).toBe(3 * 60)
+  })
+
+  // 7 minutes sets 42s aside at each end but buys one 30s hold with it, so 12s at each end
+  // were reserved and never spent — which was enough to cost the session a whole exercise.
+  const shortStrength: Exercise[] = [
+    withMuscles(ex('s1', 'legs', 'beginner'), ['quadriceps']),
+    withMuscles(ex('s2', 'legs', 'beginner'), ['hamstrings']),
+    withMuscles(ex('s3', 'legs', 'beginner'), ['glutes']),
+    withMuscles(ex('Sit_Squats', 'legs', 'beginner', 'stretching'), [
+      'quadriceps',
+    ]),
+    withMuscles(ex('st1', 'legs', 'beginner', 'stretching'), ['quadriceps']),
+  ]
+
+  it('hands the rep-based path the seconds its prep could not spend', () => {
+    const w = autofill(shortStrength, {
+      zone: 'legs',
+      minutes: 7,
+      level: 'beginner',
+    })
+    expect(blocks(w, 'main')).toHaveLength(2)
+    expect(blocks(w, 'warmup')).toHaveLength(1)
+    expect(blocks(w, 'cooldown')).toHaveLength(1)
+    const seconds = w.items.reduce(
+      (sum, i) =>
+        sum + (i.block === 'main' ? ITEM_SECONDS : (i.workSeconds ?? 0)),
+      0,
+    )
+    expect(seconds).toBe(7 * 60)
   })
 })
