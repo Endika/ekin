@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeAll } from 'vitest'
 import { mount, unmount } from 'svelte'
-import { locale, waitLocale } from 'svelte-i18n'
+import { get } from 'svelte/store'
+import { locale, waitLocale, _ } from 'svelte-i18n'
 import '../../src/i18n'
 import SessionPlayer from '../../src/components/SessionPlayer.svelte'
 import ImageLightbox from '../../src/components/ImageLightbox.svelte'
@@ -32,6 +33,10 @@ beforeAll(async () => {
   await waitLocale()
 })
 
+/** The rendered copy for a key, so a wording edit in the locale files cannot break a test. */
+const t = (key: string, values?: Record<string, unknown>) =>
+  get(_)(key, values ? { values } : undefined)
+
 describe('SessionPlayer', () => {
   it('labels the warm-up block on the first item', async () => {
     const workout = autofill(loadCatalog(), {
@@ -42,7 +47,7 @@ describe('SessionPlayer', () => {
     expect(workout.items[0].block).toBe('warmup')
 
     const view = await render(SessionPlayer, { workout, onfinish: () => {} })
-    expect(view.text()).toContain('Calentamiento')
+    expect(view.text()).toContain(t('block.warmup'))
     view.destroy()
   })
 
@@ -68,8 +73,8 @@ describe('SessionPlayer', () => {
       onfinish: () => {},
     })
     const text = view.text()
-    expect(text).toContain('Serie')
-    expect(text).not.toContain('Calentamiento')
+    expect(text).toContain(t('player.set', { n: 1, total: 3 }))
+    expect(text).not.toContain(t('block.warmup'))
     view.destroy()
   })
 })
@@ -91,7 +96,7 @@ describe('ImageLightbox', () => {
       onclose: () => {},
     })
     const text = view.text()
-    expect(text).toContain('Siguiente nivel')
+    expect(text).toContain(t('exercise.nextLevel'))
     expect(text).toContain(next!.name)
     view.destroy()
   })
@@ -115,7 +120,7 @@ describe('ImageLightbox', () => {
 
 describe('ImageLightbox without an image', () => {
   it('still shows the instructions', async () => {
-    // 140 of 355 exercises have no image; their instructions must stay reachable.
+    // A good chunk of the catalog ships without an image; instructions must stay reachable.
     const exercise = loadCatalog().find(
       (e) => !e.images.length && e.instructions.length,
     )!
@@ -136,7 +141,7 @@ describe('Settings', () => {
   it('shows the credits screen naming wger and CC-BY-SA', async () => {
     const view = await render(Settings, { onclose: () => {} })
     const text = view.text()
-    expect(text).toContain('Créditos')
+    expect(text).toContain(t('settings.credits'))
     expect(text).toContain('wger')
     expect(text).toContain('CC-BY-SA')
     expect(text).toContain('free-exercise-db')
