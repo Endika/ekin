@@ -94,6 +94,8 @@
     "title": "Ezarpenak",
     "language": "Hizkuntza",
     "theme": "Gaia",
+    "sound": "Soinua",
+    "soundHint": "Fase aldaketa bakoitzean eta azken 3 segundoetan abisatzen du, pantailari begiratu gabe entrenatzeko.",
     "aiKey": "Gemini API gakoa",
     "aiKeyHint": "Gailu honetan bakarrik gordetzen da. Gemini zuzenean deitzen du zure kuotarekin.",
     "aiKeyPlaceholder": "Itsatsi zure gakoa",

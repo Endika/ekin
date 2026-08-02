@@ -4,6 +4,7 @@
   import type { Workout, Session, SessionItemLog } from '../domain/types'
   import { initSession, tick, advance, isTimedItem } from '../lib/timer'
   import { requestWakeLock, releaseWakeLock } from '../lib/wakeLock'
+  import { primeSound, playCue, soundEnabled, type Cue } from '../lib/sound'
   import { allExercises } from '../stores/catalog-store'
   import { localizedInstructions } from '../domain/catalog'
   import Icon from './Icon.svelte'
@@ -73,13 +74,21 @@
     if ('vibrate' in navigator) navigator.vibrate(60)
   }
 
-  function next() {
+  // The phone trains face down on the floor: a silenced phone still has the buzz, a
+  // phone in a pocket still has the cue. Both fire, never one instead of the other.
+  function signal(cue: Cue) {
     buzz()
+    playCue(cue)
+  }
+
+  function next() {
     state = advance(state)
     if (state.phase === 'done') finish()
+    else signal(state.phase)
   }
 
   function finish() {
+    signal('finish')
     // Only the main block is logged. Warm-up and cool-down stretches are held for time,
     // not counted in reps, so logging them would plot a flat zero series on the progress
     // charts for every stretch ever done.
@@ -110,17 +119,20 @@
 
   onMount(() => {
     requestWakeLock()
+    // Fallback for entry points that reach the player without a Start click. Muted, there
+    // is nothing to unlock, so no AudioContext is built either.
+    if ($soundEnabled) primeSound()
     document.addEventListener('visibilitychange', onVisibilityChange)
     interval = setInterval(() => {
-      // Timed mode auto-counts work and rest; rep mode only counts rest.
-      const counts =
-        state.phase === 'rest' || (isTimed && state.phase === 'work')
-      if (counts) {
-        const before = state.phase
-        state = tick(state)
-        if (state.phase !== before) buzz()
-        if (state.phase === 'done') finish()
-      }
+      // Whatever the ring draws is what counts down, so the two can never disagree.
+      if (!ringActive) return
+      // tick() advances exactly when the last second runs out, so the phase cue replaces
+      // the final tick instead of stacking on top of it.
+      const advancing = state.remaining <= 1
+      state = tick(state)
+      if (state.phase === 'done') finish()
+      else if (advancing) signal(state.phase)
+      else if (state.remaining <= 3) playCue('tick')
     }, 1000)
   })
   onDestroy(() => {
@@ -143,14 +155,16 @@
           },
         })}
       </span>
-      {#if isTimed}
+      <!-- Warm-up and cool-down play once, outside the rounds and outside the sets, so
+           neither counter means anything while one is running. -->
+      {#if currentBlock !== 'main'}
+        <span class="pill block">{$_('block.' + currentBlock)}</span>
+      {:else if isTimed}
         <span class="pill">
           {$_('player.round', {
             values: { n: state.roundIndex + 1, total: rounds },
           })}
         </span>
-      {:else if currentBlock !== 'main'}
-        <span class="pill block">{$_('block.' + currentBlock)}</span>
       {:else}
         <span class="pill">
           {$_('player.set', {
@@ -165,7 +179,9 @@
 
     {#if ringActive}
       <div class="rest">
-        {#if isTimed && state.phase === 'work' && current}
+        <!-- Any self-counting work phase, not just a circuit interval: a warm-up hold in a
+             rep workout counts down too, and without this the ring named no exercise. -->
+        {#if state.phase === 'work' && current}
           <h2 class="work-name">{current.name}</h2>
           {#if current.images[0] && imgOk}
             <img
@@ -273,10 +289,12 @@
       </details>
     {/if}
 
+    <!-- A running clock is cut short, whether it is a rest, a circuit interval or a
+         stretch held for time. Only manual rep work is reported as done. -->
     <button class="next btn-grad" onclick={next}>
       {#if state.phase === 'rest'}
         <Icon name="play" size={22} /> {$_('player.skipRest')}
-      {:else if isTimed}
+      {:else if ringActive}
         <Icon name="play" size={22} /> {$_('player.skip')}
       {:else}
         <Icon name="check" size={22} /> {$_('player.doneSet')}
