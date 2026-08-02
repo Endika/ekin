@@ -9,6 +9,8 @@
     image,
     zone,
     timed = false,
+    canMoveUp = true,
+    canMoveDown = true,
     onpatch,
     onremove,
     onmoveup,
@@ -20,6 +22,8 @@
     image?: string
     zone?: Zone
     timed?: boolean
+    canMoveUp?: boolean
+    canMoveDown?: boolean
     onpatch: (p: Partial<WorkoutItem>) => void
     onremove: () => void
     onmoveup: () => void
@@ -70,10 +74,18 @@
     </button>
     <strong class="name">{name}</strong>
     <div class="reorder">
-      <button onclick={onmoveup} aria-label={$_('item.moveUp')}>
+      <button
+        onclick={onmoveup}
+        disabled={!canMoveUp}
+        aria-label={$_('item.moveUp')}
+      >
         <Icon name="chevron-up" size={18} />
       </button>
-      <button onclick={onmovedown} aria-label={$_('item.moveDown')}>
+      <button
+        onclick={onmovedown}
+        disabled={!canMoveDown}
+        aria-label={$_('item.moveDown')}
+      >
         <Icon name="chevron-down" size={18} />
       </button>
       <button class="del" onclick={onremove} aria-label={$_('item.remove')}>
@@ -180,6 +192,9 @@
   }
   .reorder .del:active {
     color: var(--accent);
+  }
+  .reorder button:disabled {
+    opacity: 0.35;
   }
 
   .fields {

@@ -117,6 +117,8 @@
       {#if blockOf(item) !== blockOf($builder.items[i - 1])}
         <p class="block-head">{$_('block.' + blockOf(item))}</p>
       {/if}
+      <!-- An item may only travel inside its own block, so a neighbour from another block
+           — or no neighbour at all — is where its arrows stop. -->
       <BuilderItem
         {item}
         name={nameOf(item.exerciseId)}
@@ -125,9 +127,10 @@
         timed={isTimed}
         onpatch={(p) => builder.patch(i, p)}
         onremove={() => builder.remove(i)}
-        onmoveup={() => i > 0 && builder.move(i, i - 1)}
-        onmovedown={() =>
-          i < $builder.items.length - 1 && builder.move(i, i + 1)}
+        onmoveup={() => builder.move(i, i - 1)}
+        onmovedown={() => builder.move(i, i + 1)}
+        canMoveUp={blockOf($builder.items[i - 1]) === blockOf(item)}
+        canMoveDown={blockOf($builder.items[i + 1]) === blockOf(item)}
         onpreview={(image, name) => {
           const ex = exerciseOf(item.exerciseId)
           preview = {
