@@ -86,25 +86,42 @@ function advanceTimed(s: PlayerState): PlayerState {
   return startNextItemTimed(s)
 }
 
+/**
+ * The slice of items the rounds repeat over, `end` exclusive: everything after the
+ * leading warm-up and before the trailing cool-down, which play once each. A list with
+ * no prep items yields the whole list, so a plain circuit loops exactly as before.
+ * `start === end` (e.g. an all-warm-up list) means nothing repeats — better to play the
+ * items once than to loop forever over an empty range.
+ */
+function mainRange(w: Workout): { start: number; end: number } {
+  const blockOf = (i: number) => w.items[i].block ?? 'main'
+  let start = 0
+  while (start < w.items.length && blockOf(start) === 'warmup') start++
+  let end = w.items.length
+  while (end > start && blockOf(end - 1) === 'cooldown') end--
+  return { start, end }
+}
+
 function startNextItemTimed(s: PlayerState): PlayerState {
   const nextItem = s.itemIndex + 1
-  if (nextItem < s.workout.items.length)
+  const { start, end } = mainRange(s.workout)
+  const nextRound = s.roundIndex + 1
+  // end of the main block: loop back for the next round, else fall through to the cool-down
+  if (nextItem === end && end > start && nextRound < (s.workout.rounds ?? 1))
     return {
       ...s,
-      itemIndex: nextItem,
+      roundIndex: nextRound,
+      itemIndex: start,
       phase: 'work',
-      remaining: workSecondsOf(s.workout, nextItem),
+      remaining: workSecondsOf(s.workout, start),
     }
-  // end of the circuit: loop to the next round, or finish
-  const nextRound = s.roundIndex + 1
-  const rounds = s.workout.rounds ?? 1
-  if (nextRound >= rounds) return { ...s, phase: 'done', remaining: 0 }
+  if (nextItem >= s.workout.items.length)
+    return { ...s, phase: 'done', remaining: 0 }
   return {
     ...s,
-    roundIndex: nextRound,
-    itemIndex: 0,
+    itemIndex: nextItem,
     phase: 'work',
-    remaining: workSecondsOf(s.workout, 0),
+    remaining: workSecondsOf(s.workout, nextItem),
   }
 }
 

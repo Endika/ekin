@@ -183,3 +183,111 @@ describe('timed circuit timer', () => {
     expect(s.phase).toBe('done')
   })
 })
+
+const timedWithPrep: Workout = {
+  id: 'tp',
+  name: 'TP',
+  zone: 'full',
+  mode: 'timed',
+  rounds: 2,
+  createdAt: 1,
+  items: [
+    {
+      exerciseId: 'warm',
+      sets: 0,
+      reps: 0,
+      restSeconds: 0,
+      workSeconds: 20,
+      block: 'warmup',
+    },
+    {
+      exerciseId: 'a',
+      sets: 0,
+      reps: 0,
+      restSeconds: 3,
+      workSeconds: 4,
+      block: 'main',
+    },
+    {
+      exerciseId: 'b',
+      sets: 0,
+      reps: 0,
+      restSeconds: 3,
+      workSeconds: 4,
+      block: 'main',
+    },
+    {
+      exerciseId: 'cool',
+      sets: 0,
+      reps: 0,
+      restSeconds: 0,
+      workSeconds: 20,
+      block: 'cooldown',
+    },
+  ],
+}
+
+/** Every state an `advance`-only walk visits, from the initial one to 'done'. */
+const walk = (w: Workout) => {
+  const states = [initSession(w)]
+  while (states[states.length - 1].phase !== 'done' && states.length < 100)
+    states.push(advance(states[states.length - 1]))
+  return states.map((s) => ({
+    id: w.items[s.itemIndex]?.exerciseId,
+    phase: s.phase,
+    round: s.roundIndex,
+    left: s.remaining,
+  }))
+}
+
+describe('timed circuit with warm-up and cool-down', () => {
+  it('rounds over the main block only, prep items playing once', () => {
+    expect(walk(timedWithPrep)).toEqual([
+      { id: 'warm', phase: 'work', round: 0, left: 20 },
+      { id: 'a', phase: 'work', round: 0, left: 4 },
+      { id: 'a', phase: 'rest', round: 0, left: 3 },
+      { id: 'b', phase: 'work', round: 0, left: 4 },
+      { id: 'b', phase: 'rest', round: 0, left: 3 },
+      { id: 'a', phase: 'work', round: 1, left: 4 },
+      { id: 'a', phase: 'rest', round: 1, left: 3 },
+      { id: 'b', phase: 'work', round: 1, left: 4 },
+      { id: 'b', phase: 'rest', round: 1, left: 3 },
+      { id: 'cool', phase: 'work', round: 1, left: 20 },
+      { id: 'cool', phase: 'done', round: 1, left: 0 },
+    ])
+  })
+
+  it('treats an item with no block as main, so it still rounds', () => {
+    const unblocked: Workout = {
+      ...timedWithPrep,
+      items: [
+        timedWithPrep.items[0],
+        { exerciseId: 'a', sets: 0, reps: 0, restSeconds: 0, workSeconds: 4 },
+      ],
+    }
+    expect(walk(unblocked)).toEqual([
+      { id: 'warm', phase: 'work', round: 0, left: 20 },
+      { id: 'a', phase: 'work', round: 0, left: 4 },
+      { id: 'a', phase: 'work', round: 1, left: 4 },
+      { id: 'a', phase: 'done', round: 1, left: 0 },
+    ])
+  })
+
+  it('plays a prep-only circuit once instead of looping an empty main block', () => {
+    const noMain: Workout = {
+      ...timedWithPrep,
+      rounds: 3,
+      items: [
+        timedWithPrep.items[0],
+        { ...timedWithPrep.items[0], exerciseId: 'warm2' },
+        timedWithPrep.items[3],
+      ],
+    }
+    expect(walk(noMain)).toEqual([
+      { id: 'warm', phase: 'work', round: 0, left: 20 },
+      { id: 'warm2', phase: 'work', round: 0, left: 20 },
+      { id: 'cool', phase: 'work', round: 0, left: 20 },
+      { id: 'cool', phase: 'done', round: 0, left: 0 },
+    ])
+  })
+})
