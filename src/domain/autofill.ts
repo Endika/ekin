@@ -171,23 +171,18 @@ function prepBlock(
   }))
 }
 
-export function autofill(catalog: Exercise[], input: AutofillInput): Workout {
-  if (input.goal === 'circuit') return autofillCircuit(catalog, input)
+/**
+ * Seconds a prep block really occupies, which is NOT the share reserved for it: stretches
+ * come in whole 30s holds, so a budget buys `floor(budget / 30)` of them and the remainder
+ * is unspendable — below 5 minutes it buys none at all. The main block is therefore sized
+ * against what prep costs, not against what was set aside for it, or a short session would
+ * silently donate a tenth of itself at each end and get nothing back.
+ */
+const prepSeconds = (items: WorkoutItem[]) =>
+  items.reduce((sum, it) => sum + (it.workSeconds ?? 0), 0)
 
-  const total = input.minutes * 60
-  const variant = input.variant ?? 0
-  // The minutes asked for are the minutes of the whole session, warm-up and cool-down
-  // included — so the main block gets what is left after reserving both.
-  const prepBudget = Math.round(total * PREP_SHARE)
-  const budget = total - 2 * prepBudget
-
-  // Each "generate" tap bumps the variant, so a fresh set of exercises comes up instead
-  // of the same routine every time.
-  const candidates = strengthOrder(
-    candidatesFor(catalog, input.zone, input.level),
-    variant,
-  )
-
+/** As many candidates as the budget affords, in order, but never fewer than one. */
+function fillMain(candidates: Exercise[], budget: number): WorkoutItem[] {
   const main: WorkoutItem[] = []
   let used = 0
   for (const ex of candidates) {
@@ -198,18 +193,51 @@ export function autofill(catalog: Exercise[], input: AutofillInput): Workout {
     used += cost
     if (used >= budget) break
   }
+  return main
+}
+
+export function autofill(catalog: Exercise[], input: AutofillInput): Workout {
+  if (input.goal === 'circuit') return autofillCircuit(catalog, input)
+
+  const total = input.minutes * 60
+  const variant = input.variant ?? 0
+  // The minutes asked for are the minutes of the whole session, warm-up and cool-down
+  // included — so the main block gets what is left once both are paid for.
+  const prepBudget = Math.round(total * PREP_SHARE)
+
+  // Each "generate" tap bumps the variant, so a fresh set of exercises comes up instead
+  // of the same routine every time.
+  const candidates = strengthOrder(
+    candidatesFor(catalog, input.zone, input.level),
+    variant,
+  )
+
+  // Chicken and egg: the stretches are chosen to match the muscles the main block trains,
+  // yet the main block can only be sized once the stretches' real cost is known. So fill it
+  // once against the reserved share to learn what gets trained, build the prep from that,
+  // then refill against the time prep actually took. The candidate order is fixed, so the
+  // second pass can only extend the first — every muscle the stretches were matched to is
+  // still worked.
+  const probe = fillMain(candidates, total - 2 * prepBudget)
 
   // Warm up and cool down the muscles this session actually trained.
   const prep = (block: 'warmup' | 'cooldown') =>
-    main.length
-      ? prepBlock(catalog, main, block, input.zone, prepBudget, variant)
+    probe.length
+      ? prepBlock(catalog, probe, block, input.zone, prepBudget, variant)
       : []
+  const warmup = prep('warmup')
+  const cooldown = prep('cooldown')
+
+  const main = fillMain(
+    candidates,
+    total - prepSeconds(warmup) - prepSeconds(cooldown),
+  )
 
   return {
     id: uuidv7(),
     name: `${capitalize(input.zone)} · ${input.minutes} min`,
     zone: input.zone,
-    items: [...prep('warmup'), ...main, ...prep('cooldown')],
+    items: [...warmup, ...main, ...cooldown],
     createdAt: 0,
   }
 }
@@ -247,21 +275,41 @@ function rotate<T>(arr: T[], by: number): T[] {
 }
 
 function autofillCircuit(catalog: Exercise[], input: AutofillInput): Workout {
-  const budget = input.minutes * 60
+  const total = input.minutes * 60
+  const variant = input.variant ?? 0
+  // Same split as the strength path: the minutes asked for cover the whole session, so
+  // the circuit itself only drives the round count with what is left of the budget.
+  const prepBudget = Math.round(total * PREP_SHARE)
+
   const ordered = circuitOrder(candidatesFor(catalog, input.zone, input.level))
   // Shift the window by whole circuits per variant so consecutive "generate"
   // taps surface a fresh set of exercises instead of the same one every time.
-  const rotated = rotate(ordered, (input.variant ?? 0) * MAX_CIRCUIT_ITEMS)
+  const rotated = rotate(ordered, variant * MAX_CIRCUIT_ITEMS)
   const chosen = rotated.slice(0, MAX_CIRCUIT_ITEMS)
 
-  const items: WorkoutItem[] = chosen.map((ex) => ({
+  const main: WorkoutItem[] = chosen.map((ex) => ({
     exerciseId: ex.id,
     sets: 0,
     reps: 0,
     ...CIRCUIT,
+    block: 'main',
   }))
 
-  const perRound = items.length * (CIRCUIT.workSeconds + CIRCUIT.restSeconds)
+  // Prep before rounds: the circuit's exercises are picked from the catalog alone (the
+  // round count only multiplies them), so the stretches can be matched to the muscles
+  // trained before anything is known about the rounds. That ordering is what lets the round
+  // count run on the budget prep really leaves — a 3-minute HIIT fits no stretch at all and
+  // now spends its whole three minutes on the circuit.
+  const prep = (block: 'warmup' | 'cooldown') =>
+    main.length
+      ? prepBlock(catalog, main, block, input.zone, prepBudget, variant)
+      : []
+  const warmup = prep('warmup')
+  const cooldown = prep('cooldown')
+
+  // Only the main block repeats per round; warm-up and cool-down are played once.
+  const budget = total - prepSeconds(warmup) - prepSeconds(cooldown)
+  const perRound = main.length * (CIRCUIT.workSeconds + CIRCUIT.restSeconds)
   const rounds = perRound
     ? Math.min(MAX_ROUNDS, Math.max(MIN_ROUNDS, Math.round(budget / perRound)))
     : MIN_ROUNDS
@@ -272,7 +320,7 @@ function autofillCircuit(catalog: Exercise[], input: AutofillInput): Workout {
     zone: input.zone,
     mode: 'timed',
     rounds,
-    items,
+    items: [...warmup, ...main, ...cooldown],
     createdAt: 0,
   }
 }
