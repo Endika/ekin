@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import stretchesSource from '../../src/domain/stretches.ts?raw'
 import {
   loadCatalog,
   filterByZone,
@@ -39,6 +40,21 @@ describe('catalog', () => {
     const ids = new Set(loadCatalog().map((e) => e.id))
     const leaked = [...NEEDS_EQUIPMENT].filter((id) => ids.has(id))
     expect(leaked).toEqual([])
+  })
+
+  // `npm run sync-exercises` regenerates the catalog and can rename ids. A curated id that
+  // no longer resolves quietly stops classifying anything, and the damage surfaces far
+  // away as autofill picking the wrong stretches. Catch the drift at its source instead.
+  it('every hand-curated dynamic-stretch id still exists in the catalog', () => {
+    const list = stretchesSource.match(
+      /DYNAMIC_STRETCHES = new Set\(\[([\s\S]*?)\]\)/,
+    )
+    expect(list, 'DYNAMIC_STRETCHES is no longer a literal Set').not.toBeNull()
+
+    const curated = [...list![1].matchAll(/'([^']+)'/g)].map((m) => m[1])
+    expect(curated.length).toBeGreaterThan(20)
+    const known = new Set(loadCatalog().map((e) => e.id))
+    expect(curated.filter((id) => !known.has(id))).toEqual([])
   })
 })
 
