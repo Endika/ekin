@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.15.0](https://github.com/Endika/ekin/compare/v1.14.1...v1.15.0) (2026-08-02)
+
+
+### Features
+
+* **autofill:** warm up and cool down a HIIT circuit ([d9a7e6e](https://github.com/Endika/ekin/commit/d9a7e6e0188ba1b26efc85da23e75d250afb824d))
+* **player:** sound cues on every phase change and the last three seconds ([effc66c](https://github.com/Endika/ekin/commit/effc66cf0fe38dc552a9cc196ff50687125c6475))
+* **timer:** repeat the rounds over the main block only ([4c82d30](https://github.com/Endika/ekin/commit/4c82d30fc049de2f7504ba661bd194dfb2387ec7))
+
+
+### Bug Fixes
+
+* **builder:** keep the block order when adding and moving exercises ([16b6824](https://github.com/Endika/ekin/commit/16b6824ff1064cf54255aa78fe69784bd27d79a1))
+
 ## [1.14.1](https://github.com/Endika/ekin/compare/v1.14.0...v1.14.1) (2026-08-01)
 
 
