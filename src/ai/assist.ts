@@ -6,8 +6,7 @@ export type AssistRequest =
   | { kind: 'adjust'; direction: 'easier' | 'harder' }
 
 export type AssistResult =
-  | { ok: true; workout: Workout }
-  | { ok: false; error: string }
+  { ok: true; workout: Workout } | { ok: false; error: string }
 
 const isTimed = (w: Workout) => w.mode === 'timed'
 
