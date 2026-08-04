@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.3](https://github.com/Endika/ekin/compare/v1.15.2...v1.15.3) (2026-08-04)
+
+
+### Chores
+
+* **deps-dev:** bump the npm-minor-patch group across 1 directory with 14 updates ([ad62776](https://github.com/Endika/ekin/commit/ad62776a5b052ed1ca83e84d8c3471f064b05472))
+
 ## [1.15.2](https://github.com/Endika/ekin/compare/v1.15.1...v1.15.2) (2026-08-04)
 
 
