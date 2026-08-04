@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.5](https://github.com/Endika/ekin/compare/v1.15.4...v1.15.5) (2026-08-04)
+
+
+### Chores
+
+* **deps-dev:** bump typescript from 6.0.3 to 7.0.2 ([0c9e280](https://github.com/Endika/ekin/commit/0c9e280ef6c39ac74819659d8b2b73fc48a626b3))
+
 ## [1.15.4](https://github.com/Endika/ekin/compare/v1.15.3...v1.15.4) (2026-08-04)
 
 
