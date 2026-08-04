@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.2](https://github.com/Endika/ekin/compare/v1.15.1...v1.15.2) (2026-08-04)
+
+
+### Chores
+
+* **deps-dev:** bump brace-expansion ([53b3c95](https://github.com/Endika/ekin/commit/53b3c955f055833b81a8756e8cae8cce9c2ff6ba))
+
 ## [1.15.1](https://github.com/Endika/ekin/compare/v1.15.0...v1.15.1) (2026-08-04)
 
 
