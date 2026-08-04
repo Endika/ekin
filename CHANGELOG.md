@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.6](https://github.com/Endika/ekin/compare/v1.15.5...v1.15.6) (2026-08-04)
+
+
+### Bug Fixes
+
+* pin typescript to 6.0.3 for the typescript-eslint peer range ([4eaf79e](https://github.com/Endika/ekin/commit/4eaf79ee1baa1e5c7c2fdb4286f2b28ebabe0fd9))
+
 ## [1.15.5](https://github.com/Endika/ekin/compare/v1.15.4...v1.15.5) (2026-08-04)
 
 
