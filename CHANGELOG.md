@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.15.4](https://github.com/Endika/ekin/compare/v1.15.3...v1.15.4) (2026-08-04)
+
+
+### Chores
+
+* **deps-dev:** bump @types/node from 24.13.0 to 26.1.2 ([07246c4](https://github.com/Endika/ekin/commit/07246c403ac4ecd1a9e9bbd62a4a7363a23c9f9c))
+* **deps-dev:** bump jsdom from 29.1.1 to 30.0.1 ([e313db6](https://github.com/Endika/ekin/commit/e313db644eaeaa0f7687574877f0c13447535df0))
+
 ## [1.15.3](https://github.com/Endika/ekin/compare/v1.15.2...v1.15.3) (2026-08-04)
 
 
