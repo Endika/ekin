@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.7](https://github.com/Endika/ekin/compare/v1.15.6...v1.15.7) (2026-08-04)
+
+
+### Bug Fixes
+
+* override esbuild to 0.28 so svelte-i18n stops pulling a vulnerable copy ([b07da97](https://github.com/Endika/ekin/commit/b07da97fd066c209b1ec95be852acea155454a84))
+
 ## [1.15.6](https://github.com/Endika/ekin/compare/v1.15.5...v1.15.6) (2026-08-04)
 
 
