@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.15.1](https://github.com/Endika/ekin/compare/v1.15.0...v1.15.1) (2026-08-04)
+
+
+### Chores
+
+* **deps-dev:** bump fast-uri from 3.1.2 to 3.1.5 ([f812113](https://github.com/Endika/ekin/commit/f812113f42224fb05976384fe0d3f40003c693d3))
+* **deps-dev:** bump postcss from 8.5.15 to 8.5.25 ([43f7045](https://github.com/Endika/ekin/commit/43f70450a194f5666be460b52890610e40b21153))
+* **deps-dev:** bump undici from 7.27.1 to 7.29.0 ([1d57a31](https://github.com/Endika/ekin/commit/1d57a31bf28163d28d2f32f350f4d86da4314080))
+
 ## [1.15.0](https://github.com/Endika/ekin/compare/v1.14.1...v1.15.0) (2026-08-02)
 
 
