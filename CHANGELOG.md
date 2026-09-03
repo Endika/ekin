@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.13](https://github.com/Endika/ekin/compare/v1.15.12...v1.15.13) (2026-09-03)
+
+
+### Chores
+
+* **deps-dev:** bump fast-uri ([35bce08](https://github.com/Endika/ekin/commit/35bce0803f6651b9f2f15c390399892cf09b07e2))
+
 ## [1.15.12](https://github.com/Endika/ekin/compare/v1.15.11...v1.15.12) (2026-09-03)
 
 
