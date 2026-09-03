@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.12](https://github.com/Endika/ekin/compare/v1.15.11...v1.15.12) (2026-09-03)
+
+
+### Chores
+
+* **deps-dev:** bump the security-npm group across 1 directory with 2 updates ([947928d](https://github.com/Endika/ekin/commit/947928d3e44145c042b40a402473b2b6bdaab011))
+
 ## [1.15.11](https://github.com/Endika/ekin/compare/v1.15.10...v1.15.11) (2026-09-01)
 
 
