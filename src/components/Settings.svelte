@@ -38,7 +38,7 @@
     if (e.target === e.currentTarget) onclose()
   }}
 >
-  <section
+  <div
     class="sheet"
     role="dialog"
     aria-modal="true"
@@ -137,7 +137,7 @@
         })}
       </small>
     </div>
-  </section>
+  </div>
 </div>
 
 <style>

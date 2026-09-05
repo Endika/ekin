@@ -335,9 +335,6 @@
     text-align: center;
     color: var(--muted);
   }
-  .empty strong {
-    color: var(--text);
-  }
 
   .actions {
     position: sticky;

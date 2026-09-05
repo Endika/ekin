@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest'
-import { mount, unmount } from 'svelte'
+import { mount, unmount, type Component } from 'svelte'
 import { get } from 'svelte/store'
 import { locale, waitLocale, _ } from 'svelte-i18n'
 import '../../src/i18n'
@@ -15,11 +15,13 @@ import type { Workout } from '../../src/domain/types'
  * The pixels are not checked — but "does the player label the warm-up block", "does the
  * preview offer a next rung", "does Settings credit wger" are answered by the markup.
  */
-async function render(Component: unknown, props: Record<string, unknown>) {
+async function render<Props extends Record<string, unknown>>(
+  component: Component<Props>,
+  props: Props,
+) {
   const target = document.createElement('div')
   document.body.appendChild(target)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const instance = mount(Component as any, { target, props })
+  const instance = mount(component, { target, props })
   await new Promise((r) => setTimeout(r, 0))
   return {
     text: () => target.textContent?.replace(/\s+/g, ' ').trim() ?? '',
