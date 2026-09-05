@@ -19,7 +19,7 @@
   const isTimed = workout.mode === 'timed'
   const rounds = workout.rounds ?? 1
 
-  let state = $state(initSession(workout))
+  let player = $state(initSession(workout))
   let startedAt = Date.now()
   let interval: ReturnType<typeof setInterval> | undefined
   let logs: number[][] = $state(
@@ -28,25 +28,25 @@
 
   const exOf = (id: string) => allExercises.find((e) => e.id === id)
   let current = $derived(
-    state.phase === 'done'
+    player.phase === 'done'
       ? undefined
-      : exOf(workout.items[state.itemIndex].exerciseId),
+      : exOf(workout.items[player.itemIndex].exerciseId),
   )
   let steps = $derived(
     current ? localizedInstructions(current, $locale ?? 'en') : [],
   )
 
   let currentBlock = $derived(
-    state.phase === 'done'
+    player.phase === 'done'
       ? 'main'
-      : (workout.items[state.itemIndex].block ?? 'main'),
+      : (workout.items[player.itemIndex].block ?? 'main'),
   )
 
   // The countdown ring is shown for rest (both modes) and for any work phase that counts
   // itself down — a circuit interval, or a warm-up / cool-down stretch. Rep work is manual.
   let ringActive = $derived(
-    state.phase === 'rest' ||
-      (state.phase === 'work' && isTimedItem(workout, state.itemIndex)),
+    player.phase === 'rest' ||
+      (player.phase === 'work' && isTimedItem(workout, player.itemIndex)),
   )
 
   // Rest/work ring geometry (visual only).
@@ -56,13 +56,13 @@
     ringActive
       ? Math.max(
           1,
-          state.phase === 'rest'
-            ? workout.items[state.itemIndex].restSeconds
-            : (workout.items[state.itemIndex].workSeconds ?? 1),
+          player.phase === 'rest'
+            ? workout.items[player.itemIndex].restSeconds
+            : (workout.items[player.itemIndex].workSeconds ?? 1),
         )
       : 1,
   )
-  let ringOffset = $derived(CIRC * (1 - state.remaining / ringTotal))
+  let ringOffset = $derived(CIRC * (1 - player.remaining / ringTotal))
 
   let imgOk = $state(true)
   $effect(() => {
@@ -82,9 +82,9 @@
   }
 
   function next() {
-    state = advance(state)
-    if (state.phase === 'done') finish()
-    else signal(state.phase)
+    player = advance(player)
+    if (player.phase === 'done') finish()
+    else signal(player.phase)
   }
 
   function finish() {
@@ -112,7 +112,7 @@
   }
 
   function onVisibilityChange() {
-    if (document.visibilityState === 'visible' && state.phase !== 'done') {
+    if (document.visibilityState === 'visible' && player.phase !== 'done') {
       requestWakeLock()
     }
   }
@@ -128,11 +128,11 @@
       if (!ringActive) return
       // tick() advances exactly when the last second runs out, so the phase cue replaces
       // the final tick instead of stacking on top of it.
-      const advancing = state.remaining <= 1
-      state = tick(state)
-      if (state.phase === 'done') finish()
-      else if (advancing) signal(state.phase)
-      else if (state.remaining <= 3) playCue('tick')
+      const advancing = player.remaining <= 1
+      player = tick(player)
+      if (player.phase === 'done') finish()
+      else if (advancing) signal(player.phase)
+      else if (player.remaining <= 3) playCue('tick')
     }, 1000)
   })
   onDestroy(() => {
@@ -142,7 +142,7 @@
   })
 </script>
 
-{#if state.phase === 'done'}
+{#if player.phase === 'done'}
   <p class="done">{$_('player.complete')}</p>
 {:else if current}
   <section class="player fade-up">
@@ -150,7 +150,7 @@
       <span class="pill">
         {$_('player.exercise', {
           values: {
-            n: state.itemIndex + 1,
+            n: player.itemIndex + 1,
             total: workout.items.length,
           },
         })}
@@ -162,15 +162,15 @@
       {:else if isTimed}
         <span class="pill">
           {$_('player.round', {
-            values: { n: state.roundIndex + 1, total: rounds },
+            values: { n: player.roundIndex + 1, total: rounds },
           })}
         </span>
       {:else}
         <span class="pill">
           {$_('player.set', {
             values: {
-              n: state.setIndex + 1,
-              total: workout.items[state.itemIndex].sets,
+              n: player.setIndex + 1,
+              total: workout.items[player.itemIndex].sets,
             },
           })}
         </span>
@@ -181,7 +181,7 @@
       <div class="rest">
         <!-- Any self-counting work phase, not just a circuit interval: a warm-up hold in a
              rep workout counts down too, and without this the ring named no exercise. -->
-        {#if state.phase === 'work' && current}
+        {#if player.phase === 'work' && current}
           <h2 class="work-name">{current.name}</h2>
           {#if current.images[0] && imgOk}
             <img
@@ -215,9 +215,9 @@
             />
           </svg>
           <div class="ring-center">
-            <span class="count grad-text">{state.remaining}</span>
+            <span class="count grad-text">{player.remaining}</span>
             <span class="rest-label">
-              {state.phase === 'rest' ? $_('player.rest') : $_('player.go')}
+              {player.phase === 'rest' ? $_('player.rest') : $_('player.go')}
             </span>
           </div>
         </div>
@@ -241,8 +241,8 @@
         <h2>{current.name}</h2>
 
         <div class="dots" aria-label={$_('a11y.setProgress')}>
-          {#each Array(workout.items[state.itemIndex].sets) as _, d (d)}
-            <span class="dot" class:on={d <= state.setIndex}></span>
+          {#each Array(workout.items[player.itemIndex].sets) as _, d (d)}
+            <span class="dot" class:on={d <= player.setIndex}></span>
           {/each}
         </div>
 
@@ -252,9 +252,9 @@
             <button
               aria-label={$_('a11y.decreaseReps')}
               onclick={() =>
-                (logs[state.itemIndex][state.setIndex] = Math.max(
+                (logs[player.itemIndex][player.setIndex] = Math.max(
                   0,
-                  logs[state.itemIndex][state.setIndex] - 1,
+                  logs[player.itemIndex][player.setIndex] - 1,
                 ))}
             >
               <Icon name="minus" size={20} />
@@ -262,11 +262,11 @@
             <input
               type="number"
               min="0"
-              bind:value={logs[state.itemIndex][state.setIndex]}
+              bind:value={logs[player.itemIndex][player.setIndex]}
             />
             <button
               aria-label={$_('a11y.increaseReps')}
-              onclick={() => (logs[state.itemIndex][state.setIndex] += 1)}
+              onclick={() => (logs[player.itemIndex][player.setIndex] += 1)}
             >
               <Icon name="plus" size={20} />
             </button>
@@ -292,7 +292,7 @@
     <!-- A running clock is cut short, whether it is a rest, a circuit interval or a
          stretch held for time. Only manual rep work is reported as done. -->
     <button class="next btn-grad" onclick={next}>
-      {#if state.phase === 'rest'}
+      {#if player.phase === 'rest'}
         <Icon name="play" size={22} /> {$_('player.skipRest')}
       {:else if ringActive}
         <Icon name="play" size={22} /> {$_('player.skip')}

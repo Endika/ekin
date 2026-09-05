@@ -44,7 +44,7 @@ Open the site in your browser and choose **Add to Home Screen** (iOS Safari) or 
 ```bash
 npm install
 npm run dev      # local dev server
-npm run check    # lint + typecheck + tests
+npm run check    # format:check + lint + type:check + test:run
 npm run build    # production build to dist/
 ```
 

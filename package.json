@@ -5,16 +5,20 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "svelte-check --tsconfig ./tsconfig.json && vite build",
+    "build": "svelte-check --tsconfig ./tsconfig.app.json && vite build",
     "sync-exercises": "node scripts/build-exercises.mjs",
     "import-wger": "node scripts/import-wger.mjs",
     "translate-instructions": "node scripts/translate-instructions.mjs",
     "icons": "node scripts/gen-icons.mjs",
     "preview": "vite preview",
-    "test": "vitest run --passWithNoTests",
-    "lint": "eslint . && prettier --check .",
-    "typecheck": "svelte-check --tsconfig ./tsconfig.json",
-    "check": "npm run lint && npm run typecheck && npm run test"
+    "test": "vitest",
+    "test:run": "vitest run --passWithNoTests",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "type:check": "svelte-check --tsconfig ./tsconfig.app.json && svelte-check --tsconfig ./tsconfig.test.json",
+    "check": "npm run format:check && npm run lint && npm run type:check && npm run test:run"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
