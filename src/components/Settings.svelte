@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { _ } from 'svelte-i18n'
   import Icon from './Icon.svelte'
   import LocaleSelect from './LocaleSelect.svelte'
@@ -9,6 +10,57 @@
 
   let { onclose }: { onclose: () => void } = $props()
   let keyInput = $state($geminiKey)
+  let sheet = $state<HTMLElement>()
+
+  // Hand-rolled rather than a native `<dialog>` + `showModal()`: the sheet is laid out by
+  // the backdrop it lives in, and jsdom 30 ships `HTMLDialogElement` with only `open` on
+  // it — no `showModal`, no `close` — so the native path would both need the backdrop
+  // rebuilt around `::backdrop` and be impossible to cover in this suite.
+  onMount(() => {
+    // Snapshot the opener before we move focus, and hand it back on close.
+    const opener = document.activeElement
+    sheet?.focus()
+    return () => {
+      if (opener instanceof HTMLElement && opener.isConnected) opener.focus()
+    }
+  })
+
+  const FOCUSABLE =
+    'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+
+  /** Tabbable children, in DOM order. Disabled controls (the empty key's Clear) are out. */
+  function tabbables() {
+    return [...(sheet?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? [])].filter(
+      (el) => !el.matches(':disabled') && el.tabIndex >= 0,
+    )
+  }
+
+  function onkeydown(e: KeyboardEvent) {
+    if (e.key === 'Escape') {
+      onclose()
+      return
+    }
+    if (e.key !== 'Tab' || !sheet) return
+    const stops = tabbables()
+    if (!stops.length) {
+      e.preventDefault()
+      sheet.focus()
+      return
+    }
+    const first = stops[0]
+    const last = stops[stops.length - 1]
+    // The sheet itself only holds focus right after opening, and Shift+Tab from there
+    // has to wrap to the end rather than escape backwards into the page.
+    const atStart =
+      document.activeElement === first || document.activeElement === sheet
+    if (e.shiftKey && atStart) {
+      e.preventDefault()
+      last.focus()
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault()
+      first.focus()
+    }
+  }
 
   // CC-BY-SA requires attribution in the medium the work is distributed in — for an app,
   // a visible credits screen. Counted from the data so it cannot drift.
@@ -37,12 +89,15 @@
   onclick={(e) => {
     if (e.target === e.currentTarget) onclose()
   }}
+  {onkeydown}
 >
   <div
     class="sheet"
     role="dialog"
     aria-modal="true"
     aria-label={$_('settings.title')}
+    tabindex="-1"
+    bind:this={sheet}
   >
     <header>
       <h2>{$_('settings.title')}</h2>
