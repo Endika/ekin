@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.15](https://github.com/Endika/ekin/compare/v1.15.14...v1.15.15) (2026-09-05)
+
+
+### Bug Fixes
+
+* **ui:** clear svelte-check warnings and fail the gate on new ones ([aa729f2](https://github.com/Endika/ekin/commit/aa729f2ae124a2ce372d6eb61b10d31c7384395a))
+
 ## [1.15.14](https://github.com/Endika/ekin/compare/v1.15.13...v1.15.14) (2026-09-05)
 
 
