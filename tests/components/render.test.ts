@@ -34,7 +34,7 @@ beforeAll(async () => {
 })
 
 /** The rendered copy for a key, so a wording edit in the locale files cannot break a test. */
-const t = (key: string, values?: Record<string, unknown>) =>
+const t = (key: string, values?: Record<string, string | number>) =>
   get(_)(key, values ? { values } : undefined)
 
 describe('SessionPlayer', () => {

@@ -11,6 +11,7 @@
     | 'check'
     | 'flame'
     | 'clock'
+    | 'info'
     | 'build'
     | 'history'
     | 'rotate'
