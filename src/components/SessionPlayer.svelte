@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte'
+  import { onMount, onDestroy, untrack } from 'svelte'
   import { uuidv7 } from 'uuidv7'
   import type { Workout, Session, SessionItemLog } from '../domain/types'
   import { initSession, tick, advance, isTimedItem } from '../lib/timer'
@@ -16,14 +16,18 @@
     onfinish,
   }: { workout: Workout; onfinish: (s: Session) => void } = $props()
 
-  const isTimed = workout.mode === 'timed'
-  const rounds = workout.rounds ?? 1
+  let isTimed = $derived(workout.mode === 'timed')
+  let rounds = $derived(workout.rounds ?? 1)
 
-  let player = $state(initSession(workout))
+  // The session is played against the workout as it was when the player opened: `player`
+  // carries the progress that tick()/advance() move forward and `logs` the reps the user
+  // typed, so recomputing either from the prop would rewind the session and throw the
+  // entered reps away. Both are deliberate snapshots, not tracked reads.
+  let player = $state(untrack(() => initSession(workout)))
   let startedAt = Date.now()
   let interval: ReturnType<typeof setInterval> | undefined
   let logs: number[][] = $state(
-    workout.items.map((it) => Array(it.sets).fill(it.reps)),
+    untrack(() => workout.items.map((it) => Array(it.sets).fill(it.reps))),
   )
 
   const exOf = (id: string) => allExercises.find((e) => e.id === id)
