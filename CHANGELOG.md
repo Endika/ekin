@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.14](https://github.com/Endika/ekin/compare/v1.15.13...v1.15.14) (2026-09-05)
+
+
+### Chores
+
+* fail the lint gate on warnings ([f06cc20](https://github.com/Endika/ekin/commit/f06cc20035cc547492eb81392e11eb0061fcf5d8))
+
 ## [1.15.13](https://github.com/Endika/ekin/compare/v1.15.12...v1.15.13) (2026-09-03)
 
 
