@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.17](https://github.com/Endika/ekin/compare/v1.15.16...v1.15.17) (2026-09-05)
+
+
+### Chores
+
+* run the four CI gates in pre-commit ([45420a6](https://github.com/Endika/ekin/commit/45420a6a2b2a8732c38f170b4fc9d0e7ba702847))
+
 ## [1.15.16](https://github.com/Endika/ekin/compare/v1.15.15...v1.15.16) (2026-09-05)
 
 
