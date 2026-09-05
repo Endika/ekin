@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.16](https://github.com/Endika/ekin/compare/v1.15.15...v1.15.16) (2026-09-05)
+
+
+### Bug Fixes
+
+* **a11y:** make the settings sheet behave like a modal dialog ([51c4e44](https://github.com/Endika/ekin/commit/51c4e44bc2c23bee313941fbc88faa3e25056335))
+
 ## [1.15.15](https://github.com/Endika/ekin/compare/v1.15.14...v1.15.15) (2026-09-05)
 
 
