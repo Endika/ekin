@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.18](https://github.com/Endika/ekin/compare/v1.15.17...v1.15.18) (2026-09-08)
+
+
+### Chores
+
+* **deps-dev:** bump the npm-minor-patch group with 6 updates ([100a23b](https://github.com/Endika/ekin/commit/100a23b61e4957ae79bb8425d7c3d322ae6a6111))
+
 ## [1.15.17](https://github.com/Endika/ekin/compare/v1.15.16...v1.15.17) (2026-09-05)
 
 
