@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.20](https://github.com/Endika/ekin/compare/v1.15.19...v1.15.20) (2026-09-08)
+
+
+### Chores
+
+* **deps:** refresh postcss to pull nanoid 3.3.18 ([3149026](https://github.com/Endika/ekin/commit/3149026aa1e3a79ab096b4be156d006ee0f09d7d))
+
 ## [1.15.19](https://github.com/Endika/ekin/compare/v1.15.18...v1.15.19) (2026-09-08)
 
 
