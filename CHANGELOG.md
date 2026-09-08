@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.19](https://github.com/Endika/ekin/compare/v1.15.18...v1.15.19) (2026-09-08)
+
+
+### Chores
+
+* **deps-dev:** bump vitest and @vitest/ui to 5.0.0 ([e1a06d6](https://github.com/Endika/ekin/commit/e1a06d6f93dc04b0abe82f0179cf220cc33a8033))
+
 ## [1.15.18](https://github.com/Endika/ekin/compare/v1.15.17...v1.15.18) (2026-09-08)
 
 
