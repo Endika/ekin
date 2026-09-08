@@ -8,9 +8,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  # The last step dispatches deploy.yml; without this it fails with
-  # "403 Resource not accessible by integration".
-  actions: write
 
 concurrency:
   group: release-${{ github.ref }}
@@ -20,28 +17,19 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      # Token: a PAT (RELEASE_PLEASE_TOKEN) if present, else GITHUB_TOKEN.
-      # No required status checks on main, so GITHUB_TOKEN can rebase-merge the
-      # release PR directly — the "bot PR never gets CI" loop doesn't apply.
+      # The PAT, with no GITHUB_TOKEN fallback on purpose: the release merge has to
+      # be a push that triggers CI and deploy, and GITHUB_TOKEN triggers nothing. A
+      # missing PAT should fail loudly here, not land a release that deploys nothing.
       - id: release
         uses: googleapis/release-please-action@v5
         with:
-          token: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
       - if: ${{ steps.release.outputs.pr }}
         env:
-          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
+          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
           REPO: ${{ github.repository }}
           PR_JSON: ${{ steps.release.outputs.pr }}
         run: gh pr merge --rebase --auto -R "$REPO" "$(echo "$PR_JSON" | jq -r .number)"
-
-      # When a release is published, redeploy from main so the live site carries
-      # the bumped version (release-please's version-bump commit is pushed by the
-      # token and does NOT trigger the on:push deploy on its own).
-      - if: ${{ steps.release.outputs.release_created }}
-        env:
-          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
-          REPO: ${{ github.repository }}
-        run: gh workflow run deploy.yml -R "$REPO" --ref main
