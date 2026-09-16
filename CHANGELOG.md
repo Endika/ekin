@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.0](https://github.com/Endika/ekin/compare/v1.16.0...v1.17.0) (2026-09-16)
+
+
+### Features
+
+* **ci:** add CodeQL static analysis ([5031071](https://github.com/Endika/ekin/commit/5031071eb76c318a2a2d9d8614778181738bdad1))
+
 ## [1.16.0](https://github.com/Endika/ekin/compare/v1.15.20...v1.16.0) (2026-09-16)
 
 
