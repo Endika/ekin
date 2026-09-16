@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.0](https://github.com/Endika/ekin/compare/v1.15.20...v1.16.0) (2026-09-16)
+
+
+### Features
+
+* **ci:** block PRs that introduce high-severity dependency advisories ([a9e984d](https://github.com/Endika/ekin/commit/a9e984d1a3301e0dd6325a78cad9d77ae9d3ad7b))
+
 ## [1.15.20](https://github.com/Endika/ekin/compare/v1.15.19...v1.15.20) (2026-09-08)
 
 
