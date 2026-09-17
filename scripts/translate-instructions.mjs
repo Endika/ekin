@@ -8,7 +8,8 @@
 //
 //   GEMINI_API_KEY=... npm run translate-instructions
 //
-import { readFileSync, writeFileSync, existsSync } from 'node:fs'
+import { writeFileSync } from 'node:fs'
+import { readPrevious } from './lib/catalog.mjs'
 
 // Both catalogs. Translations of wger text are adaptations of CC-BY-SA content and are
 // published under that same licence — see NOTICE.md.
@@ -68,8 +69,8 @@ let skipped = 0
 let failed = 0
 
 for (const file of FILES) {
-  if (!existsSync(file)) continue
-  const data = JSON.parse(readFileSync(file, 'utf8'))
+  const data = readPrevious(file)
+  if (data === null) continue
   console.log(`\n${file} — ${data.length} exercises`)
 
   for (const ex of data) {

@@ -9,7 +9,8 @@
 //
 //   node scripts/apply-translations.mjs <batch.json> [...]
 //
-import { readFileSync, writeFileSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
+import { readPrevious } from './lib/catalog.mjs'
 
 const FILES = ['src/data/exercises.json', 'src/data/exercises.wger.json']
 const batches = process.argv.slice(2)
@@ -32,8 +33,8 @@ const problems = []
 const unseen = new Set(incoming.keys())
 
 for (const file of FILES) {
-  if (!existsSync(file)) continue
-  const data = JSON.parse(readFileSync(file, 'utf8'))
+  const data = readPrevious(file)
+  if (data === null) continue
   let changed = false
 
   for (const ex of data) {
