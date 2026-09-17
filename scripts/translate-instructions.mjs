@@ -9,7 +9,7 @@
 //   GEMINI_API_KEY=... npm run translate-instructions
 //
 import { writeFileSync } from 'node:fs'
-import { readPrevious } from './lib/catalog.mjs'
+import { isStepList, readPrevious } from './lib/catalog.mjs'
 
 // Both catalogs. Translations of wger text are adaptations of CC-BY-SA content and are
 // published under that same licence — see NOTICE.md.
@@ -74,7 +74,11 @@ for (const file of FILES) {
   console.log(`\n${file} — ${data.length} exercises`)
 
   for (const ex of data) {
-    if (!ex.instructions?.length) continue
+    // The steps go straight into the prompt; a malformed entry would only burn quota.
+    if (!isStepList(ex.instructions)) {
+      console.warn(`skip ${ex.id}: instructions are not a list of steps`)
+      continue
+    }
     ex.instructionsI18n ??= {}
     let changed = false
 
