@@ -9,8 +9,9 @@
 //
 //   npm run import-wger
 //
-import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs'
+import { writeFileSync, mkdirSync } from 'node:fs'
 import { CHAINS } from './chains.mjs'
+import { readPrevious } from './lib/catalog.mjs'
 import { strip } from './lib/html.mjs'
 
 const OUT = 'src/data/exercises.wger.json'
@@ -188,7 +189,7 @@ let raw
 try {
   raw = await fetchAll()
 } catch (err) {
-  if (existsSync(OUT)) {
+  if (readPrevious(OUT)) {
     console.warn(
       `warning: fetch failed (${err.message}); keeping existing ${OUT}`,
     )
@@ -233,11 +234,7 @@ const norm = (s) =>
     .sort()
     .join('')
 const existing = new Set(
-  existsSync('src/data/exercises.json')
-    ? JSON.parse(readFileSync('src/data/exercises.json', 'utf8')).map((e) =>
-        norm(e.name),
-      )
-    : [],
+  (readPrevious('src/data/exercises.json') ?? []).map((e) => norm(e.name)),
 )
 
 const out = []
@@ -342,10 +339,9 @@ for (const e of raw.sort((a, b) => a.id - b.id)) {
 // source is unchanged — otherwise they would describe a different text. Without this, a
 // re-import would silently discard every hand-written translation.
 let kept = 0
-if (existsSync(OUT)) {
-  const previous = new Map(
-    JSON.parse(readFileSync(OUT, 'utf8')).map((e) => [e.id, e]),
-  )
+const before = readPrevious(OUT)
+if (before) {
+  const previous = new Map(before.map((e) => [e.id, e]))
   for (const ex of out) {
     const prev = previous.get(ex.id)
     if (!prev?.instructionsI18n) continue
