@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.17.1](https://github.com/Endika/ekin/compare/v1.17.0...v1.17.1) (2026-09-17)
+
+
+### Bug Fixes
+
+* **scripts:** read the previous catalog instead of checking that it exists ([91f58e1](https://github.com/Endika/ekin/commit/91f58e1117dbab2d92ee21b7c2b9fc6ca75317cd))
+* **scripts:** strip nested tags to a fixed point and decode &amp; last ([0461bdf](https://github.com/Endika/ekin/commit/0461bdf9d6cdaf92c6245a5d143b397b371348fd))
+* **scripts:** validate catalog shape before writing it or sending it to the API ([ab96a8f](https://github.com/Endika/ekin/commit/ab96a8fb9d550212b2e4d1524a3e005630f5d1fb))
+
 ## [1.17.0](https://github.com/Endika/ekin/compare/v1.16.0...v1.17.0) (2026-09-16)
 
 
