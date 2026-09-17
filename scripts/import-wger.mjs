@@ -11,6 +11,7 @@
 //
 import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs'
 import { CHAINS } from './chains.mjs'
+import { strip } from './lib/html.mjs'
 
 const OUT = 'src/data/exercises.wger.json'
 const API =
@@ -150,17 +151,6 @@ const STATIC_STRETCH = /\bstretch(es|ing)?\b|\bopener\b|\bpose\b/i
 
 const ADVANCED =
   /\b(planche|l-?sit|straddle|one[- ]arm|one[- ]armed|single[- ]arm|handstand|muscle[- ]up|front lever|back lever|human flag|pistol|frog stand|dragon)\b/i
-
-const strip = (html) =>
-  html
-    .replace(/<li>/gi, '\n')
-    .replace(/<br\s*\/?>/gi, '\n')
-    .replace(/<\/p>/gi, '\n')
-    .replace(/<[^>]+>/g, '')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
 
 /** A bare "Instructions:" heading is not a step. */
 const HEADING = /^(instructions?|instrucciones|pasos|steps|how to)\s*:?\s*$/i
