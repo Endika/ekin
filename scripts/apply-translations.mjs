@@ -10,7 +10,7 @@
 //   node scripts/apply-translations.mjs <batch.json> [...]
 //
 import { readFileSync, writeFileSync } from 'node:fs'
-import { readPrevious } from './lib/catalog.mjs'
+import { isStepList, readPrevious } from './lib/catalog.mjs'
 
 const FILES = ['src/data/exercises.json', 'src/data/exercises.wger.json']
 const batches = process.argv.slice(2)
@@ -43,11 +43,7 @@ for (const file of FILES) {
     unseen.delete(ex.id)
 
     for (const [loc, steps] of Object.entries(add)) {
-      const ok =
-        Array.isArray(steps) &&
-        steps.length > 0 &&
-        steps.every((s) => typeof s === 'string' && s.trim())
-      if (!ok) {
+      if (!isStepList(steps)) {
         problems.push(`${ex.id}/${loc}: not a non-empty list of strings`)
         continue
       }

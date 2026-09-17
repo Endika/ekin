@@ -2,7 +2,7 @@ import { writeFileSync, mkdirSync } from 'node:fs'
 import { NEEDS_EQUIPMENT } from './needs-equipment.mjs'
 import { CHAINS } from './chains.mjs'
 import { INSTRUCTIONS_FALLBACK } from './instructions-fallback.mjs'
-import { readPrevious } from './lib/catalog.mjs'
+import { isExercise, readPrevious } from './lib/catalog.mjs'
 
 const OUT = 'src/data/exercises.json'
 
@@ -46,6 +46,11 @@ try {
   throw err
 }
 
+if (!Array.isArray(all)) {
+  console.error(`${SRC} did not return a JSON array; ${OUT} left untouched`)
+  process.exit(1)
+}
+
 const bodyweight = all
   .filter(
     (e) =>
@@ -84,6 +89,15 @@ if (before) {
       ex.instructionsI18n = prev.instructionsI18n
     }
   }
+}
+
+const malformed = bodyweight.filter((e) => !isExercise(e))
+if (malformed.length) {
+  console.error(
+    `malformed entries from ${SRC}: ${malformed.length}; ${OUT} left untouched`,
+  )
+  console.error(`  first: ${JSON.stringify(malformed[0])}`)
+  process.exit(1)
 }
 
 mkdirSync('src/data', { recursive: true })
