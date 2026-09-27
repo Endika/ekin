@@ -17,9 +17,9 @@
 - **Reuse** saved workouts: load a past routine back into the builder and tweak it.
 - Train with a guided session player — timer, rest countdown, exercise demo, and on-screen wake-lock so the screen never sleeps mid-set.
 - Log the reps you actually did, then track **progress**: current streak, totals, and a per-exercise rep-evolution chart.
-- **Optional AI assistant** (Gemini): bring your own API key to swap an exercise or make a workout easier/harder. Hidden entirely without a key — nothing else needs the network.
+- **Optional AI assistant** (Gemini): bring your own API key to swap an exercise or make a workout easier/harder. Hidden entirely without a key.
 - Available in **6 languages**: English, Spanish, Basque, Galician, Catalan and Valencian (auto-detected, switchable in Settings).
-- Works **offline** after first load. Install it as a PWA on your phone.
+- Works **offline** after first load. Install it as a PWA on your phone. Exercise demo images are the exception: each free-exercise-db image is cached the first time it is shown, and the wger ones always need the network.
 - Local-only data, stored on your device. No signup, no email, no backend.
 
 ## How to start
