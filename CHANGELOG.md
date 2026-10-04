@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.17.2](https://github.com/Endika/ekin/compare/v1.17.1...v1.17.2) (2026-10-04)
+
+
+### Bug Fixes
+
+* send the key in a header in the translate script and clarify the restriction hint ([3713741](https://github.com/Endika/ekin/commit/3713741998d511e1cdddd763df144aadf3636b23))
+* use a current Gemini model and explain Google key errors ([ae77eef](https://github.com/Endika/ekin/commit/ae77eeffcafd1089a94524953763e60f61131ace))
+
 ## [1.17.1](https://github.com/Endika/ekin/compare/v1.17.0...v1.17.1) (2026-09-17)
 
 
