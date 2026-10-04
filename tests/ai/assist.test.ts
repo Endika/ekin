@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { requestAssist } from '../../src/ai/assist'
-import type { GeminiClient } from '../../src/ai/gemini'
+import { GeminiError, type GeminiClient } from '../../src/ai/gemini'
 import type { Exercise, Workout, Zone } from '../../src/domain/types'
 
 const ex = (id: string, zone: Zone): Exercise => ({
@@ -111,6 +111,17 @@ describe('requestAssist', () => {
       itemIndex: 0,
     })
     expect(res).toEqual({ ok: false, error: 'request_failed' })
+  })
+
+  it('passes a Gemini failure reason through so the UI can explain it', async () => {
+    const client = fake(() =>
+      Promise.reject(new GeminiError('billing_disabled')),
+    )
+    const res = await requestAssist(client, catalog, workout, {
+      kind: 'adjust',
+      direction: 'harder',
+    })
+    expect(res).toEqual({ ok: false, error: 'billing_disabled' })
   })
 })
 

@@ -112,7 +112,15 @@
     "easier": "Más fácil",
     "harder": "Más difícil",
     "thinking": "Preguntando a Gemini…",
-    "failed": "No se pudo aplicar — el entreno no ha cambiado."
+    "failed": "No se pudo aplicar — el entreno no ha cambiado.",
+    "errors": {
+      "invalid_key": "Google ha rechazado esta clave API. Revísala en Ajustes o crea una nueva.",
+      "key_not_allowed": "Esta clave no puede usar la API de Gemini. Añádela a las restricciones de API de la clave.",
+      "api_disabled": "La API de Gemini está desactivada en el proyecto de Google Cloud de esta clave. Actívala y vuelve a intentarlo.",
+      "billing_disabled": "La facturación está desactivada en el proyecto de Google Cloud de esta clave. Actívala y vuelve a intentarlo.",
+      "key_restricted": "Esta clave está limitada a otras webs o direcciones IP. Permite esta app en sus restricciones.",
+      "fix": "Arréglalo en Google"
+    }
   },
   "a11y": {
     "decreaseReps": "Bajar reps",

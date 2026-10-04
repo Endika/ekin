@@ -112,7 +112,15 @@
     "easier": "Més fàcil",
     "harder": "Més difícil",
     "thinking": "Preguntant a Gemini…",
-    "failed": "No s'ha pogut aplicar — l'entrenament no ha canviat."
+    "failed": "No s'ha pogut aplicar — l'entrenament no ha canviat.",
+    "errors": {
+      "invalid_key": "Google ha rebutjat aquesta clau API. Revisa-la a Configuració o crea'n una de nova.",
+      "key_not_allowed": "Aquesta clau no pot fer servir l'API de Gemini. Afegeix-la a les restriccions d'API de la clau.",
+      "api_disabled": "L'API de Gemini està desactivada al projecte de Google Cloud d'aquesta clau. Activa-la i torna-ho a provar.",
+      "billing_disabled": "La facturació està desactivada al projecte de Google Cloud d'aquesta clau. Activa-la i torna-ho a provar.",
+      "key_restricted": "Aquesta clau està limitada a altres webs o adreces IP. Permet aquesta app a les seves restriccions.",
+      "fix": "Arregla-ho a Google"
+    }
   },
   "a11y": {
     "decreaseReps": "Baixar reps",

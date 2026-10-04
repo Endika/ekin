@@ -15,7 +15,7 @@ import { isStepList, readPrevious } from './lib/catalog.mjs'
 // published under that same licence — see NOTICE.md.
 const FILES = ['src/data/exercises.json', 'src/data/exercises.wger.json']
 const ENDPOINT =
-  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+  'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent'
 
 const LOCALES = {
   es: 'Spanish (Spain)',
