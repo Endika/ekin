@@ -115,7 +115,7 @@
     "failed": "Ezin izan da aplikatu — entrenamendua ez da aldatu.",
     "errors": {
       "invalid_key": "Google-k API gako hau baztertu du. Egiaztatu Ezarpenetan edo sortu berri bat.",
-      "key_not_allowed": "Gako honek ezin du Gemini APIa erabili. Gehitu gakoaren API murrizketetara.",
+      "key_not_allowed": "Gehitu Gemini APIa gako honen API murrizketetara.",
       "api_disabled": "Gemini APIa desaktibatuta dago gako honen Google Cloud proiektuan. Aktibatu eta saiatu berriro.",
       "billing_disabled": "Fakturazioa desaktibatuta dago gako honen Google Cloud proiektuan. Aktibatu eta saiatu berriro.",
       "key_restricted": "Gako hau beste webgune edo IP helbide batzuetara mugatuta dago. Baimendu aplikazio hau bere murrizketetan.",

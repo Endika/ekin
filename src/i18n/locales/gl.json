@@ -115,7 +115,7 @@
     "failed": "Non se puido aplicar — o adestramento non cambiou.",
     "errors": {
       "invalid_key": "Google rexeitou esta clave API. Revísaa en Axustes ou crea unha nova.",
-      "key_not_allowed": "Esta clave non pode usar a API de Gemini. Engádea ás restricións de API da clave.",
+      "key_not_allowed": "Engade a API de Gemini ás restricións de API desta clave.",
       "api_disabled": "A API de Gemini está desactivada no proxecto de Google Cloud desta clave. Actívaa e téntao de novo.",
       "billing_disabled": "A facturación está desactivada no proxecto de Google Cloud desta clave. Actívaa e téntao de novo.",
       "key_restricted": "Esta clave está limitada a outras webs ou enderezos IP. Permite esta app nas súas restricións.",

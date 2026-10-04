@@ -43,9 +43,9 @@ async function translate(steps, localeName, attempt = 0) {
     JSON.stringify(steps),
   ].join('\n')
 
-  const res = await fetch(`${ENDPOINT}?key=${encodeURIComponent(key)}`, {
+  const res = await fetch(ENDPOINT, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
     body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
   })
 
