@@ -5,12 +5,26 @@
   import { geminiKey } from '../stores/settings'
   import { allExercises } from '../stores/catalog-store'
   import { httpGeminiClient } from '../ai/gemini'
-  import { requestAssist, type AssistRequest } from '../ai/assist'
+  import {
+    requestAssist,
+    type AssistError,
+    type AssistRequest,
+  } from '../ai/assist'
   import Icon from './Icon.svelte'
 
   let open = $state(false)
   let busy = $state(false)
-  let failed = $state(false)
+  let failure = $state<AssistError | null>(null)
+
+  // Where each refusal Google explains can be fixed; the rest keep the generic message.
+  const FIXES: Partial<Record<AssistError, string>> = {
+    invalid_key: 'https://aistudio.google.com/apikey',
+    key_not_allowed: 'https://console.cloud.google.com/apis/credentials',
+    key_restricted: 'https://console.cloud.google.com/apis/credentials',
+    api_disabled:
+      'https://console.cloud.google.com/apis/library/generativelanguage.googleapis.com',
+    billing_disabled: 'https://console.cloud.google.com/billing',
+  }
   let swapIndex = $state(0)
 
   const nameOf = (id: string) =>
@@ -19,12 +33,12 @@
   async function run(req: AssistRequest) {
     if (busy) return
     busy = true
-    failed = false
+    failure = null
     const client = httpGeminiClient(get(geminiKey))
     const res = await requestAssist(client, allExercises, get(builder), req)
     busy = false
     if (res.ok) builder.load(res.workout)
-    else failed = true
+    else failure = res.error
   }
 </script>
 
@@ -72,7 +86,14 @@
 
         {#if busy}
           <p class="status">{$_('ai.thinking')}</p>
-        {:else if failed}
+        {:else if failure && FIXES[failure]}
+          <p class="status err">
+            {$_(`ai.errors.${failure}`)}
+            <a href={FIXES[failure]} target="_blank" rel="noreferrer"
+              >{$_('ai.errors.fix')}</a
+            >
+          </p>
+        {:else if failure}
           <p class="status err">{$_('ai.failed')}</p>
         {/if}
       </div>
@@ -145,6 +166,10 @@
   }
   .status.err {
     color: var(--danger);
+  }
+  .status a {
+    color: inherit;
+    font-weight: 600;
   }
   button:disabled {
     opacity: 0.6;

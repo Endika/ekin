@@ -1,12 +1,14 @@
 import type { Exercise, Workout, WorkoutItem } from '../domain/types'
-import type { GeminiClient } from './gemini'
+import { GeminiError, type GeminiClient, type GeminiFailure } from './gemini'
 
 export type AssistRequest =
   | { kind: 'swap'; itemIndex: number; reason?: string }
   | { kind: 'adjust'; direction: 'easier' | 'harder' }
 
+export type AssistError = GeminiFailure | 'bad_json' | 'invalid'
+
 export type AssistResult =
-  { ok: true; workout: Workout } | { ok: false; error: string }
+  { ok: true; workout: Workout } | { ok: false; error: AssistError }
 
 const isTimed = (w: Workout) => w.mode === 'timed'
 
@@ -184,8 +186,11 @@ export async function requestAssist(
   let text: string
   try {
     text = await client.generate(buildPrompt(catalog, workout, req))
-  } catch {
-    return { ok: false, error: 'request_failed' }
+  } catch (e) {
+    return {
+      ok: false,
+      error: e instanceof GeminiError ? e.reason : 'request_failed',
+    }
   }
 
   let parsed: unknown
