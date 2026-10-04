@@ -115,7 +115,7 @@
     "failed": "Couldn't apply that — workout left unchanged.",
     "errors": {
       "invalid_key": "Google rejected this API key. Check it in Settings or create a new one.",
-      "key_not_allowed": "This key isn't allowed to use the Gemini API. Add it to the key's API restrictions.",
+      "key_not_allowed": "Add the Gemini API to this key's API restrictions.",
       "api_disabled": "The Gemini API is off in this key's Google Cloud project. Enable it and try again.",
       "billing_disabled": "Billing is off in this key's Google Cloud project. Turn it on and try again.",
       "key_restricted": "This key is limited to other websites or IP addresses. Allow this app in its restrictions.",

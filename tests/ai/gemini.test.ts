@@ -129,4 +129,10 @@ describe('translate-instructions script', () => {
     expect(script).toContain(`/models/${GEMINI_MODEL}:generateContent`)
     expect(script).not.toMatch(/gemini-2\.\d/)
   })
+
+  it('sends the key in the x-goog-api-key header, never in the URL', () => {
+    const script = readFileSync('scripts/translate-instructions.mjs', 'utf-8')
+    expect(script).toMatch(/'x-goog-api-key': key\b/)
+    expect(script).not.toContain('?key=')
+  })
 })

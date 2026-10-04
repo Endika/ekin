@@ -115,7 +115,7 @@
     "failed": "No s'ha pogut aplicar — l'entrenament no ha canviat.",
     "errors": {
       "invalid_key": "Google ha rebutjat esta clau API. Revisa-la en Configuració o crea'n una de nova.",
-      "key_not_allowed": "Esta clau no pot utilitzar l'API de Gemini. Afig-la a les restriccions d'API de la clau.",
+      "key_not_allowed": "Afig l'API de Gemini a les restriccions d'API d'esta clau.",
       "api_disabled": "L'API de Gemini està desactivada en el projecte de Google Cloud d'esta clau. Activa-la i torna-ho a provar.",
       "billing_disabled": "La facturació està desactivada en el projecte de Google Cloud d'esta clau. Activa-la i torna-ho a provar.",
       "key_restricted": "Esta clau està limitada a altres webs o adreces IP. Permet esta app en les seues restriccions.",
