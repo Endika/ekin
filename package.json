@@ -52,6 +52,7 @@
     "uuidv7": "^1.2.1"
   },
   "overrides": {
-    "esbuild": "^0.28.0"
+    "esbuild": "^0.28.0",
+    "minimatch": "^11.0.1"
   }
 }
