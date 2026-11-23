@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "svelte-check --tsconfig ./tsconfig.app.json && vite build",
+    "build": "svelte-check --tsconfig ./tsconfig.app.json && vite build && node scripts/check-precache.mjs",
     "sync-exercises": "node scripts/build-exercises.mjs",
     "import-wger": "node scripts/import-wger.mjs",
     "translate-instructions": "node scripts/translate-instructions.mjs",
@@ -53,6 +53,9 @@
   },
   "overrides": {
     "esbuild": "^0.28.0",
-    "minimatch": "^11.0.1"
+    "minimatch": "^11.0.1",
+    "workbox-build": {
+      "glob": "^13.0.0"
+    }
   }
 }
