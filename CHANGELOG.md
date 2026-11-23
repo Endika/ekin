@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.3](https://github.com/Endika/ekin/compare/v1.17.2...v1.17.3) (2026-11-23)
+
+
+### Bug Fixes
+
+* **pwa:** precache the app again so installed apps update ([595d60a](https://github.com/Endika/ekin/commit/595d60a46cbf1d42c90bd27267c79c87e046457e))
+
 ## [1.17.2](https://github.com/Endika/ekin/compare/v1.17.1...v1.17.2) (2026-10-04)
 
 
