@@ -37,9 +37,9 @@
     </li>
   {:else}
     <li class="empty card">
-      <span class="badge" aria-hidden="true"
-        ><Icon name="flame" size={28} /></span
-      >
+      <span class="badge" aria-hidden="true">
+        <Icon name="flame" size={28} />
+      </span>
       <strong>{$_('history.emptyTitle')}</strong>
       <span class="hint">{$_('history.emptyHint')}</span>
     </li>

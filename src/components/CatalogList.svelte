@@ -13,17 +13,19 @@
 <div class="catalog">
   <div class="filters">
     <div class="search">
-      <span class="ico" aria-hidden="true"
-        ><Icon name="search" size={18} /></span
-      >
+      <span class="ico" aria-hidden="true">
+        <Icon name="search" size={18} />
+      </span>
       <input placeholder={$_('catalog.search')} bind:value={$query} />
     </div>
     <div class="zones">
       {#each zones as z (z)}
         <button
           class:active={$zoneFilter === z}
-          onclick={() => ($zoneFilter = z)}>{$_('zone.' + z)}</button
+          onclick={() => ($zoneFilter = z)}
         >
+          {$_('zone.' + z)}
+        </button>
       {/each}
     </div>
   </div>

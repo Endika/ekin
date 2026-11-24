@@ -91,8 +91,10 @@
     {#each zones as z (z)}
       <button
         class:active={$builder.zone === z}
-        onclick={() => builder.setZone(z)}>{$_('zone.' + z)}</button
+        onclick={() => builder.setZone(z)}
       >
+        {$_('zone.' + z)}
+      </button>
     {/each}
   </div>
 

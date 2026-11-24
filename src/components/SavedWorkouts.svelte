@@ -83,12 +83,12 @@
               {:else}
                 <strong>{w.name}</strong>
               {/if}
-              <span class="sub"
-                >{$_('zone.' + w.zone)} ·
+              <span class="sub">
+                {$_('zone.' + w.zone)} ·
                 {$_('saved.exercises', {
                   values: { count: w.items.length },
-                })}</span
-              >
+                })}
+              </span>
             </div>
             <div class="row-actions">
               <button class="load" onclick={() => load(w)}>

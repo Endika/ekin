@@ -46,31 +46,33 @@
       <label>
         <span>{$_('autofill.goal')}</span>
         <select bind:value={goal}>
-          {#each goals as g (g)}<option value={g}
-              >{$_('autofill.goal_' + g)}</option
-            >{/each}
+          {#each goals as g (g)}<option value={g}>
+              {$_('autofill.goal_' + g)}
+            </option>{/each}
         </select>
       </label>
       <label>
         <span>{$_('autofill.zone')}</span>
         <select bind:value={zone}>
-          {#each zones as z (z)}<option value={z}>{$_('zone.' + z)}</option
-            >{/each}
+          {#each zones as z (z)}<option value={z}>
+              {$_('zone.' + z)}
+            </option>{/each}
         </select>
       </label>
       <label>
         <span>{$_('autofill.time')}</span>
         <select bind:value={minutes}>
-          {#each times as t (t)}<option value={t}
-              >{$_('autofill.minutes', { values: { count: t } })}</option
-            >{/each}
+          {#each times as t (t)}<option value={t}>
+              {$_('autofill.minutes', { values: { count: t } })}
+            </option>{/each}
         </select>
       </label>
       <label>
         <span>{$_('autofill.level')}</span>
         <select bind:value={level}>
-          {#each levels as l (l)}<option value={l}>{$_('level.' + l)}</option
-            >{/each}
+          {#each levels as l (l)}<option value={l}>
+              {$_('level.' + l)}
+            </option>{/each}
         </select>
       </label>
       <button class="gen btn-grad" onclick={generate}>
