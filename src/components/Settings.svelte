@@ -175,8 +175,10 @@
         <a
           href="https://github.com/yuhonas/free-exercise-db"
           target="_blank"
-          rel="noreferrer">free-exercise-db</a
+          rel="noreferrer"
         >
+          free-exercise-db
+        </a>
         ({$_('settings.publicDomain')}).
       </small>
       <small>
@@ -186,8 +188,10 @@
         <a
           href="https://creativecommons.org/licenses/by-sa/4.0/"
           target="_blank"
-          rel="noreferrer">CC-BY-SA</a
-        >, {$_('settings.creditsAuthors', {
+          rel="noreferrer"
+        >
+          CC-BY-SA
+        </a>, {$_('settings.creditsAuthors', {
           values: { count: wgerAuthors },
         })}
       </small>

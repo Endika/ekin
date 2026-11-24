@@ -89,9 +89,9 @@
         {:else if failure && FIXES[failure]}
           <p class="status err">
             {$_(`ai.errors.${failure}`)}
-            <a href={FIXES[failure]} target="_blank" rel="noreferrer"
-              >{$_('ai.errors.fix')}</a
-            >
+            <a href={FIXES[failure]} target="_blank" rel="noreferrer">
+              {$_('ai.errors.fix')}
+            </a>
           </p>
         {:else if failure}
           <p class="status err">{$_('ai.failed')}</p>
